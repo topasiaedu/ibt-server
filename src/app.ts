@@ -2,6 +2,7 @@ import express, { Express, Request, Response } from 'express';
 import cors from 'cors';
 import { loggerMiddleware } from './middleware/logger';
 import { errorHandler } from './middleware/errorHandler';
+import { handleWebhook } from './webhook/webhookHandler';
 
 // Import routes
 // Example: import messageRoutes from './routes/messageRoutes';
@@ -19,6 +20,8 @@ app.use(loggerMiddleware); // Use the logger middleware for all requests
 app.get('/', (req: Request, res: Response) => {
   res.json({ message: 'Strive Clone App Backend API' });
 });
+
+app.post('/webhook', handleWebhook);
 
 // Future route examples based on provided project scope
 // app.use('/api/conversations', conversationRoutes);
