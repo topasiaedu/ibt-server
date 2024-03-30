@@ -16,7 +16,8 @@ import handlePhoneNumberNameUpdate from './events/phone_number_name_update';
 import handlePhoneNumberQualityUpdate from './events/phone_number_quality_update';
 import handleSecurity from './events/security';
 import handleTemplateCategoryUpdate from './events/template_category_update';
-
+import fs from 'fs';
+import path from 'path';
 
 export const handleWebhook = async (req: Request, res: Response) => {
   try {
@@ -73,7 +74,7 @@ export const handleWebhook = async (req: Request, res: Response) => {
           break;
       default:
           // Handle unknown event type
-          console.log('Unknown event type', req.body);
+          logErrorToFile(`Unknown event type: ${req.body}`);
   }
   
   } catch (error) {
@@ -81,3 +82,16 @@ export const handleWebhook = async (req: Request, res: Response) => {
     res.status(500).send('Internal Server Error');
   }
 };
+
+const logErrorFilePath = path.join(__dirname, 'waziper_error.log');
+
+function logErrorToFile(message:string = 'An error occurred') {
+	const timestamp = new Date().toISOString();
+	const logMessage = `${timestamp} - ${message}\n`;
+	// Append the log message to the log file, creating the file if it doesn't exist
+	fs.appendFile(logErrorFilePath, logMessage, (err) => {
+		if (err) {
+			console.error('Failed to write to log file:', err);
+		}
+	});
+}
