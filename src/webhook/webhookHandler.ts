@@ -16,6 +16,7 @@ import handlePhoneNumberNameUpdate from './events/phone_number_name_update';
 import handlePhoneNumberQualityUpdate from './events/phone_number_quality_update';
 import handleSecurity from './events/security';
 import handleTemplateCategoryUpdate from './events/template_category_update';
+import { logError } from '../utils/errorLogger';
 
 // Example Response:
 // {
@@ -113,7 +114,7 @@ export const handleWebhook = async (req: Request, res: Response) => {
                     //     break;
                     default:
                         // Handle unknown event type
-                        throw new Error('Unknown event type '+ 'event: ' + field + ' value: '  + JSON.stringify(req.body));
+                        logError(new Error(`Unknown event type: ${field}`), 'Webhook Handler');
                 }
             })
         });
