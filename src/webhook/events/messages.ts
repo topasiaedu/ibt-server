@@ -95,11 +95,6 @@ async function findOrCreateContact(contact: any) {
     .eq('wa_id', wa_id)
     .single();
 
-  if (findError) {
-    console.error('Error finding contact in database:', findError);
-    throw findError;
-  }
-
   // If the contact is found, return the existing contact_id
   if (existingContact) {
     return existingContact.contact_id;
