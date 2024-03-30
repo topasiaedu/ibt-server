@@ -39,58 +39,52 @@ import { Database } from '../../database.types';
 //   ]
 // }
 
-const handleMessages = async (req: Request, res: Response) => {
+const handleMessages = async (value: any) => {
   // Assuming the structure of the incoming payload matches your example
-  const { entry } = req.body;
-  const changes = entry[0].changes[0];
-  const metadata = changes.value.metadata;
-  const message = changes.value.messages[0];
-  const contact = changes.value.contacts[0];
+  const { metadata, contacts, messages } = value;
+  const { display_phone_number, phone_number_id } = metadata;
 
-  console.log('Handling messages', req.body);
+  contacts.forEach(async (contact: any) => {
+    const { wa_id, profile } = contact;
+    const { name } = profile;
+    const { from, id, timestamp, type, text } = messages[0];
+    const { body } = text;
 
-  // Example pseudo-code for finding or creating a contact in your database
-  // This step depends on your database schema and needs actual implementation
-  let contactId = await findOrCreateContact(contact);
-  let phoneNumberId = await supabase
-    .from('phone_numbers')
-    .select('phone_number_id')
-    .eq('number', metadata.display_phone_number)
-    .single().then(({ data, error }) => {
-      if (error) {
-        console.error('Error finding phone number in database:', error);
-        throw error;
-      }
+    // Find or create the contact in the database
+    const contact_id = await findOrCreateContact(contact);
 
-      return data.phone_number_id;
-    });
+    // Find the phone number in the database
+    let { data: phoneNumber, error: phoneError } = await supabase
+      .from('phone_numbers')
+      .select('phone_number_id')
+      .eq('phone_number_id', display_phone_number)
+      .single();
 
-  // Assuming 'phone_number_id' should correspond to the 'phone_number_id' from metadata
-  const messageData = {
-    user_id: null, // This depends on your application logic
-    phone_number_id: phoneNumberId.phone_number_id,
-    contact_id: contactId, // Adjusted to use the actual contact ID (you need to implement findOrCreateContact)
-    direction: 'inbound',
-    message_type: message.type,
-    content: message.text ? message.text.body : '', // Making sure to check if it's a text message
-    status: 'received',
-    timestamp: new Date(parseInt(message.timestamp) * 1000).toISOString(),
-  };
+    if (phoneError) {
+      console.error('Error finding phone number in database:', phoneError);
+      throw phoneError;
+    }
 
-  // Insert message into the database
-  const { error } = await supabase
-    .from('messages')
-    .insert([messageData]);
+    let phoneNumberId = phoneNumber ? phoneNumber.phone_number_id : null;
 
-  if (error) {
-    console.error('Error saving message to database:', error);
-    return res.status(500).send('Failed to save message');
-  }
+    // Insert the message into the database
+    let { data: newMessage, error: createError } = await supabase
+      .from('messages')
+      .insert([{ contact_id, wa_id, phoneNumberId, from, id, timestamp, type, body }])
+      .single();
 
-  return res.status(200).send('Message handled successfully');
+    if (createError) {
+      console.error('Error creating new message in database:', createError);
+      throw createError;
+    }
+
+    console.log('Message inserted successfully:', newMessage);
+  });
+
+  return 'Messages processed successfully';
 };
 
-async function findOrCreateContact(contact : any) {
+async function findOrCreateContact(contact: any) {
   const { wa_id, profile } = contact;
   const name = profile.name;
 

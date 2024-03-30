@@ -63,57 +63,57 @@ export const handleWebhook = async (req: Request, res: Response) => {
                 const field = change.field;
                 const value = change.value;
                 switch (field) {
-                    case 'account_alerts':
-                        handleAccountAlerts(req, res);
-                        break;
-                    case 'account_review_update':
-                        handleAccountReviewUpdate(req, res);
-                        break;
-                    case 'account_update':
-                        handleAccountUpdate(req, res);
-                        break;
-                    case 'business_capability_update':
-                        handleBusinessCapabilityUpdate(req, res);
-                        break;
-                    case 'business_status_update':
-                        handleBusinessStatusUpdate(req, res);
-                        break;
-                    case 'campaign_status_update':
-                        handleCampaignStatusUpdate(req, res);
-                        break;
-                    case 'flows':
-                        handleFlows(req, res);
-                        break;
-                    case 'message_echoes':
-                        handleMessageEchoes(req, res);
-                        break;
-                    case 'message_template_quality_update':
-                        handleMessageTemplateQualityUpdate(req, res);
-                        break;
-                    case 'message_template_status_update':
-                        handleMessageTemplateStatusUpdate(req, res);
-                        break;
+                    // case 'account_alerts':
+                    //     handleAccountAlerts(req, res);
+                    //     break;
+                    // case 'account_review_update':
+                    //     handleAccountReviewUpdate(req, res);
+                    //     break;
+                    // case 'account_update':
+                    //     handleAccountUpdate(req, res);
+                    //     break;
+                    // case 'business_capability_update':
+                    //     handleBusinessCapabilityUpdate(req, res);
+                    //     break;
+                    // case 'business_status_update':
+                    //     handleBusinessStatusUpdate(req, res);
+                    //     break;
+                    // case 'campaign_status_update':
+                    //     handleCampaignStatusUpdate(req, res);
+                    //     break;
+                    // case 'flows':
+                    //     handleFlows(req, res);
+                    //     break;
+                    // case 'message_echoes':
+                    //     handleMessageEchoes(req, res);
+                    //     break;
+                    // case 'message_template_quality_update':
+                    //     handleMessageTemplateQualityUpdate(req, res);
+                    //     break;
+                    // case 'message_template_status_update':
+                    //     handleMessageTemplateStatusUpdate(req, res);
+                    //     break;
                     case 'messages':
-                        handleMessages(req, res);
+                        handleMessages(value);
                         break;
-                    case 'messaging_handovers':
-                        handleMessagingHandovers(req, res);
-                        break;
-                    case 'phone_number_name_update':
-                        handlePhoneNumberNameUpdate(req, res);
-                        break;
-                    case 'phone_number_quality_update':
-                        handlePhoneNumberQualityUpdate(req, res);
-                        break;
-                    case 'security':
-                        handleSecurity(req, res);
-                        break;
-                    case 'template_category_update':
-                        handleTemplateCategoryUpdate(req, res);
-                        break;
+                    // case 'messaging_handovers':
+                    //     handleMessagingHandovers(req, res);
+                    //     break;
+                    // case 'phone_number_name_update':
+                    //     handlePhoneNumberNameUpdate(req, res);
+                    //     break;
+                    // case 'phone_number_quality_update':
+                    //     handlePhoneNumberQualityUpdate(req, res);
+                    //     break;
+                    // case 'security':
+                    //     handleSecurity(req, res);
+                    //     break;
+                    // case 'template_category_update':
+                    //     handleTemplateCategoryUpdate(req, res);
+                    //     break;
                     default:
                         // Handle unknown event type
-                        throw new Error('Unknown event type ' + JSON.stringify(req.body));
+                        throw new Error('Unknown event type '+ 'event: ' + field + ' value: '  + JSON.stringify(req.body));
                 }
             })
         });
