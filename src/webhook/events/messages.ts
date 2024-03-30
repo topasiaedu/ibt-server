@@ -83,11 +83,16 @@ import { logError } from '../../utils/errorLogger';
 // }
 
 const handleMessages = async (value: any) => {
-  // Check if its Outgoing or Incoming message
-  if (value?.statuses) {
-    return handleOutgoingMessage(value);
-  } else {
-    return handleIncomingMessage(value);
+  try {
+    // Check if its Outgoing or Incoming message
+    if (value?.statuses) {
+      return handleOutgoingMessage(value);
+    } else {
+      return handleIncomingMessage(value);
+    }
+  } catch (error) {
+    logError(error as Error, 'Error handling messages. Data: ' + JSON.stringify(value, null, 2) + '\n');
+    return 'Error handling messages';
   }
 };
 
