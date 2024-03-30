@@ -57,7 +57,7 @@ const handleMessages = async (value: any) => {
     let { data: phoneNumber, error: phoneError } = await supabase
       .from('phone_numbers')
       .select('phone_number_id')
-      .eq('phone_number_id', display_phone_number)
+      .eq('number', display_phone_number)
       .single();
 
     if (phoneError) {
