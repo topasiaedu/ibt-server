@@ -52,6 +52,17 @@ const handleMessages = async (value: any) => {
     const { from, id, timestamp, type, text } = message;
     const { body } = text;
 
+    // Check if the database has the same wa_message_id
+    let { data: existingMessage, error: findError } = await supabase
+      .from('messages')
+      .select('wa_message_id')
+      .eq('wa_message_id', id)
+      .single();
+
+    if (existingMessage) {
+      return 'Message already exists in the database';
+    }
+
     // Find the contact_id of the sender
     let { data: sender, error: senderError } = await supabase
       .from('contacts')
