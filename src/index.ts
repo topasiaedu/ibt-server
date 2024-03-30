@@ -26,7 +26,7 @@ app.get("/webhook", (req, res) => {
   const challenge = req.query["hub.challenge"];
 
   // check the mode and token sent are correct
-  if (mode === "subscribe" && token === process.env.WEBHOOK_VERIFY_TOKEN) {
+  if (mode === "subscribe" && token === "AIErZ0xweiBhCHPvPM0oMAQ9zD89KjYg") {
     // respond with 200 OK and challenge token from the request
     res.status(200).send(challenge);
     console.log("Webhook verified successfully!");
