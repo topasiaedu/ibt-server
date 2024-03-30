@@ -1,8 +1,10 @@
 import express, { Express, Request, Response } from 'express';
 import cors from 'cors';
-import { loggerMiddleware } from './src/middleware/logger';
-import { errorHandler } from './src/middleware/errorHandler';
-import { handleWebhook } from './src/webhook/webhookHandler';
+import { loggerMiddleware } from './middleware/logger';
+import { errorHandler } from './middleware/errorHandler';
+import { handleWebhook } from './webhook/webhookHandler';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const app: Express = express();
 
