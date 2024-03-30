@@ -101,53 +101,43 @@ const handleOutgoingMessage = async (value: any) => {
     const { statuses } = value.changes[0].value;
 
     statuses.forEach(async (status: any) => {
-      const { id, status: messageStatus, timestamp, recipient_id, conversation, pricing } = status;
-
-      // Check if the database has the same wa_message_id
+      // Check the database if message_window exists by using the conversation_id
       let { data: existingMessage, error: findError } = await supabase
-        .from('messages')
-        .select('wa_message_id')
-        .eq('wa_message_id', id)
-        .single()
+        .from('message_windows')
+        .select('conversation_id')
+        .eq('conversation_id', status.conversation.id)
+        .single();
 
-      if (existingMessage?.wa_message_id === id) {
+      if (existingMessage?.conversation_id === status.conversation.id) {
         return 'Message already exists in the database';
       }
 
-      // Find the contact_id of the recipient
-      let { data: recipient, error: recipientError } = await supabase
-        .from('contacts')
-        .select('contact_id')
-        .eq('wa_id', recipient_id)
-        .single();
-
-      if (recipientError) {
-        console.error('Error finding recipient in database:', recipientError);
-        throw recipientError;
-      }
-
-      if (!recipient) {
-        throw new Error('Recipient not found in database');
-      }
-
-      const recipientId = recipient.contact_id;
-
       // Change timestamp to DateTime format
-      const date = new Date(parseInt(timestamp) * 1000);
+      const date = new Date(parseInt(status.timestamp) * 1000);
       const formattedDate = date.toISOString();
 
       // Insert the message into the database
       let { data: newMessage, error: messageError } = await supabase
-        .from('messages')
-        .insert([{ contact_id: recipientId, wa_message_id: id, status: messageStatus, message_type: 'outgoing' }])
+        .from('message_windows')
+        .insert([{ conversation_id: status.conversation.id, status: status.status, timestamp: formattedDate }])
         .single();
 
       if (messageError) {
         logError(messageError as unknown as Error, 'Error inserting message into database. Data: ' + JSON.stringify(value, null, 2) + '\n');
       }
-    });
 
-    return 'Messages processed successfully';
+      // Update the message status in the database using id
+      let { data: updatedMessage, error: updateError } = await supabase
+        .from('messages')
+        .update({ status: status.status })
+        .eq('wa_message_id', status.id)
+        .single();
+
+      if (updateError) {
+        logError(updateError as unknown as Error, 'Error updating message status in database. Data: ' + JSON.stringify(value, null, 2) + '\n');
+      }
+
+    });
   } catch (error) {
     logError(error as Error, 'Error processing messages. Data: ' + JSON.stringify(value, null, 2) + '\n');
     return 'Error processing messages';
