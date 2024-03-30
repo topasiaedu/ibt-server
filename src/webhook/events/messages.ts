@@ -76,10 +76,14 @@ const handleMessages = async (value: any) => {
       .eq('number', display_phone_number)
       .single();
 
+    // Change timestamp to DateTime format
+    const date = new Date(parseInt(timestamp) * 1000);
+    const formattedDate = date.toISOString();
+
     // Insert the message into the database
     let { data: newMessage, error: messageError } = await supabase
       .from('messages')
-      .insert([{ contact_id: senderId, wa_message_id: id, content: body, created_at: timestamp, message_type:type, phone_number_id: myPhoneNumberId }])
+      .insert([{ contact_id: senderId, wa_message_id: id, content: body, created_at: formattedDate, message_type: type, phone_number_id: myPhoneNumberId }])
       .single();
 
     if (messageError) {
