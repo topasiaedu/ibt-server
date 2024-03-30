@@ -74,7 +74,7 @@ export const handleWebhook = async (req: Request, res: Response) => {
           break;
       default:
           // Handle unknown event type
-          throw new Error('Unknown event type ' + req.body);
+          throw new Error('Unknown event type ' + JSON.stringify(req.body));
     }
   
   } catch (error) {
