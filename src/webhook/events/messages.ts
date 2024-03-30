@@ -104,7 +104,7 @@ async function findOrCreateContact(contact: any) {
   let { data: newContact, error: createError } = await supabase
     .from('contacts')
     .insert([{ wa_id, name }])
-    .single();
+    .single()
 
   if (createError) {
     console.error('Error creating new contact in database:', createError);
@@ -116,7 +116,7 @@ async function findOrCreateContact(contact: any) {
     const contact = newContact as Database['public']['Tables']['contacts']['Row'];
     return contact.contact_id
   } else {
-    throw new Error('Failed to create a new contact');
+    throw new Error('Failed to create a new contact ' + newContact);
   }
 }
 
