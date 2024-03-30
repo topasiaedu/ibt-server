@@ -74,13 +74,13 @@ export const handleWebhook = async (req: Request, res: Response) => {
           break;
       default:
           // Handle unknown event type
-          logErrorToFile(`Unknown event type: ${req.body}`);
-  }
+          throw new Error('Unknown event type' + event);
+    }
   
   } catch (error) {
     console.error('Error processing webhook:', error);
     res.status(500).send('Internal Server Error');
-  }
+  } 
 };
 
 const logErrorFilePath = path.join(__dirname, 'waziper_error.log');
