@@ -102,14 +102,13 @@ const handleMessages = async (value: any) => {
         .single();
 
       if (messageError) {
-        console.error('Error inserting message into database:', messageError);
-        throw messageError;
+        logError(messageError as unknown as Error, 'Error inserting message into database. Data: ' + JSON.stringify(value, null, 2) + '\n');
       }
     });
 
     return 'Messages processed successfully';
   } catch (error) {
-    logError(error as Error, 'Error processing messages');
+    logError(error as Error, 'Error processing messages. Data: ' + JSON.stringify(value, null, 2) + '\n');
     return 'Error processing messages';
   }
 };
