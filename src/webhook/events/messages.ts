@@ -45,40 +45,47 @@ const handleMessages = async (value: any) => {
   const { display_phone_number, phone_number_id } = metadata;
 
   contacts.forEach(async (contact: any) => {
-    const { wa_id, profile } = contact;
-    const { name } = profile;
-    const { from, id, timestamp, type, text } = messages[0];
+    await findOrCreateContact(contact);
+  });
+
+  messages.forEach(async (message: any) => {
+    const { from, id, timestamp, type, text } = message;
     const { body } = text;
 
-    // Find or create the contact in the database
-    const contact_id = await findOrCreateContact(contact);
+    // Find the contact_id of the sender
+    let { data: sender, error: senderError } = await supabase
+      .from('contacts')
+      .select('contact_id')
+      .eq('wa_id', from)
+      .single();
 
-    // Find the phone number in the database
-    let { data: phoneNumber, error: phoneError } = await supabase
+    if (senderError) {
+      console.error('Error finding sender in database:', senderError);
+      throw senderError;
+    }
+
+    if (!sender) {
+      throw new Error('Sender not found in database');
+    }
+
+    const senderId = sender.contact_id;
+
+    const myPhoneNumberId = await supabase
       .from('phone_numbers')
       .select('phone_number_id')
       .eq('number', display_phone_number)
       .single();
 
-    if (phoneError) {
-      console.error('Error finding phone number in database:', phoneError);
-      throw phoneError;
-    }
-
-    let phoneNumberId = phoneNumber ? phoneNumber.phone_number_id : null;
-
     // Insert the message into the database
-    let { data: newMessage, error: createError } = await supabase
+    let { data: newMessage, error: messageError } = await supabase
       .from('messages')
-      .insert([{ contact_id, wa_id, phoneNumberId, from, id, timestamp, type, body }])
+      .insert([{ contact_id: senderId, wa_message_id: id, content: body, created_at: timestamp, message_type:type, phone_number_id: myPhoneNumberId }])
       .single();
 
-    if (createError) {
-      console.error('Error creating new message in database:', createError);
-      throw createError;
+    if (messageError) {
+      console.error('Error inserting message into database:', messageError);
+      throw messageError;
     }
-
-    console.log('Message inserted successfully:', newMessage);
   });
 
   return 'Messages processed successfully';
