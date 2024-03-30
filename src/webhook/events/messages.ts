@@ -83,7 +83,7 @@ const handleMessages = async (value: any) => {
     // Insert the message into the database
     let { data: newMessage, error: messageError } = await supabase
       .from('messages')
-      .insert([{ contact_id: senderId, wa_message_id: id, content: body, created_at: formattedDate, message_type: type, phone_number_id: myPhoneNumberId }])
+      .insert([{ contact_id: senderId, wa_message_id: id, content: body, message_type: type, phone_number_id: myPhoneNumberId }])
       .single();
 
     if (messageError) {
