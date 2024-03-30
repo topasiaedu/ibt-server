@@ -84,7 +84,7 @@ import { logError } from '../../utils/errorLogger';
 
 const handleMessages = async (value: any) => {
   // Check if its Outgoing or Incoming message
-  if (value?.changes[0]?.value?.statuses) {
+  if (value?.statuses) {
     return handleOutgoingMessage(value);
   } else {
     return handleIncomingMessage(value);
