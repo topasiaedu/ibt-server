@@ -24,7 +24,7 @@ app.get("/webhook", (req, res) => {
   const token = req.query["hub.verify_token"];
   const challenge = req.query["hub.challenge"];
 
-  if (mode === "subscribe" && token === process.env.VERIFY_TOKEN) { // Use VERIFY_TOKEN from your .env file
+  if (mode === "subscribe" && token === "AIErZ0xweiBhCHPvPM0oMAQ9zD89KjYg") { // Use VERIFY_TOKEN from your .env file
     res.status(200).send(challenge);
     console.log("Webhook verified successfully!");
   } else {
