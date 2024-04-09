@@ -123,7 +123,7 @@ const handleOutgoingMessage = async (value: any) => {
         .single();
 
       if (messageError) {
-        logError(messageError as unknown as Error, 'Error inserting outgoing message into database. Data: ' + JSON.stringify(value, null, 2) + '\n Error: ' + messageError);
+        logError(messageError as unknown as Error, 'Error inserting outgoing message window into database. Data: ' + JSON.stringify(value, null, 2) + '\n Error: ' + messageError);
       }
 
       // Update the message status in the database using id
