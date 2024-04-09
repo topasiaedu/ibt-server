@@ -123,7 +123,7 @@ const handleOutgoingMessage = async (value: any) => {
         .single();
 
       if (messageError) {
-        logError(messageError as unknown as Error, 'Error inserting message into database. Data: ' + JSON.stringify(value, null, 2) + '\n');
+        logError(messageError as unknown as Error, 'Error inserting outgoing message into database. Data: ' + JSON.stringify(value, null, 2) + '\n Error: ' + messageError);
       }
 
       // Update the message status in the database using id
@@ -134,12 +134,12 @@ const handleOutgoingMessage = async (value: any) => {
         .single();
 
       if (updateError) {
-        logError(updateError as unknown as Error, 'Error updating message status in database. Data: ' + JSON.stringify(value, null, 2) + '\n');
+        logError(updateError as unknown as Error, 'Error updating outgoing message status in database. Data: ' + JSON.stringify(value, null, 2) + '\n Error: ' + updateError);
       }
 
     });
   } catch (error) {
-    logError(error as Error, 'Error processing messages. Data: ' + JSON.stringify(value, null, 2) + '\n');
+    logError(error as Error, 'Error processing outgoing messages. Data: ' + JSON.stringify(value, null, 2) + '\n Error: ' + error);
     return 'Error processing messages';
   }
 }
@@ -203,17 +203,24 @@ const handleIncomingMessage = async (value: any) => {
       // Insert the message into the database
       let { data: newMessage, error: messageError } = await supabase
         .from('messages')
-        .insert([{ contact_id: senderId, wa_message_id: id, content: body, message_type: type, phone_number_id: myPhoneNumber }])
+        .insert([{ 
+          contact_id: senderId, 
+          message_type: type, 
+          content: body, 
+          phone_number_id: myPhoneNumber,
+          wa_message_id: id, 
+          direction: 'inbound',          
+        }])
         .single();
 
       if (messageError) {
-        logError(messageError as unknown as Error, 'Error inserting message into database. Data: ' + JSON.stringify(value, null, 2) + '\n');
+        logError(messageError as unknown as Error, 'Error inserting inbound message into database. Data: ' + JSON.stringify(value, null, 2) + '\n Error: ' + messageError);
       }
     });
 
     return 'Messages processed successfully';
   } catch (error) {
-    logError(error as Error, 'Error processing messages. Data: ' + JSON.stringify(value, null, 2) + '\n');
+    logError(error as Error, 'Error processing inbound messages. Data: ' + JSON.stringify(value, null, 2) + '\n Error: ' + error);
     return 'Error processing messages';
   }
 }
