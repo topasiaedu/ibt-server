@@ -50,8 +50,35 @@ const processCampaigns = async () => {
         type: 'template',
         template: campaign.template_payload,
       };
+      try {
+        const { data: messageResponse } = await sendMessageWithTemplate(templatePayload, campaign.phone_numbers.wa_id);
+        console.log('Message sent:', messageResponse);
 
-      const { data: messageResponse } = await sendMessageWithTemplate(templatePayload, campaign.phone_numbers.wa_id);
+        // Update campaign success count in the field sent
+        const { data: updatedCampaignSentCount, error: updateSentCountError } = await supabase
+          .from('campaigns')
+          .update({ sent: campaign.sent + 1 })
+          .eq('campaign_id', campaign.campaign_id);
+
+        if (updateSentCountError) {
+          logError(updateSentCountError as unknown as Error, 'Error updating campaign sent count');
+          return;
+        }
+
+      } catch (error) {
+        logError(error as Error, 'Error sending message');
+        // Update campaign failed count in the field failed
+        const { data: updatedCampaignFailedCount, error: updateFailedCountError } = await supabase
+          .from('campaigns')
+          .update({ failed: campaign.failed + 1 })
+          .eq('campaign_id', campaign.campaign_id);
+
+        if (updateFailedCountError) {
+          logError(updateFailedCountError as unknown as Error, 'Error updating campaign failed count');
+          return;
+        }
+
+      }
 
     }
 
