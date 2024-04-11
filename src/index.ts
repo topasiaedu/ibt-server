@@ -50,8 +50,8 @@ import { fetchTemplatesJob } from './cronJobs/fetchTemplates';
 import { fetchWABAPhoneNumbersJob } from './cronJobs/fetchWABAPhoneNumbers';
 
 campaignJob.start();
-// fetchWABAsJob.start();
-// fetchTemplatesJob.start();
-// fetchWABAPhoneNumbersJob.start();
+fetchWABAsJob.start();
+fetchTemplatesJob.start();
+fetchWABAPhoneNumbersJob.start();
 
 

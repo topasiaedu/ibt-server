@@ -1,0 +1,8 @@
+[2024-04-11T20:41:00.544Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+[2024-04-11T20:41:00.645Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+[2024-04-11T20:41:02.352Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+[2024-04-11T20:41:02.882Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]

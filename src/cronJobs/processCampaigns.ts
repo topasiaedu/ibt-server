@@ -6,7 +6,6 @@ import { CronJob } from 'cron';
 import { TemplateMessagePayload } from '../models/whatsapp/templateTypes';
 
 const processCampaigns = async () => {
-  console.log('Processing campaigns...');
   const { data: campaigns, error } = await supabase
     .from('campaigns')
     .select(`
@@ -33,11 +32,17 @@ const processCampaigns = async () => {
   }
 
   for (const campaign of campaigns) {
-    for (const contact_list_member of campaign.contact_list.contact_list_members) {
-      // Send message to contact
-      console.log(`Sending message to ${contact_list_member.contacts.wa_id}`);
+    const { data: updatedCampaignStatus, error: updateStatusError } = await supabase
+      .from('campaigns')
+      .update({ status: 'PROCESSING' })
+      .eq('campaign_id', campaign.campaign_id);
 
-      // Send message logic here
+    if (updateStatusError) {
+      logError(updateStatusError as unknown as Error, 'Error updating campaign status');
+      return;
+    }
+
+    for (const contact_list_member of campaign.contact_list.contact_list_members) {
       const templatePayload: TemplateMessagePayload = {
         messaging_product: 'whatsapp',
         recipient_type: 'individual',
@@ -46,21 +51,21 @@ const processCampaigns = async () => {
         template: campaign.template_payload,
       };
 
-    const { data: messageResponse } = await sendMessageWithTemplate(templatePayload, campaign.phone_numbers.wa_id);
+      const { data: messageResponse } = await sendMessageWithTemplate(templatePayload, campaign.phone_numbers.wa_id);
+
+    }
+
+    // Update campaign status
+    const { data: updatedCampaign, error: updateError } = await supabase
+      .from('campaigns')
+      .update({ status: 'COMPLETED' })
+      .eq('campaign_id', campaign.campaign_id);
+
+    if (updateError) {
+      logError(updateError as unknown as Error, 'Error updating campaign status');
+      return;
     }
   }
-
-  const { data: updatedCampaigns, error: updateError } = await supabase
-    .from('campaigns')
-    .update({ status: 'COMPLETED' }) // Update the status to completed
-    .in('campaign_id', campaigns.map(campaign => campaign.campaign_id)); // Update only the processed campaigns
-
-  if (updateError) {
-    console.error('Error updating campaigns:', updateError);
-    return;
-  }
-
-  console.log('Campaigns processed successfully');
 };
 
-export const campaignJob = new CronJob('*/30 * * * * *', processCampaigns); // Run every second
+export const campaignJob = new CronJob('* * * * * *', processCampaigns); // Run every second
