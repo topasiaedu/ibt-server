@@ -41,3 +41,17 @@ app.use(errorHandler);
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
+
+// Cron jobs
+// Import and start your cron jobs here
+import { campaignJob } from './cronJobs/processCampaigns';
+import { fetchWABAsJob } from './cronJobs/fetchWABAs';
+import { fetchTemplatesJob } from './cronJobs/fetchTemplates';
+import { fetchWABAPhoneNumbersJob } from './cronJobs/fetchWABAPhoneNumbers';
+
+// campaignJob.start();
+// fetchWABAsJob.start();
+fetchTemplatesJob.start();
+// fetchWABAPhoneNumbersJob.start();
+
+

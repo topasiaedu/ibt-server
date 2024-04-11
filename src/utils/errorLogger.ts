@@ -26,7 +26,7 @@ export async function logError(error: Error, context: string = ''): Promise<void
     await ensureLogFileExists(); // Ensure the log file exists before trying to append to it.
     
     const timestamp: string = new Date().toISOString();
-    const errorMessage: string = `[${timestamp}] ${context} ${error.stack || error.toString()}\n`;
+    const errorMessage: string = `[${timestamp}] ${context} ${JSON.stringify(error.stack) || error.toString()}\n`;
 
     // Append the error message to the specified log file.
     try {
@@ -35,3 +35,4 @@ export async function logError(error: Error, context: string = ''): Promise<void
         console.error('Failed to write to error log file:', err);
     }
 }
+

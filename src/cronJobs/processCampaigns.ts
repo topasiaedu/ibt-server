@@ -1,63 +1,55 @@
 // cronJobs/processCampaigns.ts
-import  supabase  from '../db/supabaseClient';
+import supabase from '../db/supabaseClient';
 import { sendMessageWithTemplate } from '../api/whatsapp';
-import { TemplateMessage } from '../models/whatsapp/templateTypes';
+import { logError } from '../utils/errorLogger';
 import { CronJob } from 'cron';
 
-
 const processCampaigns = async () => {
+  console.log('Processing campaigns...');
   const { data: campaigns, error } = await supabase
     .from('campaigns')
     .select(`
       *,
-      templates (*),
-      campaign_contacts!inner(*, contacts!inner(*))
+      contact_list: contact_lists!contact_list_id (
+        *,
+        contact_list_members: contact_list_members (*,
+          contacts (*)
+        )
+      )
     `)
-    .eq('status', 'pending'); // Assuming 'pending' is the status for not completed
+    .eq('status', 'PENDING'); // Assuming 'pending' is the status for not completed
 
   if (error) {
     console.error('Error fetching campaigns:', error);
     return;
   }
 
+  if (!campaigns) {
+    console.log('No campaigns to process');
+    return;
+  }
+
   for (const campaign of campaigns) {
-    for (const contact of campaign.campaign_contacts) {
-      const payload: TemplateMessage = {
-        messaging_product: "whatsapp",
-        to: contact.contacts.phone,
-        type: "template",
-        template: {
-          name: campaign.templates.name,
-          language: {
-            code: "en", // Adjust language code as necessary
-          },
-          components: [] // Include this only if necessary
-        }
-      };
-      
+    for (const contact_list_member of campaign.contact_list.contact_list_members) {
+      // Send message to contact
+      console.log(`Sending message to ${contact_list_member.contacts.wa_id}`);
+      // Send message logic here
 
-      try {
-        await sendMessageWithTemplate(payload);
-        console.log(`Message sent to ${contact.contacts.phone} for campaign ${campaign.name}`);
-      } catch (error) {
-        console.error(`Failed to send message for campaign ${campaign.name} to ${contact.contacts.phone}:`, error);
-      }
-    }
-
-    // Optionally, update the campaign status to 'completed'
-    const { error: updateError } = await supabase
-      .from('campaigns')
-      .update({ status: 'completed' }) // Adjust based on your status field values
-      .eq('id', campaign.id);
-
-    if (updateError) {
-      console.error(`Failed to update campaign ${campaign.name}:`, updateError);
+      // Send API request to WhatsApp API https://graph.facebook.com/v19.0/{WABA_ID}/messages
     }
   }
+
+  const { data: updatedCampaigns, error: updateError } = await supabase
+    .from('campaigns')
+    .update({ status: 'COMPLETED' }) // Update the status to completed
+    .in('campaign_id', campaigns.map(campaign => campaign.campaign_id)); // Update only the processed campaigns
+
+  if (updateError) {
+    console.error('Error updating campaigns:', updateError);
+    return;
+  }
+
+  console.log('Campaigns processed successfully');
 };
 
-// Schedule the task to run every second
-const job = new CronJob('* * * * * *', processCampaigns, null, true, 'Asia/Kuala_Lumpur');
-job.start();
-
-console.log('Cron job started. Processing campaigns every second.');
+export const campaignJob = new CronJob('*/60 * * * * *', processCampaigns); // Run every second

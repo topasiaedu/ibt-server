@@ -9,7 +9,8 @@
     "dev": "nodemon --exec ts-node src/index.ts",
     "test": "jest",
     "lint": "eslint . --ext .ts",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "supabase-sync": "npx supabase gen types typescript --project-id yvpvhbgcawvruybkmupv > src/database.types.ts"
   },
   "keywords": [],
   "author": "",

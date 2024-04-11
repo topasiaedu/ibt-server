@@ -1,30 +1,71 @@
 // templateTypes.ts
-export interface TemplateMessage {
+
+// Example: TemplateMessage
+// {
+// 	"messaging_product": "whatsapp",
+// 	"recipient_type": "individual",
+// 	"to": "60139968817",
+// 	"type": "template",
+// 	"template": {
+// 		"name": "ws_1d_feb2_2moro",
+// 		"language": {
+// 			"code": "zh_CN"
+// 		},
+// 		"components": [
+// 			{
+// 				"type": "HEADER",
+// 				"parameters": [
+// 					{
+// 						"type": "image",
+// 						"image": {
+// 							"link": "https://picsum.photos/200/300"
+// 						}
+// 					}
+// 				]
+// 			},
+// 			{
+// 				"type": "BODY",
+// 				"parameters": [
+// 					{
+// 						"type": "text",
+// 						"text": "Stanley"
+// 					}
+// 				]
+// 			}
+// 		]
+// 	}
+// }
+export interface TemplateMessagePayload {
   messaging_product: string;
+  recipient_type: string;
   to: string;
-  type: 'template';
-  template: {
-    name: string;
-    language: {
-      code: string;
-    };
-    components: TemplateComponent[];
-  };
+  type: string;
+  template: Template;
 }
 
-export interface TemplateComponent {
-  type: 'header' | 'body' | 'button';
-  parameters: TemplateParameter[];
+export interface Template {
+  name: string;
+  language: Language;
+  components: Component[];
 }
 
-export type TemplateParameter = TextParameter | MediaParameter;
-
-export interface TextParameter {
-  type: 'text';
-  text: string;
+export interface Language {
+  code: string;
 }
 
-export interface MediaParameter {
-  type: 'image' | 'video' | 'document';
-  media_id: string;
+export interface Component {
+  type: string;
+  parameters: Parameter[];
 }
+
+export interface Parameter {
+  type: string;
+  image?: Image;
+  text?: string;
+}
+
+export interface Image {
+  link: string;
+}
+
+// Example: TemplateResponse
