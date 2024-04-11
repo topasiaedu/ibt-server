@@ -49,9 +49,9 @@ import { fetchWABAsJob } from './cronJobs/fetchWABAs';
 import { fetchTemplatesJob } from './cronJobs/fetchTemplates';
 import { fetchWABAPhoneNumbersJob } from './cronJobs/fetchWABAPhoneNumbers';
 
-// campaignJob.start();
+campaignJob.start();
 // fetchWABAsJob.start();
-fetchTemplatesJob.start();
+// fetchTemplatesJob.start();
 // fetchWABAPhoneNumbersJob.start();
 
 

@@ -3,6 +3,7 @@ import supabase from '../db/supabaseClient';
 import { sendMessageWithTemplate } from '../api/whatsapp';
 import { logError } from '../utils/errorLogger';
 import { CronJob } from 'cron';
+import { TemplateMessagePayload } from '../models/whatsapp/templateTypes';
 
 const processCampaigns = async () => {
   console.log('Processing campaigns...');
@@ -15,7 +16,9 @@ const processCampaigns = async () => {
         contact_list_members: contact_list_members (*,
           contacts (*)
         )
-      )
+      ),
+      templates: templates!template_id (*),
+      phone_numbers: phone_numbers!phone_number_id (*)
     `)
     .eq('status', 'PENDING'); // Assuming 'pending' is the status for not completed
 
@@ -33,9 +36,17 @@ const processCampaigns = async () => {
     for (const contact_list_member of campaign.contact_list.contact_list_members) {
       // Send message to contact
       console.log(`Sending message to ${contact_list_member.contacts.wa_id}`);
-      // Send message logic here
 
-      // Send API request to WhatsApp API https://graph.facebook.com/v19.0/{WABA_ID}/messages
+      // Send message logic here
+      const templatePayload: TemplateMessagePayload = {
+        messaging_product: 'whatsapp',
+        recipient_type: 'individual',
+        to: contact_list_member.contacts.wa_id,
+        type: 'template',
+        template: campaign.template_payload,
+      };
+
+    const { data: messageResponse } = await sendMessageWithTemplate(templatePayload, campaign.phone_numbers.wa_id);
     }
   }
 
@@ -52,4 +63,4 @@ const processCampaigns = async () => {
   console.log('Campaigns processed successfully');
 };
 
-export const campaignJob = new CronJob('*/60 * * * * *', processCampaigns); // Run every second
+export const campaignJob = new CronJob('*/30 * * * * *', processCampaigns); // Run every second
