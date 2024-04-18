@@ -60,11 +60,12 @@ export interface Component {
 
 export interface Parameter {
   type: string;
-  image?: Image;
+  image?: Media;
+  video?: Media;
   text?: string;
 }
 
-export interface Image {
+export interface Media {
   link: string;
 }
 

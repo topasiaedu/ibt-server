@@ -5,9 +5,10 @@ import { errorHandler } from './middleware/errorHandler';
 import { handleWebhook } from './webhook/webhookHandler';
 import dotenv from 'dotenv';
 dotenv.config();
+import ftgRoutes from './routes/ftgRoutes';
 
 const app: Express = express();
-const port: number = parseInt(process.env.PORT as string, 10) || 3000; // Default to 3000 if environment variable not set
+const port: number = parseInt(process.env.PORT as string, 10) || 8080; // Default to 3000 if environment variable not set
 
 // Middleware
 app.use(cors()); // Enable CORS for all requests
@@ -34,6 +35,8 @@ app.get("/webhook", (req, res) => {
 
 app.post('/webhook', handleWebhook);
 
+app.use('/ftg', ftgRoutes);
+
 // The error handler must be the last piece of middleware added to the app
 app.use(errorHandler);
 
@@ -49,9 +52,9 @@ import { fetchWABAsJob } from './cronJobs/fetchWABAs';
 import { fetchTemplatesJob } from './cronJobs/fetchTemplates';
 import { fetchWABAPhoneNumbersJob } from './cronJobs/fetchWABAPhoneNumbers';
 
-campaignJob.start();
-fetchWABAsJob.start();
-fetchTemplatesJob.start();
-fetchWABAPhoneNumbersJob.start();
+// campaignJob.start();
+// fetchWABAsJob.start();
+// fetchTemplatesJob.start();
+// fetchWABAPhoneNumbersJob.start();
 
 

@@ -43,13 +43,25 @@ const processCampaigns = async () => {
     }
 
     for (const contact_list_member of campaign.contact_list.contact_list_members) {
-      const templatePayload: TemplateMessagePayload = {
+      let templatePayload: TemplateMessagePayload = {
         messaging_product: 'whatsapp',
         recipient_type: 'individual',
         to: contact_list_member.contacts.wa_id,
         type: 'template',
         template: campaign.template_payload,
       };
+
+      // Check template payload for %name%, %date%, %time% and replace with actual values
+      templatePayload.template.components.forEach((component) => {
+        component.parameters.forEach((parameter) => {
+          if (parameter.text) {
+            parameter.text = parameter.text.replace(/%name%/g, contact_list_member.contacts.name);
+            parameter.text = parameter.text.replace(/%date%/g, campaign.date);
+            parameter.text = parameter.text.replace(/%time%/g, campaign.time);
+          }
+        });
+      });
+      
       try {
         const { data: messageResponse } = await sendMessageWithTemplate(templatePayload, campaign.phone_numbers.wa_id);
         console.log('Message sent:', messageResponse);
