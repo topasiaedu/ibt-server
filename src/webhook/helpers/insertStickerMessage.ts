@@ -17,10 +17,6 @@ const insertStickerMessage = async (message: any, display_phone_number: string) 
     return 'Message already exists in the database';
   }
 
-  // Fetch the image URL
-  const { data: imageData } = await fetchImageURL(imageId);
-  const url = imageData.url;
-
   // Find the contact_id of the sender
   let { data: sender, error: senderError } = await supabase
     .from('contacts')
@@ -61,7 +57,7 @@ const insertStickerMessage = async (message: any, display_phone_number: string) 
       phone_number_id: myPhoneNumber,
       wa_message_id: id,
       direction: 'inbound',
-      media_url: url,
+      media_url: imageId,
     }])
     .single();
 

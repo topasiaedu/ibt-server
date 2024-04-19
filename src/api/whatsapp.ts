@@ -83,4 +83,14 @@ const fetchImageURL = async (imageId: string): Promise<AxiosResponse<any>> => {
     }
 }
 
-export { sendMessageWithTemplate, fetchTemplatesService, fetchWABAPhoneNumbersService, fetchWABAsService, fetchImageURL };
+const fetchMedia = async (mediaUrl: string): Promise<AxiosResponse<any>> => {
+    try {
+        const response = await axios.get(`${mediaUrl}`, { headers: { 'Authorization': `Bearer ${token}` }});
+        return response;
+    } catch (error) {
+        logError(error as Error, 'Error fetching image with ID: ' + mediaUrl + '\n');
+        throw new Error('Failed to fetch image');
+    }
+}
+
+export { sendMessageWithTemplate, fetchTemplatesService, fetchWABAPhoneNumbersService, fetchWABAsService, fetchImageURL, fetchMedia };

@@ -10,7 +10,8 @@
     "test": "jest",
     "lint": "eslint . --ext .ts",
     "format": "prettier --write .",
-    "supabase-sync": "npx supabase gen types typescript --project-id yvpvhbgcawvruybkmupv > src/database.types.ts"
+    "supabase-sync": "npx supabase gen types typescript --project-id yvpvhbgcawvruybkmupv > src/database.types.ts",
+    "ngrok": "ngrok http 8000"
   },
   "keywords": [],
   "author": "",

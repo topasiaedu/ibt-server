@@ -6,9 +6,10 @@ import { handleWebhook } from './webhook/webhookHandler';
 import dotenv from 'dotenv';
 dotenv.config();
 import ftgRoutes from './routes/ftgRoutes';
+import { fetchImageURL, fetchMedia } from './api/whatsapp';
 
 const app: Express = express();
-const port: number = parseInt(process.env.PORT as string, 10) || 8080; // Default to 3000 if environment variable not set
+const port: number = parseInt(process.env.PORT as string, 10) || 8000; // Default to 8080 if environment variable not set
 
 // Middleware
 app.use(cors()); // Enable CORS for all requests
@@ -37,6 +38,29 @@ app.post('/webhook', handleWebhook);
 
 app.use('/ftg', ftgRoutes);
 
+// Proxy for fetching Image
+app.get('/image', (req, res) => {
+  const imageId = req.query.imageId as string;
+  if (!imageId) {
+    res.status(400).json({ message: 'Image ID parameter is required' });
+  } else {
+    fetchImageURL(imageId)
+      .then((response) => {
+        console.log('Image URL fetched successfully:', response.data)
+        fetchMedia(response.data.url).then((mediaResponse) => {
+          res.send(Buffer.from(mediaResponse.data, 'binary'));
+        }).catch((error) => {
+          console.error('Error fetching image 1:', error);
+          res.status(500).json({ message: 'Failed to fetch image', error: error.message });
+        });
+      })
+      .catch((error) => {
+        console.error('Error fetching image 2:', error);  
+        res.status(500).json({ message: 'Failed to fetch image', error: error.message });
+      });
+  }
+});
+
 // The error handler must be the last piece of middleware added to the app
 app.use(errorHandler);
 
@@ -51,6 +75,7 @@ import { campaignJob } from './cronJobs/processCampaigns';
 import { fetchWABAsJob } from './cronJobs/fetchWABAs';
 import { fetchTemplatesJob } from './cronJobs/fetchTemplates';
 import { fetchWABAPhoneNumbersJob } from './cronJobs/fetchWABAPhoneNumbers';
+import axios from 'axios';
 
 // campaignJob.start();
 // fetchWABAsJob.start();
