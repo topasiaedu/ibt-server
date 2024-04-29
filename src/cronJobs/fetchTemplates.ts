@@ -4,6 +4,7 @@ import { logError } from '../utils/errorLogger';
 import { CronJob } from 'cron';
 
 const fetchTemplates = async () => {
+  console.log('Fetching templates...');
   const wabaIds = await supabase
     .from('whatsapp_business_accounts')
     .select('waba_id, account_id');
@@ -52,13 +53,15 @@ const fetchTemplates = async () => {
             account_id: wabaId.account_id,
             components: {
               data: template.components
-            }
+            },
           })
           .eq('wa_template_id', id)
           .single();
 
         if (updateError) {
           logError(updateError as unknown as Error, 'Error updating template in database. Template ID: ' + id + '\n');
+          console.log('Error updating template in database. Template ID: ' + id + '\n');
+          console.log(JSON.stringify(updateError, null, 2));
         }
 
       } else {
@@ -75,7 +78,7 @@ const fetchTemplates = async () => {
             account_id: wabaId.account_id,
             components: {
               data: template.components
-            }
+            },
           });
 
         if (insertError) {
@@ -89,7 +92,7 @@ const fetchTemplates = async () => {
   }
 }
 
-export const fetchTemplatesJob = new CronJob('*/60 * * * * *', fetchTemplates); // Run every second
+export const fetchTemplatesJob = new CronJob('*/1800 * * * * *', fetchTemplates); // Run every second
 
 // Database Schema:
 // templates

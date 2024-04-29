@@ -22,7 +22,7 @@ async function ensureLogFileExists(): Promise<void> {
  * @param error - The error object to log.
  * @param context - Optional context or description about where the error occurred or what it affects.
  */
-export async function logError(error: Error, context: string = ''): Promise<void> {
+export async function logError(error: any, context: string = ''): Promise<void> {
     await ensureLogFileExists(); // Ensure the log file exists before trying to append to it.
     
     const timestamp: string = new Date().toISOString();
@@ -35,4 +35,3 @@ export async function logError(error: Error, context: string = ''): Promise<void
         console.error('Failed to write to error log file:', err);
     }
 }
-

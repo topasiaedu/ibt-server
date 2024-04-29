@@ -2,6 +2,7 @@
 import axios, { AxiosResponse } from 'axios';
 import { TemplateMessagePayload } from '../models/whatsapp/templateTypes';
 import { logError } from '../utils/errorLogger';
+import supabase from '../db/supabaseClient';
 
 const whatsappApiURL: string = 'https://graph.facebook.com/v19.0/';
 const token: string = 'EAAFZCUSsuZBkQBO7vI52BiAVIVDPsZAATo0KbTLYdZBQ7hCq59lPYf5FYz792HlEN13MCPGDaVP93VYZASXz9ZBNXaiATyIToimwDx0tcCB2sz0TwklEoof3K0mZASJtcYugK1hfdnJGJ1pnRXtnTGmlXiIgkyQe0ZC2DOh4qZAeRhJ9nd9hgKKedub4eaCgvZBWrOHBa3NadCqdlZCx0zO'; // Use environment variables for sensitive data
@@ -15,7 +16,7 @@ const headers = {
  * Send a message using a predefined template.
  * @param payload TemplateMessage - The message payload conforming to the TemplateMessage interface.
  */
-const sendMessageWithTemplate = async (payload: TemplateMessagePayload, phone_number_id: String): Promise<AxiosResponse<any>> => {
+const sendMessageWithTemplate = async (payload: TemplateMessagePayload, phone_number_id: string): Promise<AxiosResponse<any>> => {
     try {
         // Check payload for spintax and replace with random value
         const spintaxRegex = /{[^{}]*}/g;
@@ -43,7 +44,7 @@ const sendMessageWithTemplate = async (payload: TemplateMessagePayload, phone_nu
     }
 };
 
-const fetchTemplatesService = async (WABA_ID: String): Promise<AxiosResponse<any>> => {
+const fetchTemplatesService = async (WABA_ID: string): Promise<AxiosResponse<any>> => {
     try {
         const response = await axios.get(`${whatsappApiURL}/${WABA_ID}/message_templates`, { headers });
         return response;
@@ -53,7 +54,7 @@ const fetchTemplatesService = async (WABA_ID: String): Promise<AxiosResponse<any
     }
 }
 
-const fetchWABAPhoneNumbersService = async (WABA_ID: String): Promise<AxiosResponse<any>> => {
+const fetchWABAPhoneNumbersService = async (WABA_ID: string): Promise<AxiosResponse<any>> => {
     try {
         const response = await axios.get(`${whatsappApiURL}/${WABA_ID}/phone_numbers`, { headers });
         return response;
@@ -83,14 +84,38 @@ const fetchImageURL = async (imageId: string): Promise<AxiosResponse<any>> => {
     }
 }
 
-const fetchMedia = async (mediaUrl: string): Promise<AxiosResponse<any>> => {
+const fetchMedia = async (mediaUrl: string, randomFileName: string): Promise<AxiosResponse<any>> => {
     try {
-        const response = await axios.get(`${mediaUrl}`, { headers: { 'Authorization': `Bearer ${token}` }});
+        const response = await axios.get(`${mediaUrl}`, { headers: { 'Authorization': `Bearer ${token}` }, responseType: 'blob' });
+
+        if (response.status !== 200) {
+            throw new Error('Failed to fetch image');
+        }
+
+        //  Save the image to the database
+        await saveFileToDatabase(randomFileName, response.data);
+        
         return response;
     } catch (error) {
         logError(error as Error, 'Error fetching image with ID: ' + mediaUrl + '\n');
         throw new Error('Failed to fetch image');
     }
+}
+
+const saveFileToDatabase = async ( fileName: string, fileData: Blob ) => {
+    try {
+        const { error } = await supabase.storage.from('media').upload(fileName, fileData);
+
+        if (error) {
+            logError(error as Error, 'Error saving file to database. File Name: ' + fileName + '\n');
+            throw new Error('Failed to save file to database');
+        }
+
+    } catch (error) {
+        logError(error as Error, 'Error saving file to database. File Name: ' + fileName + '\n');
+        throw new Error('Failed to save file to database');
+    }
+
 }
 
 export { sendMessageWithTemplate, fetchTemplatesService, fetchWABAPhoneNumbersService, fetchWABAsService, fetchImageURL, fetchMedia };

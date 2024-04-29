@@ -6,6 +6,7 @@ import { CronJob } from 'cron';
 import { TemplateMessagePayload } from '../models/whatsapp/templateTypes';
 
 const processCampaigns = async () => {
+  console.log('Processing campaigns...');
   const { data: campaigns, error } = await supabase
     .from('campaigns')
     .select(`
@@ -61,10 +62,38 @@ const processCampaigns = async () => {
           }
         });
       });
-      
+
       try {
         const { data: messageResponse } = await sendMessageWithTemplate(templatePayload, campaign.phone_numbers.wa_id);
         console.log('Message sent:', messageResponse);
+
+        // Lookup template to get the text and the image if any
+        const { data: template, error: templateError } = await supabase
+          .from('templates')
+          .select('*')
+          .eq('template_id', campaign.template_id)
+          .single();
+
+        const textContent = template?.components.data.map((component: any) => {
+          if (component.type === 'BODY') {
+            return component.text;
+          }
+        }).join(' ');
+
+        // Add the message to the database under the table messages
+        const { data: newMessage, error: messageError } = await supabase
+          .from('messages')
+          .insert([{
+            wa_message_id: messageResponse.messages[0].id,
+            campaign_id: campaign.campaign_id,
+            phone_number_id: campaign.phone_numbers.phone_number_id,
+            contact_id: contact_list_member.contacts.contact_id,
+            message_type: 'TEMPLATE',
+            content: textContent,
+            direction: 'outgoing',
+            status: messageResponse.messages.message_status
+          }])
+          .single();
 
         // Update campaign success count in the field sent
         const { data: updatedCampaignSentCount, error: updateSentCountError } = await supabase
@@ -107,4 +136,4 @@ const processCampaigns = async () => {
   }
 };
 
-export const campaignJob = new CronJob('* * * * * *', processCampaigns); // Run every second
+export const campaignJob = new CronJob('*/10 * * * * *', processCampaigns); // Run every second

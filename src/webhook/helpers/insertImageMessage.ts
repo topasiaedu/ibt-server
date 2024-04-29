@@ -1,69 +1,86 @@
 
 import supabase from '../../db/supabaseClient';
 import { logError } from '../../utils/errorLogger';
-import { fetchImageURL } from '../../api/whatsapp';
+import { fetchMedia } from '../../api/whatsapp';
 
-const insertImageMessage = async (message: any, display_phone_number: string) => {
-  const { from, id, timestamp, type, image } = message;
-  const { id: imageId, caption } = image;
+const insertImageMessage = async (message: any, display_phone_number: string, project_id: string) => {
+  try {
+    const { from, id, timestamp, type, image } = message;
+    const { id: imageId, caption } = image;
 
-  // Check if the database has the same wa_message_id
-  let { data: existingMessage, error: findError } = await supabase
-    .from('messages')
-    .select('wa_message_id')
-    .eq('wa_message_id', id)
-    .single()
+    // Check if the database has the same wa_message_id
+    let { data: existingMessage, error: findError } = await supabase
+      .from('messages')
+      .select('wa_message_id')
+      .eq('wa_message_id', id)
+      .single()
 
-  if (existingMessage?.wa_message_id === id) {
-    return 'Message already exists in the database';
-  }
+    if (findError) {
+      logError(findError as unknown as Error, 'Error finding message in database. Data: ' + JSON.stringify(message, null, 2) + '\n Error: ' + JSON.stringify(findError, null, 2));
+      return 'Error finding message in database';
+    }
 
-  // Find the contact_id of the sender
-  let { data: sender, error: senderError } = await supabase
-    .from('contacts')
-    .select('contact_id')
-    .eq('wa_id', from)
-    .single();
+    if (existingMessage?.wa_message_id === id) {
+      return 'Message already exists in the database';
+    }
 
-  if (senderError) {
-    console.error('Error finding sender in database:', senderError);
-    throw senderError;
-  }
+    // Find the contact_id of the sender
+    let { data: sender, error: senderError } = await supabase
+      .from('contacts')
+      .select('contact_id')
+      .eq('wa_id', from)
+      .eq('project_id', project_id)
+      .single();
 
-  if (!sender) {
-    throw new Error('Sender not found in database');
-  }
+    if (senderError) {
+      console.error('Error finding sender in database:', senderError);
+      throw senderError;
+    }
 
-  const senderId = sender.contact_id;
+    if (!sender) {
+      throw new Error('Sender not found in database');
+    }
 
-  const myPhoneNumberId = await supabase
-    .from('phone_numbers')
-    .select('phone_number_id')
-    .eq('number', display_phone_number)
-    .single();
+    const senderId = sender.contact_id;
 
-  const myPhoneNumber = myPhoneNumberId?.data?.phone_number_id;
+    const myPhoneNumberId = await supabase
+      .from('phone_numbers')
+      .select('phone_number_id')
+      .eq('number', display_phone_number)
+      .single();
 
-  // Change timestamp to DateTime format
-  const date = new Date(parseInt(timestamp) * 1000);
-  const formattedDate = date.toISOString();
+    const myPhoneNumber = myPhoneNumberId?.data?.phone_number_id;
 
-  // Insert the message into the database
-  let { data: newMessage, error: messageError } = await supabase
-    .from('messages')
-    .insert([{
-      contact_id: senderId,
-      message_type: type,
-      content: caption,
-      phone_number_id: myPhoneNumber,
-      wa_message_id: id,
-      direction: 'inbound',
-      media_url: imageId,
-    }])
-    .single();
+    // Generate random file name 
+    const fileName = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
 
-  if (messageError) {
-    logError(messageError as unknown as Error, 'Error inserting inbound image message into database. Data: ' + JSON.stringify(message, null, 2) + '\n Error: ' + messageError);
+    const media = await fetchMedia(imageId, fileName);
+
+    if (!media) {
+      throw new Error('Error fetching media from WhatsApp API');
+    }
+
+    // Insert the message into the database
+    let { error: messageError } = await supabase
+      .from('messages')
+      .insert([{
+        contact_id: senderId,
+        message_type: type,
+        content: caption,
+        phone_number_id: myPhoneNumber,
+        wa_message_id: id,
+        direction: 'inbound',
+        media_url: fileName,
+        project_id,
+      }])
+      .single();
+
+    if (messageError) {
+      logError(messageError as unknown as Error, 'Error inserting inbound image message into database. Data: ' + JSON.stringify(message, null, 2) + '\n Error: ' + JSON.stringify(messageError, null, 2));
+    }
+  } catch (error) {
+    logError(error as Error, 'Error inserting inbound text message into database. Data: ' + JSON.stringify(message, null, 2) + '\n Error: ' + error);
+    return 'Error inserting inbound text message into database';
   }
 }
 

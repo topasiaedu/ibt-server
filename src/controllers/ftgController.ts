@@ -5,9 +5,9 @@ import { TemplateMessagePayload } from '../models/whatsapp/templateTypes';
 import { sendMessageWithTemplate } from '../api/whatsapp';
 
 export const ftgTemplate = (req: Request, res: Response) => { 
-  const { template_payload, name, phone } = req.body;
+  const { template_payload, name, phone, project_id } = req.body;
 
-  findOrCreateContact({ wa_id: phone, profile: { name } })
+  findOrCreateContact({ wa_id: phone, profile: { name } }, project_id)
     .then((contact) => {
       let templatePayload: TemplateMessagePayload = {
         messaging_product: 'whatsapp',

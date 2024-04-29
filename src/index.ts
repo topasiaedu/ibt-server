@@ -38,29 +38,6 @@ app.post('/webhook', handleWebhook);
 
 app.use('/ftg', ftgRoutes);
 
-// Proxy for fetching Image
-app.get('/image', (req, res) => {
-  const imageId = req.query.imageId as string;
-  if (!imageId) {
-    res.status(400).json({ message: 'Image ID parameter is required' });
-  } else {
-    fetchImageURL(imageId)
-      .then((response) => {
-        console.log('Image URL fetched successfully:', response.data)
-        fetchMedia(response.data.url).then((mediaResponse) => {
-          res.send(Buffer.from(mediaResponse.data, 'binary'));
-        }).catch((error) => {
-          console.error('Error fetching image 1:', error);
-          res.status(500).json({ message: 'Failed to fetch image', error: error.message });
-        });
-      })
-      .catch((error) => {
-        console.error('Error fetching image 2:', error);  
-        res.status(500).json({ message: 'Failed to fetch image', error: error.message });
-      });
-  }
-});
-
 // The error handler must be the last piece of middleware added to the app
 app.use(errorHandler);
 
@@ -77,9 +54,9 @@ import { fetchTemplatesJob } from './cronJobs/fetchTemplates';
 import { fetchWABAPhoneNumbersJob } from './cronJobs/fetchWABAPhoneNumbers';
 import axios from 'axios';
 
-// campaignJob.start();
+campaignJob.start();
 // fetchWABAsJob.start();
-// fetchTemplatesJob.start();
+fetchTemplatesJob.start();
 // fetchWABAPhoneNumbersJob.start();
 
 
