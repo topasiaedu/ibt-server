@@ -1,6 +1,6 @@
 import supabase from '../../db/supabaseClient';
 import { logError } from '../../utils/errorLogger';
-import { fetchImageURL } from '../../api/whatsapp';
+import { fetchImageURL, fetchMedia } from '../../api/whatsapp';
 
 const insertVideoMessage = async (message: any, display_phone_number: string, project_id: string) => {
   try {
@@ -45,9 +45,14 @@ const insertVideoMessage = async (message: any, display_phone_number: string, pr
 
     const myPhoneNumber = myPhoneNumberId?.data?.phone_number_id;
 
-    // Change timestamp to DateTime format
-    const date = new Date(parseInt(timestamp) * 1000);
-    const formattedDate = date.toISOString();
+    // Generate random file name 
+    const fileName = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+
+    const media = await fetchMedia(imageId, fileName);
+
+    if (!media) {
+      throw new Error('Error fetching media from WhatsApp API');
+    }
 
     // Insert the message into the database
     let { data: newMessage, error: messageError } = await supabase
@@ -59,7 +64,7 @@ const insertVideoMessage = async (message: any, display_phone_number: string, pr
         phone_number_id: myPhoneNumber,
         wa_message_id: id,
         direction: 'inbound',
-        media_url: imageId,
+        media_url: media,
         project_id,
       }])
       .single();

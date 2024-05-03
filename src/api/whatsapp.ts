@@ -84,38 +84,27 @@ const fetchImageURL = async (imageId: string): Promise<AxiosResponse<any>> => {
     }
 }
 
-const fetchMedia = async (mediaUrl: string, randomFileName: string): Promise<AxiosResponse<any>> => {
+const fetchMedia = async (imageId: string, randomFileName: string): Promise<string> => {
     try {
-        const response = await axios.get(`${mediaUrl}`, { headers: { 'Authorization': `Bearer ${token}` }, responseType: 'blob' });
+        const response = await axios.get(`${whatsappApiURL}/${imageId}`, { headers });
+
+        const data = await axios.get(`${response.data.url}`, { headers: { 'Authorization': `Bearer ${token}` }, responseType: 'arraybuffer' });
 
         if (response.status !== 200) {
             throw new Error('Failed to fetch image');
         }
 
-        //  Save the image to the database
-        await saveFileToDatabase(randomFileName, response.data);
-        
-        return response;
+        const contentType = data.headers['content-type'] || 'image/jpeg'; // Default if no content type provided
+
+        // Convert the data to base64
+        const base64data = Buffer.from(data.data).toString('base64');
+
+        // Return the base64 data
+        return 'data:' + contentType + ';base64,' + base64data;
     } catch (error) {
-        logError(error as Error, 'Error fetching image with ID: ' + mediaUrl + '\n');
+        logError(error as Error, 'Error fetching image with ID: ' + imageId + '\n');
         throw new Error('Failed to fetch image');
     }
-}
-
-const saveFileToDatabase = async ( fileName: string, fileData: Blob ) => {
-    try {
-        const { error } = await supabase.storage.from('media').upload(fileName, fileData);
-
-        if (error) {
-            logError(error as Error, 'Error saving file to database. File Name: ' + fileName + '\n');
-            throw new Error('Failed to save file to database');
-        }
-
-    } catch (error) {
-        logError(error as Error, 'Error saving file to database. File Name: ' + fileName + '\n');
-        throw new Error('Failed to save file to database');
-    }
-
 }
 
 export { sendMessageWithTemplate, fetchTemplatesService, fetchWABAPhoneNumbersService, fetchWABAsService, fetchImageURL, fetchMedia };

@@ -4,6 +4,7 @@ import { logError } from '../../utils/errorLogger';
 import { fetchMedia } from '../../api/whatsapp';
 
 const insertImageMessage = async (message: any, display_phone_number: string, project_id: string) => {
+  console.log('Inserting image message into database'	)
   try {
     const { from, id, timestamp, type, image } = message;
     const { id: imageId, caption } = image;
@@ -14,11 +15,6 @@ const insertImageMessage = async (message: any, display_phone_number: string, pr
       .select('wa_message_id')
       .eq('wa_message_id', id)
       .single()
-
-    if (findError) {
-      logError(findError as unknown as Error, 'Error finding message in database. Data: ' + JSON.stringify(message, null, 2) + '\n Error: ' + JSON.stringify(findError, null, 2));
-      return 'Error finding message in database';
-    }
 
     if (existingMessage?.wa_message_id === id) {
       return 'Message already exists in the database';
@@ -70,7 +66,7 @@ const insertImageMessage = async (message: any, display_phone_number: string, pr
         phone_number_id: myPhoneNumber,
         wa_message_id: id,
         direction: 'inbound',
-        media_url: fileName,
+        media_url: media,
         project_id,
       }])
       .single();
