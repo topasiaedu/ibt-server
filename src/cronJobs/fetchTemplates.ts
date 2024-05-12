@@ -92,7 +92,7 @@ const fetchTemplates = async () => {
   }
 }
 
-export const fetchTemplatesJob = new CronJob('*/1800 * * * * *', fetchTemplates); // Run every second
+export const fetchTemplatesJob = new CronJob('* * * * * *', fetchTemplates); // Run every second
 
 // Database Schema:
 // templates

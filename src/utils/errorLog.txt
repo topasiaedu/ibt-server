@@ -1,30 +1,4 @@
-[2024-05-02T01:32:47.757Z] Error saving file to database. File Name: ba2a11vjil9ha75ylwqek5
- [object Object]
-
-
-[2024-05-02T01:32:47.757Z] Error saving file to database. File Name: ba2a11vjil9ha75ylwqek5
- "Error: Failed to save file to database\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:121:19\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
-
-
-[2024-05-02T01:32:47.761Z] Error inserting inbound text message into database. Data: {
-  "from": "60139968817",
-  "id": "wamid.HBgLNjAxMzk5Njg4MTcVAgASGBJDQzA5QjJDMEY4RUY1MUU5ODIA",
-  "timestamp": "1714613564",
-  "type": "image",
-  "image": {
-    "mime_type": "image/jpeg",
-    "sha256": "ZnhoAtpvOKHeRA4+XvrhGWFM/BZsKUdsZwckxnZWl3E=",
-    "id": "961528328717126"
-  }
-}
- Error: Error: Failed to fetch image "Error: Failed to fetch image\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:108:15\n    at Generator.throw (<anonymous>)\n    at rejected (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:6:65)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
-
-
-[2024-05-02T01:32:47.761Z] Error fetching image with ID: 961528328717126
- "Error: Failed to save file to database\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:126:15\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
-
-
-[2024-05-02T01:33:23.002Z] Error processing inbound messages. Data: {
+[2024-05-12T15:53:08.156Z] Error processing inbound messages. Data: {
   "messaging_product": "whatsapp",
   "metadata": {
     "display_phone_number": "601159946253",
@@ -33,18 +7,18 @@
   "contacts": [
     {
       "profile": {
-        "name": "Camy Yap"
+        "name": "xinlei🐨"
       },
-      "wa_id": "60168335343"
+      "wa_id": "60167611068"
     }
   ],
   "messages": [
     {
-      "from": "60168335343",
-      "id": "wamid.HBgLNjAxNjgzMzUzNDMVAgASGBQzQTA2NjA0N0UxQTdDNjc1NjdENAA=",
-      "timestamp": "1714613164",
+      "from": "60167611068",
+      "id": "wamid.HBgLNjAxNjc2MTEwNjgVAgASGCAyOUU1RjgyRjY2OTk5QzRCRURBMDQ0NjI4MDgyMjA1RAA=",
+      "timestamp": "1715151904",
       "text": {
-        "body": "好 我想问要怎么进群的？"
+        "body": "YES"
       },
       "type": "text"
     }
@@ -53,98 +27,7 @@
  Error: [object Object] [object Object]
 
 
-[2024-05-02T01:35:25.203Z] Error saving file to database. File Name: 1e4ilg8bbeguh6h1fdej9
- [object Object]
-
-
-[2024-05-02T01:35:25.209Z] Error fetching image with ID: 295074883639540
- "Error: Failed to save file to database\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:126:15\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
-
-
-[2024-05-02T01:35:25.210Z] Error inserting inbound text message into database. Data: {
-  "from": "60139968817",
-  "id": "wamid.HBgLNjAxMzk5Njg4MTcVAgASGBI4Mjg3Rjg5M0I1RTM0QkFEMEEA",
-  "timestamp": "1714613721",
-  "type": "image",
-  "image": {
-    "mime_type": "image/jpeg",
-    "sha256": "Dv6XCJ9qNGQtJyeh1c+z9Wv9Tbe4HPw+I34x34y/CII=",
-    "id": "295074883639540"
-  }
-}
- Error: Error: Failed to fetch image "Error: Failed to fetch image\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:108:15\n    at Generator.throw (<anonymous>)\n    at rejected (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:6:65)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
-
-
-[2024-05-02T01:35:25.204Z] Error saving file to database. File Name: 1e4ilg8bbeguh6h1fdej9
- "Error: Failed to save file to database\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:121:19\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
-
-
-[2024-05-02T01:35:50.083Z] Error saving file to database. File Name: k1naxdp45v9aau6otwgfg
- [object Object]
-
-
-[2024-05-02T01:35:50.083Z] Error fetching image with ID: 295074883639540
- "Error: Failed to save file to database\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:126:15\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
-
-
-[2024-05-02T01:35:50.083Z] Error saving file to database. File Name: k1naxdp45v9aau6otwgfg
- "Error: Failed to save file to database\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:121:19\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
-
-
-[2024-05-02T01:35:50.084Z] Error inserting inbound text message into database. Data: {
-  "from": "60139968817",
-  "id": "wamid.HBgLNjAxMzk5Njg4MTcVAgASGBI4Mjg3Rjg5M0I1RTM0QkFEMEEA",
-  "timestamp": "1714613721",
-  "type": "image",
-  "image": {
-    "mime_type": "image/jpeg",
-    "sha256": "Dv6XCJ9qNGQtJyeh1c+z9Wv9Tbe4HPw+I34x34y/CII=",
-    "id": "295074883639540"
-  }
-}
- Error: Error: Failed to fetch image "Error: Failed to fetch image\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:108:15\n    at Generator.throw (<anonymous>)\n    at rejected (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:6:65)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
-
-
-[2024-05-02T02:01:04.341Z] Error inserting inbound text message into database. Data: {
-  "from": "60124282872",
-  "id": "wamid.HBgLNjAxMjQyODI4NzIVAgASGBQzQUQ5RkQ1NkI0NEI2M0RBODNFMgA=",
-  "timestamp": "1714292401",
-  "text": {
-    "body": "Ok"
-  },
-  "type": "text"
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T02:16:20.702Z] Error inserting inbound text message into database. Data: {
-  "from": "60165796323",
-  "id": "wamid.HBgLNjAxNjU3OTYzMjMVAgASGCAwRDc4RkE4ODY5NzRBNUJBQjlBN0JBMzY0RTM5NThCQwA=",
-  "timestamp": "1714616180",
-  "text": {
-    "body": "TQ"
-  },
-  "type": "text"
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T02:20:49.898Z] Webhook Handler "Error: Unknown event type: message_template_quality_update\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:117:34\n    at Array.forEach (<anonymous>)\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:63:21\n    at Array.forEach (<anonymous>)\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:61:17\n    at Generator.next (<anonymous>)\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:4:12)\n    at handleWebhook (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:58:68)"
-
-
-[2024-05-02T03:05:49.031Z] Webhook Handler "Error: Unknown event type: message_template_quality_update\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:117:34\n    at Array.forEach (<anonymous>)\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:63:21\n    at Array.forEach (<anonymous>)\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:61:17\n    at Generator.next (<anonymous>)\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:4:12)\n    at handleWebhook (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:58:68)"
-
-
-[2024-05-02T03:06:48.833Z] Webhook Handler "Error: Unknown event type: message_template_quality_update\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:117:34\n    at Array.forEach (<anonymous>)\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:63:21\n    at Array.forEach (<anonymous>)\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:61:17\n    at Generator.next (<anonymous>)\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:4:12)\n    at handleWebhook (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:58:68)"
-
-
-[2024-05-02T03:08:18.997Z] Webhook Handler "Error: Unknown event type: message_template_quality_update\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:117:34\n    at Array.forEach (<anonymous>)\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:63:21\n    at Array.forEach (<anonymous>)\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:61:17\n    at Generator.next (<anonymous>)\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:4:12)\n    at handleWebhook (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:58:68)"
-
-
-[2024-05-02T03:11:07.868Z] Webhook Handler "Error: Unknown event type: message_template_quality_update\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:117:34\n    at Array.forEach (<anonymous>)\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:63:21\n    at Array.forEach (<anonymous>)\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:61:17\n    at Generator.next (<anonymous>)\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:4:12)\n    at handleWebhook (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:58:68)"
-
-
-[2024-05-02T03:15:30.663Z] Error processing inbound messages. Data: {
+[2024-05-12T16:03:08.186Z] Error processing inbound messages. Data: {
   "messaging_product": "whatsapp",
   "metadata": {
     "display_phone_number": "601159946253",
@@ -153,18 +36,18 @@
   "contacts": [
     {
       "profile": {
-        "name": "Camy Yap"
+        "name": "The."
       },
-      "wa_id": "60168335343"
+      "wa_id": "60167902440"
     }
   ],
   "messages": [
     {
-      "from": "60168335343",
-      "id": "wamid.HBgLNjAxNjgzMzUzNDMVAgASGBQzQTA2NjA0N0UxQTdDNjc1NjdENAA=",
-      "timestamp": "1714613164",
+      "from": "60167902440",
+      "id": "wamid.HBgLNjAxNjc5MDI0NDAVAgASGBQzQUEzMjRDQjEyNUE2RDhFMjJBNwA=",
+      "timestamp": "1715152122",
       "text": {
-        "body": "好 我想问要怎么进群的？"
+        "body": "好的 谢谢你小助理🥰"
       },
       "type": "text"
     }
@@ -173,7 +56,7 @@
  Error: [object Object] [object Object]
 
 
-[2024-05-02T03:21:52.510Z] Error processing inbound messages. Data: {
+[2024-05-12T16:36:32.972Z] Error processing inbound messages. Data: {
   "messaging_product": "whatsapp",
   "metadata": {
     "display_phone_number": "601159946253",
@@ -182,18 +65,18 @@
   "contacts": [
     {
       "profile": {
-        "name": "Ai Ling"
+        "name": "Jess Tee"
       },
-      "wa_id": "60165399401"
+      "wa_id": "60169025593"
     }
   ],
   "messages": [
     {
-      "from": "60165399401",
-      "id": "wamid.HBgLNjAxNjUzOTk0MDEVAgASGBQzQUI2QzdEQUI1QUM3OEMyMTVBNwA=",
-      "timestamp": "1714620112",
+      "from": "60169025593",
+      "id": "wamid.HBgLNjAxNjkwMjU1OTMVAgASGBQzQURGMDJBRDMwRjEyNEZCQjNBRQA=",
+      "timestamp": "1714971337",
       "text": {
-        "body": "好的 谢谢你 因为我会看回放的"
+        "body": "May I know when will receive the 2 days class recording video ya ?"
       },
       "type": "text"
     }
@@ -202,10 +85,7 @@
  Error: [object Object] [object Object]
 
 
-[2024-05-02T03:24:07.719Z] Webhook Handler "Error: Unknown event type: message_template_quality_update\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:117:34\n    at Array.forEach (<anonymous>)\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:63:21\n    at Array.forEach (<anonymous>)\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:61:17\n    at Generator.next (<anonymous>)\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:4:12)\n    at handleWebhook (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:58:68)"
-
-
-[2024-05-02T03:24:18.636Z] Error processing inbound messages. Data: {
+[2024-05-12T16:36:58.244Z] Error processing inbound messages. Data: {
   "messaging_product": "whatsapp",
   "metadata": {
     "display_phone_number": "601159946253",
@@ -214,18 +94,18 @@
   "contacts": [
     {
       "profile": {
-        "name": "Fooky"
+        "name": "Jess Tee"
       },
-      "wa_id": "60198228668"
+      "wa_id": "60169025593"
     }
   ],
   "messages": [
     {
-      "from": "60198228668",
-      "id": "wamid.HBgLNjAxOTgyMjg2NjgVAgASGCAzRTlGRjZFODcyMTJENTdBNTQ5MjNDQ0Q2MkVFNzNFOQA=",
-      "timestamp": "1714620258",
+      "from": "60169025593",
+      "id": "wamid.HBgLNjAxNjkwMjU1OTMVAgASGBQzQURGMDJBRDMwRjEyNEZCQjNBRQA=",
+      "timestamp": "1714971337",
       "text": {
-        "body": "好的 谢谢"
+        "body": "May I know when will receive the 2 days class recording video ya ?"
       },
       "type": "text"
     }
@@ -234,41 +114,7 @@
  Error: [object Object] [object Object]
 
 
-[2024-05-02T03:30:49.369Z] Error processing inbound messages. Data: {
-  "messaging_product": "whatsapp",
-  "metadata": {
-    "display_phone_number": "60103179016",
-    "phone_number_id": "243498022182912"
-  },
-  "contacts": [
-    {
-      "profile": {
-        "name": "stanley"
-      },
-      "wa_id": "60139968817"
-    }
-  ],
-  "messages": [
-    {
-      "from": "60139968817",
-      "id": "wamid.HBgLNjAxMzk5Njg4MTcVAgASGBI5NTI4NEIxQkY3OEEyMUI5REEA",
-      "timestamp": "1714613296",
-      "type": "image",
-      "image": {
-        "mime_type": "image/jpeg",
-        "sha256": "3gRir+O0HRJVMadKkZHwVzjKMRcpJjc+d+H7VdshjI8=",
-        "id": "1378163202844949"
-      }
-    }
-  ]
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T03:38:48.947Z] Webhook Handler "Error: Unknown event type: message_template_quality_update\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:117:34\n    at Array.forEach (<anonymous>)\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:63:21\n    at Array.forEach (<anonymous>)\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:61:17\n    at Generator.next (<anonymous>)\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:4:12)\n    at handleWebhook (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:58:68)"
-
-
-[2024-05-02T03:52:13.740Z] Error processing inbound messages. Data: {
+[2024-05-12T16:37:25.089Z] Error processing inbound messages. Data: {
   "messaging_product": "whatsapp",
   "metadata": {
     "display_phone_number": "601159946253",
@@ -277,270 +123,18 @@
   "contacts": [
     {
       "profile": {
-        "name": "Annie Tay"
+        "name": "Jess Tee"
       },
-      "wa_id": "60162968294"
+      "wa_id": "60169025593"
     }
   ],
   "messages": [
     {
-      "from": "60162968294",
-      "id": "wamid.HBgLNjAxNjI5NjgyOTQVAgASGCBCNjdDMzk4MENCNUZDRDFBQkIzQTg2OEI4RDNEQjQwRAA=",
-      "timestamp": "1714621930",
-      "type": "reaction",
-      "reaction": {
-        "message_id": "wamid.HBgLNjAxNjI5NjgyOTQVAgARGBI1NjRFOENFRjRDQjdEMkMxMjYA",
-        "emoji": "👍🏻"
-      }
-    }
-  ]
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T03:52:18.554Z] Error processing inbound messages. Data: {
-  "messaging_product": "whatsapp",
-  "metadata": {
-    "display_phone_number": "601159946253",
-    "phone_number_id": "288606424339950"
-  },
-  "contacts": [
-    {
-      "profile": {
-        "name": "Annie Tay"
-      },
-      "wa_id": "60162968294"
-    }
-  ],
-  "messages": [
-    {
-      "from": "60162968294",
-      "id": "wamid.HBgLNjAxNjI5NjgyOTQVAgASGCA2QTA5RjBFQjgzMzc5RERFMTYzRUE2MTkxNEI5NkFCOAA=",
-      "timestamp": "1714621937",
-      "type": "sticker",
-      "sticker": {
-        "mime_type": "image/webp",
-        "sha256": "3GUxddiTlGFy3aoRlc1DI7wGBxSIa2VCUKfbanvsCxo=",
-        "id": "796206135818325",
-        "animated": false
-      }
-    }
-  ]
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T03:52:50.969Z] Error processing inbound messages. Data: {
-  "messaging_product": "whatsapp",
-  "metadata": {
-    "display_phone_number": "601159946253",
-    "phone_number_id": "288606424339950"
-  },
-  "contacts": [
-    {
-      "profile": {
-        "name": "Annie Tay"
-      },
-      "wa_id": "60162968294"
-    }
-  ],
-  "messages": [
-    {
-      "from": "60162968294",
-      "id": "wamid.HBgLNjAxNjI5NjgyOTQVAgASGCA4MDhEQTQ3RDkwQjZDRUQ2QUVBQTQ0QUExMThGRTFGNQA=",
-      "timestamp": "1714621923",
-      "type": "reaction",
-      "reaction": {
-        "message_id": "wamid.HBgLNjAxNjI5NjgyOTQVAgARGBI5NDBGRURFRkMwNjQwQkY3NTgA",
-        "emoji": "👌🏻"
-      }
-    }
-  ]
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T03:53:08.975Z] Error processing inbound messages. Data: {
-  "messaging_product": "whatsapp",
-  "metadata": {
-    "display_phone_number": "601159946253",
-    "phone_number_id": "288606424339950"
-  },
-  "contacts": [
-    {
-      "profile": {
-        "name": "Annie Tay"
-      },
-      "wa_id": "60162968294"
-    }
-  ],
-  "messages": [
-    {
-      "from": "60162968294",
-      "id": "wamid.HBgLNjAxNjI5NjgyOTQVAgASGCA2QTA5RjBFQjgzMzc5RERFMTYzRUE2MTkxNEI5NkFCOAA=",
-      "timestamp": "1714621937",
-      "type": "sticker",
-      "sticker": {
-        "mime_type": "image/webp",
-        "sha256": "3GUxddiTlGFy3aoRlc1DI7wGBxSIa2VCUKfbanvsCxo=",
-        "id": "796206135818325",
-        "animated": false
-      }
-    }
-  ]
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T03:53:57.843Z] Error processing inbound messages. Data: {
-  "messaging_product": "whatsapp",
-  "metadata": {
-    "display_phone_number": "601159946253",
-    "phone_number_id": "288606424339950"
-  },
-  "contacts": [
-    {
-      "profile": {
-        "name": "Annie Tay"
-      },
-      "wa_id": "60162968294"
-    }
-  ],
-  "messages": [
-    {
-      "from": "60162968294",
-      "id": "wamid.HBgLNjAxNjI5NjgyOTQVAgASGCA2QTA5RjBFQjgzMzc5RERFMTYzRUE2MTkxNEI5NkFCOAA=",
-      "timestamp": "1714621937",
-      "type": "sticker",
-      "sticker": {
-        "mime_type": "image/webp",
-        "sha256": "3GUxddiTlGFy3aoRlc1DI7wGBxSIa2VCUKfbanvsCxo=",
-        "id": "796206135818325",
-        "animated": false
-      }
-    }
-  ]
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T03:54:24.885Z] Error processing inbound messages. Data: {
-  "messaging_product": "whatsapp",
-  "metadata": {
-    "display_phone_number": "601159946253",
-    "phone_number_id": "288606424339950"
-  },
-  "contacts": [
-    {
-      "profile": {
-        "name": "Annie Tay"
-      },
-      "wa_id": "60162968294"
-    }
-  ],
-  "messages": [
-    {
-      "from": "60162968294",
-      "id": "wamid.HBgLNjAxNjI5NjgyOTQVAgASGCA2QTA5RjBFQjgzMzc5RERFMTYzRUE2MTkxNEI5NkFCOAA=",
-      "timestamp": "1714621937",
-      "type": "sticker",
-      "sticker": {
-        "mime_type": "image/webp",
-        "sha256": "3GUxddiTlGFy3aoRlc1DI7wGBxSIa2VCUKfbanvsCxo=",
-        "id": "796206135818325",
-        "animated": false
-      }
-    }
-  ]
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T03:54:55.705Z] Error processing inbound messages. Data: {
-  "messaging_product": "whatsapp",
-  "metadata": {
-    "display_phone_number": "601159946253",
-    "phone_number_id": "288606424339950"
-  },
-  "contacts": [
-    {
-      "profile": {
-        "name": "Annie Tay"
-      },
-      "wa_id": "60162968294"
-    }
-  ],
-  "messages": [
-    {
-      "from": "60162968294",
-      "id": "wamid.HBgLNjAxNjI5NjgyOTQVAgASGCA2QTA5RjBFQjgzMzc5RERFMTYzRUE2MTkxNEI5NkFCOAA=",
-      "timestamp": "1714621937",
-      "type": "sticker",
-      "sticker": {
-        "mime_type": "image/webp",
-        "sha256": "3GUxddiTlGFy3aoRlc1DI7wGBxSIa2VCUKfbanvsCxo=",
-        "id": "796206135818325",
-        "animated": false
-      }
-    }
-  ]
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T04:01:00.568Z] Error processing inbound messages. Data: {
-  "messaging_product": "whatsapp",
-  "metadata": {
-    "display_phone_number": "601159946253",
-    "phone_number_id": "288606424339950"
-  },
-  "contacts": [
-    {
-      "profile": {
-        "name": "Annie Tay"
-      },
-      "wa_id": "60162968294"
-    }
-  ],
-  "messages": [
-    {
-      "from": "60162968294",
-      "id": "wamid.HBgLNjAxNjI5NjgyOTQVAgASGCA2QTA5RjBFQjgzMzc5RERFMTYzRUE2MTkxNEI5NkFCOAA=",
-      "timestamp": "1714621937",
-      "type": "sticker",
-      "sticker": {
-        "mime_type": "image/webp",
-        "sha256": "3GUxddiTlGFy3aoRlc1DI7wGBxSIa2VCUKfbanvsCxo=",
-        "id": "796206135818325",
-        "animated": false
-      }
-    }
-  ]
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T04:03:27.911Z] Error processing inbound messages. Data: {
-  "messaging_product": "whatsapp",
-  "metadata": {
-    "display_phone_number": "601127552315",
-    "phone_number_id": "283987751457953"
-  },
-  "contacts": [
-    {
-      "profile": {
-        "name": "James"
-      },
-      "wa_id": "60124282872"
-    }
-  ],
-  "messages": [
-    {
-      "from": "60124282872",
-      "id": "wamid.HBgLNjAxMjQyODI4NzIVAgASGBQzQUQ5RkQ1NkI0NEI2M0RBODNFMgA=",
-      "timestamp": "1714292401",
+      "from": "60169025593",
+      "id": "wamid.HBgLNjAxNjkwMjU1OTMVAgASGBQzQURGMDJBRDMwRjEyNEZCQjNBRQA=",
+      "timestamp": "1714971337",
       "text": {
-        "body": "Ok"
+        "body": "May I know when will receive the 2 days class recording video ya ?"
       },
       "type": "text"
     }
@@ -549,27 +143,7 @@
  Error: [object Object] [object Object]
 
 
-[2024-05-02T04:12:25.378Z] Error inserting inbound text message into database. Data: {
-  "from": "60126900809",
-  "id": "wamid.HBgLNjAxMjY5MDA4MDkVAgASGBQzQTlGQjc2RjBFMUMxQjI1QUI5NwA=",
-  "timestamp": "1714623011",
-  "text": {
-    "body": "都进不了"
-  },
-  "type": "text"
-}
- Error: {
-  "code": "23502",
-  "details": "Failing row contains (529, null, text, 都进不了, null, 2024-05-02 04:12:25.515877+00, 3157, wamid.HBgLNjAxMjY5MDA4MDkVAgASGBQzQTlGQjc2RjBFMUMxQjI1QUI5NwA=, inbound, null, null, 1).",
-  "hint": null,
-  "message": "null value in column \"phone_number_id\" of relation \"messages\" violates not-null constraint"
-} [object Object]
-
-
-[2024-05-02T04:39:18.492Z] Webhook Handler "Error: Unknown event type: message_template_quality_update\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:117:34\n    at Array.forEach (<anonymous>)\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:63:21\n    at Array.forEach (<anonymous>)\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:61:17\n    at Generator.next (<anonymous>)\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:4:12)\n    at handleWebhook (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:58:68)"
-
-
-[2024-05-02T04:39:29.994Z] Error processing inbound messages. Data: {
+[2024-05-12T16:38:14.102Z] Error processing inbound messages. Data: {
   "messaging_product": "whatsapp",
   "metadata": {
     "display_phone_number": "601159946253",
@@ -578,28 +152,27 @@
   "contacts": [
     {
       "profile": {
-        "name": "Quincy"
+        "name": "Jess Tee"
       },
-      "wa_id": "60187764323"
+      "wa_id": "60169025593"
     }
   ],
   "messages": [
     {
-      "from": "60187764323",
-      "id": "wamid.HBgLNjAxODc3NjQzMjMVAgASGCA1MUExRjE2RkM1M0FDQ0JFNjNBNEZBMzlENzI1NjJGOAA=",
-      "timestamp": "1714624769",
-      "type": "reaction",
-      "reaction": {
-        "message_id": "wamid.HBgLNjAxODc3NjQzMjMVAgARGBJBNUE3MjUxMjE4NjlDMjAwQzUA",
-        "emoji": "👍"
-      }
+      "from": "60169025593",
+      "id": "wamid.HBgLNjAxNjkwMjU1OTMVAgASGBQzQURGMDJBRDMwRjEyNEZCQjNBRQA=",
+      "timestamp": "1714971337",
+      "text": {
+        "body": "May I know when will receive the 2 days class recording video ya ?"
+      },
+      "type": "text"
     }
   ]
 }
  Error: [object Object] [object Object]
 
 
-[2024-05-02T04:57:16.075Z] Error processing inbound messages. Data: {
+[2024-05-12T16:38:58.319Z] Error processing inbound messages. Data: {
   "messaging_product": "whatsapp",
   "metadata": {
     "display_phone_number": "601159946253",
@@ -608,530 +181,24 @@
   "contacts": [
     {
       "profile": {
-        "name": "Nicky"
+        "name": "🐰𝓖𝓛🐰"
       },
-      "wa_id": "60169229226"
+      "wa_id": "60129175931"
     }
   ],
   "messages": [
     {
       "context": {
         "from": "601159946253",
-        "id": "wamid.HBgLNjAxNjkyMjkyMjYVAgARGBI3MjI4NTlGNEQxRjU2MkJBRkQA"
+        "id": "wamid.HBgLNjAxMjkxNzU5MzEVAgARGBI0RUFCOUMxOEIzNjg3QzQyMkIA"
       },
-      "from": "60169229226",
-      "id": "wamid.HBgLNjAxNjkyMjkyMjYVAgASGBQzQUFDNDE0Mzk0NjE5QzAyMzFGMAA=",
-      "timestamp": "1714543432",
-      "text": {
-        "body": "好的 谢谢🙏"
-      },
-      "type": "text"
-    }
-  ]
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T04:57:41.319Z] Error processing inbound messages. Data: {
-  "messaging_product": "whatsapp",
-  "metadata": {
-    "display_phone_number": "601159946253",
-    "phone_number_id": "288606424339950"
-  },
-  "contacts": [
-    {
-      "profile": {
-        "name": "Nicky"
-      },
-      "wa_id": "60169229226"
-    }
-  ],
-  "messages": [
-    {
-      "context": {
-        "from": "601159946253",
-        "id": "wamid.HBgLNjAxNjkyMjkyMjYVAgARGBI3MjI4NTlGNEQxRjU2MkJBRkQA"
-      },
-      "from": "60169229226",
-      "id": "wamid.HBgLNjAxNjkyMjkyMjYVAgASGBQzQUFDNDE0Mzk0NjE5QzAyMzFGMAA=",
-      "timestamp": "1714543432",
-      "text": {
-        "body": "好的 谢谢🙏"
-      },
-      "type": "text"
-    }
-  ]
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T04:58:07.947Z] Error processing inbound messages. Data: {
-  "messaging_product": "whatsapp",
-  "metadata": {
-    "display_phone_number": "601159946253",
-    "phone_number_id": "288606424339950"
-  },
-  "contacts": [
-    {
-      "profile": {
-        "name": "Nicky"
-      },
-      "wa_id": "60169229226"
-    }
-  ],
-  "messages": [
-    {
-      "context": {
-        "from": "601159946253",
-        "id": "wamid.HBgLNjAxNjkyMjkyMjYVAgARGBI3MjI4NTlGNEQxRjU2MkJBRkQA"
-      },
-      "from": "60169229226",
-      "id": "wamid.HBgLNjAxNjkyMjkyMjYVAgASGBQzQUFDNDE0Mzk0NjE5QzAyMzFGMAA=",
-      "timestamp": "1714543432",
-      "text": {
-        "body": "好的 谢谢🙏"
-      },
-      "type": "text"
-    }
-  ]
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T04:58:58.649Z] Error processing inbound messages. Data: {
-  "messaging_product": "whatsapp",
-  "metadata": {
-    "display_phone_number": "601159946253",
-    "phone_number_id": "288606424339950"
-  },
-  "contacts": [
-    {
-      "profile": {
-        "name": "Nicky"
-      },
-      "wa_id": "60169229226"
-    }
-  ],
-  "messages": [
-    {
-      "context": {
-        "from": "601159946253",
-        "id": "wamid.HBgLNjAxNjkyMjkyMjYVAgARGBI3MjI4NTlGNEQxRjU2MkJBRkQA"
-      },
-      "from": "60169229226",
-      "id": "wamid.HBgLNjAxNjkyMjkyMjYVAgASGBQzQUFDNDE0Mzk0NjE5QzAyMzFGMAA=",
-      "timestamp": "1714543432",
-      "text": {
-        "body": "好的 谢谢🙏"
-      },
-      "type": "text"
-    }
-  ]
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T04:59:34.416Z] Error processing inbound messages. Data: {
-  "messaging_product": "whatsapp",
-  "metadata": {
-    "display_phone_number": "601159946253",
-    "phone_number_id": "288606424339950"
-  },
-  "contacts": [
-    {
-      "profile": {
-        "name": "Grace Foong"
-      },
-      "wa_id": "60142271592"
-    }
-  ],
-  "messages": [
-    {
-      "from": "60142271592",
-      "id": "wamid.HBgLNjAxNDIyNzE1OTIVAgASGBI5RTBFMDU0MDQxRTZEMzdCMEMA",
-      "timestamp": "1714625959",
-      "errors": [
-        {
-          "code": 131051,
-          "title": "Message type unknown",
-          "message": "Message type unknown",
-          "error_data": {
-            "details": "Message type is currently not supported."
-          }
-        }
-      ],
-      "type": "unsupported"
-    }
-  ]
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T05:07:05.136Z] Error processing inbound messages. Data: {
-  "messaging_product": "whatsapp",
-  "metadata": {
-    "display_phone_number": "601159946253",
-    "phone_number_id": "288606424339950"
-  },
-  "contacts": [
-    {
-      "profile": {
-        "name": "Nicky"
-      },
-      "wa_id": "60169229226"
-    }
-  ],
-  "messages": [
-    {
-      "context": {
-        "from": "601159946253",
-        "id": "wamid.HBgLNjAxNjkyMjkyMjYVAgARGBI3MjI4NTlGNEQxRjU2MkJBRkQA"
-      },
-      "from": "60169229226",
-      "id": "wamid.HBgLNjAxNjkyMjkyMjYVAgASGBQzQUFDNDE0Mzk0NjE5QzAyMzFGMAA=",
-      "timestamp": "1714543432",
-      "text": {
-        "body": "好的 谢谢🙏"
-      },
-      "type": "text"
-    }
-  ]
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T05:35:52.133Z] Error processing inbound messages. Data: {
-  "messaging_product": "whatsapp",
-  "metadata": {
-    "display_phone_number": "601159946253",
-    "phone_number_id": "288606424339950"
-  },
-  "contacts": [
-    {
-      "profile": {
-        "name": "Mandy."
-      },
-      "wa_id": "60192186619"
-    }
-  ],
-  "messages": [
-    {
-      "from": "60192186619",
-      "id": "wamid.HBgLNjAxOTIxODY2MTkVAgASGBQzQUExRjUzQkNCNEMzQzM5ODQ4RAA=",
-      "timestamp": "1714378491",
-      "text": {
-        "body": "请问这堂课是可以回放的吗？"
-      },
-      "type": "text"
-    }
-  ]
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T05:36:17.319Z] Error processing inbound messages. Data: {
-  "messaging_product": "whatsapp",
-  "metadata": {
-    "display_phone_number": "601159946253",
-    "phone_number_id": "288606424339950"
-  },
-  "contacts": [
-    {
-      "profile": {
-        "name": "Mandy."
-      },
-      "wa_id": "60192186619"
-    }
-  ],
-  "messages": [
-    {
-      "from": "60192186619",
-      "id": "wamid.HBgLNjAxOTIxODY2MTkVAgASGBQzQUExRjUzQkNCNEMzQzM5ODQ4RAA=",
-      "timestamp": "1714378491",
-      "text": {
-        "body": "请问这堂课是可以回放的吗？"
-      },
-      "type": "text"
-    }
-  ]
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T05:36:35.563Z] Error processing inbound messages. Data: {
-  "messaging_product": "whatsapp",
-  "metadata": {
-    "display_phone_number": "601159946253",
-    "phone_number_id": "288606424339950"
-  },
-  "contacts": [
-    {
-      "profile": {
-        "name": "Jia En🌟"
-      },
-      "wa_id": "60146761989"
-    }
-  ],
-  "messages": [
-    {
-      "from": "60146761989",
-      "id": "wamid.HBgLNjAxNDY3NjE5ODkVAgASGBQzQTUzNTcxOUNCNEVFMzc2MTYwMAA=",
-      "timestamp": "1714384532",
-      "text": {
-        "body": "IM IN"
-      },
-      "type": "text"
-    }
-  ]
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T05:36:44.103Z] Error processing inbound messages. Data: {
-  "messaging_product": "whatsapp",
-  "metadata": {
-    "display_phone_number": "601159946253",
-    "phone_number_id": "288606424339950"
-  },
-  "contacts": [
-    {
-      "profile": {
-        "name": "Mandy."
-      },
-      "wa_id": "60192186619"
-    }
-  ],
-  "messages": [
-    {
-      "from": "60192186619",
-      "id": "wamid.HBgLNjAxOTIxODY2MTkVAgASGBQzQUExRjUzQkNCNEMzQzM5ODQ4RAA=",
-      "timestamp": "1714378491",
-      "text": {
-        "body": "请问这堂课是可以回放的吗？"
-      },
-      "type": "text"
-    }
-  ]
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T05:37:00.822Z] Error processing inbound messages. Data: {
-  "messaging_product": "whatsapp",
-  "metadata": {
-    "display_phone_number": "601159946253",
-    "phone_number_id": "288606424339950"
-  },
-  "contacts": [
-    {
-      "profile": {
-        "name": "Jia En🌟"
-      },
-      "wa_id": "60146761989"
-    }
-  ],
-  "messages": [
-    {
-      "from": "60146761989",
-      "id": "wamid.HBgLNjAxNDY3NjE5ODkVAgASGBQzQTUzNTcxOUNCNEVFMzc2MTYwMAA=",
-      "timestamp": "1714384532",
-      "text": {
-        "body": "IM IN"
-      },
-      "type": "text"
-    }
-  ]
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T05:37:27.557Z] Error processing inbound messages. Data: {
-  "messaging_product": "whatsapp",
-  "metadata": {
-    "display_phone_number": "601159946253",
-    "phone_number_id": "288606424339950"
-  },
-  "contacts": [
-    {
-      "profile": {
-        "name": "Jia En🌟"
-      },
-      "wa_id": "60146761989"
-    }
-  ],
-  "messages": [
-    {
-      "from": "60146761989",
-      "id": "wamid.HBgLNjAxNDY3NjE5ODkVAgASGBQzQTUzNTcxOUNCNEVFMzc2MTYwMAA=",
-      "timestamp": "1714384532",
-      "text": {
-        "body": "IM IN"
-      },
-      "type": "text"
-    }
-  ]
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T05:37:36.057Z] Error processing inbound messages. Data: {
-  "messaging_product": "whatsapp",
-  "metadata": {
-    "display_phone_number": "601159946253",
-    "phone_number_id": "288606424339950"
-  },
-  "contacts": [
-    {
-      "profile": {
-        "name": "Mandy."
-      },
-      "wa_id": "60192186619"
-    }
-  ],
-  "messages": [
-    {
-      "from": "60192186619",
-      "id": "wamid.HBgLNjAxOTIxODY2MTkVAgASGBQzQUExRjUzQkNCNEMzQzM5ODQ4RAA=",
-      "timestamp": "1714378491",
-      "text": {
-        "body": "请问这堂课是可以回放的吗？"
-      },
-      "type": "text"
-    }
-  ]
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T05:38:18.047Z] Error processing inbound messages. Data: {
-  "messaging_product": "whatsapp",
-  "metadata": {
-    "display_phone_number": "601159946253",
-    "phone_number_id": "288606424339950"
-  },
-  "contacts": [
-    {
-      "profile": {
-        "name": "Jia En🌟"
-      },
-      "wa_id": "60146761989"
-    }
-  ],
-  "messages": [
-    {
-      "from": "60146761989",
-      "id": "wamid.HBgLNjAxNDY3NjE5ODkVAgASGBQzQTUzNTcxOUNCNEVFMzc2MTYwMAA=",
-      "timestamp": "1714384532",
-      "text": {
-        "body": "IM IN"
-      },
-      "type": "text"
-    }
-  ]
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T05:44:34.125Z] Error processing inbound messages. Data: {
-  "messaging_product": "whatsapp",
-  "metadata": {
-    "display_phone_number": "601159946253",
-    "phone_number_id": "288606424339950"
-  },
-  "contacts": [
-    {
-      "profile": {
-        "name": "Mandy."
-      },
-      "wa_id": "60192186619"
-    }
-  ],
-  "messages": [
-    {
-      "from": "60192186619",
-      "id": "wamid.HBgLNjAxOTIxODY2MTkVAgASGBQzQUExRjUzQkNCNEMzQzM5ODQ4RAA=",
-      "timestamp": "1714378491",
-      "text": {
-        "body": "请问这堂课是可以回放的吗？"
-      },
-      "type": "text"
-    }
-  ]
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T05:45:12.482Z] Error processing inbound messages. Data: {
-  "messaging_product": "whatsapp",
-  "metadata": {
-    "display_phone_number": "601159946253",
-    "phone_number_id": "288606424339950"
-  },
-  "contacts": [
-    {
-      "profile": {
-        "name": "Jia En🌟"
-      },
-      "wa_id": "60146761989"
-    }
-  ],
-  "messages": [
-    {
-      "from": "60146761989",
-      "id": "wamid.HBgLNjAxNDY3NjE5ODkVAgASGBQzQTUzNTcxOUNCNEVFMzc2MTYwMAA=",
-      "timestamp": "1714384532",
-      "text": {
-        "body": "IM IN"
-      },
-      "type": "text"
-    }
-  ]
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T05:46:30.350Z] Error inserting inbound text message into database. Data: {
-  "from": "60139968817",
-  "id": "wamid.HBgLNjAxMzk5Njg4MTcVAgASGBJDQzI0QkVBRjdCRTQxNDc2MjYA",
-  "timestamp": "1714340934",
-  "text": {
-    "body": "it almost works"
-  },
-  "type": "text"
-}
- Error: {
-  "code": "23502",
-  "details": "Failing row contains (532, null, text, it almost works, null, 2024-05-02 05:46:31.696801+00, 3119, wamid.HBgLNjAxMzk5Njg4MTcVAgASGBJDQzI0QkVBRjdCRTQxNDc2MjYA, inbound, null, null, 1).",
-  "hint": null,
-  "message": "null value in column \"phone_number_id\" of relation \"messages\" violates not-null constraint"
-} [object Object]
-
-
-[2024-05-02T05:49:16.839Z] Error processing inbound messages. Data: {
-  "messaging_product": "whatsapp",
-  "metadata": {
-    "display_phone_number": "601159946253",
-    "phone_number_id": "288606424339950"
-  },
-  "contacts": [
-    {
-      "profile": {
-        "name": "Annie Tay"
-      },
-      "wa_id": "60162968294"
-    }
-  ],
-  "messages": [
-    {
-      "from": "60162968294",
-      "id": "wamid.HBgLNjAxNjI5NjgyOTQVAgASGCA2QTA5RjBFQjgzMzc5RERFMTYzRUE2MTkxNEI5NkFCOAA=",
-      "timestamp": "1714621937",
-      "type": "sticker",
-      "sticker": {
-        "mime_type": "image/webp",
-        "sha256": "3GUxddiTlGFy3aoRlc1DI7wGBxSIa2VCUKfbanvsCxo=",
-        "id": "796206135818325",
-        "animated": false
+      "from": "60129175931",
+      "id": "wamid.HBgLNjAxMjkxNzU5MzEVAgASGBQzQTQxRTVGMzZCNTQxRENGRDI1QwA=",
+      "timestamp": "1715163586",
+      "type": "button",
+      "button": {
+        "payload": "YES",
+        "text": "YES"
       }
     }
   ]
@@ -1139,66 +206,7 @@
  Error: [object Object] [object Object]
 
 
-[2024-05-02T06:11:37.101Z] Webhook Handler "Error: Unknown event type: message_template_quality_update\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:117:34\n    at Array.forEach (<anonymous>)\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:63:21\n    at Array.forEach (<anonymous>)\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:61:17\n    at Generator.next (<anonymous>)\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:4:12)\n    at handleWebhook (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:58:68)"
-
-
-[2024-05-02T06:12:49.686Z] Error inserting inbound text message into database. Data: {
-  "from": "60175371423",
-  "id": "wamid.HBgLNjAxNzUzNzE0MjMVAgASGCAyNTYyRDE5NTY5OTlEN0U4OTgzQ0Q3MjM1QUQyNDQwNwA=",
-  "timestamp": "1714630276",
-  "type": "video",
-  "video": {
-    "mime_type": "video/mp4",
-    "sha256": "x+vCIDjOuMxUMP4s1+/PHwg1ekl890dtyb8iEhar6Rk=",
-    "id": "7526401724081351"
-  }
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T06:13:34.933Z] Error creating new contact in database [object Object]
-
-
-[2024-05-02T06:17:34.539Z] Error inserting inbound text message into database. Data: {
-  "from": "60124259801",
-  "id": "wamid.HBgLNjAxMjQyNTk4MDEVAgASGBQzQTU3QkUyMTg1MDFCRERFNEFCQwA=",
-  "timestamp": "1714630566",
-  "text": {
-    "body": "请问要学习饮食的方法和预防的可以买你的配套吗"
-  },
-  "type": "text"
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T06:20:31.224Z] Error inserting inbound text message into database. Data: {
-  "from": "60162103667",
-  "id": "wamid.HBgLNjAxNjIxMDM2NjcVAgASGBQyRjFCQUFCQ0E4NTA0MERCNTgwNAA=",
-  "timestamp": "1714213967",
-  "text": {
-    "body": "Thank you for contacting Pauline Wong | 寶瑩! Please let us know how we can help you.\n\nSorry that Im unavailable right now, but will respond as soon as possible. ☺️"
-  },
-  "type": "text"
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T06:24:48.274Z] Webhook Handler "Error: Unknown event type: message_template_quality_update\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:117:34\n    at Array.forEach (<anonymous>)\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:63:21\n    at Array.forEach (<anonymous>)\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:61:17\n    at Generator.next (<anonymous>)\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:4:12)\n    at handleWebhook (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:58:68)"
-
-
-[2024-05-02T06:26:08.573Z] Error inserting inbound text message into database. Data: {
-  "from": "60162103667",
-  "id": "wamid.HBgLNjAxNjIxMDM2NjcVAgASGBQyRjFCQUFCQ0E4NTA0MERCNTgwNAA=",
-  "timestamp": "1714213967",
-  "text": {
-    "body": "Thank you for contacting Pauline Wong | 寶瑩! Please let us know how we can help you.\n\nSorry that Im unavailable right now, but will respond as soon as possible. ☺️"
-  },
-  "type": "text"
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T06:53:22.069Z] Error processing inbound messages. Data: {
+[2024-05-12T16:44:53.647Z] Error processing inbound messages. Data: {
   "messaging_product": "whatsapp",
   "metadata": {
     "display_phone_number": "601159946253",
@@ -1207,18 +215,18 @@
   "contacts": [
     {
       "profile": {
-        "name": "😊"
+        "name": "Jess Tee"
       },
-      "wa_id": "60122288758"
+      "wa_id": "60169025593"
     }
   ],
   "messages": [
     {
-      "from": "60122288758",
-      "id": "wamid.HBgLNjAxMjIyODg3NTgVAgASGCBBRUEzODVDQzMxNTRENTIwQTg0M0UwNjZFRkIxMzFCRAA=",
-      "timestamp": "1714632787",
+      "from": "60169025593",
+      "id": "wamid.HBgLNjAxNjkwMjU1OTMVAgASGBQzQURGMDJBRDMwRjEyNEZCQjNBRQA=",
+      "timestamp": "1714971337",
       "text": {
-        "body": "我说别人还可以参加吗"
+        "body": "May I know when will receive the 2 days class recording video ya ?"
       },
       "type": "text"
     }
@@ -1227,7 +235,7 @@
  Error: [object Object] [object Object]
 
 
-[2024-05-02T06:53:32.491Z] Error processing inbound messages. Data: {
+[2024-05-12T17:02:33.826Z] Error processing inbound messages. Data: {
   "messaging_product": "whatsapp",
   "metadata": {
     "display_phone_number": "601159946253",
@@ -1236,18 +244,18 @@
   "contacts": [
     {
       "profile": {
-        "name": "😊"
+        "name": "Janice 😌"
       },
-      "wa_id": "60122288758"
+      "wa_id": "60124908474"
     }
   ],
   "messages": [
     {
-      "from": "60122288758",
-      "id": "wamid.HBgLNjAxMjIyODg3NTgVAgASGCAzQUFGNkEzNTk1RDBCQjEyRDQ1NDcxMTM0RDY4QjE2OAA=",
-      "timestamp": "1714632772",
+      "from": "60124908474",
+      "id": "wamid.HBgLNjAxMjQ5MDg0NzQVAgASGCBDNzg0M0Y5NDFBQzlBMkY4NTBDNzRBRUExQ0Q3QTU1MgA=",
+      "timestamp": "1714983397",
       "text": {
-        "body": "不是"
+        "body": "这个吗？"
       },
       "type": "text"
     }
@@ -1256,7 +264,7 @@
  Error: [object Object] [object Object]
 
 
-[2024-05-02T06:58:59.147Z] Error processing inbound messages. Data: {
+[2024-05-12T17:02:59.168Z] Error processing inbound messages. Data: {
   "messaging_product": "whatsapp",
   "metadata": {
     "display_phone_number": "601159946253",
@@ -1265,22 +273,18 @@
   "contacts": [
     {
       "profile": {
-        "name": "Nicky"
+        "name": "Janice 😌"
       },
-      "wa_id": "60169229226"
+      "wa_id": "60124908474"
     }
   ],
   "messages": [
     {
-      "context": {
-        "from": "601159946253",
-        "id": "wamid.HBgLNjAxNjkyMjkyMjYVAgARGBI3MjI4NTlGNEQxRjU2MkJBRkQA"
-      },
-      "from": "60169229226",
-      "id": "wamid.HBgLNjAxNjkyMjkyMjYVAgASGBQzQUFDNDE0Mzk0NjE5QzAyMzFGMAA=",
-      "timestamp": "1714543432",
+      "from": "60124908474",
+      "id": "wamid.HBgLNjAxMjQ5MDg0NzQVAgASGCBDNzg0M0Y5NDFBQzlBMkY4NTBDNzRBRUExQ0Q3QTU1MgA=",
+      "timestamp": "1714983397",
       "text": {
-        "body": "好的 谢谢🙏"
+        "body": "这个吗？"
       },
       "type": "text"
     }
@@ -1289,7 +293,7 @@
  Error: [object Object] [object Object]
 
 
-[2024-05-02T07:36:55.669Z] Error processing inbound messages. Data: {
+[2024-05-12T17:03:25.915Z] Error processing inbound messages. Data: {
   "messaging_product": "whatsapp",
   "metadata": {
     "display_phone_number": "601159946253",
@@ -1298,18 +302,18 @@
   "contacts": [
     {
       "profile": {
-        "name": "Mandy."
+        "name": "Janice 😌"
       },
-      "wa_id": "60192186619"
+      "wa_id": "60124908474"
     }
   ],
   "messages": [
     {
-      "from": "60192186619",
-      "id": "wamid.HBgLNjAxOTIxODY2MTkVAgASGBQzQUExRjUzQkNCNEMzQzM5ODQ4RAA=",
-      "timestamp": "1714378491",
+      "from": "60124908474",
+      "id": "wamid.HBgLNjAxMjQ5MDg0NzQVAgASGCBDNzg0M0Y5NDFBQzlBMkY4NTBDNzRBRUExQ0Q3QTU1MgA=",
+      "timestamp": "1714983397",
       "text": {
-        "body": "请问这堂课是可以回放的吗？"
+        "body": "这个吗？"
       },
       "type": "text"
     }
@@ -1318,7 +322,7 @@
  Error: [object Object] [object Object]
 
 
-[2024-05-02T07:37:49.135Z] Error processing inbound messages. Data: {
+[2024-05-12T17:04:18.431Z] Error processing inbound messages. Data: {
   "messaging_product": "whatsapp",
   "metadata": {
     "display_phone_number": "601159946253",
@@ -1327,18 +331,18 @@
   "contacts": [
     {
       "profile": {
-        "name": "Jia En🌟"
+        "name": "Janice 😌"
       },
-      "wa_id": "60146761989"
+      "wa_id": "60124908474"
     }
   ],
   "messages": [
     {
-      "from": "60146761989",
-      "id": "wamid.HBgLNjAxNDY3NjE5ODkVAgASGBQzQTUzNTcxOUNCNEVFMzc2MTYwMAA=",
-      "timestamp": "1714384532",
+      "from": "60124908474",
+      "id": "wamid.HBgLNjAxMjQ5MDg0NzQVAgASGCBDNzg0M0Y5NDFBQzlBMkY4NTBDNzRBRUExQ0Q3QTU1MgA=",
+      "timestamp": "1714983397",
       "text": {
-        "body": "IM IN"
+        "body": "这个吗？"
       },
       "type": "text"
     }
@@ -1347,7 +351,7 @@
  Error: [object Object] [object Object]
 
 
-[2024-05-02T07:47:03.219Z] Error processing inbound messages. Data: {
+[2024-05-12T17:08:41.568Z] Error processing inbound messages. Data: {
   "messaging_product": "whatsapp",
   "metadata": {
     "display_phone_number": "601159946253",
@@ -1356,18 +360,18 @@
   "contacts": [
     {
       "profile": {
-        "name": "Jacq ✨"
+        "name": "huiling"
       },
-      "wa_id": "60103685593"
+      "wa_id": "60125393538"
     }
   ],
   "messages": [
     {
-      "from": "60103685593",
-      "id": "wamid.HBgLNjAxMDM2ODU1OTMVAgASGBQzQTQxRDRCRkIzRTU3RkNDRTcxNAA=",
-      "timestamp": "1714378395",
+      "from": "60125393538",
+      "id": "wamid.HBgLNjAxMjUzOTM1MzgVAgASGBQzQUQ3OENBNkFDMTQwRDQxMUZGQwA=",
+      "timestamp": "1714995779",
       "text": {
-        "body": "IM IN"
+        "body": "好的 谢谢你🙏🏻"
       },
       "type": "text"
     }
@@ -1376,7 +380,7 @@
  Error: [object Object] [object Object]
 
 
-[2024-05-02T07:47:28.435Z] Error processing inbound messages. Data: {
+[2024-05-12T17:11:12.951Z] Error processing inbound messages. Data: {
   "messaging_product": "whatsapp",
   "metadata": {
     "display_phone_number": "601159946253",
@@ -1385,471 +389,18 @@
   "contacts": [
     {
       "profile": {
-        "name": "Jacq ✨"
+        "name": "Janice 😌"
       },
-      "wa_id": "60103685593"
+      "wa_id": "60124908474"
     }
   ],
   "messages": [
     {
-      "from": "60103685593",
-      "id": "wamid.HBgLNjAxMDM2ODU1OTMVAgASGBQzQTQxRDRCRkIzRTU3RkNDRTcxNAA=",
-      "timestamp": "1714378395",
+      "from": "60124908474",
+      "id": "wamid.HBgLNjAxMjQ5MDg0NzQVAgASGCBDNzg0M0Y5NDFBQzlBMkY4NTBDNzRBRUExQ0Q3QTU1MgA=",
+      "timestamp": "1714983397",
       "text": {
-        "body": "IM IN"
-      },
-      "type": "text"
-    }
-  ]
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T07:47:55.043Z] Error processing inbound messages. Data: {
-  "messaging_product": "whatsapp",
-  "metadata": {
-    "display_phone_number": "601159946253",
-    "phone_number_id": "288606424339950"
-  },
-  "contacts": [
-    {
-      "profile": {
-        "name": "Jacq ✨"
-      },
-      "wa_id": "60103685593"
-    }
-  ],
-  "messages": [
-    {
-      "from": "60103685593",
-      "id": "wamid.HBgLNjAxMDM2ODU1OTMVAgASGBQzQTQxRDRCRkIzRTU3RkNDRTcxNAA=",
-      "timestamp": "1714378395",
-      "text": {
-        "body": "IM IN"
-      },
-      "type": "text"
-    }
-  ]
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T07:48:42.884Z] Error processing inbound messages. Data: {
-  "messaging_product": "whatsapp",
-  "metadata": {
-    "display_phone_number": "601159946253",
-    "phone_number_id": "288606424339950"
-  },
-  "contacts": [
-    {
-      "profile": {
-        "name": "Jacq ✨"
-      },
-      "wa_id": "60103685593"
-    }
-  ],
-  "messages": [
-    {
-      "from": "60103685593",
-      "id": "wamid.HBgLNjAxMDM2ODU1OTMVAgASGBQzQTQxRDRCRkIzRTU3RkNDRTcxNAA=",
-      "timestamp": "1714378395",
-      "text": {
-        "body": "IM IN"
-      },
-      "type": "text"
-    }
-  ]
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T07:56:08.668Z] Error processing inbound messages. Data: {
-  "messaging_product": "whatsapp",
-  "metadata": {
-    "display_phone_number": "601159946253",
-    "phone_number_id": "288606424339950"
-  },
-  "contacts": [
-    {
-      "profile": {
-        "name": "Jacq ✨"
-      },
-      "wa_id": "60103685593"
-    }
-  ],
-  "messages": [
-    {
-      "from": "60103685593",
-      "id": "wamid.HBgLNjAxMDM2ODU1OTMVAgASGBQzQTQxRDRCRkIzRTU3RkNDRTcxNAA=",
-      "timestamp": "1714378395",
-      "text": {
-        "body": "IM IN"
-      },
-      "type": "text"
-    }
-  ]
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T08:05:26.907Z] Error inserting inbound text message into database. Data: {
-  "context": {
-    "from": "601112159534",
-    "id": "wamid.HBgLNjAxMjI1MzU1OTMVAgARGBJCQzI1QjdGQjE3OTIzNTc1MDAA"
-  },
-  "from": "60122535593",
-  "id": "wamid.HBgLNjAxMjI1MzU1OTMVAgASGCAwOUM4NjRCNTQ4NTdEODQ0ODczMTUzNDdEMjlFQUNCMAA=",
-  "timestamp": "1714045460",
-  "type": "button",
-  "button": {
-    "payload": "Join Pemni Live",
-    "text": "Join Pemni Live"
-  }
-}
- Error: Error: Sender not found in database "Error: Sender not found in database\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\helpers\\insertButtonMessage.ts:38:13\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\helpers\\insertButtonMessage.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
-
-
-[2024-05-02T08:13:27.738Z] Error inserting inbound text message into database. Data: {
-  "from": "6598572335",
-  "id": "wamid.HBgKNjU5ODU3MjMzNRUCABIYIEY0QjI2NkNFMTFEMEU3MTA3RTA3MkRDOEY0NkMzMEJBAA==",
-  "timestamp": "1714637606",
-  "text": {
-    "body": "Yay, I have registered 【Online Free Reversing Diabetes \n Workshop】.\n\n____________________________\nI promise I will get well prepared to join this free live sharing via:\n1) Save this contact number into phone: 0103252793 \n2) Join WhatsApp community group to get latest information. https://chat.whatsapp.com/KEMpjI5b7AG7RC2aRsJWhn\n\n3) Join Zoom Live on Exact day Via this Zoom Link:  https://bit.ly/cxliveen\n\n4) Invite my friends & family to join for learning too:\nHereby the invite link: https://www.clinixero.co/en-new-fb"
-  },
-  "type": "text"
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T08:29:44.155Z] Error inserting inbound text message into database. Data: {
-  "context": {
-    "from": "601112159534",
-    "id": "wamid.HBgLNjAxMjU5MDIzMTgVAgARGBI4ODQ5MDBBN0Q5NUFBQjUyNTYA"
-  },
-  "from": "60125902318",
-  "id": "wamid.HBgLNjAxMjU5MDIzMTgVAgASGBQzQUNBNTQxNzMwMjRFMzE1RDA1NwA=",
-  "timestamp": "1714638582",
-  "type": "button",
-  "button": {
-    "payload": "Join Pemni Live",
-    "text": "Join Pemni Live"
-  }
-}
- Error: Error: Sender not found in database "Error: Sender not found in database\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\helpers\\insertButtonMessage.ts:38:13\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\helpers\\insertButtonMessage.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
-
-
-[2024-05-02T08:33:12.679Z] Error inserting inbound text message into database. Data: {
-  "from": "60165637677",
-  "id": "wamid.HBgLNjAxNjU2Mzc2NzcVAgASGCAzOTg2NTZFMTU0ODUxREJBNkE0MTVBRTU3MTlFNjkwQgA=",
-  "timestamp": "1714638786",
-  "type": "image",
-  "image": {
-    "caption": "⚠️提前通知⚠️\n本店将会在7/5 - 15/5休假, 16/5正常营业\n谢谢大家的支持🥰",
-    "mime_type": "image/jpeg",
-    "sha256": "Piye34oUyenWe2CmET85Y3N5z62P0wEAqm5PTKOIgDc=",
-    "id": "1140522030728491"
-  }
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T08:40:03.499Z] Error processing inbound messages. Data: {
-  "messaging_product": "whatsapp",
-  "metadata": {
-    "display_phone_number": "601159946253",
-    "phone_number_id": "288606424339950"
-  },
-  "contacts": [
-    {
-      "profile": {
-        "name": "Jacq ✨"
-      },
-      "wa_id": "60103685593"
-    }
-  ],
-  "messages": [
-    {
-      "from": "60103685593",
-      "id": "wamid.HBgLNjAxMDM2ODU1OTMVAgASGBQzQTQxRDRCRkIzRTU3RkNDRTcxNAA=",
-      "timestamp": "1714378395",
-      "text": {
-        "body": "IM IN"
-      },
-      "type": "text"
-    }
-  ]
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T08:40:28.717Z] Error processing inbound messages. Data: {
-  "messaging_product": "whatsapp",
-  "metadata": {
-    "display_phone_number": "601159946253",
-    "phone_number_id": "288606424339950"
-  },
-  "contacts": [
-    {
-      "profile": {
-        "name": "Jacq ✨"
-      },
-      "wa_id": "60103685593"
-    }
-  ],
-  "messages": [
-    {
-      "from": "60103685593",
-      "id": "wamid.HBgLNjAxMDM2ODU1OTMVAgASGBQzQTQxRDRCRkIzRTU3RkNDRTcxNAA=",
-      "timestamp": "1714378395",
-      "text": {
-        "body": "IM IN"
-      },
-      "type": "text"
-    }
-  ]
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T08:40:55.390Z] Error processing inbound messages. Data: {
-  "messaging_product": "whatsapp",
-  "metadata": {
-    "display_phone_number": "601159946253",
-    "phone_number_id": "288606424339950"
-  },
-  "contacts": [
-    {
-      "profile": {
-        "name": "Jacq ✨"
-      },
-      "wa_id": "60103685593"
-    }
-  ],
-  "messages": [
-    {
-      "from": "60103685593",
-      "id": "wamid.HBgLNjAxMDM2ODU1OTMVAgASGBQzQTQxRDRCRkIzRTU3RkNDRTcxNAA=",
-      "timestamp": "1714378395",
-      "text": {
-        "body": "IM IN"
-      },
-      "type": "text"
-    }
-  ]
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T08:41:43.203Z] Error processing inbound messages. Data: {
-  "messaging_product": "whatsapp",
-  "metadata": {
-    "display_phone_number": "601159946253",
-    "phone_number_id": "288606424339950"
-  },
-  "contacts": [
-    {
-      "profile": {
-        "name": "Jacq ✨"
-      },
-      "wa_id": "60103685593"
-    }
-  ],
-  "messages": [
-    {
-      "from": "60103685593",
-      "id": "wamid.HBgLNjAxMDM2ODU1OTMVAgASGBQzQTQxRDRCRkIzRTU3RkNDRTcxNAA=",
-      "timestamp": "1714378395",
-      "text": {
-        "body": "IM IN"
-      },
-      "type": "text"
-    }
-  ]
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T08:49:05.231Z] Error processing inbound messages. Data: {
-  "messaging_product": "whatsapp",
-  "metadata": {
-    "display_phone_number": "601159946253",
-    "phone_number_id": "288606424339950"
-  },
-  "contacts": [
-    {
-      "profile": {
-        "name": "Jacq ✨"
-      },
-      "wa_id": "60103685593"
-    }
-  ],
-  "messages": [
-    {
-      "from": "60103685593",
-      "id": "wamid.HBgLNjAxMDM2ODU1OTMVAgASGBQzQTQxRDRCRkIzRTU3RkNDRTcxNAA=",
-      "timestamp": "1714378395",
-      "text": {
-        "body": "IM IN"
-      },
-      "type": "text"
-    }
-  ]
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T09:21:52.122Z] Error inserting inbound text message into database. Data: {
-  "from": "60122159772",
-  "id": "wamid.HBgLNjAxMjIxNTk3NzIVAgASGCA1MjA5MTAzQzA0N0VBODRDRjRFRENGNENEMkVCMTc2NwA=",
-  "timestamp": "1714641710",
-  "text": {
-    "body": "Yay, I have registered 【Online Free Reversing Diabetes \n Workshop】.\n\n____________________________\nI promise I will get well prepared to join this free live sharing via:\n1) Save this contact number into phone: 0103252793 \n2) Join WhatsApp community group to get latest information. https://chat.whatsapp.com/KEMpjI5b7AG7RC2aRsJWhn\n\n3) Join Zoom Live on Exact day Via this Zoom Link:  https://bit.ly/cxliveen\n\n4) Invite my friends & family to join for learning too:\nHereby the invite link: https://www.clinixero.co/en-new-fb"
-  },
-  "type": "text"
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T09:25:19.313Z] Webhook Handler "Error: Unknown event type: message_template_quality_update\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:117:34\n    at Array.forEach (<anonymous>)\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:63:21\n    at Array.forEach (<anonymous>)\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:61:17\n    at Generator.next (<anonymous>)\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:4:12)\n    at handleWebhook (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\webhookHandler.ts:58:68)"
-
-
-[2024-05-02T10:06:29.893Z] Error processing inbound messages. Data: {
-  "messaging_product": "whatsapp",
-  "metadata": {
-    "display_phone_number": "601159946253",
-    "phone_number_id": "288606424339950"
-  },
-  "contacts": [
-    {
-      "profile": {
-        "name": "Gelvalin93☘️"
-      },
-      "wa_id": "6587951963"
-    }
-  ],
-  "messages": [
-    {
-      "from": "6587951963",
-      "id": "wamid.HBgKNjU4Nzk1MTk2MxUCABIYIDQ1RUE4NUYxMzVCRDQ4QTUzRDdBMDcwQkQ5OEM5NTcwAA==",
-      "timestamp": "1714568028",
-      "text": {
-        "body": "thank you 😊"
-      },
-      "type": "text"
-    }
-  ]
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T10:06:55.083Z] Error processing inbound messages. Data: {
-  "messaging_product": "whatsapp",
-  "metadata": {
-    "display_phone_number": "601159946253",
-    "phone_number_id": "288606424339950"
-  },
-  "contacts": [
-    {
-      "profile": {
-        "name": "Gelvalin93☘️"
-      },
-      "wa_id": "6587951963"
-    }
-  ],
-  "messages": [
-    {
-      "from": "6587951963",
-      "id": "wamid.HBgKNjU4Nzk1MTk2MxUCABIYIDQ1RUE4NUYxMzVCRDQ4QTUzRDdBMDcwQkQ5OEM5NTcwAA==",
-      "timestamp": "1714568028",
-      "text": {
-        "body": "thank you 😊"
-      },
-      "type": "text"
-    }
-  ]
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T10:07:21.733Z] Error processing inbound messages. Data: {
-  "messaging_product": "whatsapp",
-  "metadata": {
-    "display_phone_number": "601159946253",
-    "phone_number_id": "288606424339950"
-  },
-  "contacts": [
-    {
-      "profile": {
-        "name": "Gelvalin93☘️"
-      },
-      "wa_id": "6587951963"
-    }
-  ],
-  "messages": [
-    {
-      "from": "6587951963",
-      "id": "wamid.HBgKNjU4Nzk1MTk2MxUCABIYIDQ1RUE4NUYxMzVCRDQ4QTUzRDdBMDcwQkQ5OEM5NTcwAA==",
-      "timestamp": "1714568028",
-      "text": {
-        "body": "thank you 😊"
-      },
-      "type": "text"
-    }
-  ]
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T10:08:09.894Z] Error processing inbound messages. Data: {
-  "messaging_product": "whatsapp",
-  "metadata": {
-    "display_phone_number": "601159946253",
-    "phone_number_id": "288606424339950"
-  },
-  "contacts": [
-    {
-      "profile": {
-        "name": "Gelvalin93☘️"
-      },
-      "wa_id": "6587951963"
-    }
-  ],
-  "messages": [
-    {
-      "from": "6587951963",
-      "id": "wamid.HBgKNjU4Nzk1MTk2MxUCABIYIDQ1RUE4NUYxMzVCRDQ4QTUzRDdBMDcwQkQ5OEM5NTcwAA==",
-      "timestamp": "1714568028",
-      "text": {
-        "body": "thank you 😊"
-      },
-      "type": "text"
-    }
-  ]
-}
- Error: [object Object] [object Object]
-
-
-[2024-05-02T10:15:27.936Z] Error processing inbound messages. Data: {
-  "messaging_product": "whatsapp",
-  "metadata": {
-    "display_phone_number": "601159946253",
-    "phone_number_id": "288606424339950"
-  },
-  "contacts": [
-    {
-      "profile": {
-        "name": "Gelvalin93☘️"
-      },
-      "wa_id": "6587951963"
-    }
-  ],
-  "messages": [
-    {
-      "from": "6587951963",
-      "id": "wamid.HBgKNjU4Nzk1MTk2MxUCABIYIDQ1RUE4NUYxMzVCRDQ4QTUzRDdBMDcwQkQ5OEM5NTcwAA==",
-      "timestamp": "1714568028",
-      "text": {
-        "body": "thank you 😊"
+        "body": "这个吗？"
       },
       "type": "text"
     }

@@ -56,7 +56,7 @@ import axios from 'axios';
 
 campaignJob.start();
 // fetchWABAsJob.start();
-fetchTemplatesJob.start();
+// fetchTemplatesJob.start();
 // fetchWABAPhoneNumbersJob.start();
 
 
