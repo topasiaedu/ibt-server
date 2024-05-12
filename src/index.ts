@@ -21,7 +21,7 @@ app.get('/', (req: Request, res: Response) => {
   res.json({ message: 'Strive Clone App Backend API' });
 });
 
-app.get("/webhook", (req, res) => {
+app.get("/webhook", (req, res) => { 
   const mode = req.query["hub.mode"];
   const token = req.query["hub.verify_token"];
   const challenge = req.query["hub.challenge"];
