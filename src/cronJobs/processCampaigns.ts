@@ -44,7 +44,21 @@ const processCampaigns = async () => {
       return;
     }
 
+    let successCount = 0;
+    let failedCount = 0;
+
     for (const contact_list_member of campaign.contact_list.contact_list_members) {
+      // Check wa_id if it starts with 60 for malaysian numbers
+      // If not, add the missing parts it could start with 0 or 1
+      if (contact_list_member.contacts.wa_id.startsWith('60')) {
+        contact_list_member.contacts.wa_id = '' + contact_list_member.contacts.wa_id;
+      } else if (contact_list_member.contacts.wa_id.startsWith('1')) {
+        contact_list_member.contacts.wa_id = '60' + contact_list_member.contacts.wa_id;
+      } else if (contact_list_member.contacts.wa_id.startsWith('0')) {
+        contact_list_member.contacts.wa_id = '6' + contact_list_member.contacts.wa_id;
+      }
+
+
       let templatePayload: TemplateMessagePayload = {
         messaging_product: 'whatsapp',
         recipient_type: 'individual',
@@ -60,6 +74,17 @@ const processCampaigns = async () => {
             parameter.text = parameter.text.replace(/%name%/g, contact_list_member.contacts.name);
             parameter.text = parameter.text.replace(/%date%/g, campaign.date);
             parameter.text = parameter.text.replace(/%time%/g, campaign.time);
+
+            // Check if the parameter.text has spintax, if so, replace it with a random value
+            const spintaxRegex = /{([^{}]*)}/g;
+            const spintaxMatch = parameter.text.match(spintaxRegex);
+            if (spintaxMatch) {
+              spintaxMatch.forEach((spintax) => {
+                const options = spintax.substring(1, spintax.length - 1).split('|');
+                const randomIndex = Math.floor(Math.random() * options.length);
+                parameter.text = parameter?.text?.replace(spintax, options[randomIndex]);
+              });
+            }
           }
         });
       });
@@ -102,34 +127,15 @@ const processCampaigns = async () => {
 
         if (textContent) {
 
-          // find the component with the type BODY 
-          // Example data:
-          // {
-          //   "name": "test_template_from_strive",
-          //   "language": {
-          //     "code": "en_US"
-          //   },
-          //   "components": [
-          //     {
-          //       "type": "BODY",
-          //       "parameters": [
-          //         {
-          //           "type": "text",
-          //           "text": "Test"
-          //         }
-          //       ]
-          //     }
-          //   ]
-          // }
           const textComponent = templatePayload?.template.components.find((component) => component.type === 'BODY');
           // Get the parameter text values into an array
           const bodyInputValues = textComponent?.parameters.map((parameter) => parameter.text) ?? [];
 
           // Replace {{index}} in the text content with the parameter text with the appropriate index
-          textContent = textContent.replace(/{{\d+}}/g, (match:any) => {
+          textContent = textContent.replace(/{{\d+}}/g, (match: any) => {
             const index = parseInt(match.match(/\d+/g)![0]);
             return bodyInputValues[index - 1];
-          });                
+          });
 
         }
 
@@ -149,31 +155,10 @@ const processCampaigns = async () => {
           }])
           .single();
 
-        // Update campaign success count in the field sent
-        const { data: updatedCampaignSentCount, error: updateSentCountError } = await supabase
-          .from('campaigns')
-          .update({ sent: campaign.sent + 1 })
-          .eq('campaign_id', campaign.campaign_id);
-
-        if (updateSentCountError) {
-          logError(updateSentCountError as unknown as Error, 'Error updating campaign sent count');
-          return;
-        }
 
       } catch (error) {
         console.error('Error sending message:', error);
         logError(error as Error, 'Error sending message');
-        // Update campaign failed count in the field failed
-        const { data: updatedCampaignFailedCount, error: updateFailedCountError } = await supabase
-          .from('campaigns')
-          .update({ failed: campaign.failed + 1 })
-          .eq('campaign_id', campaign.campaign_id);
-
-        if (updateFailedCountError) {
-          logError(updateFailedCountError as unknown as Error, 'Error updating campaign failed count');
-          return;
-        }
-
       }
 
     }
@@ -181,7 +166,10 @@ const processCampaigns = async () => {
     // Update campaign status
     const { data: updatedCampaign, error: updateError } = await supabase
       .from('campaigns')
-      .update({ status: 'COMPLETED' })
+      .update({ 
+        status: 'COMPLETED',
+        sent: successCount,
+        failed: failedCount,})
       .eq('campaign_id', campaign.campaign_id);
 
     if (updateError) {
