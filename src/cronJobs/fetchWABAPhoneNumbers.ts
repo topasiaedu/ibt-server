@@ -83,7 +83,7 @@ const fetchWABAPhoneNumbers = async () => {
   }
 }
 
-export const fetchWABAPhoneNumbersJob = new CronJob('* */5 * * * *', fetchWABAPhoneNumbers); // Run every second
+export const fetchWABAPhoneNumbersJob = new CronJob('* */30 * * * *', fetchWABAPhoneNumbers); // Run every second
 
 // Database Schema:
 // phone_numbers

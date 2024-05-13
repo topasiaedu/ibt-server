@@ -6,7 +6,7 @@ import { CronJob } from 'cron';
 import { TemplateMessagePayload } from '../models/whatsapp/templateTypes';
 
 const processCampaigns = async () => {
-  // console.log('Processing campaigns...');
+  console.log('Processing campaigns...');
   const { data: campaigns, error } = await supabase
     .from('campaigns')
     .select(`
@@ -18,7 +18,9 @@ const processCampaigns = async () => {
         )
       ),
       templates: templates!template_id (*),
-      phone_numbers: phone_numbers!phone_number_id (*)
+      new_phone_numbers: campaign_phone_numbers!campaign_id (*,
+        phone_numbers (*)
+      )
     `)
     .eq('status', 'PENDING'); // Assuming 'pending' is the status for not completed
 
@@ -63,8 +65,27 @@ const processCampaigns = async () => {
         });
       });
 
+      const getWeightForRating = (rating: string) => {
+        const weights: { [key: string]: number } = {
+          GREEN: 6, // Higher probability for GREEN
+          YELLOW: 3, // Moderate probability for YELLOW
+          RED: 1, // Lower probability for RED
+        };
+        return weights[rating] || 1; // Default to 1 if undefined
+      };
+
+      // Create a weighted list of phone numbers
+      const weightedPhoneNumbers = campaign.new_phone_numbers.flatMap((phone: any) => {
+        const weight = getWeightForRating(phone.phone_numbers.quality_rating);
+        return Array(weight).fill(phone.phone_numbers.wa_id); // Fill an array with the wa_id repeated by its weight
+      });
+
+      // Random selection from the weighted list
+      const randomIndex = Math.floor(Math.random() * weightedPhoneNumbers.length);
+      const selectedPhoneNumber = weightedPhoneNumbers[randomIndex];
+
       try {
-        const { data: messageResponse } = await sendMessageWithTemplate(templatePayload, campaign.phone_numbers.wa_id);
+        const { data: messageResponse } = await sendMessageWithTemplate(templatePayload, selectedPhoneNumber);
         console.log('Message sent:', messageResponse);
 
         // Lookup template to get the text and the image if any
@@ -74,11 +95,44 @@ const processCampaigns = async () => {
           .eq('template_id', campaign.template_id)
           .single();
 
-        const textContent = template?.components.data.map((component: any) => {
+        let textContent = template?.components.data.map((component: any) => {
           if (component.type === 'BODY') {
             return component.text;
           }
         }).join(' ');
+
+        if (textContent) {
+
+          // find the component with the type BODY 
+          // Example data:
+          // {
+          //   "name": "test_template_from_strive",
+          //   "language": {
+          //     "code": "en_US"
+          //   },
+          //   "components": [
+          //     {
+          //       "type": "BODY",
+          //       "parameters": [
+          //         {
+          //           "type": "text",
+          //           "text": "Test"
+          //         }
+          //       ]
+          //     }
+          //   ]
+          // }
+          const textComponent = templatePayload?.template.components.find((component) => component.type === 'BODY');
+          // Get the parameter text values into an array
+          const bodyInputValues = textComponent?.parameters.map((parameter) => parameter.text) ?? [];
+
+          // Replace {{index}} in the text content with the parameter text with the appropriate index
+          textContent = textContent.replace(/{{\d+}}/g, (match:any) => {
+            const index = parseInt(match.match(/\d+/g)![0]);
+            return bodyInputValues[index - 1];
+          });                
+
+        }
 
         // Add the message to the database under the table messages
         const { data: newMessage, error: messageError } = await supabase
@@ -86,12 +140,13 @@ const processCampaigns = async () => {
           .insert([{
             wa_message_id: messageResponse.messages[0].id,
             campaign_id: campaign.campaign_id,
-            phone_number_id: campaign.phone_numbers.phone_number_id,
+            phone_number_id: campaign.new_phone_numbers.find((phone: any) => phone.phone_numbers.wa_id === selectedPhoneNumber).phone_numbers.phone_number_id,
             contact_id: contact_list_member.contacts.contact_id,
             message_type: 'TEMPLATE',
             content: textContent,
             direction: 'outgoing',
-            status: messageResponse.messages.message_status
+            status: messageResponse.messages.message_status,
+            project_id: campaign.project_id,
           }])
           .single();
 
@@ -107,6 +162,7 @@ const processCampaigns = async () => {
         }
 
       } catch (error) {
+        console.error('Error sending message:', error);
         logError(error as Error, 'Error sending message');
         // Update campaign failed count in the field failed
         const { data: updatedCampaignFailedCount, error: updateFailedCountError } = await supabase

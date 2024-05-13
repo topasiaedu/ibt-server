@@ -59,6 +59,7 @@ async function insertTextMessage(message: any, display_phone_number: string, pro
         wa_message_id: id,
         direction: 'inbound',
         project_id,
+        status: 'received',
       }])
       .single();
 

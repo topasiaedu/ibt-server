@@ -62,7 +62,7 @@ const fetchWABAs = async () => {
   }
 }
 
-export const fetchWABAsJob = new CronJob('* */5 * * * *', fetchWABAs); // Run every second
+export const fetchWABAsJob = new CronJob('* */30 * * * *', fetchWABAs); // Run every second
 
 // Database Schema:
 // whatsapp_business_accounts

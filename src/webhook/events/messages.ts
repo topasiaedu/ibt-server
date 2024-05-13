@@ -28,19 +28,72 @@ const handleOutgoingMessage = async (value: any) => {
 
     statuses.forEach(async (status: any) => {
       if (status.conversation) {
-        // console.log('Outgoing message:', JSON.stringify(status, null, 2));
+        console.log('Outgoing message:', JSON.stringify(status, null, 2));
 
         // Update the message status in the database using id
         let { error: updateError } = await supabase
           .from('messages')
           .update({ status: status.status })
           .eq('wa_message_id', status.id)
-          .single();
 
-        // if (updateError) {
-        //   logError(updateError as unknown as Error, 'Error updating outgoing message status in database. Data: ' + JSON.stringify(value, null, 2) + '\n Error: ' + JSON.stringify(updateError, null, 2));
+        if (updateError) {
+          logError(updateError as unknown as Error, 'Error updating outgoing message status in database. Data: ' + JSON.stringify(value, null, 2) + '\n Error: ' + JSON.stringify(updateError, null, 2));
+        }
+
+        // {
+        //   "id": "wamid.HBgLNjAxMzc1NjE1MDAVAgARGBJEQzM2RUEyODRDMzRFODYzODUA",   
+        //   "status": "sent",
+        //   "timestamp": "1714985417",
+        //   "recipient_id": "60137561500",
+        //   "conversation": {
+        //     "id": "d882a52951dbc2a52d89e2d4a80ac9eb",
+        //     "expiration_timestamp": "1715071860",
+        //     "origin": {
+        //       "type": "marketing"
+        //     }
+        //   },
+        //   "pricing": {
+        //     "billable": true,
+        //     "pricing_model": "CBP",
+        //     "category": "marketing"
+        //   }
         // }
+        if (status.conversation.expiration_timestamp) {
+          let { data: existingMessageWindow, error: findError } = await supabase
+            .from('message_window')
+            .select('conversation_id')
+            .eq('conversation_id', status.conversation.id)
+            .single();
 
+          if (existingMessageWindow?.conversation_id === status.conversation.id) {
+            return 'Message already exists in the database';
+          }
+
+          if (findError) {
+            // lookup database for the phone number id and contact id
+            const { data: message, error: messageError } = await supabase
+              .from('messages')
+              .select('phone_number_id, contact_id')
+              .eq('wa_message_id', status.id)
+              .single();
+
+            if (messageError) {
+              logError(messageError as unknown as Error, 'Error finding message in database. Data: ' + JSON.stringify(value, null, 2) + '\n Error: ' + JSON.stringify(messageError, null, 2));
+            }
+
+            // insert the message window
+            let { error: insertError } = await supabase
+              .from('message_window')
+              .insert([{
+                phone_number_id: message?.phone_number_id,
+                contact_id: message?.contact_id,
+                conversation_id: status.conversation.id,
+                close_at: status.conversation.expiration_timestamp,
+                origin: status.conversation.origin.type,
+                updated_at: new Date().toISOString()
+              }]);
+          }
+        }
 
         // Check the database if message_window exists by using the conversation_id
         // let { data: existingMessageWindow, error: findError } = await supabase
@@ -53,7 +106,7 @@ const handleOutgoingMessage = async (value: any) => {
         //   return 'Message already exists in the database';
         // }      
 
-      } 
+      }
     });
   } catch (error) {
     logError(error as Error, 'Error processing outgoing messages. Data: ' + JSON.stringify(value, null, 2) + '\n Error: ' + error);
@@ -77,7 +130,7 @@ const handleIncomingMessage = async (value: any) => {
       .single();
 
     if (phoneError) {
-      console.error('Error finding phone number in database:', phoneError);
+      console.error('Error finding phone number in database:', phone_number_id);
       throw phoneError;
     }
 

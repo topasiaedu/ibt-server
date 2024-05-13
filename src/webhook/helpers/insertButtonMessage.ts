@@ -63,6 +63,7 @@ async function insertButtonMessage(message: any, display_phone_number: string, p
         wa_message_id: id,
         direction: 'inbound',
         project_id,
+        status: 'received',
       }])
       .single();
 

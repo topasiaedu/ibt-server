@@ -68,6 +68,7 @@ const insertImageMessage = async (message: any, display_phone_number: string, pr
         direction: 'inbound',
         media_url: media,
         project_id,
+        status: 'received',
       }])
       .single();
 

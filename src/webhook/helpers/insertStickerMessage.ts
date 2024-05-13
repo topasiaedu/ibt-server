@@ -61,6 +61,7 @@ const insertStickerMessage = async (message: any, display_phone_number: string, 
         direction: 'inbound',
         media_url: imageId,
         project_id,
+        status: 'received',
       }])
       .single();
 
