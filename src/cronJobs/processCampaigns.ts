@@ -6,7 +6,6 @@ import { CronJob } from 'cron';
 import { TemplateMessagePayload } from '../models/whatsapp/templateTypes';
 
 const processCampaigns = async () => {
-  console.log('Processing campaigns...');
   const { data: campaigns, error } = await supabase
     .from('campaigns')
     .select(`

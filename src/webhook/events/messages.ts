@@ -28,8 +28,8 @@ const handleOutgoingMessage = async (value: any) => {
 
     statuses.forEach(async (status: any) => {
       if (status.conversation) {
-        console.log('Outgoing message:', JSON.stringify(status, null, 2));
 
+        if (status.status === 'sent') { status.status = 'READ' }
         // Update the message status in the database using id
         let { error: updateError } = await supabase
           .from('messages')

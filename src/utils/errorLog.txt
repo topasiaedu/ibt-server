@@ -5324,3 +5324,3347 @@
  [object Object]
 
 
+[2024-05-13T03:30:11.493Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:30:14.456Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:30:15.362Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T03:30:15.378Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:30:16.193Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T03:30:16.370Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:30:17.417Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:30:17.718Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T03:30:18.057Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T03:30:18.389Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:30:18.672Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T03:30:19.383Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:30:20.375Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:30:20.591Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T03:30:20.717Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T03:30:20.978Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T03:30:21.204Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T03:30:21.370Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:30:21.854Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T03:30:22.374Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:30:22.386Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T03:30:22.836Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T03:30:23.387Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:30:23.445Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T03:30:23.755Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T03:30:24.102Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T03:30:24.404Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T03:30:24.791Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:30:25.369Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T03:30:25.378Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:30:25.958Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T03:30:26.194Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T03:30:26.402Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:30:26.906Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T03:30:27.429Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:30:27.592Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T03:30:28.410Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:30:28.458Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T03:30:29.268Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T03:30:29.322Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T03:30:29.495Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:30:29.813Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T03:30:29.855Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T03:30:30.151Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T03:30:30.498Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:30:30.615Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T03:30:31.394Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:30:32.406Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:30:32.601Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T03:30:32.743Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T03:30:32.757Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T03:30:33.027Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T03:30:33.043Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T03:30:33.348Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:30:33.425Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T03:30:34.424Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:30:37.456Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:30:37.711Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T03:30:38.349Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:30:39.411Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:30:39.635Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T03:30:40.431Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:30:40.694Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T03:30:40.903Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T03:30:41.428Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:30:44.452Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:30:44.701Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T03:30:45.359Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:30:46.497Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:30:46.896Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T03:30:47.292Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T03:30:47.332Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:30:47.560Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T03:30:47.728Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T03:30:48.395Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:30:49.424Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T03:30:49.469Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:30:49.966Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T03:30:50.215Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T03:30:50.378Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:30:50.697Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T03:30:51.397Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:30:52.006Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T03:30:52.368Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:30:53.030Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T03:30:53.225Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T03:30:53.485Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:30:53.491Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T03:30:54.100Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T03:30:54.400Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:30:54.769Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T03:30:54.939Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T03:30:55.040Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T03:30:55.423Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:30:55.626Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T03:30:55.663Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T03:30:56.398Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T03:30:56.401Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:30:56.639Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T03:30:56.694Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T03:30:57.350Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:30:58.354Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:30:58.468Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T03:30:58.549Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T03:30:58.954Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T03:30:59.499Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:30:59.958Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T03:31:00.038Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T03:31:00.214Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T03:31:01.074Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T03:31:01.210Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T03:31:02.982Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T03:31:03.588Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T03:34:31.468Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601153904588",
+    "phone_number_id": "240462112484224"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxNzMwMDMzOTMVAgARGBJBMEMzQzM1NTJEQTY3RjU3MTYA",
+      "status": "sent",
+      "timestamp": "1715149199",
+      "recipient_id": "60173003393",
+      "conversation": {
+        "id": "5e843c6e609aacfd7b255651299de18e",
+        "expiration_timestamp": "1715235600",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:35:10.726Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "60103179016",
+    "phone_number_id": "243498022182912"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxMjI2NjE5MjMVAgARGBI5M0I2NTMwRjZCRTlDMjE2MDUA",
+      "status": "sent",
+      "timestamp": "1714996173",
+      "recipient_id": "60122661923",
+      "conversation": {
+        "id": "9d6f645fa428de43c6b8d49807161805",
+        "expiration_timestamp": "1715082600",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:35:15.158Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601112159534",
+    "phone_number_id": "220858504440106"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxNzYzMzIwODgVAgARGBI1MDA1MUIyMTY5QjYyMTBBQjQA",
+      "status": "sent",
+      "timestamp": "1714985491",
+      "recipient_id": "60176332088",
+      "conversation": {
+        "id": "2c0047a30b89e14bddae63cc61a5f581",
+        "expiration_timestamp": "1715071920",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:35:40.252Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601112159534",
+    "phone_number_id": "220858504440106"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxNzYzMzIwODgVAgARGBI1MDA1MUIyMTY5QjYyMTBBQjQA",
+      "status": "sent",
+      "timestamp": "1714985491",
+      "recipient_id": "60176332088",
+      "conversation": {
+        "id": "2c0047a30b89e14bddae63cc61a5f581",
+        "expiration_timestamp": "1715071920",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:35:52.398Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601112159534",
+    "phone_number_id": "220858504440106"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxMjYzMTAyODQVAgARGBJGMDJCMkFFQjc1NTUxRkMxMjEA",
+      "status": "sent",
+      "timestamp": "1714985346",
+      "recipient_id": "60126310284",
+      "conversation": {
+        "id": "c7dfc19f2b1308f3c5f6d081b18d5de0",
+        "expiration_timestamp": "1715071800",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:36:07.085Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601112159534",
+    "phone_number_id": "220858504440106"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxNzYzMzIwODgVAgARGBI1MDA1MUIyMTY5QjYyMTBBQjQA",
+      "status": "sent",
+      "timestamp": "1714985491",
+      "recipient_id": "60176332088",
+      "conversation": {
+        "id": "2c0047a30b89e14bddae63cc61a5f581",
+        "expiration_timestamp": "1715071920",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:36:17.655Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601112159534",
+    "phone_number_id": "220858504440106"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxMjYzMTAyODQVAgARGBJGMDJCMkFFQjc1NTUxRkMxMjEA",
+      "status": "sent",
+      "timestamp": "1714985346",
+      "recipient_id": "60126310284",
+      "conversation": {
+        "id": "c7dfc19f2b1308f3c5f6d081b18d5de0",
+        "expiration_timestamp": "1715071800",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:36:32.475Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601112159534",
+    "phone_number_id": "220858504440106"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgKNjU4MzY2NDk5NBUCABEYEjQyRENFMTAxRjk4NEE3MUU3OQA=",
+      "status": "sent",
+      "timestamp": "1714985327",
+      "recipient_id": "6583664994",
+      "conversation": {
+        "id": "03f545703bf81555a62b2dce06191395",
+        "expiration_timestamp": "1715071740",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:36:44.514Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601112159534",
+    "phone_number_id": "220858504440106"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxMjYzMTAyODQVAgARGBJGMDJCMkFFQjc1NTUxRkMxMjEA",
+      "status": "sent",
+      "timestamp": "1714985346",
+      "recipient_id": "60126310284",
+      "conversation": {
+        "id": "c7dfc19f2b1308f3c5f6d081b18d5de0",
+        "expiration_timestamp": "1715071800",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:36:55.932Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "60103179016",
+    "phone_number_id": "243498022182912"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgMMjMzMjQ0OTc3NjY2FQIAERgSMTgzMDdENDgzNTA1RUVFRjUxAA==",
+      "status": "sent",
+      "timestamp": "1715002958",
+      "recipient_id": "233244977666",
+      "conversation": {
+        "id": "6a7e2361ef7a01fc1288282fc442ba67",
+        "expiration_timestamp": "1715082660",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:36:58.559Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601112159534",
+    "phone_number_id": "220858504440106"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxNzYzMzIwODgVAgARGBI1MDA1MUIyMTY5QjYyMTBBQjQA",
+      "status": "sent",
+      "timestamp": "1714985491",
+      "recipient_id": "60176332088",
+      "conversation": {
+        "id": "2c0047a30b89e14bddae63cc61a5f581",
+        "expiration_timestamp": "1715071920",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:37:27.420Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601153904588",
+    "phone_number_id": "240462112484224"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxNjIyNTI4MzgVAgARGBJGRjJFRTUwMEJDQzJFMDZBREQA",
+      "status": "sent",
+      "timestamp": "1715149196",
+      "recipient_id": "60162252838",
+      "conversation": {
+        "id": "5a4da003ce6a7b506bf54fbcaa1dce70",
+        "expiration_timestamp": "1715235600",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:37:36.448Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601112159534",
+    "phone_number_id": "220858504440106"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxMjYzMTAyODQVAgARGBJGMDJCMkFFQjc1NTUxRkMxMjEA",
+      "status": "sent",
+      "timestamp": "1714985346",
+      "recipient_id": "60126310284",
+      "conversation": {
+        "id": "c7dfc19f2b1308f3c5f6d081b18d5de0",
+        "expiration_timestamp": "1715071800",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:38:26.458Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601112159534",
+    "phone_number_id": "220858504440106"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxMjIzNDM2MzgVAgARGBI4MDVEMzUzQkUxMTYxNjcxMTYA",
+      "status": "READ",
+      "timestamp": "1714985395",
+      "recipient_id": "60122343638",
+      "conversation": {
+        "id": "f1caddafa7b5e89945f5f4c83c70b6e2",
+        "expiration_timestamp": "1715071800",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:38:47.319Z] Error processing inbound messages. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601159946253",
+    "phone_number_id": "288606424339950"
+  },
+  "contacts": [
+    {
+      "profile": {
+        "name": "Jess Tee"
+      },
+      "wa_id": "60169025593"
+    }
+  ],
+  "messages": [
+    {
+      "from": "60169025593",
+      "id": "wamid.HBgLNjAxNjkwMjU1OTMVAgASGBQzQTBCNUYzMDM0NzlBQjlCMzEyNQA=",
+      "timestamp": "1715154953",
+      "text": {
+        "body": "Got it ya"
+      },
+      "type": "text"
+    }
+  ]
+}
+ Error: [object Object] [object Object]
+
+
+[2024-05-13T03:39:12.521Z] Error processing inbound messages. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601159946253",
+    "phone_number_id": "288606424339950"
+  },
+  "contacts": [
+    {
+      "profile": {
+        "name": "Jess Tee"
+      },
+      "wa_id": "60169025593"
+    }
+  ],
+  "messages": [
+    {
+      "from": "60169025593",
+      "id": "wamid.HBgLNjAxNjkwMjU1OTMVAgASGBQzQTBCNUYzMDM0NzlBQjlCMzEyNQA=",
+      "timestamp": "1715154953",
+      "text": {
+        "body": "Got it ya"
+      },
+      "type": "text"
+    }
+  ]
+}
+ Error: [object Object] [object Object]
+
+
+[2024-05-13T03:39:39.300Z] Error processing inbound messages. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601159946253",
+    "phone_number_id": "288606424339950"
+  },
+  "contacts": [
+    {
+      "profile": {
+        "name": "Jess Tee"
+      },
+      "wa_id": "60169025593"
+    }
+  ],
+  "messages": [
+    {
+      "from": "60169025593",
+      "id": "wamid.HBgLNjAxNjkwMjU1OTMVAgASGBQzQTBCNUYzMDM0NzlBQjlCMzEyNQA=",
+      "timestamp": "1715154953",
+      "text": {
+        "body": "Got it ya"
+      },
+      "type": "text"
+    }
+  ]
+}
+ Error: [object Object] [object Object]
+
+
+[2024-05-13T03:39:54.004Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601153904588",
+    "phone_number_id": "240462112484224"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxMjc4NTY0OTkVAgARGBJERTE1NTlGMzZBM0UxMkI3QTgA",
+      "status": "READ",
+      "timestamp": "1715149487",
+      "recipient_id": "60127856499",
+      "conversation": {
+        "id": "b3374cca3b3d47a00b4f7ded1a89a798",
+        "expiration_timestamp": "1715235900",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:39:54.552Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "60103179016",
+    "phone_number_id": "243498022182912"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxMDM2Njc1NzcVAgARGBIxNzk1OEJBOUM4NkE5OEU3NTkA",
+      "status": "READ",
+      "timestamp": "1714996110",
+      "recipient_id": "60103667577",
+      "conversation": {
+        "id": "9e395569e6e983a9895dca55d19690e3",
+        "expiration_timestamp": "1715082540",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:40:29.852Z] Error processing inbound messages. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601159946253",
+    "phone_number_id": "288606424339950"
+  },
+  "contacts": [
+    {
+      "profile": {
+        "name": "Jess Tee"
+      },
+      "wa_id": "60169025593"
+    }
+  ],
+  "messages": [
+    {
+      "from": "60169025593",
+      "id": "wamid.HBgLNjAxNjkwMjU1OTMVAgASGBQzQTBCNUYzMDM0NzlBQjlCMzEyNQA=",
+      "timestamp": "1715154953",
+      "text": {
+        "body": "Got it ya"
+      },
+      "type": "text"
+    }
+  ]
+}
+ Error: [object Object] [object Object]
+
+
+[2024-05-13T03:40:54.339Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601112159534",
+    "phone_number_id": "220858504440106"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgKNjU4MTAwMjE0MBUCABEYEjk4MTUxNEJCQUVFMzc1MkJBQQA=",
+      "status": "READ",
+      "timestamp": "1714985419",
+      "recipient_id": "6581002140",
+      "conversation": {
+        "id": "5f76ce26a8ad837c7f97ad709911d18c",
+        "expiration_timestamp": "1715071860",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:41:27.082Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601112159534",
+    "phone_number_id": "220858504440106"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxMjQxNjk1NjIVAgARGBJGRUI0ODJFQTgxOTI0NkM1OEIA",
+      "status": "READ",
+      "timestamp": "1714985708",
+      "recipient_id": "60124169562",
+      "conversation": {
+        "id": "b91a57b30e627c02165c6a51848deef9",
+        "expiration_timestamp": "1715072160",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:43:18.725Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601112159534",
+    "phone_number_id": "220858504440106"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxMjIzNDM2MzgVAgARGBI4MDVEMzUzQkUxMTYxNjcxMTYA",
+      "status": "READ",
+      "timestamp": "1714985395",
+      "recipient_id": "60122343638",
+      "conversation": {
+        "id": "f1caddafa7b5e89945f5f4c83c70b6e2",
+        "expiration_timestamp": "1715071800",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:43:43.944Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601112159534",
+    "phone_number_id": "220858504440106"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxMjIzNDM2MzgVAgARGBI4MDVEMzUzQkUxMTYxNjcxMTYA",
+      "status": "READ",
+      "timestamp": "1714985395",
+      "recipient_id": "60122343638",
+      "conversation": {
+        "id": "f1caddafa7b5e89945f5f4c83c70b6e2",
+        "expiration_timestamp": "1715071800",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:44:08.669Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601112159534",
+    "phone_number_id": "220858504440106"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxNzYzMzIwODgVAgARGBI1MDA1MUIyMTY5QjYyMTBBQjQA",
+      "status": "READ",
+      "timestamp": "1714985491",
+      "recipient_id": "60176332088",
+      "conversation": {
+        "id": "2c0047a30b89e14bddae63cc61a5f581",
+        "expiration_timestamp": "1715071920",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:44:08.687Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601153904588",
+    "phone_number_id": "240462112484224"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxMjc4NTY0OTkVAgARGBJERTE1NTlGMzZBM0UxMkI3QTgA",
+      "status": "READ",
+      "timestamp": "1715149487",
+      "recipient_id": "60127856499",
+      "conversation": {
+        "id": "b3374cca3b3d47a00b4f7ded1a89a798",
+        "expiration_timestamp": "1715235900",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:44:10.544Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601112159534",
+    "phone_number_id": "220858504440106"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxMjIzNDM2MzgVAgARGBI4MDVEMzUzQkUxMTYxNjcxMTYA",
+      "status": "READ",
+      "timestamp": "1714985395",
+      "recipient_id": "60122343638",
+      "conversation": {
+        "id": "f1caddafa7b5e89945f5f4c83c70b6e2",
+        "expiration_timestamp": "1715071800",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:44:34.052Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601153904588",
+    "phone_number_id": "240462112484224"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxMjc4NTY0OTkVAgARGBJERTE1NTlGMzZBM0UxMkI3QTgA",
+      "status": "READ",
+      "timestamp": "1715149487",
+      "recipient_id": "60127856499",
+      "conversation": {
+        "id": "b3374cca3b3d47a00b4f7ded1a89a798",
+        "expiration_timestamp": "1715235900",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:45:01.018Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601153904588",
+    "phone_number_id": "240462112484224"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxMjc4NTY0OTkVAgARGBJERTE1NTlGMzZBM0UxMkI3QTgA",
+      "status": "READ",
+      "timestamp": "1715149487",
+      "recipient_id": "60127856499",
+      "conversation": {
+        "id": "b3374cca3b3d47a00b4f7ded1a89a798",
+        "expiration_timestamp": "1715235900",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:45:02.280Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601112159534",
+    "phone_number_id": "220858504440106"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxMjIzNDM2MzgVAgARGBI4MDVEMzUzQkUxMTYxNjcxMTYA",
+      "status": "READ",
+      "timestamp": "1714985395",
+      "recipient_id": "60122343638",
+      "conversation": {
+        "id": "f1caddafa7b5e89945f5f4c83c70b6e2",
+        "expiration_timestamp": "1715071800",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:45:06.839Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601112159534",
+    "phone_number_id": "220858504440106"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxMjYzMTAyODQVAgARGBJGMDJCMkFFQjc1NTUxRkMxMjEA",
+      "status": "READ",
+      "timestamp": "1714985346",
+      "recipient_id": "60126310284",
+      "conversation": {
+        "id": "c7dfc19f2b1308f3c5f6d081b18d5de0",
+        "expiration_timestamp": "1715071800",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:45:49.585Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601153904588",
+    "phone_number_id": "240462112484224"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxMjc4NTY0OTkVAgARGBJERTE1NTlGMzZBM0UxMkI3QTgA",
+      "status": "READ",
+      "timestamp": "1715149487",
+      "recipient_id": "60127856499",
+      "conversation": {
+        "id": "b3374cca3b3d47a00b4f7ded1a89a798",
+        "expiration_timestamp": "1715235900",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:46:00.334Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601153764588",
+    "phone_number_id": "236659946202736"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxMjQwMDYzMzYVAgARGBIxRThCNEQ0RDg3REU1NzYxOEUA",
+      "status": "READ",
+      "timestamp": "1715170868",
+      "recipient_id": "60124006336",
+      "conversation": {
+        "id": "4f1024e7e051c6fdcad9e400fce90969",
+        "expiration_timestamp": "1715257320",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:46:21.343Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601112159534",
+    "phone_number_id": "220858504440106"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxMDQ2OTU2ODUVAgARGBJGMjgwNkUzMzA2RTE1NDI3NEEA",
+      "status": "READ",
+      "timestamp": "1714985335",
+      "recipient_id": "60104695685",
+      "conversation": {
+        "id": "681cfd8fe313c6d258496d6563c241d3",
+        "expiration_timestamp": "1715071740",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:46:46.633Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601112159534",
+    "phone_number_id": "220858504440106"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxMDQ2OTU2ODUVAgARGBJGMjgwNkUzMzA2RTE1NDI3NEEA",
+      "status": "READ",
+      "timestamp": "1714985335",
+      "recipient_id": "60104695685",
+      "conversation": {
+        "id": "681cfd8fe313c6d258496d6563c241d3",
+        "expiration_timestamp": "1715071740",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:47:06.469Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601112159534",
+    "phone_number_id": "220858504440106"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxMDQ2OTU2ODUVAgARGBJGMjgwNkUzMzA2RTE1NDI3NEEA",
+      "status": "READ",
+      "timestamp": "1714985335",
+      "recipient_id": "60104695685",
+      "conversation": {
+        "id": "681cfd8fe313c6d258496d6563c241d3",
+        "expiration_timestamp": "1715071740",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:47:08.535Z] Error processing inbound messages. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601159946253",
+    "phone_number_id": "288606424339950"
+  },
+  "contacts": [
+    {
+      "profile": {
+        "name": "Jess Tee"
+      },
+      "wa_id": "60169025593"
+    }
+  ],
+  "messages": [
+    {
+      "from": "60169025593",
+      "id": "wamid.HBgLNjAxNjkwMjU1OTMVAgASGBQzQTBCNUYzMDM0NzlBQjlCMzEyNQA=",
+      "timestamp": "1715154953",
+      "text": {
+        "body": "Got it ya"
+      },
+      "type": "text"
+    }
+  ]
+}
+ Error: [object Object] [object Object]
+
+
+[2024-05-13T03:47:37.098Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601112159534",
+    "phone_number_id": "220858504440106"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxMDQ2OTU2ODUVAgARGBJGMjgwNkUzMzA2RTE1NDI3NEEA",
+      "status": "READ",
+      "timestamp": "1714985335",
+      "recipient_id": "60104695685",
+      "conversation": {
+        "id": "681cfd8fe313c6d258496d6563c241d3",
+        "expiration_timestamp": "1715071740",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:50:12.312Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601112159534",
+    "phone_number_id": "220858504440106"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgKNjU4NjE0OTc2OBUCABEYEjgyQ0Y5OEI4Nzc5RTc1NzE5NgA=",
+      "status": "READ",
+      "timestamp": "1714985345",
+      "recipient_id": "6586149768",
+      "conversation": {
+        "id": "839f2af1abe5f3b7823912222b6da0cc",
+        "expiration_timestamp": "1715071800",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:51:27.139Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "60103179016",
+    "phone_number_id": "243498022182912"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxMjY1MDI4NzkVAgARGBJEMUU5M0NCRkRGMjE4NUVBQTcA",
+      "status": "READ",
+      "timestamp": "1714996367",
+      "recipient_id": "60126502879",
+      "conversation": {
+        "id": "43d59156321ac9090a3c4532dc676aaa",
+        "expiration_timestamp": "1715082780",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:51:50.951Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601153764588",
+    "phone_number_id": "236659946202736"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxMjY4Mzc3NzkVAgARGBJDQTQ3MTk2MUU1QTVDODQ5NEIA",
+      "status": "READ",
+      "timestamp": "1714977128",
+      "recipient_id": "60126837779",
+      "conversation": {
+        "id": "12805e61fe42ccca7ca19a6e3f22069a",
+        "expiration_timestamp": "1715063580",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:52:08.580Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601112159534",
+    "phone_number_id": "220858504440106"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxMjIzNDM2MzgVAgARGBI4MDVEMzUzQkUxMTYxNjcxMTYA",
+      "status": "READ",
+      "timestamp": "1714985395",
+      "recipient_id": "60122343638",
+      "conversation": {
+        "id": "f1caddafa7b5e89945f5f4c83c70b6e2",
+        "expiration_timestamp": "1715071800",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:52:16.254Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601153764588",
+    "phone_number_id": "236659946202736"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxMjY4Mzc3NzkVAgARGBJDQTQ3MTk2MUU1QTVDODQ5NEIA",
+      "status": "READ",
+      "timestamp": "1714977128",
+      "recipient_id": "60126837779",
+      "conversation": {
+        "id": "12805e61fe42ccca7ca19a6e3f22069a",
+        "expiration_timestamp": "1715063580",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:52:42.778Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601153764588",
+    "phone_number_id": "236659946202736"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxMjY4Mzc3NzkVAgARGBJDQTQ3MTk2MUU1QTVDODQ5NEIA",
+      "status": "READ",
+      "timestamp": "1714977128",
+      "recipient_id": "60126837779",
+      "conversation": {
+        "id": "12805e61fe42ccca7ca19a6e3f22069a",
+        "expiration_timestamp": "1715063580",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:53:03.746Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601153904588",
+    "phone_number_id": "240462112484224"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxMjc4NTY0OTkVAgARGBJERTE1NTlGMzZBM0UxMkI3QTgA",
+      "status": "READ",
+      "timestamp": "1715149487",
+      "recipient_id": "60127856499",
+      "conversation": {
+        "id": "b3374cca3b3d47a00b4f7ded1a89a798",
+        "expiration_timestamp": "1715235900",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:53:30.859Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601153764588",
+    "phone_number_id": "236659946202736"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxMjY4Mzc3NzkVAgARGBJDQTQ3MTk2MUU1QTVDODQ5NEIA",
+      "status": "READ",
+      "timestamp": "1714977128",
+      "recipient_id": "60126837779",
+      "conversation": {
+        "id": "12805e61fe42ccca7ca19a6e3f22069a",
+        "expiration_timestamp": "1715063580",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:54:37.263Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601153764588",
+    "phone_number_id": "236659946202736"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgKNjU5NzY2NjY0MRUCABEYEkU3RjY2NUQxODUwNzNGRkZENgA=",
+      "status": "READ",
+      "timestamp": "1714984264",
+      "recipient_id": "6597666641",
+      "conversation": {
+        "id": "4d5a4708c32919975805eec92e5a2adb",
+        "expiration_timestamp": "1715070720",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:54:39.881Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "60103179016",
+    "phone_number_id": "243498022182912"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxMjQ2NDQ3NjYVAgARGBJDN0I0MzUyMEU1RDg2QzdEOUUA",
+      "status": "READ",
+      "timestamp": "1714996338",
+      "recipient_id": "60124644766",
+      "conversation": {
+        "id": "71c6107d3669f9bcf70224a73d800176",
+        "expiration_timestamp": "1715082780",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:55:00.549Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:55:01.436Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:55:02.403Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:55:02.674Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601153764588",
+    "phone_number_id": "236659946202736"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgKNjU5NzY2NjY0MRUCABEYEkU3RjY2NUQxODUwNzNGRkZENgA=",
+      "status": "READ",
+      "timestamp": "1714984264",
+      "recipient_id": "6597666641",
+      "conversation": {
+        "id": "4d5a4708c32919975805eec92e5a2adb",
+        "expiration_timestamp": "1715070720",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:55:03.355Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:55:04.400Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:55:05.381Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:55:06.360Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:55:14.236Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601112159534",
+    "phone_number_id": "220858504440106"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxMDI4ODMxNDUVAgARGBJBMjYwRTM2OEI5NTBCMTM1RDcA",
+      "status": "READ",
+      "timestamp": "1714985422",
+      "recipient_id": "60102883145",
+      "conversation": {
+        "id": "512f52931449a567eb5ee70e0b4c354d",
+        "expiration_timestamp": "1715071860",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:55:14.448Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:55:15.406Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:55:16.349Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:55:17.357Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:55:38.643Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:55:39.357Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:55:40.406Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:55:41.378Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:55:42.395Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:55:43.358Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:55:44.389Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:55:45.404Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:55:46.218Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601112159534",
+    "phone_number_id": "220858504440106"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxMDI4ODMxNDUVAgARGBJBMjYwRTM2OEI5NTBCMTM1RDcA",
+      "status": "READ",
+      "timestamp": "1714985422",
+      "recipient_id": "60102883145",
+      "conversation": {
+        "id": "512f52931449a567eb5ee70e0b4c354d",
+        "expiration_timestamp": "1715071860",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:55:46.405Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:55:47.408Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:55:48.374Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:55:49.405Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:55:50.368Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:55:51.376Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:55:52.395Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:55:53.388Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:55:54.352Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:55:55.448Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:55:56.422Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:55:58.035Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:55:58.392Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:55:59.370Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T03:56:24.047Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601159946253",
+    "phone_number_id": "288606424339950"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxMzU4ODM0MDIVAgARGBJDMDY2MDMzODhDOUQ1MDVEQjMA",
+      "status": "READ",
+      "timestamp": "1715151793",
+      "recipient_id": "60135883402",
+      "conversation": {
+        "id": "c50bbfd333d0b4ca92578553341a88ff",
+        "expiration_timestamp": "1715238240",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:56:27.290Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601112159534",
+    "phone_number_id": "220858504440106"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxMDc2NTU3MTIVAgARGBIxMzlGQzU1MThBQkM2QTNDMEUA",
+      "status": "READ",
+      "timestamp": "1714985404",
+      "recipient_id": "60107655712",
+      "conversation": {
+        "id": "5176d524385c28310399abdfd0305454",
+        "expiration_timestamp": "1715071860",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:58:49.903Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601153904588",
+    "phone_number_id": "240462112484224"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxNjYxNjEyMDMVAgARGBJCQTFFQUJCOEEzQTJDNjZDREQA",
+      "status": "READ",
+      "timestamp": "1715149338",
+      "recipient_id": "60166161203",
+      "conversation": {
+        "id": "c7e5cea07d3e0d7194cb9cc4e89c2fa7",
+        "expiration_timestamp": "1715235780",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:59:15.082Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601153904588",
+    "phone_number_id": "240462112484224"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxNjYxNjEyMDMVAgARGBJCQTFFQUJCOEEzQTJDNjZDREQA",
+      "status": "READ",
+      "timestamp": "1715149338",
+      "recipient_id": "60166161203",
+      "conversation": {
+        "id": "c7e5cea07d3e0d7194cb9cc4e89c2fa7",
+        "expiration_timestamp": "1715235780",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T03:59:42.412Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601153904588",
+    "phone_number_id": "240462112484224"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxNjYxNjEyMDMVAgARGBJCQTFFQUJCOEEzQTJDNjZDREQA",
+      "status": "READ",
+      "timestamp": "1715149338",
+      "recipient_id": "60166161203",
+      "conversation": {
+        "id": "c7e5cea07d3e0d7194cb9cc4e89c2fa7",
+        "expiration_timestamp": "1715235780",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T04:00:00.479Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T04:00:01.415Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T04:00:01.808Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T04:00:02.472Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T04:00:03.402Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T04:00:03.998Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T04:00:04.110Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T04:00:04.270Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T04:00:04.387Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T04:00:04.824Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T04:00:05.585Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T04:00:05.591Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601153764588",
+    "phone_number_id": "236659946202736"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxMjY4Mzc3NzkVAgARGBJDQTQ3MTk2MUU1QTVDODQ5NEIA",
+      "status": "READ",
+      "timestamp": "1714977128",
+      "recipient_id": "60126837779",
+      "conversation": {
+        "id": "12805e61fe42ccca7ca19a6e3f22069a",
+        "expiration_timestamp": "1715063580",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T04:00:05.980Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T04:00:06.400Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T04:00:06.648Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T04:00:06.712Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T04:00:06.974Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T04:00:07.366Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T04:00:07.475Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T04:00:07.568Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T04:00:07.944Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T04:00:08.072Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601112159534",
+    "phone_number_id": "220858504440106"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgMNjAxMTEzMzIxNTg4FQIAERgSMzZCNzAxQkI5QUI1MDc3NzFGAA==",
+      "status": "READ",
+      "timestamp": "1714985330",
+      "recipient_id": "601113321588",
+      "conversation": {
+        "id": "950da039d2bcdf634870a13b1ef41678",
+        "expiration_timestamp": "1715071740",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T04:00:08.361Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T04:00:08.585Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T04:00:09.456Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T04:00:09.837Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T04:00:10.211Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T04:00:10.211Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T04:00:10.343Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T04:00:10.389Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T04:00:11.371Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T04:00:11.819Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T04:00:12.123Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T04:00:12.363Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T04:00:12.765Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T04:00:12.836Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T04:00:12.973Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T04:00:13.216Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T04:00:13.407Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T04:00:14.414Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T04:00:15.018Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T04:00:15.019Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T04:00:15.431Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T04:00:15.894Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T04:00:15.965Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T04:00:16.431Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T04:00:17.420Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T04:00:17.997Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T04:00:18.157Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T04:00:18.374Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T04:00:18.601Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T04:00:19.378Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T04:00:19.386Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T04:00:19.991Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T04:00:20.310Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T04:00:20.495Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T04:00:20.727Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T04:00:20.743Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T04:00:21.064Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T04:00:21.437Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T04:00:21.438Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T04:00:22.170Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T04:00:22.312Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T04:00:22.412Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T04:00:22.967Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T04:00:23.048Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T04:00:23.345Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T04:00:23.363Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T04:00:23.434Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T04:00:24.395Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T04:00:24.589Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T04:00:25.432Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T04:00:25.644Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T04:00:25.768Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T04:00:26.445Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T04:00:26.708Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T04:00:27.020Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T04:00:27.025Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T04:00:27.372Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T04:00:27.403Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T04:00:28.117Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T04:00:28.358Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T04:00:28.683Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T04:00:29.585Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T04:00:30.642Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T04:00:30.758Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T04:00:30.902Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T04:00:30.997Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T04:00:31.432Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T04:00:31.478Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T04:00:31.544Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T04:09:26.953Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "60103179016",
+    "phone_number_id": "243498022182912"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxMzM2Nzk5NjAVAgARGBIyQkY4ODY0Njg1QjU4RDg2MDkA",
+      "status": "READ",
+      "timestamp": "1714996196",
+      "recipient_id": "60133679960",
+      "conversation": {
+        "id": "70cf59f8f9476123a5204aac8734ce2f",
+        "expiration_timestamp": "1715082600",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T04:09:40.486Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601153904588",
+    "phone_number_id": "240462112484224"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxMDIzMjY3MjYVAgARGBIwNjYyRTEyMjBBRjlDN0VCMTUA",
+      "status": "READ",
+      "timestamp": "1715149293",
+      "recipient_id": "60102326726",
+      "conversation": {
+        "id": "01fb3d1aab71f2c30022363c4c248621",
+        "expiration_timestamp": "1715235720",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T04:18:27.123Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601112159534",
+    "phone_number_id": "220858504440106"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgMNjAxMTUzNDgyODk5FQIAERgSMEEwRDI4QkVEMzNCNDMzMTNEAA==",
+      "status": "READ",
+      "timestamp": "1714985460",
+      "recipient_id": "601153482899",
+      "conversation": {
+        "id": "7f24553e9b213fa61158c02085a6743b",
+        "expiration_timestamp": "1715071860",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T04:19:06.379Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "60103179016",
+    "phone_number_id": "243498022182912"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjE0MTE4NjI3MzkVAgARGBJGRDVCOUJDOTU4NDVBN0Q1NTkA",
+      "status": "READ",
+      "timestamp": "1715064645",
+      "recipient_id": "61411862739",
+      "conversation": {
+        "id": "e4f4fdd43c116b62e4d9b34f8ac92a88",
+        "expiration_timestamp": "1715115900",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T04:30:05.559Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T04:30:06.467Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T04:30:07.214Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T04:30:07.430Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T04:30:08.752Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T04:30:08.847Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T04:30:09.217Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T04:30:09.448Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T04:30:09.476Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601153764588",
+    "phone_number_id": "236659946202736"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjc1ODE1MDQxNDYVAgARGBI3MTMyNjVBRDExQzI0N0VCREEA",
+      "status": "READ",
+      "timestamp": "1714978929",
+      "recipient_id": "67581504146",
+      "conversation": {
+        "id": "befa70d1e9247eee58bbc42cfcc9744c",
+        "expiration_timestamp": "1715065380",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T04:30:10.113Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T04:30:10.412Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T04:30:10.429Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T04:30:10.453Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T04:30:11.381Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T04:30:12.359Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T04:30:12.449Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T04:30:12.463Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T04:30:13.189Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T04:30:13.276Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T04:30:13.372Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T04:30:13.799Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T04:30:13.920Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T04:30:14.355Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T04:30:14.479Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T04:30:15.011Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T04:30:15.455Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T04:30:15.560Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T04:30:15.570Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T04:30:15.737Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T04:30:16.403Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "60103179016",
+    "phone_number_id": "243498022182912"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxNjU4OTM5NTkVAgARGBI1NDA0NDQ3OUZDRENDQzVFMTEA",
+      "status": "READ",
+      "timestamp": "1714996349",
+      "recipient_id": "60165893959",
+      "conversation": {
+        "id": "94723b4415077708bfa4c953a31f7136",
+        "expiration_timestamp": "1715082780",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T04:30:16.422Z] Error fetching WABA from database. WABA ID: 333662616488243
+ [object Object]
+
+
+[2024-05-13T04:30:16.533Z] Error fetching phone number from database. Phone number ID: 174921645704413
+ [object Object]
+
+
+[2024-05-13T04:30:16.649Z] Error fetching phone number from database. Phone number ID: 288606424339950
+ [object Object]
+
+
+[2024-05-13T04:33:02.290Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601112159534",
+    "phone_number_id": "220858504440106"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxMjUzNDM5MzQVAgARGBJDQTJCNjRGMTFBODU5RjQwNTMA",
+      "status": "READ",
+      "timestamp": "1714987367",
+      "recipient_id": "60125343934",
+      "conversation": {
+        "id": "6dedbdddc433181ddc2f275931ab3edc",
+        "expiration_timestamp": "1715072160",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-05-13T04:33:28.256Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601112159534",
+    "phone_number_id": "220858504440106"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxMjUzNDM5MzQVAgARGBJDQTJCNjRGMTFBODU5RjQwNTMA",
+      "status": "READ",
+      "timestamp": "1714987367",
+      "recipient_id": "60125343934",
+      "conversation": {
+        "id": "6dedbdddc433181ddc2f275931ab3edc",
+        "expiration_timestamp": "1715072160",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
