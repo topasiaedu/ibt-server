@@ -84,27 +84,38 @@ const fetchImageURL = async (imageId: string): Promise<AxiosResponse<any>> => {
     }
 }
 
-const fetchMedia = async (imageId: string, randomFileName: string): Promise<string> => {
+const fetchMedia = async (imageId: string, randomFileName: string) => {
     try {
+        // Assume axios and headers are set up previously
         const response = await axios.get(`${whatsappApiURL}/${imageId}`, { headers });
 
-        const data = await axios.get(`${response.data.url}`, { headers: { 'Authorization': `Bearer ${token}` }, responseType: 'arraybuffer' });
+        // Fetch the actual image data as a buffer
+        const data = await axios.get(response.data.url, {
+            headers: { 'Authorization': `Bearer ${token}` },
+            responseType: 'arraybuffer'
+        });
 
         if (response.status !== 200) {
             throw new Error('Failed to fetch image');
         }
 
-        const contentType = data.headers['content-type'] || 'image/jpeg'; // Default if no content type provided
+        const contentType = data.headers['content-type'] || 'image/jpeg'; // Default if no content type is provided
 
-        // Convert the data to base64
-        const base64data = Buffer.from(data.data).toString('base64');
+        // Upload the buffer directly to Supabase storage
+        const { data: uploadData, error } = await supabase.storage
+            .from('media')
+            .upload(randomFileName, data.data, {
+                contentType: contentType,
+                upsert: true
+            });
 
-        // Return the base64 data
-        return 'data:' + contentType + ';base64,' + base64data;
+        if (error) throw error;
+
+        console.log('File uploaded successfully:', uploadData);
+        return `https://yvpvhbgcawvruybkmupv.supabase.co/storage/v1/object/public/media/` + uploadData.path;
     } catch (error) {
-        logError(error as Error, 'Error fetching image with ID: ' + imageId + '\n');
-        throw new Error('Failed to fetch image');
+        console.error('Error fetching or uploading image with ID:', imageId, error);
+        throw new Error('Failed to fetch or upload image');
     }
 }
-
 export { sendMessageWithTemplate, fetchTemplatesService, fetchWABAPhoneNumbersService, fetchWABAsService, fetchImageURL, fetchMedia };
