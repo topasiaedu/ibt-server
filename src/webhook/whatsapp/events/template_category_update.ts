@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import supabase from '../../db/supabaseClient';
+import supabase from '../../../db/supabaseClient';
 
 // Example Response:
 // {

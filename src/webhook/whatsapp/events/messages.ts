@@ -1,11 +1,12 @@
-import supabase from '../../db/supabaseClient';
-import { logError } from '../../utils/errorLogger';
+import supabase from '../../../db/supabaseClient';
+import { logError } from '../../../utils/errorLogger';
 import insertTextMessage from '../helpers/insertTextMessage';
 import insertImageMessage from '../helpers/insertImageMessage';
 import insertVideoMessage from '../helpers/insertVideoMessage';
 import insertButtonMessage from '../helpers/insertButtonMessage';
 import findOrCreateContact from '../helpers/findOrCreateContact';
 import insertStickerMessage from '../helpers/insertStickerMessage';
+import insertAudioMessage from '../helpers/insertAudioMessage';
 
 const handleMessages = async (value: any) => {
   try {
@@ -180,6 +181,9 @@ const handleIncomingMessage = async (value: any) => {
           break;
         case 'sticker':
           await insertStickerMessage(message, display_phone_number, project.project_id);
+          break;
+        case 'audio':
+          await insertAudioMessage(message, display_phone_number, project.project_id);
           break;
         default:
           console.log('Unsupported message type:', type);

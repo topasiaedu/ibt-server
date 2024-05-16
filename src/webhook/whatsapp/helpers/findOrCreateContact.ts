@@ -1,7 +1,7 @@
 
-import supabase from '../../db/supabaseClient';
-import { logError } from '../../utils/errorLogger';
-import { Database } from '../../database.types';
+import supabase from '../../../db/supabaseClient';
+import { logError } from '../../../utils/errorLogger';
+import { Database } from '../../../database.types';
 
 async function findOrCreateContact(contact: any, project_id: string) {
   const { wa_id, profile } = contact;

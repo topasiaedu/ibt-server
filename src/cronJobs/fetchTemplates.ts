@@ -4,7 +4,7 @@ import { logError } from '../utils/errorLogger';
 import { CronJob } from 'cron';
 
 const fetchTemplates = async () => {
-  // console.log('Fetching templates...');
+  console.log('Fetching templates...');
   const wabaIds = await supabase
     .from('whatsapp_business_accounts')
     .select('waba_id, account_id');

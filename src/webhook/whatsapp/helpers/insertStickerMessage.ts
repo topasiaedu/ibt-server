@@ -1,13 +1,12 @@
+import supabase from '../../../db/supabaseClient';
+import { logError } from '../../../utils/errorLogger';
+import { fetchImageURL, fetchMedia } from '../../../api/whatsapp';
 
-import supabase from '../../db/supabaseClient';
-import { logError } from '../../utils/errorLogger';
-import { fetchMedia } from '../../api/whatsapp';
-
-const insertImageMessage = async (message: any, display_phone_number: string, project_id: string) => {
-  console.log('Inserting image message into database'	)
+const insertStickerMessage = async (message: any, display_phone_number: string, project_id: string) => {
   try {
-    const { from, id, timestamp, type, image } = message;
-    const { id: imageId, caption } = image;
+    console.log('Inserting sticker message into database');
+    const { from, id, timestamp, type, sticker } = message;
+    const { id: imageId, caption } = sticker;
 
     // Check if the database has the same wa_message_id
     let { data: existingMessage, error: findError } = await supabase
@@ -57,7 +56,7 @@ const insertImageMessage = async (message: any, display_phone_number: string, pr
     }
 
     // Insert the message into the database
-    let { error: messageError } = await supabase
+    let { data: newMessage, error: messageError } = await supabase
       .from('messages')
       .insert([{
         contact_id: senderId,
@@ -73,7 +72,7 @@ const insertImageMessage = async (message: any, display_phone_number: string, pr
       .single();
 
     if (messageError) {
-      logError(messageError as unknown as Error, 'Error inserting inbound image message into database. Data: ' + JSON.stringify(message, null, 2) + '\n Error: ' + JSON.stringify(messageError, null, 2));
+      logError(messageError as unknown as Error, 'Error inserting inbound image message into database. Data: ' + JSON.stringify(message, null, 2) + '\n Error: ' + messageError);
     }
   } catch (error) {
     logError(error as Error, 'Error inserting inbound text message into database. Data: ' + JSON.stringify(message, null, 2) + '\n Error: ' + error);
@@ -81,4 +80,4 @@ const insertImageMessage = async (message: any, display_phone_number: string, pr
   }
 }
 
-export default insertImageMessage;
+export default insertStickerMessage;

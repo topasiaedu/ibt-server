@@ -4,6 +4,7 @@ import { logError } from "../utils/errorLogger";
 import { CronJob } from "cron";
 
 const fetchWABAPhoneNumbers = async () => {
+  console.log('Fetching WABA phone numbers...');
   const wabaIds = await supabase
     .from('whatsapp_business_accounts')
     .select('account_id, waba_id');
@@ -30,18 +31,13 @@ const fetchWABAPhoneNumbers = async () => {
       }
 
       for (const phoneNumber of phoneNumbers.data) {
-        const { id, verified_name, display_phone_number, quality_rating } = phoneNumber;
+        const { id, verified_name, display_phone_number, quality_rating, throughput } = phoneNumber;
 
         const { data: existingPhoneNumber, error } = await supabase
           .from('phone_numbers')
           .select('wa_id')
           .eq('wa_id', id)
           .single();
-
-        if (error) {
-          logError(error as unknown as Error, 'Error fetching phone number from database. Phone number ID: ' + id + '\n');
-          continue;
-        }
 
         // Format the phone number to remove the +, -, and spaces
         const number = display_phone_number.replace(/[-\s+]/g, '');
@@ -51,7 +47,8 @@ const fetchWABAPhoneNumbers = async () => {
             .update({
               name: verified_name,
               number,
-              quality_rating
+              quality_rating,
+              throughput_level: throughput.level,
             })
             .eq('wa_id', id)
             .single();
@@ -67,6 +64,7 @@ const fetchWABAPhoneNumbers = async () => {
               number,
               quality_rating,
               wa_id: id,
+              throughput_level: throughput.level,
               waba_id: wabaId.account_id
             });
 

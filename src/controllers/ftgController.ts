@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import findOrCreateContact from '../webhook/helpers/findOrCreateContact';
+import findOrCreateContact from '../webhook/whatsapp/helpers/findOrCreateContact';
 import { logError } from '../utils/errorLogger';
 import { TemplateMessagePayload } from '../models/whatsapp/templateTypes';
 import { sendMessageWithTemplate } from '../api/whatsapp';

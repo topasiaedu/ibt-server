@@ -16,7 +16,7 @@ import handlePhoneNumberNameUpdate from './events/phone_number_name_update';
 import handlePhoneNumberQualityUpdate from './events/phone_number_quality_update';
 import handleSecurity from './events/security';
 import handleTemplateCategoryUpdate from './events/template_category_update';
-import { logError } from '../utils/errorLogger';
+import { logError } from '../../utils/errorLogger';
 
 // Example Response:
 // {

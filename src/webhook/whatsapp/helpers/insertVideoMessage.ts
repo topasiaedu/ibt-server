@@ -1,11 +1,11 @@
-import supabase from '../../db/supabaseClient';
-import { logError } from '../../utils/errorLogger';
-import { fetchImageURL } from '../../api/whatsapp';
+import supabase from '../../../db/supabaseClient';
+import { logError } from '../../../utils/errorLogger';
+import { fetchImageURL, fetchMedia } from '../../../api/whatsapp';
 
-const insertStickerMessage = async (message: any, display_phone_number: string, project_id: string) => {
+const insertVideoMessage = async (message: any, display_phone_number: string, project_id: string) => {
   try {
-    const { from, id, timestamp, type, sticker } = message;
-    const { id: imageId, caption } = sticker;
+    const { from, id, timestamp, type, video } = message;
+    const { id: imageId, caption } = video;
 
     // Check if the database has the same wa_message_id
     let { data: existingMessage, error: findError } = await supabase
@@ -45,9 +45,14 @@ const insertStickerMessage = async (message: any, display_phone_number: string, 
 
     const myPhoneNumber = myPhoneNumberId?.data?.phone_number_id;
 
-    // Change timestamp to DateTime format
-    const date = new Date(parseInt(timestamp) * 1000);
-    const formattedDate = date.toISOString();
+    // Generate random file name 
+    const fileName = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+
+    const media = await fetchMedia(imageId, fileName);
+
+    if (!media) {
+      throw new Error('Error fetching media from WhatsApp API');
+    }
 
     // Insert the message into the database
     let { data: newMessage, error: messageError } = await supabase
@@ -59,7 +64,7 @@ const insertStickerMessage = async (message: any, display_phone_number: string, 
         phone_number_id: myPhoneNumber,
         wa_message_id: id,
         direction: 'inbound',
-        media_url: imageId,
+        media_url: media,
         project_id,
         status: 'received',
       }])
@@ -74,4 +79,4 @@ const insertStickerMessage = async (message: any, display_phone_number: string, 
   }
 }
 
-export default insertStickerMessage;
+export default insertVideoMessage;

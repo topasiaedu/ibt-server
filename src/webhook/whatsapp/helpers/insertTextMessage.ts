@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import supabase from '../../db/supabaseClient';
-import { logError } from '../../utils/errorLogger';
+import supabase from '../../../db/supabaseClient';
+import { logError } from '../../../utils/errorLogger';
 
 async function insertTextMessage(message: any, display_phone_number: string, project_id: string) {
   try {

@@ -70,6 +70,7 @@ const fetchWABAsService = async (): Promise<AxiosResponse<any>> => {
         return response;
     } catch (error) {
         logError(error as Error, 'Error fetching WABAs\n');
+        console.error('Error fetching WABAs:', JSON.stringify(error, null, 2));
         throw new Error('Failed to fetch WABAs');
     }
 }
@@ -111,11 +112,22 @@ const fetchMedia = async (imageId: string, randomFileName: string) => {
 
         if (error) throw error;
 
-        console.log('File uploaded successfully:', uploadData);
         return `https://yvpvhbgcawvruybkmupv.supabase.co/storage/v1/object/public/media/` + uploadData.path;
     } catch (error) {
         console.error('Error fetching or uploading image with ID:', imageId, error);
         throw new Error('Failed to fetch or upload image');
     }
 }
-export { sendMessageWithTemplate, fetchTemplatesService, fetchWABAPhoneNumbersService, fetchWABAsService, fetchImageURL, fetchMedia };
+
+const subscribeWebhook = async (WABA_ID: string) => {
+    // https://graph.facebook.com/v19.0/278010752057306/subscribed_apps
+    try {
+        const response = await axios.post(`${whatsappApiURL}/${WABA_ID}/subscribed_apps?access_token=${token}`, {}, { headers });
+        return response;
+    } catch (error) {
+        logError(error as Error, 'Error subscribing webhook with WABA ID: ' + WABA_ID + '\n');
+        throw new Error('Failed to subscribe webhook');
+    }
+}
+
+export { sendMessageWithTemplate, fetchTemplatesService, fetchWABAPhoneNumbersService, fetchWABAsService, fetchImageURL, fetchMedia, subscribeWebhook };

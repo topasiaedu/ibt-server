@@ -2,14 +2,15 @@ import express, { Express, Request, Response } from 'express';
 import cors from 'cors';
 import { loggerMiddleware } from './middleware/logger';
 import { errorHandler } from './middleware/errorHandler';
-import { handleWebhook } from './webhook/webhookHandler';
+import { handleWebhook } from './webhook/whatsapp/webhookHandler';
 import dotenv from 'dotenv';
 dotenv.config();
 import ftgRoutes from './routes/ftgRoutes';
 import { fetchImageURL, fetchMedia } from './api/whatsapp';
+import { setupRealtimeCampaignProcessing } from './webhook/ibt/processCampaigns';
 
 const app: Express = express();
-const port: number = parseInt(process.env.PORT as string, 10) || 8000; // Default to 8080 if environment variable not set
+const port: number = parseInt(process.env.PORT as string, 10) || 8080; // Default to 8080 if environment variable not set
 
 // Middleware
 app.use(cors()); // Enable CORS for all requests
@@ -48,15 +49,14 @@ app.listen(port, () => {
 
 // Cron jobs
 // Import and start your cron jobs here
-import { campaignJob } from './cronJobs/processCampaigns';
 import { fetchWABAsJob } from './cronJobs/fetchWABAs';
 import { fetchTemplatesJob } from './cronJobs/fetchTemplates';
 import { fetchWABAPhoneNumbersJob } from './cronJobs/fetchWABAPhoneNumbers';
 import axios from 'axios';
 
-campaignJob.start();
-// fetchWABAsJob.start();
+// campaignJob.start();
+fetchWABAsJob.start();
 fetchTemplatesJob.start();
-// fetchWABAPhoneNumbersJob.start();
+fetchWABAPhoneNumbersJob.start();
 
 

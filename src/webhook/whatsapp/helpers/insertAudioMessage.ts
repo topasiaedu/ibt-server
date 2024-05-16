@@ -1,11 +1,15 @@
-import supabase from '../../db/supabaseClient';
-import { logError } from '../../utils/errorLogger';
-import { fetchImageURL, fetchMedia } from '../../api/whatsapp';
 
-const insertVideoMessage = async (message: any, display_phone_number: string, project_id: string) => {
+import supabase from '../../../db/supabaseClient';
+import { logError } from '../../../utils/errorLogger';
+import { fetchMedia } from '../../../api/whatsapp';
+
+const insertAudioMessage = async (message: any, display_phone_number: string, project_id: string) => {
+  console.log('Inserting audio message into database')
   try {
-    const { from, id, timestamp, type, video } = message;
-    const { id: imageId, caption } = video;
+    const { from, id, timestamp, type, audio } = message;
+    const { id: audioId, caption } = audio;
+
+    console.log("message", message)
 
     // Check if the database has the same wa_message_id
     let { data: existingMessage, error: findError } = await supabase
@@ -41,21 +45,23 @@ const insertVideoMessage = async (message: any, display_phone_number: string, pr
       .from('phone_numbers')
       .select('phone_number_id')
       .eq('number', display_phone_number)
+      .neq('quality_rating', 'UNKNOWN')
       .single();
 
     const myPhoneNumber = myPhoneNumberId?.data?.phone_number_id;
-
+    console.log("myPhoneNumber", myPhoneNumber)
+    console.log("display_phone_number", display_phone_number)
     // Generate random file name 
     const fileName = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
 
-    const media = await fetchMedia(imageId, fileName);
+    const media = await fetchMedia(audioId, fileName);
 
     if (!media) {
       throw new Error('Error fetching media from WhatsApp API');
     }
 
     // Insert the message into the database
-    let { data: newMessage, error: messageError } = await supabase
+    let { error: messageError } = await supabase
       .from('messages')
       .insert([{
         contact_id: senderId,
@@ -71,7 +77,7 @@ const insertVideoMessage = async (message: any, display_phone_number: string, pr
       .single();
 
     if (messageError) {
-      logError(messageError as unknown as Error, 'Error inserting inbound image message into database. Data: ' + JSON.stringify(message, null, 2) + '\n Error: ' + messageError);
+      logError(messageError as unknown as Error, 'Error inserting inbound audio message into database. Data: ' + JSON.stringify(message, null, 2) + '\n Error: ' + JSON.stringify(messageError, null, 2));
     }
   } catch (error) {
     logError(error as Error, 'Error inserting inbound text message into database. Data: ' + JSON.stringify(message, null, 2) + '\n Error: ' + error);
@@ -79,4 +85,4 @@ const insertVideoMessage = async (message: any, display_phone_number: string, pr
   }
 }
 
-export default insertVideoMessage;
+export default insertAudioMessage;
