@@ -9,6 +9,7 @@ import insertStickerMessage from '../helpers/insertStickerMessage';
 import insertAudioMessage from '../helpers/insertAudioMessage';
 
 const handleMessages = async (value: any) => {
+  console.log('Message:', JSON.stringify(value, null, 2));
   try {
     // Check if its Outgoing or Incoming message
     if (value?.statuses) {
@@ -28,37 +29,17 @@ const handleOutgoingMessage = async (value: any) => {
     const { statuses } = value
 
     statuses.forEach(async (status: any) => {
+      // Update the message status in the database using id
+      let { error: updateError } = await supabase
+        .from('messages')
+        .update({ status: status.status })
+        .eq('wa_message_id', status.id)
+
+      if (updateError) {
+        logError(updateError as unknown as Error, 'Error updating outgoing message status in database. Data: ' + JSON.stringify(value, null, 2) + '\n Error: ' + JSON.stringify(updateError, null, 2));
+      }
+
       if (status.conversation) {
-
-        if (status.status === 'sent') { status.status = 'READ' }
-        // Update the message status in the database using id
-        let { error: updateError } = await supabase
-          .from('messages')
-          .update({ status: status.status })
-          .eq('wa_message_id', status.id)
-
-        if (updateError) {
-          logError(updateError as unknown as Error, 'Error updating outgoing message status in database. Data: ' + JSON.stringify(value, null, 2) + '\n Error: ' + JSON.stringify(updateError, null, 2));
-        }
-
-        // {
-        //   "id": "wamid.HBgLNjAxMzc1NjE1MDAVAgARGBJEQzM2RUEyODRDMzRFODYzODUA",   
-        //   "status": "sent",
-        //   "timestamp": "1714985417",
-        //   "recipient_id": "60137561500",
-        //   "conversation": {
-        //     "id": "d882a52951dbc2a52d89e2d4a80ac9eb",
-        //     "expiration_timestamp": "1715071860",
-        //     "origin": {
-        //       "type": "marketing"
-        //     }
-        //   },
-        //   "pricing": {
-        //     "billable": true,
-        //     "pricing_model": "CBP",
-        //     "category": "marketing"
-        //   }
-        // }
         if (status.conversation.expiration_timestamp) {
           let { data: existingMessageWindow, error: findError } = await supabase
             .from('message_window')
@@ -95,18 +76,18 @@ const handleOutgoingMessage = async (value: any) => {
               }]);
           }
         }
+      }
 
-        // Check the database if message_window exists by using the conversation_id
-        // let { data: existingMessageWindow, error: findError } = await supabase
-        //   .from('message_window')
-        //   .select('conversation_id')
-        //   .eq('conversation_id', status.conversation.id)
-        //   .single();
+      if (status.errors) {
+        // Update the message status in the database using id
+        let { error: updateError } = await supabase
+          .from('messages')
+          .update({ status: 'failed', error: status.errors[0] })
+          .eq('wa_message_id', status.id)
 
-        // if (existingMessageWindow?.conversation_id === status.conversation.id) {
-        //   return 'Message already exists in the database';
-        // }      
-
+        if (updateError) {
+          logError(updateError as unknown as Error, 'Error updating outgoing message status in database. Data: ' + JSON.stringify(value, null, 2) + '\n Error: ' + JSON.stringify(updateError, null, 2));
+        }
       }
     });
   } catch (error) {

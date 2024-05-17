@@ -55,8 +55,8 @@ import { fetchWABAPhoneNumbersJob } from './cronJobs/fetchWABAPhoneNumbers';
 import axios from 'axios';
 
 // campaignJob.start();
-fetchWABAsJob.start();
-fetchTemplatesJob.start();
-fetchWABAPhoneNumbersJob.start();
+// fetchWABAsJob.start();
+// fetchTemplatesJob.start();
+// fetchWABAPhoneNumbersJob.start();
 
 
