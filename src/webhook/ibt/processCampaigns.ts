@@ -4,6 +4,20 @@ import { sendMessageWithTemplate } from '../../api/whatsapp';
 import { logError } from '../../utils/errorLogger';
 import { CronJob } from 'cron';
 import { Database } from '../../database.types';
+import Queue from 'bull';
+import redis from 'redis';
+
+const campaignQueue = new Queue('campaigns', {
+  redis: {
+    host: 'localhost',
+    port: 6379,
+  },
+});
+
+campaignQueue.process(async (job) => {
+  const campaign = job.data as Campaign;
+  await processCampaigns(campaign);
+});
 
 export type Campaign = Database['public']['Tables']['campaigns']['Row'] & { read_count: number };
 
@@ -193,9 +207,8 @@ export function setupRealtimeCampaignProcessing() {
   const subscription = supabase
     .channel('campaigns')
     .on('postgres_changes', { event: '*', schema: 'public', table: 'campaigns' }, payload => {
-      if ((payload.new as any).status === 'PENDING') {
-        processCampaigns(payload.new as Campaign);
-      }
+      const campaign = payload.new as Campaign;
+      scheduleCampaign(campaign);
     })
 
     .subscribe();
@@ -203,4 +216,30 @@ export function setupRealtimeCampaignProcessing() {
   return () => {
     subscription.unsubscribe();
   };
+}
+
+function scheduleCampaign(campaign: Campaign) {
+  const delay = new Date(campaign.post_time).getTime() - Date.now();
+  if (delay < 0) {
+    campaignQueue.add(campaign);
+  } else {
+    setTimeout(() => {
+      campaignQueue.add(campaign);
+    }, delay);
+  }
+}
+
+export const reschedulePendingCampaigns = async () => {
+  const { data: campaigns } = await supabase
+    .from('campaigns')
+    .select('*')
+    .eq('status', 'PENDING');
+
+  if (!campaigns) {
+    return;
+  }
+
+  campaigns.forEach((campaign) => {
+    campaignQueue.add(campaign);
+  });
 }
