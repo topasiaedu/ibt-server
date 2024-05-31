@@ -12,6 +12,27 @@ const headers = {
     'Authorization': `Bearer ${token}`
 };
 
+// {
+// 	"messaging_product": "whatsapp",
+// 	"recipient_type": "individual",
+// 	"to": "60139968817",
+// 	"type": "text",
+// 	"text": {
+// 		"body": "755825213338648"
+// 	}
+// }
+
+export type MessagePayload = {
+    messaging_product: string;
+    recipient_type: string;
+    to: string;
+    type: string;
+    text: {
+        body: string;
+    }
+}
+
+
 /**
  * Send a message using a predefined template.
  * @param payload TemplateMessage - The message payload conforming to the TemplateMessage interface.
@@ -41,6 +62,16 @@ const sendMessageWithTemplate = async (payload: TemplateMessagePayload, phone_nu
     } catch (error) {
         logError(error as Error, 'Error sending message with template. Payload: ' + JSON.stringify(payload, null, 2) + '\n');
         throw new Error('Failed to send message with template');
+    }
+};
+
+const sendMessage = async (payload: MessagePayload, phone_number_id: string): Promise<AxiosResponse<any>> => {
+    try {
+        const response = await axios.post(`${whatsappApiURL}/${phone_number_id}/messages`, payload, { headers });
+        return response;
+    } catch (error) {
+        logError(error as Error, 'Error sending message. Payload: ' + JSON.stringify(payload, null, 2) + '\n');
+        throw new Error('Failed to send message');
     }
 };
 
@@ -130,4 +161,4 @@ const subscribeWebhook = async (WABA_ID: string) => {
     }
 }
 
-export { sendMessageWithTemplate, fetchTemplatesService, fetchWABAPhoneNumbersService, fetchWABAsService, fetchImageURL, fetchMedia, subscribeWebhook };
+export { sendMessageWithTemplate, fetchTemplatesService, fetchWABAPhoneNumbersService, fetchWABAsService, fetchImageURL, fetchMedia, subscribeWebhook, sendMessage };

@@ -4,8 +4,6 @@ import { sendMessageWithTemplate } from '../../api/whatsapp';
 import { logError } from '../../utils/errorLogger';
 import { CronJob } from 'cron';
 import { Database } from '../../database.types';
-import Queue from 'bull';
-import redis from 'redis';
 
 const campaignQueue: Campaign[] = [];
 
@@ -48,7 +46,7 @@ const processCampaigns = async (campaign: Campaign) => {
   // Fetch contact list members by using campaign id -> contact_list_id -> contact_list_members
   const { data: contactListMembers, error: contactListMembersError } = await supabase
     .from('contact_list_members')
-    .select('*')
+    .select('*, contacts(*)')
     .eq('contact_list_id', campaign.contact_list_id);
 
   if (contactListMembersError) {
@@ -59,7 +57,7 @@ const processCampaigns = async (campaign: Campaign) => {
   // Fetch new phone numbers by using campaign id in campaign_phone_numbers
   const { data: newPhoneNumbers, error: newPhoneNumbersError } = await supabase
     .from('campaign_phone_numbers')
-    .select('*')
+    .select('*, phone_numbers(*)')
     .eq('campaign_id', campaign.campaign_id);
 
   if (newPhoneNumbersError) {
@@ -120,8 +118,8 @@ const processCampaigns = async (campaign: Campaign) => {
 
     // Create a weighted list of phone numbers
     const weightedPhoneNumbers = newPhoneNumbers.flatMap((phone: any) => {
-      const weight = getWeightForRating(phone.quality_rating);
-      return Array(weight).fill(phone.wa_id); // Fill an array with the wa_id repeated by its weight
+      const weight = getWeightForRating(phone.phone_numbers.quality_rating);
+      return Array(weight).fill(phone.phone_numbers.wa_id); // Fill an array with the wa_id repeated by its weight
     });
 
     // Random selection from the weighted list
@@ -165,7 +163,7 @@ const processCampaigns = async (campaign: Campaign) => {
         .insert([{
           wa_message_id: messageResponse.messages[0].id,
           campaign_id: campaign.campaign_id,
-          phone_number_id: newPhoneNumbers.find((phone: any) => phone.wa_id === selectedPhoneNumber).phone_number_id,
+          phone_number_id: newPhoneNumbers.find((phone: any) => phone.wa_id === selectedPhoneNumber).phone_numbers.phone_number_id,
           contact_id: contact_list_member.contacts.contact_id,
           message_type: 'TEMPLATE',
           content: textContent,
@@ -177,8 +175,18 @@ const processCampaigns = async (campaign: Campaign) => {
       // Update last_contacted_by for the contact using the phone_number_id
       const { data: updatedContact, error: updateContactError } = await supabase
         .from('contacts')
-        .update({ last_contacted_by: (newPhoneNumbers as any).phone_number_id })
+        .update({ last_contacted_by: newPhoneNumbers.find((phone: any) => phone.wa_id === selectedPhoneNumber).phone_numbers.phone_number_id })
         .eq('wa_id', selectedPhoneNumber);
+
+      if (updateContactError) {
+        logError(updateContactError as unknown as Error, 'Error updating contact last_contacted_by');
+      }
+
+      // Update the status to COMPLETED
+      const { data: updatedCampaign, error: updateCampaignError } = await supabase
+        .from('campaigns')
+        .update({ status: 'COMPLETED' })
+        .eq('campaign_id', campaign.campaign_id);
 
     } catch (error) {
       console.error('Error sending message:', error);
@@ -234,7 +242,8 @@ export const reschedulePendingCampaigns = async () => {
   const { data: campaigns, error } = await supabase
     .from('campaigns')
     .select('*')
-    .eq('status', 'PENDING');
+    // Check for both PENDING and PROCESSING statuses
+    .in('status', ['PENDING', 'PROCESSING']);
 
   if (error) {
     logError(error as unknown as Error, 'Error fetching pending campaigns');
@@ -248,7 +257,6 @@ export const reschedulePendingCampaigns = async () => {
 
   campaigns.forEach((campaign) => {
     campaignQueue.push(campaign);
-    console.log('Rescheduled campaign', campaign);
   });
 
   processQueue();

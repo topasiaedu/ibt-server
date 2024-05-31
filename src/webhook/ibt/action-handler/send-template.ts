@@ -7,7 +7,6 @@ import { sendMessageWithTemplate } from "../../../api/whatsapp";
 type Contact = Database['public']['Tables']['contacts']['Row'];
 
 export const sendTemplate = async (payload: any, workflowLogId: string) => {
-
   const { workflow_id, contact_id, template_payload, selected_template } = payload;
   // Fetch new phone numbers by using campaign id in campaign_phone_numbers
   const { data: newPhoneNumbers, error: newPhoneNumbersError } = await supabase
@@ -19,8 +18,6 @@ export const sendTemplate = async (payload: any, workflowLogId: string) => {
     logError(newPhoneNumbersError as unknown as Error, 'Error fetching new phone numbers');
     return;
   }
-
-  console.log('newPhoneNumbers', newPhoneNumbers);
 
   // Fetch Contact
   const { data: contactData, error: contactError } = await supabase
@@ -34,7 +31,6 @@ export const sendTemplate = async (payload: any, workflowLogId: string) => {
   }
 
   const contact = contactData;
-  console.log('contact', contact);
   // Check wa_id if it starts with 60 for malaysian numbers
   // If not, add the missing parts it could start with 0 or 1
   if (contact.wa_id.startsWith('60')) {
@@ -94,13 +90,9 @@ export const sendTemplate = async (payload: any, workflowLogId: string) => {
   // Random selection from the weighted list
   const randomIndex = Math.floor(Math.random() * weightedPhoneNumbers.length);
   const selectedPhoneNumber = weightedPhoneNumbers[randomIndex];
-  console.log('selectedPhoneNumber', selectedPhoneNumber);
-  try {
-    console.log('Sending message with template:', templatePayload);
-    console.log('To:', selectedPhoneNumber);
-    const { data: messageResponse } = await sendMessageWithTemplate(templatePayload, selectedPhoneNumber);
-    console.log('Message sent:', messageResponse);
 
+  try {
+    const { data: messageResponse } = await sendMessageWithTemplate(templatePayload, selectedPhoneNumber);
     // Lookup template to get the text and the image if any
     const { data: template, error: templateError } = await supabase
       .from('templates')
@@ -113,7 +105,7 @@ export const sendTemplate = async (payload: any, workflowLogId: string) => {
         return component.text;
       }
     }).join(' ');
-
+ 
     if (textContent) {
 
       const textComponent = templatePayload?.template.components.find((component: { type: string; }) => component.type === 'BODY');

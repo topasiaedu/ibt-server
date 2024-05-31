@@ -7,9 +7,13 @@ import insertButtonMessage from '../helpers/insertButtonMessage';
 import findOrCreateContact from '../helpers/findOrCreateContact';
 import insertStickerMessage from '../helpers/insertStickerMessage';
 import insertAudioMessage from '../helpers/insertAudioMessage';
+import { generateWorkflowLog } from '../../ibt/helper/generateWorkflowLogs';
+import { Database } from '../../../database.types';
+
+type Contact = Database['public']['Tables']['contacts']['Row']
 
 const handleMessages = async (value: any) => {
-  console.log('Message:', JSON.stringify(value, null, 2));
+  // console.log('Message:', JSON.stringify(value, null, 2));
   try {
     // Check if its Outgoing or Incoming message
     if (value?.statuses) {
@@ -98,7 +102,7 @@ const handleOutgoingMessage = async (value: any) => {
 
 
 const handleIncomingMessage = async (value: any) => {
-  // console.log('Incoming message:', JSON.stringify(value, null, 2));
+  console.log('Incoming message:', JSON.stringify(value, null, 2));
   try {
     // Assuming the structure of the incoming payload matches your example
     const { metadata, contacts, messages } = value;
@@ -149,6 +153,7 @@ const handleIncomingMessage = async (value: any) => {
 
       switch (type) {
         case 'text':
+          handleKeywordTrigger(value);
           await insertTextMessage(message, display_phone_number, project.project_id);
           break;
         case 'image':
@@ -169,7 +174,6 @@ const handleIncomingMessage = async (value: any) => {
         default:
           console.log('Unsupported message type:', type);
       }
-
     });
 
     return 'Messages processed successfully';
@@ -181,3 +185,83 @@ const handleIncomingMessage = async (value: any) => {
 
 
 export default handleMessages;
+
+
+
+const handleKeywordTrigger = async (value: any) => {
+  const { metadata, contacts, messages } = value;
+  const { display_phone_number, phone_number_id } = metadata;
+  const { wa_id, profile } = contacts[0];
+  const { name } = profile;
+
+  const { data, error } = await supabase.rpc('get_triggers_with_details');
+
+  if (error) {
+    logError(error as unknown as Error, 'Error fetching triggers');
+    return;
+  }
+
+  data.forEach(async (trigger: any) => {
+    if (trigger.trigger.type === 'keyword') {
+      const { keywords } = trigger.trigger.details;
+      const { phone_numbers } = trigger;
+
+      phone_numbers.forEach(async (phone: any) => {
+        if (phone.wa_id === phone_number_id) {
+          messages.forEach(async (message: any) => {
+            const { text } = message;
+            const { body } = text;
+            if (keywords.includes(body)) {
+              // Check if the contact exists in the database
+              const { data: contact, error: contactError } = await supabase
+                .from('contacts')
+                .select('*')
+                .eq('wa_id', wa_id)
+                .eq('project_id', trigger.trigger.project_id)
+                .single();
+
+              if (contactError) {
+                // Create a new contact if it does not exist
+                const { data: newContact, error: newContactError } = await supabase
+                  .from('contacts') 
+                  .insert([
+                    {
+                      wa_id: wa_id,
+                      name: name,
+                      project_id: trigger.trigger.project_id,
+                    }
+                  ]).select('*').single();
+
+                if (newContactError) {
+                  logError(newContactError as unknown as Error, 'Error creating new contact');
+                  return;
+                }
+
+                if (newContact) {
+                  trigger.actions.forEach(async (action: any) => {
+                    generateWorkflowLog(action, newContact as unknown as Contact);
+                  });
+                }
+              }
+
+              if (contact) {
+                trigger.actions.forEach(async (action: any) => {
+                  generateWorkflowLog(action, contact as Contact);
+                });
+              }
+            }
+          });
+        }
+      });
+    }
+  }
+  )
+}
+
+
+
+
+
+
+
+
