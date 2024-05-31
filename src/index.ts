@@ -7,7 +7,9 @@ import dotenv from 'dotenv';
 dotenv.config();
 import ftgRoutes from './routes/ftgRoutes';
 import { fetchImageURL, fetchMedia } from './api/whatsapp';
-import { setupRealtimeCampaignProcessing } from './webhook/ibt/processCampaigns';
+import { setupRealtimeCampaignProcessing, reschedulePendingCampaigns } from './webhook/ibt/processCampaigns';
+import { setupRealtimeWorkflowLogProcessing, reschedulePendingWorkflowLogs } from './webhook/ibt/processWorkflow';
+import { handleIBTWebhook } from './webhook/ibt/processIBTWebhook';
 
 const app: Express = express();
 const port: number = parseInt(process.env.PORT as string, 10) || 8080; // Default to 8080 if environment variable not set
@@ -16,6 +18,10 @@ const port: number = parseInt(process.env.PORT as string, 10) || 8080; // Defaul
 app.use(cors()); // Enable CORS for all requests
 app.use(express.json()); // Parse JSON bodies
 app.use(loggerMiddleware); // Use the logger middleware for all requests
+
+// Setup realtime processing
+setupRealtimeCampaignProcessing();
+setupRealtimeWorkflowLogProcessing();
 
 // Routes setup
 app.get('/', (req: Request, res: Response) => {
@@ -39,12 +45,16 @@ app.post('/webhook', handleWebhook);
 
 app.use('/ftg', ftgRoutes);
 
+app.post('/ibt/webhook/:id', handleIBTWebhook);
+
 // The error handler must be the last piece of middleware added to the app
 app.use(errorHandler);
 
 // Start the Express server
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
+  reschedulePendingCampaigns();
+  reschedulePendingWorkflowLogs();
 });
 
 // Cron jobs
@@ -52,7 +62,6 @@ app.listen(port, () => {
 import { fetchWABAsJob } from './cronJobs/fetchWABAs';
 import { fetchTemplatesJob } from './cronJobs/fetchTemplates';
 import { fetchWABAPhoneNumbersJob } from './cronJobs/fetchWABAPhoneNumbers';
-import axios from 'axios';
 
 // campaignJob.start();
 // fetchWABAsJob.start();

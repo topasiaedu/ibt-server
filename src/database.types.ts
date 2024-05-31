@@ -9,6 +9,54 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      actions: {
+        Row: {
+          created_at: string
+          details: Json | null
+          execution_order: number
+          id: string
+          project_id: number
+          type: string
+          updated_at: string
+          workflow_id: string
+        }
+        Insert: {
+          created_at?: string
+          details?: Json | null
+          execution_order: number
+          id: string
+          project_id: number
+          type: string
+          updated_at?: string
+          workflow_id: string
+        }
+        Update: {
+          created_at?: string
+          details?: Json | null
+          execution_order?: number
+          id?: string
+          project_id?: number
+          type?: string
+          updated_at?: string
+          workflow_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "actions_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "project"
+            referencedColumns: ["project_id"]
+          },
+          {
+            foreignKeyName: "actions_workflow_id_fkey"
+            columns: ["workflow_id"]
+            isOneToOne: false
+            referencedRelation: "workflows"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       campaign_contacts: {
         Row: {
           campaign_id: number
@@ -42,42 +90,6 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "contacts"
             referencedColumns: ["contact_id"]
-          },
-        ]
-      }
-      campaign_phone_number: {
-        Row: {
-          campaign_id: number | null
-          created_at: string
-          id: number
-          phone_number_id: number | null
-        }
-        Insert: {
-          campaign_id?: number | null
-          created_at?: string
-          id?: number
-          phone_number_id?: number | null
-        }
-        Update: {
-          campaign_id?: number | null
-          created_at?: string
-          id?: number
-          phone_number_id?: number | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "public_campaign_phone_number_campaign_id_fkey"
-            columns: ["campaign_id"]
-            isOneToOne: false
-            referencedRelation: "campaigns"
-            referencedColumns: ["campaign_id"]
-          },
-          {
-            foreignKeyName: "public_campaign_phone_number_phone_number_id_fkey"
-            columns: ["phone_number_id"]
-            isOneToOne: false
-            referencedRelation: "phone_numbers"
-            referencedColumns: ["phone_number_id"]
           },
         ]
       }
@@ -317,6 +329,33 @@ export type Database = {
           },
         ]
       }
+      events: {
+        Row: {
+          created_at: string
+          id: string
+          payload: Json
+          processed: boolean
+          type: string
+          udpated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          payload: Json
+          processed?: boolean
+          type: string
+          udpated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          payload?: Json
+          processed?: boolean
+          type?: string
+          udpated_at?: string
+        }
+        Relationships: []
+      }
       message_window: {
         Row: {
           close_at: string | null
@@ -369,6 +408,7 @@ export type Database = {
           content: string | null
           created_at: string | null
           direction: string | null
+          errors: Json | null
           media_url: string | null
           message_id: number
           message_type: string
@@ -383,6 +423,7 @@ export type Database = {
           content?: string | null
           created_at?: string | null
           direction?: string | null
+          errors?: Json | null
           media_url?: string | null
           message_id?: number
           message_type: string
@@ -397,6 +438,7 @@ export type Database = {
           content?: string | null
           created_at?: string | null
           direction?: string | null
+          errors?: Json | null
           media_url?: string | null
           message_id?: number
           message_type?: string
@@ -443,6 +485,7 @@ export type Database = {
           number: string
           phone_number_id: number
           quality_rating: string | null
+          throughput_level: string | null
           wa_id: string | null
           waba_id: number | null
         }
@@ -452,6 +495,7 @@ export type Database = {
           number: string
           phone_number_id?: number
           quality_rating?: string | null
+          throughput_level?: string | null
           wa_id?: string | null
           waba_id?: number | null
         }
@@ -461,6 +505,7 @@ export type Database = {
           number?: string
           phone_number_id?: number
           quality_rating?: string | null
+          throughput_level?: string | null
           wa_id?: string | null
           waba_id?: number | null
         }
@@ -581,6 +626,51 @@ export type Database = {
           },
         ]
       }
+      triggers: {
+        Row: {
+          created_at: string | null
+          details: Json | null
+          id: string
+          project_id: number | null
+          type: string
+          updated_at: string | null
+          workflow_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          details?: Json | null
+          id: string
+          project_id?: number | null
+          type: string
+          updated_at?: string | null
+          workflow_id: string
+        }
+        Update: {
+          created_at?: string | null
+          details?: Json | null
+          id?: string
+          project_id?: number | null
+          type?: string
+          updated_at?: string | null
+          workflow_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "triggers_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "project"
+            referencedColumns: ["project_id"]
+          },
+          {
+            foreignKeyName: "triggers_workflow_id_fkey"
+            columns: ["workflow_id"]
+            isOneToOne: false
+            referencedRelation: "workflows"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       whatsapp_business_accounts: {
         Row: {
           account_id: number
@@ -625,70 +715,118 @@ export type Database = {
           },
         ]
       }
-      workflow_steps: {
+      workflow_logs: {
         Row: {
-          sequence: number
-          step_data: string | null
-          step_id: number
-          step_type: string
-          workflow_id: number | null
+          action_id: string
+          action_time: string
+          created_at: string
+          id: string
+          payload: Json
+          status: string
+          type: string | null
         }
         Insert: {
-          sequence: number
-          step_data?: string | null
-          step_id?: number
-          step_type: string
-          workflow_id?: number | null
+          action_id: string
+          action_time: string
+          created_at?: string
+          id?: string
+          payload: Json
+          status?: string
+          type?: string | null
         }
         Update: {
-          sequence?: number
-          step_data?: string | null
-          step_id?: number
-          step_type?: string
-          workflow_id?: number | null
+          action_id?: string
+          action_time?: string
+          created_at?: string
+          id?: string
+          payload?: Json
+          status?: string
+          type?: string | null
         }
         Relationships: [
           {
-            foreignKeyName: "workflow_steps_workflow_id_fkey"
+            foreignKeyName: "workflow_logs_action_id_fkey"
+            columns: ["action_id"]
+            isOneToOne: false
+            referencedRelation: "actions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      workflow_phone_numbers: {
+        Row: {
+          created_at: string
+          id: string
+          phone_number_id: number
+          workflow_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          phone_number_id: number
+          workflow_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          phone_number_id?: number
+          workflow_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "workflow_phone_number_phone_number_id_fkey"
+            columns: ["phone_number_id"]
+            isOneToOne: false
+            referencedRelation: "phone_numbers"
+            referencedColumns: ["phone_number_id"]
+          },
+          {
+            foreignKeyName: "workflow_phone_number_workflow_id_fkey"
             columns: ["workflow_id"]
             isOneToOne: false
             referencedRelation: "workflows"
-            referencedColumns: ["workflow_id"]
+            referencedColumns: ["id"]
           },
         ]
       }
       workflows: {
         Row: {
-          created_at: string | null
+          canvas_state: Json | null
+          created_at: string
           description: string | null
-          is_active: boolean | null
+          id: string
           name: string
-          user_id: string | null
-          workflow_id: number
+          project_id: number
+          run: boolean
+          updated_at: string
         }
         Insert: {
-          created_at?: string | null
+          canvas_state?: Json | null
+          created_at?: string
           description?: string | null
-          is_active?: boolean | null
+          id?: string
           name: string
-          user_id?: string | null
-          workflow_id?: number
+          project_id: number
+          run?: boolean
+          updated_at?: string
         }
         Update: {
-          created_at?: string | null
+          canvas_state?: Json | null
+          created_at?: string
           description?: string | null
-          is_active?: boolean | null
+          id?: string
           name?: string
-          user_id?: string | null
-          workflow_id?: number
+          project_id?: number
+          run?: boolean
+          updated_at?: string
         }
         Relationships: [
           {
-            foreignKeyName: "workflows_user_id_fkey"
-            columns: ["user_id"]
+            foreignKeyName: "workflows_project_id_fkey"
+            columns: ["project_id"]
             isOneToOne: false
-            referencedRelation: "users"
-            referencedColumns: ["id"]
+            referencedRelation: "project"
+            referencedColumns: ["project_id"]
           },
         ]
       }
@@ -702,6 +840,24 @@ export type Database = {
           contact_id: number
         }
         Returns: number
+      }
+      fetch_campaigns: {
+        Args: {
+          project_id_param: number
+        }
+        Returns: {
+          campaign_id: number
+          project_id: number
+          name: string
+          created_at: string
+          read_count: number
+          status: string
+          template_id: number
+          contact_list_id: number
+          post_time: string
+          sent: number
+          failed: number
+        }[]
       }
       fetch_conversations: {
         Args: {

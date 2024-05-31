@@ -7,17 +7,18 @@ import { Database } from '../../database.types';
 import Queue from 'bull';
 import redis from 'redis';
 
-const campaignQueue = new Queue('campaigns', {
-  redis: {
-    host: 'localhost',
-    port: 6379,
-  },
-});
+const campaignQueue: Campaign[] = [];
 
-campaignQueue.process(async (job) => {
-  const campaign = job.data as Campaign;
-  await processCampaigns(campaign);
-});
+function processQueue() {
+  if (campaignQueue.length === 0) {
+    return;
+  }
+  const campaign = campaignQueue.shift() as Campaign;
+  processCampaigns(campaign)
+    .catch(error => logError(error as Error, 'Error processing campaign'))
+    .finally(() => processQueue());
+}
+
 
 export type Campaign = Database['public']['Tables']['campaigns']['Row'] & { read_count: number };
 
@@ -202,7 +203,6 @@ const processCampaigns = async (campaign: Campaign) => {
   }
 }
 
-
 export function setupRealtimeCampaignProcessing() {
   const subscription = supabase
     .channel('campaigns')
@@ -210,7 +210,6 @@ export function setupRealtimeCampaignProcessing() {
       const campaign = payload.new as Campaign;
       scheduleCampaign(campaign);
     })
-
     .subscribe();
 
   return () => {
@@ -221,25 +220,36 @@ export function setupRealtimeCampaignProcessing() {
 function scheduleCampaign(campaign: Campaign) {
   const delay = new Date(campaign.post_time).getTime() - Date.now();
   if (delay < 0) {
-    campaignQueue.add(campaign);
+    campaignQueue.push(campaign);
+    processQueue();
   } else {
     setTimeout(() => {
-      campaignQueue.add(campaign);
+      campaignQueue.push(campaign);
+      processQueue();
     }, delay);
   }
 }
 
 export const reschedulePendingCampaigns = async () => {
-  const { data: campaigns } = await supabase
+  const { data: campaigns, error } = await supabase
     .from('campaigns')
     .select('*')
     .eq('status', 'PENDING');
 
+  if (error) {
+    logError(error as unknown as Error, 'Error fetching pending campaigns');
+    return;
+  }
+
   if (!campaigns) {
+    console.log('No pending campaigns found');
     return;
   }
 
   campaigns.forEach((campaign) => {
-    campaignQueue.add(campaign);
+    campaignQueue.push(campaign);
+    console.log('Rescheduled campaign', campaign);
   });
-}
+
+  processQueue();
+};
