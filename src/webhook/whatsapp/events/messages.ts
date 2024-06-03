@@ -17,7 +17,7 @@ const handleMessages = async (value: any) => {
   try {
     // Check if its Outgoing or Incoming message
     if (value?.statuses) {
-      return handleOutgoingMessage(value);
+      return handleOutgoingMessage(value);   
     } else {
       return handleIncomingMessage(value);
     }
@@ -95,7 +95,7 @@ const handleOutgoingMessage = async (value: any) => {
       }
     });
   } catch (error) {
-    logError(error as Error, 'Error processing outgoing messages. Data: ' + JSON.stringify(value, null, 2) + '\n Error: ' + error);
+    logError(error as Error, 'Error processing outgoing messages. Data: ' + JSON.stringify(value, null, 2) + '\n Error: ' + JSON.stringify(error, null, 2));
     return 'Error processing messages';
   }
 }
@@ -178,7 +178,7 @@ const handleIncomingMessage = async (value: any) => {
 
     return 'Messages processed successfully';
   } catch (error) {
-    logError(error as Error, 'Error processing inbound messages. Data: ' + JSON.stringify(value, null, 2) + '\n Error: ' + error);
+    logError(error as Error, 'Error processing inbound messages. Data: ' + JSON.stringify(value, null, 2) + '\n Error: ' + JSON.stringify(error, null, 2));
     return 'Error processing messages';
   }
 }

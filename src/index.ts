@@ -67,6 +67,11 @@ app.use('/ftg', ftgRoutes)
 
 app.post('/ibt/webhook/:id', handleIBTWebhook)
 
+app.post('/update-tunnel-url', (req, res) => {
+  tunnelURl = req.body.tunnelURl
+  res.json({ message: 'Tunnel URL updated' })
+})
+
 // The error handler must be the last piece of middleware added to the app
 app.use(errorHandler)
 
@@ -84,6 +89,17 @@ app.listen(port, () => {
       }
 
       console.log(`Local tunnel running on ${tunnel?.url}`);
+      
+      // Send post request to live server ( ibts.whatsgenie.com ) to update the tunnel URL
+      axios.post('https://ibts.whatsgenie.com/update-tunnel-url', {
+        tunnelURl: tunnel?.url
+      })
+        .then(response => {
+          console.log('Tunnel URL updated on live server')
+        })
+        .catch(error => {
+          console.error('Error updating tunnel URL on live server')
+        })
     });
 
     tunnel?.on('close', () => {
@@ -109,7 +125,7 @@ app.listen(port, () => {
 
   process.on('SIGTERM', shutdown);
   process.on('SIGINT', shutdown);
-});
+}); 
 
 // Cron jobs
 // Import and start your cron jobs here
