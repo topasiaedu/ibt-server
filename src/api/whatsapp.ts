@@ -47,7 +47,7 @@ const sendMessageWithTemplate = async (payload: TemplateMessagePayload, phone_nu
                 if (parameter.type === 'text' && parameter.text) {
                     const matches = parameter.text.match(spintaxRegex);
                     if (matches) {
-                        matches.forEach((spintax) => {
+                    matches.forEach((spintax) => {
                             const spintaxOptions = spintax.slice(1, -1).split('|');
                             const randomOption = spintaxOptions[Math.floor(Math.random() * spintaxOptions.length)];
                             parameter.text = parameter.text?.replace(spintax, randomOption);

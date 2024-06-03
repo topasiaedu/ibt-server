@@ -65,7 +65,17 @@ const processWorkflowLogs = async (workflowLog: WorkflowLog) => {
       error as Error,
       `Error processing workflow log type: ${workflowLog.type}`
     )
+
+    const { data: updatedWorkflowLog, error: updateError } = await supabase
+      .from('workflow_logs')
+      .update({ status: 'ERROR' })
+      .eq('id', workflowLog.id)
   }
+
+  const { data: updatedWorkflowLog, error: updateError } = await supabase
+    .from('workflow_logs')
+    .update({ status: 'COMPLETED' })
+    .eq('id', workflowLog.id)
 }
 
 export function setupRealtimeWorkflowLogProcessing() {

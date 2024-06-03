@@ -113,5 +113,10 @@ export const sendMessage = async (payload: any, workflowLogId: string) => {
 
   } catch (error) {
     logError(error as Error, 'Error sending message');
+
+    const { data: updatedWorkflowLog, error: updateError } = await supabase
+      .from('workflow_logs')
+      .update({ status: 'ERROR' })
+      .eq('id', workflowLogId);
   }
 }
