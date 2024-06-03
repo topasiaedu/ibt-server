@@ -51,7 +51,7 @@ app.get('/webhook', (req, res) => {
 app.post('/webhook', (req, res) => {
   handleWebhook(req, res)
 
-  if ( environment === 'development' ) {
+  if ( environment !== 'development' ) {
     // Proxy the request to tunnel ( we send the same exact request to the tunnel which is our local server for development )
     axios.post(tunnelURl + '/webhook', req.body)
       .then(response => {
