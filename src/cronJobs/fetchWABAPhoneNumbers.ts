@@ -82,33 +82,3 @@ const fetchWABAPhoneNumbers = async () => {
 }
 
 export const fetchWABAPhoneNumbersJob = new CronJob('* */30 * * * *', fetchWABAPhoneNumbers); // Run every second
-
-// Database Schema:
-// phone_numbers
-// - created_at: string | null
-// - number: string
-// - phone_number_id: number
-// - quality_rating: string | null
-// - waba_id: number | null
-
-// Example Incoming Response:
-// {
-//   data: [
-//     {
-//       verified_name: 'Clinixero Support By NM',
-//       code_verification_status: 'EXPIRED',
-//       display_phone_number: '+60 10-317 9016',
-//       quality_rating: 'UNKNOWN',      
-//       platform_type: 'NOT_APPLICABLE',
-//       throughput: [Object],
-//       webhook_configuration: [Object],
-//       id: '174921645704413'
-//     }
-//   ],
-//   paging: {
-//     cursors: {
-//       before: 'QVFIUl9NQmN6Vm0wRm1rVXFyR2xWUmY4RzRsWFMyOTdLM0EzZAU1Vbk5hTEVmTkd2cTNmckpvYko4TFhtRTR5d1JPVXIZD',   
-//       after: 'QVFIUl9NQmN6Vm0wRm1rVXFyR2xWUmY4RzRsWFMyOTdLM0EzZAU1Vbk5hTEVmTkd2cTNmckpvYko4TFhtRTR5d1JPVXIZD'     
-//     }
-//   }
-// }

@@ -61578,3 +61578,458 @@
 [2024-06-03T04:59:01.766Z] Error sending message "TypeError: Cannot read properties of undefined (reading 'phone_numbers')\n    at C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaigns.ts:204:14\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaigns.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
 
 
+[2024-06-03T08:15:27.240Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601153764588",
+    "phone_number_id": "236659946202736"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxNjIwMjkwMTcVAgARGBJDNUI3RDZBQzRGNDMxNTdDMTAA",
+      "status": "sent",
+      "timestamp": "1716893770",
+      "recipient_id": "60162029017",
+      "conversation": {
+        "id": "20f6a0b3e0b255d45b0a612f2ef1be60",
+        "expiration_timestamp": "1716980220",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-06-03T08:15:27.296Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601153764588",
+    "phone_number_id": "236659946202736"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxOTMzNTg4NzUVAgARGBI4N0NBMDRFM0NBQ0U4MUU4MjgA",
+      "status": "sent",
+      "timestamp": "1716982182",
+      "recipient_id": "60193358875",
+      "conversation": {
+        "id": "ae6ac803ff00e556b380bd24af537bb8",
+        "expiration_timestamp": "1717068600",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-06-03T08:15:27.876Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601153904588",
+    "phone_number_id": "240462112484224"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxOTQxMzM0OTUVAgARGBI3MTg1MjlFQjBDMTEzNDUwMkUA",
+      "status": "sent",
+      "timestamp": "1716896097",
+      "recipient_id": "60194133495",
+      "conversation": {
+        "id": "4a3b24b84424fd2760fc7deadc5bd32c",
+        "expiration_timestamp": "1716982500",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-06-03T08:15:29.803Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601153764588",
+    "phone_number_id": "236659946202736"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxNjIwMjkwMTcVAgARGBJDNUI3RDZBQzRGNDMxNTdDMTAA",
+      "status": "sent",
+      "timestamp": "1716893770",
+      "recipient_id": "60162029017",
+      "conversation": {
+        "id": "20f6a0b3e0b255d45b0a612f2ef1be60",
+        "expiration_timestamp": "1716980220",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-06-03T08:15:29.962Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601153904588",
+    "phone_number_id": "240462112484224"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxOTQxMzM0OTUVAgARGBI3MTg1MjlFQjBDMTEzNDUwMkUA",
+      "status": "sent",
+      "timestamp": "1716896097",
+      "recipient_id": "60194133495",
+      "conversation": {
+        "id": "4a3b24b84424fd2760fc7deadc5bd32c",
+        "expiration_timestamp": "1716982500",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-06-03T08:15:30.454Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601153764588",
+    "phone_number_id": "236659946202736"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxOTMzNTg4NzUVAgARGBI4N0NBMDRFM0NBQ0U4MUU4MjgA",
+      "status": "sent",
+      "timestamp": "1716982182",
+      "recipient_id": "60193358875",
+      "conversation": {
+        "id": "ae6ac803ff00e556b380bd24af537bb8",
+        "expiration_timestamp": "1717068600",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-06-03T08:16:27.776Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "60103179016",
+    "phone_number_id": "243498022182912"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxNDM5NTMzMTkVAgARGBJDN0RDOTE4REZFNDFEOTUzRDkA",
+      "status": "sent",
+      "timestamp": "1716897970",
+      "recipient_id": "60143953319",
+      "conversation": {
+        "id": "3069e1c0c0d6a90c3ad6bbef13466172",
+        "expiration_timestamp": "1716984420",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-06-03T08:16:27.832Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601159946253",
+    "phone_number_id": "288606424339950"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgKNjU4MDEyNzkwNRUCABEYEkFFRkU0RkY1MjI0RjIxRUY5RQA=",
+      "status": "sent",
+      "timestamp": "1716986681",
+      "recipient_id": "6580127905",
+      "conversation": {
+        "id": "011835b49ac6ca1ebba0d715d8fa12d3",
+        "expiration_timestamp": "1717073100",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-06-03T08:16:30.429Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "60103179016",
+    "phone_number_id": "243498022182912"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxNjM0OTg0MDQVAgARGBJGQzc3RkFDMTVGMjVEMDU4QkMA",
+      "status": "sent",
+      "timestamp": "1716897703",
+      "recipient_id": "60163498404",
+      "conversation": {
+        "id": "669ccfc0fe7cb11fd197b2a64809b0c3",
+        "expiration_timestamp": "1716984120",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-06-03T08:16:30.563Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "60103179016",
+    "phone_number_id": "243498022182912"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxNjM0OTg0MDQVAgARGBJGQzc3RkFDMTVGMjVEMDU4QkMA",
+      "status": "sent",
+      "timestamp": "1716897703",
+      "recipient_id": "60163498404",
+      "conversation": {
+        "id": "669ccfc0fe7cb11fd197b2a64809b0c3",
+        "expiration_timestamp": "1716984120",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-06-03T08:17:13.295Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "60103179016",
+    "phone_number_id": "243498022182912"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxNjM0OTg0MDQVAgARGBJGQzc3RkFDMTVGMjVEMDU4QkMA",
+      "status": "sent",
+      "timestamp": "1716897703",
+      "recipient_id": "60163498404",
+      "conversation": {
+        "id": "669ccfc0fe7cb11fd197b2a64809b0c3",
+        "expiration_timestamp": "1716984120",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-06-03T08:17:34.004Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601153904588",
+    "phone_number_id": "240462112484224"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxMjcwMTU2MDEVAgARGBIwQTVEQ0Q5N0E4QjlDMjM5ODcA",
+      "status": "sent",
+      "timestamp": "1716896047",
+      "recipient_id": "60127015601",
+      "conversation": {
+        "id": "7c3e540bdc3199fc33c2221cf9265771",
+        "expiration_timestamp": "1716982500",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
+[2024-06-03T08:17:43.755Z] Error finding message in database. Data: {
+  "messaging_product": "whatsapp",
+  "metadata": {
+    "display_phone_number": "601153764588",
+    "phone_number_id": "236659946202736"
+  },
+  "statuses": [
+    {
+      "id": "wamid.HBgLNjAxMjIyMTg0NDUVAgARGBI5ODY1QTQ5MkI3NTVCQkUxQkQA",
+      "status": "sent",
+      "timestamp": "1717068371",
+      "recipient_id": "60122218445",
+      "conversation": {
+        "id": "0b66b2cbbe34fe91abc59418bc03c4ac",
+        "expiration_timestamp": "1717154820",
+        "origin": {
+          "type": "marketing"
+        }
+      },
+      "pricing": {
+        "billable": true,
+        "pricing_model": "CBP",
+        "category": "marketing"
+      }
+    }
+  ]
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+} [object Object]
+
+
