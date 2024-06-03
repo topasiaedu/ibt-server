@@ -9,14 +9,18 @@ const campaignQueue: Campaign[] = [];
 
 function processQueue() {
   if (campaignQueue.length === 0) {
+    console.log('Queue is empty, nothing to process.');
     return;
   }
   const campaign = campaignQueue.shift() as Campaign;
+  console.log('Processing campaign from queue:', campaign.campaign_id);
   processCampaigns(campaign)
     .catch(error => logError(error as Error, 'Error processing campaign'))
-    .finally(() => processQueue());
+    .finally(() => {
+      console.log('Finished processing campaign:', campaign.campaign_id);
+      processQueue();
+    });
 }
-
 
 export type Campaign = Database['public']['Tables']['campaigns']['Row'] & { read_count: number };
 
@@ -226,17 +230,32 @@ export function setupRealtimeCampaignProcessing() {
 }
 
 function scheduleCampaign(campaign: Campaign) {
-  const delay = new Date(campaign.post_time).getTime() - Date.now();
+  const currentTime = new Date().toLocaleString('en-US', { timeZone: 'Asia/Kuala_Lumpur' })
+  const currentTimeMillis = new Date(currentTime).getTime();
+  const postTime = new Date(campaign.post_time).getTime();
+  console.log('Current time:', currentTime, 'Post time:', postTime)
+  
+  if (isNaN(postTime)) {
+    console.error('Invalid post time for campaign:', campaign.campaign_id, campaign.post_time);
+    return;
+  }
+
+  const delay = postTime - currentTimeMillis;
+  console.log('Scheduling campaign:', campaign.campaign_id, 'in', delay, 'ms (current time:', currentTime, 'post time:', postTime, ')');
+  
   if (delay < 0) {
+    console.warn('Post time is in the past for campaign:', campaign.campaign_id, '. Adding to the queue immediately.');
     campaignQueue.push(campaign);
     processQueue();
   } else {
     setTimeout(() => {
+      console.log('Timeout reached for campaign:', campaign.campaign_id);
       campaignQueue.push(campaign);
       processQueue();
     }, delay);
   }
 }
+
 
 export const reschedulePendingCampaigns = async () => {
   const { data: campaigns, error } = await supabase
@@ -256,7 +275,7 @@ export const reschedulePendingCampaigns = async () => {
   }
 
   campaigns.forEach((campaign) => {
-    campaignQueue.push(campaign);
+    scheduleCampaign(campaign);
   });
 
   processQueue();
