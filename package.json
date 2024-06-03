@@ -26,6 +26,7 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "fs": "^0.0.1-security",
+    "localtunnel": "^2.0.2",
     "redis": "^4.6.14"
   },
   "devDependencies": {
@@ -35,6 +36,7 @@
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.13",
     "@types/jest": "^27.0.2",
+    "@types/localtunnel": "^2.0.4",
     "@types/node": "^16.11.7",
     "eslint": "^8.2.0",
     "eslint-config-prettier": "^8.3.0",

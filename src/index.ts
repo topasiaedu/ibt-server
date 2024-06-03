@@ -6,7 +6,6 @@ import { handleWebhook } from './webhook/whatsapp/webhookHandler'
 import dotenv from 'dotenv'
 dotenv.config()
 import ftgRoutes from './routes/ftgRoutes'
-import { fetchImageURL, fetchMedia } from './api/whatsapp'
 import {
   setupRealtimeCampaignProcessing,
   reschedulePendingCampaigns,
@@ -16,9 +15,14 @@ import {
   reschedulePendingWorkflowLogs,
 } from './webhook/ibt/processWorkflow'
 import { handleIBTWebhook } from './webhook/ibt/processIBTWebhook'
+import localtunnel from 'localtunnel'
+import axios from 'axios'
 
 const app: Express = express()
-const port: number = parseInt(process.env.PORT as string, 10) || 8080 // Default to 8080 if environment variable not set
+const port: number = parseInt(process.env.PORT as string, 10) || 8080 
+const uniqueSubdomain = 'ibtnm' + 'ndcqrsyx6t4n7um'
+const environment = process.env.NODE_ENV || 'development'
+let tunnelURl: string = 'https://ibtnmndcqrsyx6t4n7um.loca.lt'
 
 // Middleware
 app.use(cors()) // Enable CORS for all requests
@@ -44,7 +48,20 @@ app.get('/webhook', (req, res) => {
   }
 })
 
-app.post('/webhook', handleWebhook)
+app.post('/webhook', (req, res) => {
+  handleWebhook(req, res)
+
+  if ( environment === 'development' ) {
+    // Proxy the request to tunnel ( we send the same exact request to the tunnel which is our local server for development )
+    axios.post(tunnelURl + '/webhook', req.body)
+      .then(response => {
+        console.log('Webhook forwarded to tunnel')
+      })
+      .catch(error => {
+        console.error('Error forwarding webhook to tunnel')
+      })    
+  }
+})
 
 app.use('/ftg', ftgRoutes)
 
@@ -57,6 +74,23 @@ app.use(errorHandler)
 // Start the Express server
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
+
+  // Local tunnel
+  if (environment === 'development') {
+    const tunnel = localtunnel(port, { subdomain: uniqueSubdomain }, (err, tunnel) => {
+      if (err) {
+        console.error(err);
+        process.exit(1);
+      }
+
+      console.log(`Local tunnel running on ${tunnel?.url}`);
+    });
+
+    tunnel?.on('close', () => {
+      console.log('Local tunnel closed');
+      process.exit(1);
+    });
+  }
 
   // Setup realtime processing
   const unsubscribeRealtimeCampaignProcessing = setupRealtimeCampaignProcessing();
