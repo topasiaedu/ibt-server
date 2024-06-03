@@ -1,70 +1,87 @@
-[2024-06-03T08:43:10.482Z] Error finding message in database. Data: {
-  "messaging_product": "whatsapp",
-  "metadata": {
-    "display_phone_number": "60176203511",
-    "phone_number_id": "294066203779719"
+[2024-06-03T09:36:43.050Z] Error inserting inbound text message into database. Data: {
+  "from": "60162813120",
+  "id": "wamid.HBgLNjAxNjI4MTMxMjAVAgASGCAyQjgyQjk1NzYxRURBRDcwRjRFNDk4QzQyMjNFNjdDQgA=",
+  "timestamp": "1716936504",
+  "text": {
+    "body": "Yes"
   },
-  "statuses": [
-    {
-      "id": "wamid.HBgLNjAxNjgyOTYyMzIVAgARGBI3MTFENDI0QjJGNEJCRTc3ODcA",
-      "status": "sent",
-      "timestamp": "1716891312",
-      "recipient_id": "60168296232",
-      "conversation": {
-        "id": "7480e0e0eca7dd5d2a9a99f9e7c11f5f",
-        "expiration_timestamp": "1716977760",
-        "origin": {
-          "type": "marketing"
-        }
-      },
-      "pricing": {
-        "billable": true,
-        "pricing_model": "CBP",
-        "category": "marketing"
-      }
-    }
-  ]
+  "type": "text"
 }
  Error: {
-  "code": "PGRST116",
-  "details": "The result contains 0 rows",
+  "code": "23502",
+  "details": "Failing row contains (1910, null, text, Yes, received, 2024-06-03 09:36:44.927181+00, 4202, wamid.HBgLNjAxNjI4MTMxMjAVAgASGCAyQjgyQjk1NzYxRURBRDcwRjRFNDk4Qz..., inbound, null, 1, null, null).",
   "hint": null,
-  "message": "JSON object requested, multiple (or no) rows returned"
-} [object Object]
+  "message": "null value in column \"phone_number_id\" of relation \"messages\" violates not-null constraint"
+}
+Inside insertTextMessage function in insertTextMessage.ts {
+  "code": "23502",
+  "details": "Failing row contains (1910, null, text, Yes, received, 2024-06-03 09:36:44.927181+00, 4202, wamid.HBgLNjAxNjI4MTMxMjAVAgASGCAyQjgyQjk1NzYxRURBRDcwRjRFNDk4Qz..., inbound, null, 1, null, null).",
+  "hint": null,
+  "message": "null value in column \"phone_number_id\" of relation \"messages\" violates not-null constraint"
+}
 
 
-[2024-06-03T08:43:28.564Z] Error finding message in database. Data: {
-  "messaging_product": "whatsapp",
-  "metadata": {
-    "display_phone_number": "601153904588",
-    "phone_number_id": "240462112484224"
+[2024-06-03T09:38:13.278Z] Error inserting inbound text message into database. Data: {
+  "from": "601160665211",
+  "id": "wamid.HBgMNjAxMTYwNjY1MjExFQIAEhggMUMzNjEzNDYyQ0RBRjA3RDhGNzMyN0NBRUQzNTM5ODkA",
+  "timestamp": "1716898064",
+  "text": {
+    "body": "YES"
   },
-  "statuses": [
-    {
-      "id": "wamid.HBgLNjAxNDY4ODc4ODMVAgARGBI4Q0VCMzc2MENGRENGNDI4QkQA",
-      "status": "sent",
-      "timestamp": "1716895920",
-      "recipient_id": "60146887883",
-      "conversation": {
-        "id": "bdda2e480a6e35e4e7528ae5b788858c",
-        "expiration_timestamp": "1716982320",
-        "origin": {
-          "type": "marketing"
-        }
-      },
-      "pricing": {
-        "billable": true,
-        "pricing_model": "CBP",
-        "category": "marketing"
-      }
-    }
-  ]
+  "type": "text"
 }
  Error: {
-  "code": "PGRST116",
-  "details": "The result contains 0 rows",
+  "code": "23502",
+  "details": "Failing row contains (1912, null, text, YES, received, 2024-06-03 09:38:15.148046+00, 4203, wamid.HBgMNjAxMTYwNjY1MjExFQIAEhggMUMzNjEzNDYyQ0RBRjA3RDhGNzMyN0..., inbound, null, 1, null, null).",
   "hint": null,
-  "message": "JSON object requested, multiple (or no) rows returned"
-} [object Object]
+  "message": "null value in column \"phone_number_id\" of relation \"messages\" violates not-null constraint"
+}
+Inside insertTextMessage function in insertTextMessage.ts {
+  "code": "23502",
+  "details": "Failing row contains (1912, null, text, YES, received, 2024-06-03 09:38:15.148046+00, 4203, wamid.HBgMNjAxMTYwNjY1MjExFQIAEhggMUMzNjEzNDYyQ0RBRjA3RDhGNzMyN0..., inbound, null, 1, null, null).",
+  "hint": null,
+  "message": "null value in column \"phone_number_id\" of relation \"messages\" violates not-null constraint"
+}
+
+
+[2024-06-03T09:38:25.125Z] Error inserting message window into database
+Inside handleOutgoingMessage function in messages.ts {
+  "code": "PGRST204",
+  "details": null,
+  "hint": null,
+  "message": "Column 'origin' of relation 'message_window' does not exist"
+}
+
+
+[2024-06-03T09:41:06.469Z] Error inserting message window into database
+Inside handleOutgoingMessage function in messages.ts {
+  "code": "22008",
+  "details": null,
+  "hint": "Perhaps you need a different \"datestyle\" setting.",
+  "message": "date/time field value out of range: \"1717424940\""
+}
+
+
+[2024-06-03T09:58:35.587Z] Error inserting inbound text message into database. Data: {
+  "from": "60137262095",
+  "id": "wamid.HBgLNjAxMzcyNjIwOTUVAgASGCA0ODQ3RDBENTc1RkE1MDRDRUU5QUEwNTI2MTk0QTA1QgA=",
+  "timestamp": "1716905563",
+  "text": {
+    "body": "Yes"
+  },
+  "type": "text"
+}
+ Error: {
+  "code": "23502",
+  "details": "Failing row contains (1926, null, text, Yes, received, 2024-06-03 09:58:37.420296+00, 4213, wamid.HBgLNjAxMzcyNjIwOTUVAgASGCA0ODQ3RDBENTc1RkE1MDRDRUU5QUEwNT..., inbound, null, 1, null, null).",
+  "hint": null,
+  "message": "null value in column \"phone_number_id\" of relation \"messages\" violates not-null constraint"
+}
+Inside insertTextMessage function in insertTextMessage.ts {
+  "code": "23502",
+  "details": "Failing row contains (1926, null, text, Yes, received, 2024-06-03 09:58:37.420296+00, 4213, wamid.HBgLNjAxMzcyNjIwOTUVAgASGCA0ODQ3RDBENTc1RkE1MDRDRUU5QUEwNT..., inbound, null, 1, null, null).",
+  "hint": null,
+  "message": "null value in column \"phone_number_id\" of relation \"messages\" violates not-null constraint"
+}
 
 

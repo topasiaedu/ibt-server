@@ -75,7 +75,7 @@ const insertStickerMessage = async (message: any, display_phone_number: string, 
       logError(messageError as unknown as Error, 'Error inserting inbound image message into database. Data: ' + JSON.stringify(message, null, 2) + '\n Error: ' + messageError);
     }
   } catch (error) {
-    logError(error as Error, 'Error inserting inbound text message into database. Data: ' + JSON.stringify(message, null, 2) + '\n Error: ' + error);
+    logError(error as Error, 'Error inserting inbound text message into database. Data: ' + JSON.stringify(message, null, 2) + '\n Error: ' + JSON.stringify(error, null, 2) + '\n' + "Inside insertTextMessage function in insertTextMessage.ts");
     return 'Error inserting inbound text message into database';
   }
 }

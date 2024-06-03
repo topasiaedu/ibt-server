@@ -27,7 +27,7 @@ async function findOrCreateContact(contact: any, project_id: string) {
 
   if (createError) {
     console.error('Error creating new contact in database:', createError);
-    logError(createError, 'Error creating new contact in database');
+    logError(createError, 'Error creating new contact in database' + JSON.stringify(contact) + "Inside findOrCreateContact function in findOrCreateContact.ts");
     return;
   }
 

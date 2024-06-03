@@ -114,7 +114,8 @@ export const handleWebhook = async (req: Request, res: Response) => {
                     //     break;
                     default:
                         // Handle unknown event type
-                        logError(new Error(`Unknown event type: ${field}`), 'Webhook Handler');
+                        // logError(new Error(`Unknown event type: ${field}`), 'Webhook Handler');
+                        break;
                 }
             })
         });

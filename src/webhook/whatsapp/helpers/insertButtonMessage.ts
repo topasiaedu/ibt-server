@@ -71,7 +71,7 @@ async function insertButtonMessage(message: any, display_phone_number: string, p
       logError(messageError as unknown as Error, 'Error inserting inbound button message into database. Data: ' + JSON.stringify(message, null, 2) + '\n Error: ' + messageError);
     }
   } catch (error) {
-    logError(error as Error, 'Error inserting inbound text message into database. Data: ' + JSON.stringify(message, null, 2) + '\n Error: ' + error);
+    logError(error as Error, 'Error inserting inbound text message into database. Data: ' + JSON.stringify(message, null, 2) + '\n Error: ' + JSON.stringify(error, null, 2) + '\n' + "Inside insertButtonMessage function in insertButtonMessage.ts");
     return 'Error inserting inbound text message into database';
   }
 }
