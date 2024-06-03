@@ -42,3 +42,5 @@ Thumbs.db
 
 # Temporary files
 /tmp
+src/middleware/logs.txt
+src/utils/errorLog.txt
