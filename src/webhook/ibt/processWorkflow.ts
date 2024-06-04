@@ -79,14 +79,12 @@ const processWorkflowLogs = async (workflowLog: WorkflowLog) => {
 }
 
 export function setupRealtimeWorkflowLogProcessing() {
-  console.log('Setting up realtime workflow log processing')
   const subscription = supabase
     .channel('workflow_logs')
     .on(
       'postgres_changes',
       { event: '*', schema: 'public', table: 'workflow_logs' },
       (payload) => {
-        console.log('Workflow log change:', payload)
         const workflowLog = payload.new as WorkflowLog
         if (workflowLog.status === 'PENDING') {
           scheduleWorkflowLog(workflowLog)
@@ -102,7 +100,6 @@ export function setupRealtimeWorkflowLogProcessing() {
 
 function scheduleWorkflowLog(workflowLog: WorkflowLog) {
   const delay = new Date(workflowLog.action_time).getTime() - Date.now()
-  console.log('Delay:', delay, 'ms')
   if (delay < 0) {
     workflowLogQueue.push(workflowLog)
     processQueue()
@@ -126,7 +123,6 @@ export const reschedulePendingWorkflowLogs = async () => {
   }
 
   if (!workflowLogs) {
-    console.log('No pending workflow logs found')
     return
   }
 

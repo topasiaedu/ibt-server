@@ -92,6 +92,8 @@ export const sendTemplate = async (payload: any, workflowLogId: string) => {
   const selectedPhoneNumber = weightedPhoneNumbers[randomIndex];
 
   try {
+    console.log('Sending message with template payload:', JSON.stringify(templatePayload, null, 2));
+
     const { data: messageResponse } = await sendMessageWithTemplate(templatePayload, selectedPhoneNumber);
     // Lookup template to get the text and the image if any
     const { data: template, error: templateError } = await supabase

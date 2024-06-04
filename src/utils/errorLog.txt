@@ -85,3 +85,27 @@ Inside insertTextMessage function in insertTextMessage.ts {
 }
 
 
+[2024-06-04T02:41:52.263Z] Error adding contact to contact list {
+  "code": "23502",
+  "details": "Failing row contains (null, 4745).",
+  "hint": null,
+  "message": "null value in column \"contact_list_id\" of relation \"contact_list_members\" violates not-null constraint"
+}
+
+
+[2024-06-04T02:49:03.013Z] Error adding contact to contact list {
+  "code": "23502",
+  "details": "Failing row contains (null, 4745).",
+  "hint": null,
+  "message": "null value in column \"contact_list_id\" of relation \"contact_list_members\" violates not-null constraint"
+}
+
+
+[2024-06-04T02:49:58.731Z] Error adding contact to contact list {
+  "code": "23502",
+  "details": "Failing row contains (null, 4745).",
+  "hint": null,
+  "message": "null value in column \"contact_list_id\" of relation \"contact_list_members\" violates not-null constraint"
+}
+
+
