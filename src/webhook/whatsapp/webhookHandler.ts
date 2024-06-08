@@ -17,6 +17,7 @@ import handlePhoneNumberQualityUpdate from './events/phone_number_quality_update
 import handleSecurity from './events/security';
 import handleTemplateCategoryUpdate from './events/template_category_update';
 import { logError } from '../../utils/errorLogger';
+import { fetchTemplatesFunction } from '../../cronJobs/fetchTemplates';
 
 // Example Response:
 // {
@@ -88,12 +89,14 @@ export const handleWebhook = async (req: Request, res: Response) => {
                     // case 'message_echoes':
                     //     handleMessageEchoes(req, res);
                     //     break;
-                    // case 'message_template_quality_update':
-                    //     handleMessageTemplateQualityUpdate(req, res);
-                    //     break;
-                    // case 'message_template_status_update':
-                    //     handleMessageTemplateStatusUpdate(req, res);
-                    //     break;
+                    case 'message_template_quality_update':
+                        fetchTemplatesFunction();
+                        // handleMessageTemplateQualityUpdate(req, res);
+                        break;
+                    case 'message_template_status_update':
+                        fetchTemplatesFunction();
+                        // handleMessageTemplateStatusUpdate(req, res);
+                        break;
                     case 'messages':
                         handleMessages(value);
                         break;

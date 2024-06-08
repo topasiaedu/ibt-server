@@ -129,9 +129,13 @@ app.listen(port, () => {
 
 // Cron jobs
 // Import and start your cron jobs here
-import { fetchWABAsJob } from './cronJobs/fetchWABAs'
-import { fetchTemplatesJob } from './cronJobs/fetchTemplates'
-import { fetchWABAPhoneNumbersJob } from './cronJobs/fetchWABAPhoneNumbers'
+import { fetchWABAsJob, fetchWABAsFunction } from './cronJobs/fetchWABAs'
+import { fetchTemplatesJob, fetchTemplatesFunction } from './cronJobs/fetchTemplates'
+import { fetchWABAPhoneNumbersJob, fetchWABAPhoneNumbersFunction } from './cronJobs/fetchWABAPhoneNumbers'
+
+// fetchTemplatesFunction();
+// fetchWABAsFunction();
+// fetchWABAPhoneNumbersFunction();
 
 // campaignJob.start();
 // fetchWABAsJob.start();

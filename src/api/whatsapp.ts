@@ -68,6 +68,8 @@ const sendMessageWithTemplate = async (
       payload,
       { headers }
     )
+
+    console.log('Message sent with template:', response.data)
     return response
   } catch (error) {
     logError(
@@ -115,6 +117,7 @@ const fetchTemplatesService = async (
     logError(
       error as Error,
       'Error fetching templates with WABA ID: ' + WABA_ID + '\n'
+      
     )
     throw new Error('Failed to fetch templates')
   }
