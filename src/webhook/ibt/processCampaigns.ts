@@ -8,17 +8,17 @@ import { Database } from '../../database.types'
 const campaignQueue: Campaign[] = []
 
 function processQueue() {
-  console.log('Processing queue:', campaignQueue)
+  // console.log('Processing queue:', campaignQueue)
   if (campaignQueue.length === 0) {
-    console.log('Queue is empty, nothing to process.')
+    // console.log('Queue is empty, nothing to process.')
     return
   }
   const campaign = campaignQueue.shift() as Campaign
-  console.log('Processing campaign from queue:', campaign.campaign_id)
+  // console.log('Processing campaign from queue:', campaign.campaign_id)
   processCampaigns(campaign)
     .catch((error) => logError(error as Error, 'Error processing campaign'))
     .finally(() => {
-      console.log('Finished processing campaign:', campaign.campaign_id)
+      // console.log('Finished processing campaign:', campaign.campaign_id)
       processQueue()
     })
 }
@@ -158,8 +158,6 @@ const processCampaigns = async (campaign: Campaign) => {
         templatePayload,
         selectedPhoneNumber
       )
-      console.log('Message sent:', messageResponse)
-
       // Lookup template to get the text and the image if any
       const { data: template, error: templateError } = await supabase
         .from('templates')
@@ -190,7 +188,7 @@ const processCampaigns = async (campaign: Campaign) => {
           const index = parseInt(match.match(/\d+/g)![0])
           return bodyInputValues[index - 1]
         })
-      }
+      } 
 
       // Add the message to the database under the table messages
       const { data: newMessage, error: messageError } = await supabase
@@ -200,7 +198,7 @@ const processCampaigns = async (campaign: Campaign) => {
             wa_message_id: messageResponse.messages[0].id,
             campaign_id: campaign.campaign_id,
             phone_number_id: newPhoneNumbers.find(
-              (phone: any) => phone.wa_id === selectedPhoneNumber
+              (phone: any) => phone.phone_numbers.wa_id === selectedPhoneNumber
             ).phone_numbers.phone_number_id,
             contact_id: contact_list_member.contacts.contact_id,
             message_type: 'TEMPLATE',
@@ -216,7 +214,7 @@ const processCampaigns = async (campaign: Campaign) => {
         .from('contacts')
         .update({
           last_contacted_by: newPhoneNumbers.find(
-            (phone: any) => phone.wa_id === selectedPhoneNumber
+            (phone: any) => phone.phone_numbers.wa_id === selectedPhoneNumber
           ).phone_numbers.phone_number_id,
         })
         .eq('wa_id', selectedPhoneNumber)
@@ -263,10 +261,17 @@ export function setupRealtimeCampaignProcessing() {
       'postgres_changes',
       { event: '*', schema: 'public', table: 'campaigns' },
       (payload) => {
-        console.log('Campaign change:', payload)
         const campaign = payload.new as Campaign
         if (campaign.status === 'PENDING') {
           scheduleCampaign(campaign)
+        } else if (campaign.status === 'PROCESSING') {
+          // Remove from queue if already in queue
+          const index = campaignQueue.findIndex(
+            (c) => c.campaign_id === campaign.campaign_id
+          )
+          if (index !== -1) {
+            campaignQueue.splice(index, 1)
+          }
         }
       }
     )
@@ -284,7 +289,7 @@ function scheduleCampaign(campaign: Campaign) {
   // Offset by 8 hours to match Malaysia timezone
   const currentTimeMillis = new Date(currentTime).getTime() + 8 * 60 * 60 * 1000
   const postTime = new Date(campaign.post_time).getTime()
-  console.log('Current time:', currentTime, 'Post time:', postTime)
+  // console.log('Current time:', currentTime, 'Post time:', postTime)
 
   if (isNaN(postTime)) {
     console.error(
@@ -302,17 +307,17 @@ function scheduleCampaign(campaign: Campaign) {
   }
 
   const delay = postTime - currentTimeMillis
-  console.log(
-    'Scheduling campaign:',
-    campaign.campaign_id,
-    'in',
-    delay,
-    'ms (current time:',
-    currentTime,
-    'post time:',
-    postTime,
-    ')'
-  )
+  // console.log(
+  //   'Scheduling campaign:',
+  //   campaign.campaign_id,
+  //   'in',
+  //   delay,
+  //   'ms (current time:',
+  //   currentTime,
+  //   'post time:',
+  //   postTime,
+  //   ')'
+  // )
 
   if (delay < 0) {
     console.warn(
@@ -349,8 +354,8 @@ export const reschedulePendingCampaigns = async () => {
   }
 
   campaigns.forEach((campaign) => {
-    console.log('=====================================')
-    console.log('Rescheduling campaign:', campaign.campaign_id)
+    // console.log('=====================================')
+    // console.log('Rescheduling campaign:', campaign.campaign_id)
     scheduleCampaign(campaign)
   })
 

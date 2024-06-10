@@ -1,8 +1,32 @@
-[2024-06-08T10:18:13.797Z] Error adding contact to contact list {
+[2024-06-09T09:00:22.908Z] Error adding contact to contact list {
   "code": "23502",
   "details": "Failing row contains (null, 5795).",
   "hint": null,
   "message": "null value in column \"contact_list_id\" of relation \"contact_list_members\" violates not-null constraint"
 }
+
+
+[2024-06-09T09:03:34.251Z] Error sending message "TypeError: Cannot read properties of undefined (reading 'phone_numbers')\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaigns.ts:204:14\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaigns.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-06-09T09:05:05.891Z] Error sending message "TypeError: Cannot read properties of undefined (reading 'phone_numbers')\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaigns.ts:204:14\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaigns.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-06-09T09:06:48.845Z] Error sending message "TypeError: Cannot read properties of undefined (reading 'phone_numbers')\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaigns.ts:204:14\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaigns.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-06-09T09:08:20.800Z] Error sending message "TypeError: Cannot read properties of undefined (reading 'phone_numbers')\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaigns.ts:204:14\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaigns.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-06-09T09:10:40.637Z] Error sending message "TypeError: Cannot read properties of undefined (reading 'phone_numbers')\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaigns.ts:196:10\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaigns.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-06-09T10:00:58.885Z] Error sending message "TypeError: Cannot read properties of undefined (reading 'phone_numbers')\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaigns.ts:218:12\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaigns.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-06-10T02:47:27.337Z] Error sending message "TypeError: Cannot read properties of undefined (reading 'phone_numbers')\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaigns.ts:218:12\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaigns.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-06-10T02:47:27.416Z] Error sending message "TypeError: Cannot read properties of undefined (reading 'phone_numbers')\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaigns.ts:218:12\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaigns.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
 
 

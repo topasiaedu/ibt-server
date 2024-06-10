@@ -42,6 +42,7 @@ const sendMessageWithTemplate = async (
   phone_number_id: string
 ): Promise<AxiosResponse<any>> => {
   try {
+    console.log('Sending message with phone number ID:', phone_number_id)
     // Check payload for spintax and replace with random value
     const spintaxRegex = /{[^{}]*}/g
 

@@ -58,7 +58,7 @@ app.post('/webhook', (req, res) => {
         console.log('Webhook forwarded to tunnel')
       })
       .catch(error => {
-        console.error('Error forwarding webhook to tunnel')
+        // console.error('Error forwarding webhook to tunnel')
       })    
   }
 })

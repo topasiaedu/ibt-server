@@ -90,13 +90,13 @@ export function setupRealtimeWorkflowLogProcessing() {
           scheduleWorkflowLog(workflowLog)
         } else if (workflowLog.status === 'PROCESSING') {
           // remove from queue
-          const index = workflowLogQueue.findIndex((log) => log.id === workflowLog.id)
+          const index = workflowLogQueue.findIndex(
+            (log) => log.id === workflowLog.id
+          )
           if (index !== -1) {
             workflowLogQueue.splice(index, 1)
           }
-
         }
-        
       }
     )
     .subscribe()

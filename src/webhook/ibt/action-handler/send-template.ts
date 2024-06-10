@@ -93,8 +93,11 @@ export const sendTemplate = async (payload: any, workflowLogId: string) => {
   // Create a weighted list of phone numbers
   const weightedPhoneNumbers = newPhoneNumbers.flatMap((phone: any) => {
     const weight = getWeightForRating(phone.phone_numbers.quality_rating)
+    console.log('Weight, phone:', weight, phone.phone_numbers.wa_id)
     return Array(weight).fill(phone.phone_numbers.wa_id) // Fill an array with the wa_id repeated by its weight
   })
+
+  console.log('Weighted phone numbers:', weightedPhoneNumbers)
 
   // Random selection from the weighted list
   const randomIndex = Math.floor(Math.random() * weightedPhoneNumbers.length)
@@ -102,10 +105,10 @@ export const sendTemplate = async (payload: any, workflowLogId: string) => {
 
 
   try {
-    console.log(
-      'Sending message with template payload:',
-      JSON.stringify(templatePayload, null, 2)
-    )
+    // console.log(
+    //   'Sending message with template payload:',
+    //   JSON.stringify(templatePayload, null, 2)
+    // )
 
     const { data: messageResponse } = await sendMessageWithTemplate(
       templatePayload,
@@ -177,6 +180,7 @@ export const sendTemplate = async (payload: any, workflowLogId: string) => {
         .from('workflow_logs')
         .update({ status: 'COMPLETED' })
         .eq('id', workflowLogId)
+
   } catch (error) {
     console.error('Error sending message:', error)
     logError(error as Error, 'Error sending message')
