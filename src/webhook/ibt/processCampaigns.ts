@@ -188,7 +188,7 @@ const processCampaigns = async (campaign: Campaign) => {
           const index = parseInt(match.match(/\d+/g)![0])
           return bodyInputValues[index - 1]
         })
-      } 
+      }
 
       // Add the message to the database under the table messages
       const { data: newMessage, error: messageError } = await supabase
@@ -233,7 +233,7 @@ const processCampaigns = async (campaign: Campaign) => {
           .update({ status: 'COMPLETED' })
           .eq('campaign_id', campaign.campaign_id)
     } catch (error) {
-      console.error('Error sending message:', error)
+      console.log('Error sending message:', error)
       logError(error as Error, 'Error sending message')
     }
   }

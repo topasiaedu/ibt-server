@@ -79,7 +79,7 @@ const sendMessageWithTemplate = async (
         JSON.stringify(payload, null, 2) +
         '\n'
     )
-    throw new Error('Failed to send message with template')
+    return error as AxiosResponse<any>
   }
 }
 
