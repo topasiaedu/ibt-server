@@ -67,6 +67,8 @@ async function insertTextMessage(message: any, display_phone_number: string, pro
       logError(messageError as unknown as Error, 'Error inserting inbound text message into database. Data: ' + JSON.stringify(message, null, 2) + '\n Error: ' + JSON.stringify(messageError, null, 2) + '\n' + "Inside insertTextMessage function in insertTextMessage.ts");
       console.error('Error inserting inbound text message into database:', messageError);
     }
+
+    console.log("Text Message inserted into database")
   } catch (error) {
     logError(error as Error, 'Error inserting inbound text message into database. Data: ' + JSON.stringify(message, null, 2) + '\n Error: ' + JSON.stringify(error, null, 2) + '\n' + "Inside insertTextMessage function in insertTextMessage.ts");
     return 'Error inserting inbound text message into database';

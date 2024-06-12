@@ -34,6 +34,7 @@ const handleMessages = async (value: any) => {
 }
 
 const handleOutgoingMessage = async (value: any) => {
+  console.log('Outgoing message received!')
   // console.log('Outgoing message:', JSON.stringify(value, null, 2));
   try {
     const { statuses } = value
@@ -48,6 +49,7 @@ const handleOutgoingMessage = async (value: any) => {
         .single()
 
       console.log('====================================')
+      console.log('status', status.id)
       console.log('message', message)
       console.log('====================================')
 
@@ -57,7 +59,7 @@ const handleOutgoingMessage = async (value: any) => {
 
       if (status.conversation) {
         if (status.conversation.expiration_timestamp) {
-          console.log('Conversation:', status.conversation) 
+          console.log('Conversation:', status.conversation)
           let { data: existingMessageWindow, error: findError } = await supabase
             .from('message_window')
             .select('conversation_id')
@@ -72,7 +74,9 @@ const handleOutgoingMessage = async (value: any) => {
 
           if (findError) {
             // Change the data from 1717424940 to Date format
-            const date = new Date(parseInt(status.conversation.expiration_timestamp) * 1000)
+            const date = new Date(
+              parseInt(status.conversation.expiration_timestamp) * 1000
+            )
             const formattedDate = date.toISOString()
             console.log('Formatted Date:', formattedDate)
             // insert the message window
@@ -135,7 +139,8 @@ const handleOutgoingMessage = async (value: any) => {
 }
 
 const handleIncomingMessage = async (value: any) => {
-  console.log('Incoming message:', JSON.stringify(value, null, 2))
+  console.log('Incoming message received!')
+  // console.log('Incoming message:', JSON.stringify(value, null, 2))
   try {
     // Assuming the structure of the incoming payload matches your example
     const { metadata, contacts, messages } = value
@@ -190,12 +195,9 @@ const handleIncomingMessage = async (value: any) => {
 
       switch (type) {
         case 'text':
-          handleKeywordTrigger(value)
-          await insertTextMessage(
-            message,
-            display_phone_number,
-            project.project_id
-          )
+          await handleKeywordTrigger(value).then(() => {
+            insertTextMessage(message, display_phone_number, project.project_id)
+          })
           break
         case 'image':
           await insertImageMessage(
@@ -272,6 +274,30 @@ const handleKeywordTrigger = async (value: any) => {
     return
   }
 
+  console.log('messages[0].id', messages[0].id)
+  // Check if the id already exist in the database
+  const { data: messageData, error: messageError } = await supabase
+    .from('messages')
+    .select('*')
+    .eq('wa_message_id', messages[0].id)
+
+  if (messageError) {
+    logError(
+      messageError as unknown as Error,
+      'Error fetching messages' +
+        '\n' +
+        'Inside handleKeywordTrigger function in messages.ts'
+    )
+    return
+  }
+
+  if (messageData.length > 0) {
+    console.log("Message already exists in the database")
+    return
+  }
+
+  console.log('Checking for keyword triggers')
+
   data.forEach(async (trigger: any) => {
     if (trigger.trigger.type === 'keyword') {
       const { keywords } = trigger.trigger.details
@@ -283,7 +309,7 @@ const handleKeywordTrigger = async (value: any) => {
             const { text } = message
             const { body } = text
             if (keywords.includes(body)) {
-              // Check if the contact exists in the database
+              // Check if the Contact exists in the database
               const { data: contact, error: contactError } = await supabase
                 .from('contacts')
                 .select('*')

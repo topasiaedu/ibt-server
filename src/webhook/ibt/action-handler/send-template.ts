@@ -46,21 +46,25 @@ export const sendTemplate = async (payload: any, workflowLogId: string) => {
     contact.wa_id = '6' + contact.wa_id
   }
 
-  let templatePayload: TemplateMessagePayload = {
+  let templatePayload: TemplateMessagePayload = JSON.parse(
+    JSON.stringify({
+      messaging_product: 'whatsapp',
+      recipient_type: 'individual',
+      to: contact.wa_id,
+      type: 'template',
+      template: template_payload as TemplateMessagePayload['template'],
+    })
+  )
 
-
-    messaging_product: 'whatsapp',
-    recipient_type: 'individual',
-    to: contact.wa_id,
-    type: 'template', 
-    template: template_payload as TemplateMessagePayload['template'],
-  }
+  let mediaUrl = ''
 
   // Check template payload for %name%, %date%, %time% and replace with actual values
   templatePayload.template.components.forEach((component: any) => {
-    component.parameters.forEach((parameter: { text: string }) => {
+    component.parameters.forEach((parameter: any) => {
+      console.log('Parameter:', parameter)
       if (parameter.text) {
         parameter.text = parameter.text.replace(/%name%/g, contact.name)
+        console.log('Replaced name: ', parameter.text, ' for ', contact.name)
         // parameter.text = parameter.text.replace(/%date%/g, campaign.created_at);
         // parameter.text = parameter.text.replace(/%time%/g, campaign.time);
 
@@ -77,6 +81,12 @@ export const sendTemplate = async (payload: any, workflowLogId: string) => {
             )
           })
         }
+      } else if (
+        parameter.type === 'image' ||
+        parameter.type === 'document' ||
+        parameter.type === 'video'
+      ) {
+        mediaUrl = parameter[parameter.type].link
       }
     })
   })
@@ -100,12 +110,12 @@ export const sendTemplate = async (payload: any, workflowLogId: string) => {
   const randomIndex = Math.floor(Math.random() * weightedPhoneNumbers.length)
   const selectedPhoneNumber = weightedPhoneNumbers[randomIndex]
 
-
   try {
-    // console.log(
-    //   'Sending message with template payload:',
-    //   JSON.stringify(templatePayload, null, 2)
-    // )
+    console.log(
+      'Sending message with template payload:',
+      JSON.stringify(templatePayload, null, 2)
+    )
+    console.log('Selected phone number:', selectedPhoneNumber)
 
     const { data: messageResponse } = await sendMessageWithTemplate(
       templatePayload,
@@ -148,7 +158,7 @@ export const sendTemplate = async (payload: any, workflowLogId: string) => {
       .from('messages')
       .insert([
         {
-          wa_message_id: messageResponse.messages[0].id,
+          wa_message_id: messageResponse.messages[0].id || '',
           phone_number_id: newPhoneNumbers.find(
             (phone: any) => phone.phone_numbers.wa_id === selectedPhoneNumber
           ).phone_number_id,
@@ -159,6 +169,7 @@ export const sendTemplate = async (payload: any, workflowLogId: string) => {
           direction: 'outgoing',
           status: messageResponse.messages[0].message_status || 'failed',
           project_id: contact.project_id,
+          media_url: mediaUrl,
         },
       ])
 
@@ -178,7 +189,6 @@ export const sendTemplate = async (payload: any, workflowLogId: string) => {
         .from('workflow_logs')
         .update({ status: 'COMPLETED' })
         .eq('id', workflowLogId)
-
   } catch (error) {
     console.error('Error sending message:', error)
     logError(error as Error, 'Error sending message')

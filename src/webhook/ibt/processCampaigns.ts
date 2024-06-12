@@ -107,22 +107,28 @@ const processCampaigns = async (campaign: Campaign) => {
 
     console.log('Sending message to:', contact_list_member.contacts.wa_id)
 
-    let templatePayload: TemplateMessagePayload = {
-      messaging_product: 'whatsapp',
-      recipient_type: 'individual',
-      to: contact_list_member.contacts.wa_id,
-      type: 'template',
-      template: campaign.template_payload as TemplateMessagePayload['template'],
-    }
+    // Create a fresh copy of the template payload
+  let templatePayload: TemplateMessagePayload = JSON.parse(JSON.stringify({
+    messaging_product: 'whatsapp',
+    recipient_type: 'individual',
+    to: contact_list_member.contacts.wa_id,
+    type: 'template',
+    template: campaign.template_payload as TemplateMessagePayload['template'],
+  }));
 
+  let mediaUrl = '';
+  
     // Check template payload for %name%, %date%, %time% and replace with actual values
     templatePayload.template.components.forEach((component: any) => {
-      component.parameters.forEach((parameter: { text: string }) => {
+      component.parameters.forEach((parameter: any) => {
         if (parameter.text) {
           parameter.text = parameter.text.replace(
             /%name%/g,
             contact_list_member.contacts.name
           )
+          console.log('Replaced name: ', parameter.text, ' for ', contact_list_member.contacts.name)
+          console.log("Contact List Member: ", contact_list_member)
+
           // parameter.text = parameter.text.replace(/%date%/g, campaign.created_at);
           // parameter.text = parameter.text.replace(/%time%/g, campaign.time);
 
@@ -141,6 +147,8 @@ const processCampaigns = async (campaign: Campaign) => {
               )
             })
           }
+        } else if ( parameter.type === 'image'  || parameter.type === 'document'  || parameter.type === 'video' ) {
+          mediaUrl = parameter[parameter.type].link
         }
       })
     })
@@ -218,8 +226,9 @@ const processCampaigns = async (campaign: Campaign) => {
             message_type: 'TEMPLATE',
             content: textContent,
             direction: 'outgoing',
-            status: messageResponse.messages.message_status || 'failed',
+            status: messageResponse.messages[0].message_status || 'failed',
             project_id: campaign.project_id,
+            media_url: mediaUrl,
           },
         ])
 

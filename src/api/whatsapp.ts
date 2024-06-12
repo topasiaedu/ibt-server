@@ -42,8 +42,6 @@ const sendMessageWithTemplate = async (
   phone_number_id: string
 ): Promise<AxiosResponse<any>> => {
   try {
-    console.log('Sending message with phone number ID:', phone_number_id)
-    console.log('Payload: ', JSON.stringify(payload, null, 2))
     // Check payload for spintax and replace with random value
     const spintaxRegex = /{[^{}]*}/g
 
@@ -80,6 +78,7 @@ const sendMessageWithTemplate = async (
         JSON.stringify(payload, null, 2) +
         '\n'
     )
+    // console.error('Error sending message with template:', error)
     return error as AxiosResponse<any>
   }
 }
