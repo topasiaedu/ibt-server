@@ -15,6 +15,23 @@ export const handleIBTWebhook = async (req: Request, res: Response) => {
     const workflowId = req.params.id;
     const webhookData = req.body;
 
+    // Fetch the workflow and check if the run is true
+    const { data: workflowData, error: workflowError } = await supabase
+      .from('workflows')
+      .select('*')
+      .eq('id', workflowId) 
+      .single();
+
+    if (workflowError) {
+      logError(workflowError as unknown as Error, 'Error fetching workflow');
+      return;
+    }
+
+    if (!workflowData?.run) {
+      console.log('Workflow is not running');
+      return;
+    }
+
     const { data: actionData, error: actionError } = await supabase
       .from('actions')
       .select('*')

@@ -17,6 +17,8 @@ import {
 import { handleIBTWebhook } from './webhook/ibt/processIBTWebhook'
 import localtunnel from 'localtunnel'
 import axios from 'axios'
+import { logError } from './utils/errorLogger'
+import { createServer, Server } from 'http';
 
 const app: Express = express()
 const port: number = parseInt(process.env.PORT as string, 10) || 8080 
@@ -39,7 +41,7 @@ app.get('/webhook', (req, res) => {
   const token = req.query['hub.verify_token']
   const challenge = req.query['hub.challenge']
 
-  if (mode === 'subscribe' && token === 'AIErZ0xweiBhCHPvPM0oMAQ9zD89KjYg') {
+  if (mode === 'subscribe' && token === 'AIErZ0xweiBhCHPvPM0oMAQ9zD89KjYg') { 
     // Use VERIFY_TOKEN from your .env file
     res.status(200).send(challenge)
     console.log('Webhook verified successfully!')
@@ -75,57 +77,87 @@ app.post('/update-tunnel-url', (req, res) => {
 // The error handler must be the last piece of middleware added to the app
 app.use(errorHandler)
 
-// Start the Express server
-// Start the Express server
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+let server: Server;
 
-  // Local tunnel
-  if (environment === 'development') {
-    const tunnel = localtunnel(port, { subdomain: uniqueSubdomain }, (err, tunnel) => {
-      if (err) {
-        console.error(err);
+const startServer = () => {
+  server = createServer(app);
+
+  server.listen(port, () => {
+    console.log(`Server running on port ${port}`);
+
+    // Local tunnel
+    if (environment === 'development') {
+      const tunnel = localtunnel(port, { subdomain: uniqueSubdomain }, (err, tunnel) => {
+        if (err) {
+          console.error(err);
+          logError(`Local tunnel error: ${err}`);
+          process.exit(1);
+        }
+
+        console.log(`Local tunnel running on ${tunnel?.url}`);
+
+        // Send post request to live server (ibts.whatsgenie.com) to update the tunnel URL
+        axios.post('https://ibts.whatsgenie.com/update-tunnel-url', {
+          tunnelURl: tunnel?.url
+        })
+          .then(response => {
+            console.log('Tunnel URL updated on live server');
+          })
+          .catch(error => {
+            console.error('Error updating tunnel URL on live server');
+            logError(`Error updating tunnel URL on live server: ${error.message}`);
+          });
+      });
+
+      tunnel?.on('close', () => {
+        console.log('Local tunnel closed');
+        logError('Local tunnel closed');
         process.exit(1);
-      }
+      });
+    }
 
-      console.log(`Local tunnel running on ${tunnel?.url}`);
-      
-      // Send post request to live server ( ibts.whatsgenie.com ) to update the tunnel URL
-      axios.post('https://ibts.whatsgenie.com/update-tunnel-url', {
-        tunnelURl: tunnel?.url
-      })
-        .then(response => {
-          console.log('Tunnel URL updated on live server')
-        })
-        .catch(error => {
-          console.error('Error updating tunnel URL on live server')
-        })
-    });
+    // Setup realtime processing
+    const unsubscribeRealtimeCampaignProcessing = setupRealtimeCampaignProcessing();
+    const unsubscribeRealtimeWorkflowLogProcessing = setupRealtimeWorkflowLogProcessing();
 
-    tunnel?.on('close', () => {
-      console.log('Local tunnel closed');
+    // Reschedule pending tasks
+    reschedulePendingCampaigns();
+    reschedulePendingWorkflowLogs();
+
+    // Gracefully handle server shutdown
+    function shutdown() {
+      unsubscribeRealtimeCampaignProcessing();
+      unsubscribeRealtimeWorkflowLogProcessing();
+      process.exit(0);
+    }
+
+    process.on('SIGTERM', shutdown);
+    process.on('SIGINT', shutdown);
+  });
+
+  server.on('error', (err: NodeJS.ErrnoException) => {
+    if (err.code === 'EADDRINUSE') {
+      const errorMessage = `Port ${port} is already in use. Trying to restart...`;
+      console.error(errorMessage);
+      logError(errorMessage);
+      setTimeout(() => {
+        server.close(() => {
+          const retryMessage = 'Retrying to start the server...';
+          console.log(retryMessage);
+          logError(retryMessage);
+          startServer();
+        });
+      }, 1000); // Wait 1 second before retrying
+    } else {
+      const errorMessage = `Server error: ${err}`;
+      console.error(errorMessage);
+      logError(errorMessage);
       process.exit(1);
-    });
-  }
+    }
+  });
+};
 
-  // Setup realtime processing
-  const unsubscribeRealtimeCampaignProcessing = setupRealtimeCampaignProcessing();
-  const unsubscribeRealtimeWorkflowLogProcessing = setupRealtimeWorkflowLogProcessing();
-
-  // Reschedule pending tasks
-  reschedulePendingCampaigns();
-  reschedulePendingWorkflowLogs();
-
-  // Gracefully handle server shutdown
-  function shutdown() {
-    unsubscribeRealtimeCampaignProcessing();
-    unsubscribeRealtimeWorkflowLogProcessing();
-    process.exit(0);
-  }
-
-  process.on('SIGTERM', shutdown);
-  process.on('SIGINT', shutdown);
-}); 
+startServer();
 
 // Cron jobs
 // Import and start your cron jobs here

@@ -83,6 +83,11 @@ const processCampaigns = async (campaign: Campaign) => {
   }
 
   for (const contact_list_member of contactListMembers) {
+    // Trim any extraneous whitespace or control characters from wa_id
+    contact_list_member.contacts.wa_id =
+      contact_list_member.contacts.wa_id.trim()
+
+    console.log('Processing contact:', contact_list_member.contacts.contact_id)
     // Check wa_id if it starts with 60 for malaysian numbers
     // If not, add the missing parts it could start with 0 or 1
     if (contact_list_member.contacts.wa_id.startsWith('60')) {
@@ -95,6 +100,12 @@ const processCampaigns = async (campaign: Campaign) => {
       contact_list_member.contacts.wa_id =
         '6' + contact_list_member.contacts.wa_id
     }
+
+    // Ensure that there is only number present in the string ( as we have '\r' at the end for some numbers)
+    contact_list_member.contacts.wa_id =
+      contact_list_member.contacts.wa_id.replace(/\D/g, '')
+
+    console.log('Sending message to:', contact_list_member.contacts.wa_id)
 
     let templatePayload: TemplateMessagePayload = {
       messaging_product: 'whatsapp',
@@ -158,6 +169,9 @@ const processCampaigns = async (campaign: Campaign) => {
         templatePayload,
         selectedPhoneNumber
       )
+
+      console.log('Message response:', messageResponse)
+
       // Lookup template to get the text and the image if any
       const { data: template, error: templateError } = await supabase
         .from('templates')
@@ -195,7 +209,7 @@ const processCampaigns = async (campaign: Campaign) => {
         .from('messages')
         .insert([
           {
-            wa_message_id: messageResponse.messages[0].id,
+            wa_message_id: messageResponse.messages[0].id || '',
             campaign_id: campaign.campaign_id,
             phone_number_id: newPhoneNumbers.find(
               (phone: any) => phone.phone_numbers.wa_id === selectedPhoneNumber
@@ -204,7 +218,7 @@ const processCampaigns = async (campaign: Campaign) => {
             message_type: 'TEMPLATE',
             content: textContent,
             direction: 'outgoing',
-            status: messageResponse.messages.message_status,
+            status: messageResponse.messages.message_status || 'failed',
             project_id: campaign.project_id,
           },
         ])
@@ -286,8 +300,9 @@ function scheduleCampaign(campaign: Campaign) {
   const currentTime = new Date().toLocaleString('en-US', {
     timeZone: 'Asia/Kuala_Lumpur',
   })
+
   // Offset by 8 hours to match Malaysia timezone
-  const currentTimeMillis = new Date(currentTime).getTime() + 8 * 60 * 60 * 1000
+  const currentTimeMillis = new Date(currentTime).getTime()
   const postTime = new Date(campaign.post_time).getTime()
   // console.log('Current time:', currentTime, 'Post time:', postTime)
 
@@ -307,17 +322,17 @@ function scheduleCampaign(campaign: Campaign) {
   }
 
   const delay = postTime - currentTimeMillis
-  // console.log(
-  //   'Scheduling campaign:',
-  //   campaign.campaign_id,
-  //   'in',
-  //   delay,
-  //   'ms (current time:',
-  //   currentTime,
-  //   'post time:',
-  //   postTime,
-  //   ')'
-  // )
+  console.log(
+    'Scheduling campaign:',
+    campaign.campaign_id,
+    'in',
+    delay,
+    'ms (current time:',
+    currentTime,
+    'post time:',
+    postTime,
+    ')'
+  )
 
   if (delay < 0) {
     console.warn(
