@@ -42,27 +42,6 @@ const sendMessageWithTemplate = async (
   phone_number_id: string
 ): Promise<AxiosResponse<any>> => {
   try {
-    // Check payload for spintax and replace with random value
-    const spintaxRegex = /{[^{}]*}/g
-
-    payload.template.components.forEach((component) => {
-      component.parameters.forEach((parameter) => {
-        if (parameter.type === 'text' && parameter.text) {
-          const matches = parameter.text.match(spintaxRegex)
-          if (matches) {
-            matches.forEach((spintax) => {
-              const spintaxOptions = spintax.slice(1, -1).split('|')
-              const randomOption =
-                spintaxOptions[
-                  Math.floor(Math.random() * spintaxOptions.length)
-                ]
-              parameter.text = parameter.text?.replace(spintax, randomOption)
-            })
-          }
-        }
-      })
-    })
-
     const response = await axios.post(
       `${whatsappApiURL}/${phone_number_id}/messages`,
       payload,
