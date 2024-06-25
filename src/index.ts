@@ -5,7 +5,6 @@ import { errorHandler } from './middleware/errorHandler'
 import { handleWebhook } from './webhook/whatsapp/webhookHandler'
 import dotenv from 'dotenv'
 dotenv.config()
-import ftgRoutes from './routes/ftgRoutes'
 import {
   setupRealtimeCampaignProcessing,
   reschedulePendingCampaigns,
@@ -64,8 +63,6 @@ app.post('/webhook', (req, res) => {
       })    
   }
 })
-
-app.use('/ftg', ftgRoutes)
 
 app.post('/ibt/webhook/:id', handleIBTWebhook)
 
@@ -165,9 +162,9 @@ import { fetchWABAsJob, fetchWABAsFunction } from './cronJobs/fetchWABAs'
 import { fetchTemplatesJob, fetchTemplatesFunction } from './cronJobs/fetchTemplates'
 import { fetchWABAPhoneNumbersJob, fetchWABAPhoneNumbersFunction } from './cronJobs/fetchWABAPhoneNumbers'
 
-// fetchTemplatesFunction();
 // fetchWABAsFunction();
 // fetchWABAPhoneNumbersFunction();
+fetchTemplatesFunction();
 
 // campaignJob.start();
 // fetchWABAsJob.start();

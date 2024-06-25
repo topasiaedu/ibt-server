@@ -18,6 +18,7 @@ import handleSecurity from './events/security';
 import handleTemplateCategoryUpdate from './events/template_category_update';
 import { logError } from '../../utils/errorLogger';
 import { fetchTemplatesFunction } from '../../cronJobs/fetchTemplates';
+import { fetchWABAPhoneNumbersFunction } from '../../cronJobs/fetchWABAPhoneNumbers';
 
 // Example Response:
 // {
@@ -103,12 +104,14 @@ export const handleWebhook = async (req: Request, res: Response) => {
                     // case 'messaging_handovers':
                     //     handleMessagingHandovers(req, res);
                     //     break;
-                    // case 'phone_number_name_update':
-                    //     handlePhoneNumberNameUpdate(req, res);
-                    //     break;
-                    // case 'phone_number_quality_update':
-                    //     handlePhoneNumberQualityUpdate(req, res);
-                    //     break;
+                    case 'phone_number_name_update':
+                        fetchWABAPhoneNumbersFunction();
+                        // handlePhoneNumberNameUpdate(req, res);
+                        break;
+                    case 'phone_number_quality_update':
+                        fetchWABAPhoneNumbersFunction();
+                        // handlePhoneNumberQualityUpdate(req, res);
+                        break;
                     // case 'security':
                     //     handleSecurity(req, res);
                     //     break;

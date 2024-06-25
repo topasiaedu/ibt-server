@@ -7,7 +7,7 @@ const fetchWABAPhoneNumbers = async () => {
   console.log('Fetching WABA phone numbers...')
   const wabaIds = await supabase
     .from('whatsapp_business_accounts')
-    .select('account_id, waba_id')
+    .select('*, business_managers(*)')
 
   if (!wabaIds) {
     console.log('No WhatsApp Business Accounts found Data:', wabaIds)
@@ -22,7 +22,8 @@ const fetchWABAPhoneNumbers = async () => {
   for (const wabaId of wabaIds.data) {
     try {
       const { data: phoneNumbers } = await fetchWABAPhoneNumbersService(
-        wabaId.waba_id
+        wabaId.waba_id,
+        wabaId.business_managers.access_token
       )
       // console.log(`Phone numbers for ${wabaId.waba_id}:`, phoneNumbers);
 

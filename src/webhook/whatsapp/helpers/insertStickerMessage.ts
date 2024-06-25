@@ -40,16 +40,18 @@ const insertStickerMessage = async (message: any, display_phone_number: string, 
 
     const myPhoneNumberId = await supabase
       .from('phone_numbers')
-      .select('phone_number_id')
+      .select('*, whatsapp_business_account_id(*, business_managers(*))')
       .eq('number', display_phone_number)
+      .neq('quality_rating', 'UNKNOWN')
       .single();
 
     const myPhoneNumber = myPhoneNumberId?.data?.phone_number_id;
+    const access_token = myPhoneNumberId?.data?.whatsapp_business_account_id?.business_managers?.access_token;
 
     // Generate random file name 
     const fileName = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
 
-    const media = await fetchMedia(imageId, fileName);
+    const media = await fetchMedia(imageId, fileName, access_token);
 
     if (!media) {
       throw new Error('Error fetching media from WhatsApp API');

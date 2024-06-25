@@ -7,7 +7,8 @@ const fetchTemplates = async () => {
   console.log('Fetching templates...')
   const wabaIds = await supabase
     .from('whatsapp_business_accounts')
-    .select('waba_id, account_id')
+    .select('*,business_manager(*)')
+  console.log('WABA IDs:', wabaIds)
 
   if (!wabaIds) {
     console.log('No WhatsApp Business Accounts found')
@@ -20,7 +21,10 @@ const fetchTemplates = async () => {
   }
 
   for (const wabaId of wabaIds.data) {
-    const { data: templates } = await fetchTemplatesService(wabaId.waba_id)
+    const { data: templates } = await fetchTemplatesService(
+      wabaId.waba_id,
+      wabaId.business_manager.access_token
+    )
     if (!templates) {
       console.log('No templates found for WABA ID: ' + wabaId)
       continue
@@ -64,25 +68,30 @@ const fetchTemplates = async () => {
         }
       } else {
         const { name, language, status, category } = template
-        
+
         const { data: newTemplate, error: insertError } = await supabase
-        .from('templates')
-        .insert({
-          name,
-          language,
-          status,
-          category,
-          wa_template_id: id,
-          account_id: wabaId.account_id,
-          components: {
-            data: template.components
-        },
-        });
+          .from('templates')
+          .insert({
+            name,
+            language,
+            status,
+            category,
+            wa_template_id: id,
+            account_id: wabaId.account_id,
+            components: {
+              data: template.components,
+            },
+          })
 
         if (insertError) {
-          logError(insertError as unknown as Error, 'Error inserting template in database. Template ID: ' + id + '\n');
-          console.log('Error inserting template in database. Template ID: ' + id + '\n');
-          continue;
+          logError(
+            insertError as unknown as Error,
+            'Error inserting template in database. Template ID: ' + id + '\n'
+          )
+          console.log(
+            'Error inserting template in database. Template ID: ' + id + '\n'
+          )
+          continue
         }
       }
     }

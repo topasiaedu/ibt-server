@@ -4,15 +4,15 @@ import { TemplateMessagePayload } from '../processCampaigns'
 import { Database } from '../../../database.types'
 import { sendMessageWithTemplate } from '../../../api/whatsapp'
 
-type Contact = Database['public']['Tables']['contacts']['Row']
-
 export const sendTemplate = async (payload: any, workflowLogId: string) => {
   const { workflow_id, contact_id, template_payload, selected_template } =
     payload
-  // Fetch new phone numbers by using campaign id in campaign_phone_numbers
+
   const { data: newPhoneNumbers, error: newPhoneNumbersError } = await supabase
     .from('workflow_phone_numbers')
-    .select('*, phone_numbers(*)')
+    .select(
+      '*, phone_numbers(*,whatsapp_business_account_id(*,business_managers(*)))'
+    )
     .eq('workflow_id', workflow_id)
 
   if (newPhoneNumbersError) {
@@ -119,7 +119,10 @@ export const sendTemplate = async (payload: any, workflowLogId: string) => {
 
     const { data: messageResponse } = await sendMessageWithTemplate(
       templatePayload,
-      selectedPhoneNumber
+      selectedPhoneNumber,
+      newPhoneNumbers.find(
+        (phone: any) => phone.phone_numbers.wa_id === selectedPhoneNumber
+      ).phone_numbers.whatsapp_business_account_id.access_token
     )
     // Lookup template to get the text and the image if any
     const { data: template, error: templateError } = await supabase

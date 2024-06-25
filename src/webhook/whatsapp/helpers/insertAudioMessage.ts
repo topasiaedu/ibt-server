@@ -43,18 +43,18 @@ const insertAudioMessage = async (message: any, display_phone_number: string, pr
 
     const myPhoneNumberId = await supabase
       .from('phone_numbers')
-      .select('phone_number_id')
+      .select('*, whatsapp_business_account_id(*, business_managers(*))')
       .eq('number', display_phone_number)
       .neq('quality_rating', 'UNKNOWN')
       .single();
 
     const myPhoneNumber = myPhoneNumberId?.data?.phone_number_id;
-    console.log("myPhoneNumber", myPhoneNumber)
-    console.log("display_phone_number", display_phone_number)
+    const access_token = myPhoneNumberId?.data?.whatsapp_business_account_id?.business_managers?.access_token;
+
     // Generate random file name 
     const fileName = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
 
-    const media = await fetchMedia(audioId, fileName);
+    const media = await fetchMedia(audioId, fileName, access_token);
 
     if (!media) {
       throw new Error('Error fetching media from WhatsApp API');

@@ -71,7 +71,9 @@ const processCampaigns = async (campaign: Campaign) => {
   // Fetch new phone numbers by using campaign id in campaign_phone_numbers
   const { data: newPhoneNumbers, error: newPhoneNumbersError } = await supabase
     .from('campaign_phone_numbers')
-    .select('*, phone_numbers(*)')
+    .select(
+      '*, phone_numbers(*,whatsapp_business_account_id(*,business_managers(*)))'
+    )
     .eq('campaign_id', campaign.campaign_id)
 
   if (newPhoneNumbersError) {
@@ -108,16 +110,19 @@ const processCampaigns = async (campaign: Campaign) => {
     console.log('Sending message to:', contact_list_member.contacts.wa_id)
 
     // Create a fresh copy of the template payload
-  let templatePayload: TemplateMessagePayload = JSON.parse(JSON.stringify({
-    messaging_product: 'whatsapp',
-    recipient_type: 'individual',
-    to: contact_list_member.contacts.wa_id,
-    type: 'template',
-    template: campaign.template_payload as TemplateMessagePayload['template'],
-  }));
+    let templatePayload: TemplateMessagePayload = JSON.parse(
+      JSON.stringify({
+        messaging_product: 'whatsapp',
+        recipient_type: 'individual',
+        to: contact_list_member.contacts.wa_id,
+        type: 'template',
+        template:
+          campaign.template_payload as TemplateMessagePayload['template'],
+      })
+    )
 
-  let mediaUrl = '';
-  
+    let mediaUrl = ''
+
     // Check template payload for %name%, %date%, %time% and replace with actual values
     templatePayload.template.components.forEach((component: any) => {
       component.parameters.forEach((parameter: any) => {
@@ -126,8 +131,13 @@ const processCampaigns = async (campaign: Campaign) => {
             /%name%/g,
             contact_list_member.contacts.name
           )
-          console.log('Replaced name: ', parameter.text, ' for ', contact_list_member.contacts.name)
-          console.log("Contact List Member: ", contact_list_member)
+          console.log(
+            'Replaced name: ',
+            parameter.text,
+            ' for ',
+            contact_list_member.contacts.name
+          )
+          console.log('Contact List Member: ', contact_list_member)
 
           // parameter.text = parameter.text.replace(/%date%/g, campaign.created_at);
           // parameter.text = parameter.text.replace(/%time%/g, campaign.time);
@@ -147,7 +157,11 @@ const processCampaigns = async (campaign: Campaign) => {
               )
             })
           }
-        } else if ( parameter.type === 'image'  || parameter.type === 'document'  || parameter.type === 'video' ) {
+        } else if (
+          parameter.type === 'image' ||
+          parameter.type === 'document' ||
+          parameter.type === 'video'
+        ) {
           mediaUrl = parameter[parameter.type].link
         }
       })
@@ -175,7 +189,10 @@ const processCampaigns = async (campaign: Campaign) => {
     try {
       const { data: messageResponse } = await sendMessageWithTemplate(
         templatePayload,
-        selectedPhoneNumber
+        selectedPhoneNumber,
+        newPhoneNumbers.find(
+          (phone: any) => phone.phone_numbers.wa_id === selectedPhoneNumber
+        ).phone_numbers.whatsapp_business_account_id.access_token
       )
 
       console.log('Message response:', messageResponse)

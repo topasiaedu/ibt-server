@@ -5,13 +5,6 @@ import { logError } from '../utils/errorLogger'
 import supabase from '../db/supabaseClient'
 
 const whatsappApiURL: string = 'https://graph.facebook.com/v19.0/'
-const token: string =
-  'EAAFZCUSsuZBkQBO7vI52BiAVIVDPsZAATo0KbTLYdZBQ7hCq59lPYf5FYz792HlEN13MCPGDaVP93VYZASXz9ZBNXaiATyIToimwDx0tcCB2sz0TwklEoof3K0mZASJtcYugK1hfdnJGJ1pnRXtnTGmlXiIgkyQe0ZC2DOh4qZAeRhJ9nd9hgKKedub4eaCgvZBWrOHBa3NadCqdlZCx0zO' // Use environment variables for sensitive data
-
-const headers = {
-  'Content-Type': 'application/json',
-  Authorization: `Bearer ${token}`,
-}
 
 // {
 // 	"messaging_product": "whatsapp",
@@ -39,13 +32,19 @@ export type MessagePayload = {
  */
 const sendMessageWithTemplate = async (
   payload: TemplateMessagePayload,
-  phone_number_id: string
+  phone_number_id: string,
+  access_token: string
 ): Promise<AxiosResponse<any>> => {
   try {
     const response = await axios.post(
       `${whatsappApiURL}/${phone_number_id}/messages`,
       payload,
-      { headers }
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${access_token}`,
+        },
+      }
     )
 
     console.log('Message sent with template:', response.data)
@@ -64,13 +63,19 @@ const sendMessageWithTemplate = async (
 
 const sendMessage = async (
   payload: MessagePayload,
-  phone_number_id: string
+  phone_number_id: string,
+  access_token: string
 ): Promise<AxiosResponse<any>> => {
   try {
     const response = await axios.post(
       `${whatsappApiURL}/${phone_number_id}/messages`,
       payload,
-      { headers }
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${access_token}`,
+        },
+      }
     )
     return response
   } catch (error) {
@@ -85,31 +90,40 @@ const sendMessage = async (
 }
 
 const fetchTemplatesService = async (
-  WABA_ID: string
+  WABA_ID: string,
+  access_token: string
 ): Promise<AxiosResponse<any>> => {
   try {
     const response = await axios.get(
       `${whatsappApiURL}/${WABA_ID}/message_templates`,
-      { headers }
+      {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+        },
+      }
     )
     return response
   } catch (error) {
     logError(
       error as Error,
       'Error fetching templates with WABA ID: ' + WABA_ID + '\n'
-      
     )
     throw new Error('Failed to fetch templates')
   }
 }
 
 const fetchWABAPhoneNumbersService = async (
-  WABA_ID: string
+  WABA_ID: string,
+  access_token: string
 ): Promise<AxiosResponse<any>> => {
   try {
     const response = await axios.get(
       `${whatsappApiURL}/${WABA_ID}/phone_numbers`,
-      { headers }
+      {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+        },
+      }
     )
     return response
   } catch (error) {
@@ -121,11 +135,18 @@ const fetchWABAPhoneNumbersService = async (
   }
 }
 
-const fetchWABAsService = async (): Promise<AxiosResponse<any>> => {
+const fetchWABAsService = async (
+  access_token: string,
+  bm_id: string
+): Promise<AxiosResponse<any>> => {
   try {
     const response = await axios.get(
-      `${whatsappApiURL}/1785814375085019/owned_whatsapp_business_accounts`,
-      { headers }
+      `${whatsappApiURL}/${bm_id}/owned_whatsapp_business_accounts`,
+      {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+        },
+      }
     )
     return response
   } catch (error) {
@@ -135,10 +156,15 @@ const fetchWABAsService = async (): Promise<AxiosResponse<any>> => {
   }
 }
 
-const fetchImageURL = async (imageId: string): Promise<AxiosResponse<any>> => {
+const fetchImageURL = async (
+  imageId: string,
+  access_token: string
+): Promise<AxiosResponse<any>> => {
   try {
     const response = await axios.get(`${whatsappApiURL}/${imageId}`, {
-      headers,
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+      },
     })
     return response
   } catch (error) {
@@ -147,16 +173,22 @@ const fetchImageURL = async (imageId: string): Promise<AxiosResponse<any>> => {
   }
 }
 
-const fetchMedia = async (imageId: string, randomFileName: string) => {
+const fetchMedia = async (
+  imageId: string,
+  randomFileName: string,
+  access_token: string
+): Promise<string> => {
   try {
     // Assume axios and headers are set up previously
     const response = await axios.get(`${whatsappApiURL}/${imageId}`, {
-      headers,
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+      },
     })
 
     // Fetch the actual image data as a buffer
     const data = await axios.get(response.data.url, {
-      headers: { Authorization: `Bearer ${token}` },
+      headers: { Authorization: `Bearer ${access_token}` },
       responseType: 'arraybuffer',
     })
 
@@ -186,13 +218,18 @@ const fetchMedia = async (imageId: string, randomFileName: string) => {
   }
 }
 
-const subscribeWebhook = async (WABA_ID: string) => {
+const subscribeWebhook = async (WABA_ID: string, access_token: string) => {
   // https://graph.facebook.com/v19.0/278010752057306/subscribed_apps
   try {
     const response = await axios.post(
-      `${whatsappApiURL}/${WABA_ID}/subscribed_apps?access_token=${token}`,
+      `${whatsappApiURL}/${WABA_ID}/subscribed_apps?access_token=${access_token}`,
       {},
-      { headers }
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${access_token}`,
+        },
+      }
     )
     return response
   } catch (error) {
