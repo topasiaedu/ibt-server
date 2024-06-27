@@ -32,7 +32,7 @@ app.use(loggerMiddleware) // Use the logger middleware for all requests
 
 // Routes setup
 app.get('/', (req: Request, res: Response) => {
-  res.json({ message: 'Strive Clone App Backend API' })
+  res.json({ message: 'Whatsgenie 2.0 Backend API' })
 })
 
 app.get('/webhook', (req, res) => {
