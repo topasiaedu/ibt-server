@@ -4,18 +4,18 @@ import { logError } from '../utils/errorLogger'
 import { CronJob } from 'cron'
 
 const fetchWABAPhoneNumbers = async () => {
-  console.log('Fetching WABA phone numbers...')
+  // console.log('Fetching WABA phone numbers...')
   const wabaIds = await supabase
     .from('whatsapp_business_accounts')
     .select('*, business_managers(*)')
 
   if (!wabaIds) {
-    console.log('No WhatsApp Business Accounts found Data:', wabaIds)
+    console.error('No WhatsApp Business Accounts found Data:', wabaIds)
     return
   }
 
   if (!wabaIds.data) {
-    console.log('No WhatsApp Business Accounts found Data:', wabaIds)
+    console.error('No WhatsApp Business Accounts found Data:', wabaIds)
     return
   }
 
@@ -29,7 +29,7 @@ const fetchWABAPhoneNumbers = async () => {
 
       // Update or insert phone numbers to the database
       if (!phoneNumbers) {
-        console.log('No phone numbers found. Data:', phoneNumbers)
+        console.error('No phone numbers found. Data:', phoneNumbers)
         return
       }
 
@@ -51,7 +51,7 @@ const fetchWABAPhoneNumbers = async () => {
         // Format the phone number to remove the +, -, and spaces
         const number = display_phone_number.replace(/[-\s+]/g, '')
 
-        console.log(
+        console.error(
           '(existingPhoneNumber?.wa_id === id)',
           existingPhoneNumber?.wa_id === id
         )
@@ -74,7 +74,7 @@ const fetchWABAPhoneNumbers = async () => {
                 id +
                 '\n'
             )
-            console.log(
+            console.error(
               'Error updating phone number in database. Phone number ID: ' +
                 id +
                 '\n'
@@ -99,7 +99,7 @@ const fetchWABAPhoneNumbers = async () => {
                 id +
                 '\n'
             )
-            console.log(
+            console.error(
               'Error inserting phone number in database. Phone number ID: ' +
                 id +
                 '\n'

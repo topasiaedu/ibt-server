@@ -4,19 +4,19 @@ import { logError } from '../utils/errorLogger'
 import { CronJob } from 'cron'
 
 const fetchTemplates = async () => {
-  console.log('Fetching templates...')
+  // console.log('Fetching templates...')
   const wabaIds = await supabase
     .from('whatsapp_business_accounts')
     .select('*,business_manager(*)')
-  console.log('WABA IDs:', wabaIds)
+  // console.log('WABA IDs:', wabaIds)
 
   if (!wabaIds) {
-    console.log('No WhatsApp Business Accounts found')
+    console.error('No WhatsApp Business Accounts found')
     return
   }
 
   if (!wabaIds.data) {
-    console.log('No WhatsApp Business Accounts found')
+    console.error('No WhatsApp Business Accounts found')
     return
   }
 
@@ -26,7 +26,7 @@ const fetchTemplates = async () => {
       wabaId.business_manager.access_token
     )
     if (!templates) {
-      console.log('No templates found for WABA ID: ' + wabaId)
+      console.error('No templates found for WABA ID: ' + wabaId)
       continue
     }
 
@@ -61,10 +61,10 @@ const fetchTemplates = async () => {
             updateError as unknown as Error,
             'Error updating template in database. Template ID: ' + id + '\n'
           )
-          console.log(
+          console.error(
             'Error updating template in database. Template ID: ' + id + '\n'
           )
-          console.log(JSON.stringify(updateError, null, 2))
+          console.error(JSON.stringify(updateError, null, 2))
         }
       } else {
         const { name, language, status, category } = template
@@ -88,7 +88,7 @@ const fetchTemplates = async () => {
             insertError as unknown as Error,
             'Error inserting template in database. Template ID: ' + id + '\n'
           )
-          console.log(
+          console.error(
             'Error inserting template in database. Template ID: ' + id + '\n'
           )
           continue

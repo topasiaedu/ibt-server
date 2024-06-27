@@ -94,7 +94,7 @@ const startServer = () => {
         console.log(`Local tunnel running on ${tunnel?.url}`);
 
         // Send post request to live server (ibts.whatsgenie.com) to update the tunnel URL
-        axios.post('https://ibts.whatsgenie.com/update-tunnel-url', {
+        axios.post('https://ibts3.whatsgenie.com/update-tunnel-url', {
           tunnelURl: tunnel?.url
         })
           .then(response => {

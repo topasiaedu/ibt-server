@@ -110,9 +110,10 @@ export const generateWorkflowLog = async (action: Action, contact: Contact) => {
       newWorkflowLogError as unknown as Error,
       'Error creating new workflow log'
     )
-    console.error('Error creating new workflow log:', newWorkflowLogError)
+    console.log('Error creating new workflow log:', newWorkflowLogError)
     return
   }
 
+  console.log('New workflow log created:', newWorkflowLog)
   return newWorkflowLog
 }

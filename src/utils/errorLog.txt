@@ -1,151 +1,189 @@
-[2024-06-24T11:01:24.338Z]  "Error updating tunnel URL on live server: Request failed with status code 404"
+[2024-06-25T04:52:36.334Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
 
 
-[2024-06-24T11:03:27.716Z]  "Error updating tunnel URL on live server: Request failed with status code 404"
+[2024-06-25T04:52:48.852Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
 
 
-[2024-06-24T11:03:32.184Z]  "Error updating tunnel URL on live server: Request failed with status code 404"
-
-
-[2024-06-24T11:03:50.348Z]  "Error updating tunnel URL on live server: Request failed with status code 404"
-
-
-[2024-06-24T11:04:00.498Z]  "Error updating tunnel URL on live server: Request failed with status code 404"
-
-
-[2024-06-24T11:04:19.686Z]  "Error updating tunnel URL on live server: Request failed with status code 404"
-
-
-[2024-06-24T11:05:00.522Z] Error fetching phone numbers with WABA ID: 103057586059372
- "AxiosError: Request failed with status code 400\n    at settle (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\settle.js:19:12)\n    at BrotliDecompress.handleStreamEnd (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\adapters\\http.js:589:11)\n    at BrotliDecompress.emit (node:events:526:35)\n    at BrotliDecompress.emit (node:domain:488:12)\n    at endReadableNT (node:internal/streams/readable:1589:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\Axios.js:45:41)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
-
-
-[2024-06-24T11:05:00.523Z] Error fetching phone numbers "Error: Failed to fetch phone numbers\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:119:11\n    at Generator.throw (<anonymous>)\n    at rejected (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:6:65)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
-
-
-[2024-06-24T11:05:00.833Z] Error fetching phone numbers "Error: Failed to fetch phone numbers\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:119:11\n    at Generator.throw (<anonymous>)\n    at rejected (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:6:65)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
-
-
-[2024-06-24T11:05:00.833Z] Error fetching phone numbers with WABA ID: 103577659231763
- "AxiosError: Request failed with status code 400\n    at settle (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\settle.js:19:12)\n    at BrotliDecompress.handleStreamEnd (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\adapters\\http.js:589:11)\n    at BrotliDecompress.emit (node:events:526:35)\n    at BrotliDecompress.emit (node:domain:488:12)\n    at endReadableNT (node:internal/streams/readable:1589:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\Axios.js:45:41)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
-
-
-[2024-06-24T11:05:00.845Z]  "Error updating tunnel URL on live server: Request failed with status code 404"
-
-
-[2024-06-24T11:05:01.117Z] Error fetching phone numbers with WABA ID: 111598888416661
- "AxiosError: Request failed with status code 400\n    at settle (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\settle.js:19:12)\n    at BrotliDecompress.handleStreamEnd (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\adapters\\http.js:589:11)\n    at BrotliDecompress.emit (node:events:526:35)\n    at BrotliDecompress.emit (node:domain:488:12)\n    at endReadableNT (node:internal/streams/readable:1589:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\Axios.js:45:41)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
-
-
-[2024-06-24T11:05:01.117Z] Error fetching phone numbers "Error: Failed to fetch phone numbers\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:119:11\n    at Generator.throw (<anonymous>)\n    at rejected (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:6:65)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
-
-
-[2024-06-24T11:05:01.485Z] Error fetching phone numbers with WABA ID: 333662616488243
- "AxiosError: Request failed with status code 400\n    at settle (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\settle.js:19:12)\n    at BrotliDecompress.handleStreamEnd (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\adapters\\http.js:589:11)\n    at BrotliDecompress.emit (node:events:526:35)\n    at BrotliDecompress.emit (node:domain:488:12)\n    at endReadableNT (node:internal/streams/readable:1589:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\Axios.js:45:41)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
-
-
-[2024-06-24T11:05:01.485Z] Error fetching phone numbers "Error: Failed to fetch phone numbers\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:119:11\n    at Generator.throw (<anonymous>)\n    at rejected (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:6:65)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
-
-
-[2024-06-24T11:05:01.989Z] Error fetching phone numbers with WABA ID: 283388954854392
- "AxiosError: Request failed with status code 400\n    at settle (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\settle.js:19:12)\n    at BrotliDecompress.handleStreamEnd (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\adapters\\http.js:589:11)\n    at BrotliDecompress.emit (node:events:526:35)\n    at BrotliDecompress.emit (node:domain:488:12)\n    at endReadableNT (node:internal/streams/readable:1589:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\Axios.js:45:41)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
-
-
-[2024-06-24T11:05:01.989Z] Error fetching phone numbers "Error: Failed to fetch phone numbers\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:119:11\n    at Generator.throw (<anonymous>)\n    at rejected (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:6:65)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
-
-
-[2024-06-24T11:05:02.368Z] Error fetching phone numbers with WABA ID: 278010752057306
- "AxiosError: Request failed with status code 400\n    at settle (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\settle.js:19:12)\n    at BrotliDecompress.handleStreamEnd (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\adapters\\http.js:589:11)\n    at BrotliDecompress.emit (node:events:526:35)\n    at BrotliDecompress.emit (node:domain:488:12)\n    at endReadableNT (node:internal/streams/readable:1589:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\Axios.js:45:41)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
-
-
-[2024-06-24T11:05:02.368Z] Error fetching phone numbers "Error: Failed to fetch phone numbers\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:119:11\n    at Generator.throw (<anonymous>)\n    at rejected (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:6:65)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
-
-
-[2024-06-24T11:05:02.749Z] Error fetching phone numbers with WABA ID: 209964115544791
- "AxiosError: Request failed with status code 400\n    at settle (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\settle.js:19:12)\n    at BrotliDecompress.handleStreamEnd (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\adapters\\http.js:589:11)\n    at BrotliDecompress.emit (node:events:526:35)\n    at BrotliDecompress.emit (node:domain:488:12)\n    at endReadableNT (node:internal/streams/readable:1589:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\Axios.js:45:41)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
-
-
-[2024-06-24T11:05:02.749Z] Error fetching phone numbers "Error: Failed to fetch phone numbers\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:119:11\n    at Generator.throw (<anonymous>)\n    at rejected (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:6:65)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
-
-
-[2024-06-24T11:05:03.322Z] Error fetching phone numbers with WABA ID: 262869723570786
- "AxiosError: Request failed with status code 400\n    at settle (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\settle.js:19:12)\n    at BrotliDecompress.handleStreamEnd (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\adapters\\http.js:589:11)\n    at BrotliDecompress.emit (node:events:526:35)\n    at BrotliDecompress.emit (node:domain:488:12)\n    at endReadableNT (node:internal/streams/readable:1589:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\Axios.js:45:41)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
-
-
-[2024-06-24T11:05:03.322Z] Error fetching phone numbers "Error: Failed to fetch phone numbers\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:119:11\n    at Generator.throw (<anonymous>)\n    at rejected (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:6:65)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
-
-
-[2024-06-24T11:05:03.760Z] Error fetching phone numbers with WABA ID: 199640063238604
- "AxiosError: Request failed with status code 400\n    at settle (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\settle.js:19:12)\n    at BrotliDecompress.handleStreamEnd (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\adapters\\http.js:589:11)\n    at BrotliDecompress.emit (node:events:526:35)\n    at BrotliDecompress.emit (node:domain:488:12)\n    at endReadableNT (node:internal/streams/readable:1589:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\Axios.js:45:41)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
-
-
-[2024-06-24T11:05:03.760Z] Error fetching phone numbers "Error: Failed to fetch phone numbers\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:119:11\n    at Generator.throw (<anonymous>)\n    at rejected (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:6:65)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
-
-
-[2024-06-24T11:05:04.276Z] Error fetching phone numbers with WABA ID: 221306414394634
- "AxiosError: Request failed with status code 400\n    at settle (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\settle.js:19:12)\n    at BrotliDecompress.handleStreamEnd (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\adapters\\http.js:589:11)\n    at BrotliDecompress.emit (node:events:526:35)\n    at BrotliDecompress.emit (node:domain:488:12)\n    at endReadableNT (node:internal/streams/readable:1589:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\Axios.js:45:41)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
-
-
-[2024-06-24T11:05:04.276Z] Error fetching phone numbers "Error: Failed to fetch phone numbers\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:119:11\n    at Generator.throw (<anonymous>)\n    at rejected (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:6:65)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
-
-
-[2024-06-24T11:05:39.753Z] Error fetching phone numbers with WABA ID: 103057586059372
- "AxiosError: Request failed with status code 400\n    at settle (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\settle.js:19:12)\n    at BrotliDecompress.handleStreamEnd (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\adapters\\http.js:589:11)\n    at BrotliDecompress.emit (node:events:526:35)\n    at BrotliDecompress.emit (node:domain:488:12)\n    at endReadableNT (node:internal/streams/readable:1589:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\Axios.js:45:41)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
-
-
-[2024-06-24T11:05:39.754Z] Error fetching phone numbers "Error: Failed to fetch phone numbers\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:119:11\n    at Generator.throw (<anonymous>)\n    at rejected (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:6:65)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
-
-
-[2024-06-24T11:07:16.838Z] Error fetching phone numbers with WABA ID: 103057586059372
- "AxiosError: Request failed with status code 400\n    at settle (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\settle.js:19:12)\n    at BrotliDecompress.handleStreamEnd (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\adapters\\http.js:589:11)\n    at BrotliDecompress.emit (node:events:526:35)\n    at BrotliDecompress.emit (node:domain:488:12)\n    at endReadableNT (node:internal/streams/readable:1589:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\Axios.js:45:41)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
-
-
-[2024-06-24T11:07:16.839Z] Error fetching phone numbers "Error: Failed to fetch phone numbers\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:119:11\n    at Generator.throw (<anonymous>)\n    at rejected (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:6:65)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
-
-
-[2024-06-24T11:11:17.777Z]  "Error updating tunnel URL on live server: Request failed with status code 404"
-
-
-[2024-06-24T11:36:57.677Z] Error processing inbound messages. Data: {
+[2024-06-25T04:52:49.145Z] Error sending message with template. Payload: {
   "messaging_product": "whatsapp",
-  "metadata": {
-    "display_phone_number": "60142758633",
-    "phone_number_id": "378967558625481"
-  },
-  "contacts": [
-    {
-      "profile": {
-        "name": "Khe Li"
+  "recipient_type": "individual",
+  "to": "60139968817",
+  "type": "template",
+  "template": {
+    "components": [
+      {
+        "parameters": [
+          {
+            "image": {
+              "link": "https://yvpvhbgcawvruybkmupv.supabase.co/storage/v1/object/public/media/templates/8toeeo"
+            },
+            "type": "image"
+          }
+        ],
+        "type": "HEADER"
       },
-      "wa_id": "60165046399"
-    }
-  ],
-  "messages": [
-    {
-      "from": "60165046399",
-      "id": "wamid.HBgLNjAxNjUwNDYzOTkVAgASGBQzQTA0MEYyQ0M5NjBGMjc4MTNGQQA=",
-      "timestamp": "1719228984",
-      "text": {
-        "body": "Hihi"
-      },
-      "type": "text"
-    }
-  ]
+      {
+        "parameters": [
+          {
+            "text": "",
+            "type": "text"
+          }
+        ],
+        "type": "BODY"
+      }
+    ],
+    "language": {
+      "code": "zh_CN"
+    },
+    "name": "ws_1d_feb2_2moro"
+  }
+}
+ "AxiosError: Request failed with status code 400\n    at settle (C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\settle.js:19:12)\n    at BrotliDecompress.handleStreamEnd (C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\adapters\\http.js:589:11)\n    at BrotliDecompress.emit (node:events:530:35)\n    at BrotliDecompress.emit (node:domain:488:12)\n    at endReadableNT (node:internal/streams/readable:1696:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\Axios.js:45:41)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-06-25T04:52:49.234Z] Error sending message "TypeError: Cannot read properties of undefined (reading 'messages')\n    at C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\action-handler\\send-template.ts:161:42\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\action-handler\\send-template.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-06-25T05:45:13.731Z] Error inserting inbound text message into database. Data: {
+  "from": "60182638499",
+  "id": "wamid.HBgLNjAxODI2Mzg0OTkVAgASGCAzRjJDMDBEMDg3RTNEOTdBQTExQTZCMUM1NkI2OTQ0RgA=",
+  "timestamp": "1719194273",
+  "type": "image",
+  "image": {
+    "mime_type": "image/jpeg",
+    "sha256": "HMwdskcTg6NY97aud39+do0NNxl5J51z1PH7ALc1q4A=",
+    "id": "974986740973221"
+  }
+}
+ Error: {}
+Inside insertImageMessage function in insertImageMessage.ts "Error: Failed to fetch or upload image\n    at C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:223:11\n    at Generator.throw (<anonymous>)\n    at rejected (C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:6:65)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-06-25T06:39:47.921Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-06-25T07:51:09.977Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-06-25T07:53:38.398Z] Error inserting inbound text message into database. Data: {
+  "from": "60182638499",
+  "id": "wamid.HBgLNjAxODI2Mzg0OTkVAgASGCAzRjJDMDBEMDg3RTNEOTdBQTExQTZCMUM1NkI2OTQ0RgA=",
+  "timestamp": "1719194273",
+  "type": "image",
+  "image": {
+    "mime_type": "image/jpeg",
+    "sha256": "HMwdskcTg6NY97aud39+do0NNxl5J51z1PH7ALc1q4A=",
+    "id": "974986740973221"
+  }
+}
+ Error: {}
+Inside insertImageMessage function in insertImageMessage.ts "Error: Failed to fetch or upload image\n    at C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:223:11\n    at Generator.throw (<anonymous>)\n    at rejected (C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:6:65)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-06-25T07:54:03.392Z] Error inserting inbound text message into database. Data: {
+  "from": "60182638499",
+  "id": "wamid.HBgLNjAxODI2Mzg0OTkVAgASGCAzRjJDMDBEMDg3RTNEOTdBQTExQTZCMUM1NkI2OTQ0RgA=",
+  "timestamp": "1719194273",
+  "type": "image",
+  "image": {
+    "mime_type": "image/jpeg",
+    "sha256": "HMwdskcTg6NY97aud39+do0NNxl5J51z1PH7ALc1q4A=",
+    "id": "974986740973221"
+  }
+}
+ Error: {}
+Inside insertImageMessage function in insertImageMessage.ts "Error: Failed to fetch or upload image\n    at C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:223:11\n    at Generator.throw (<anonymous>)\n    at rejected (C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:6:65)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-06-25T07:54:29.791Z] Error inserting inbound text message into database. Data: {
+  "from": "60182638499",
+  "id": "wamid.HBgLNjAxODI2Mzg0OTkVAgASGCAzRjJDMDBEMDg3RTNEOTdBQTExQTZCMUM1NkI2OTQ0RgA=",
+  "timestamp": "1719194273",
+  "type": "image",
+  "image": {
+    "mime_type": "image/jpeg",
+    "sha256": "HMwdskcTg6NY97aud39+do0NNxl5J51z1PH7ALc1q4A=",
+    "id": "974986740973221"
+  }
+}
+ Error: {}
+Inside insertImageMessage function in insertImageMessage.ts "Error: Failed to fetch or upload image\n    at C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:223:11\n    at Generator.throw (<anonymous>)\n    at rejected (C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:6:65)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-06-25T07:55:05.675Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-06-25T07:55:15.205Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-06-25T07:55:21.735Z] Error inserting inbound text message into database. Data: {
+  "from": "60182638499",
+  "id": "wamid.HBgLNjAxODI2Mzg0OTkVAgASGCAzRjJDMDBEMDg3RTNEOTdBQTExQTZCMUM1NkI2OTQ0RgA=",
+  "timestamp": "1719194273",
+  "type": "image",
+  "image": {
+    "mime_type": "image/jpeg",
+    "sha256": "HMwdskcTg6NY97aud39+do0NNxl5J51z1PH7ALc1q4A=",
+    "id": "974986740973221"
+  }
+}
+ Error: {}
+Inside insertImageMessage function in insertImageMessage.ts "Error: Failed to fetch or upload image\n    at C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:224:11\n    at Generator.throw (<anonymous>)\n    at rejected (C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:6:65)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-06-25T07:56:17.057Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-06-25T07:56:18.962Z] Error inserting inbound text message into database. Data: {
+  "from": "60182228803",
+  "id": "wamid.HBgLNjAxODIyMjg4MDMVAgASGCBDNUI0QkQ2QjE1NDE1RUQ1RTM0ODEyMjRBQTNCOENCRgA=",
+  "timestamp": "1719192323",
+  "type": "image",
+  "image": {
+    "mime_type": "image/jpeg",
+    "sha256": "ci8C+eROhs0JJnRCS41c58aM/hJco7s/E5kUKDvY3Zg=",
+    "id": "325077493987759"
+  }
+}
+ Error: {}
+Inside insertImageMessage function in insertImageMessage.ts "Error: Failed to fetch or upload image\n    at C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:224:11\n    at Generator.throw (<anonymous>)\n    at rejected (C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\src\\api\\whatsapp.ts:6:65)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-06-25T07:56:34.858Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-06-25T07:58:27.449Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-06-25T07:58:45.219Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-06-25T07:59:08.261Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-06-25T08:13:23.472Z] Error inserting inbound text message into database. Data: {
+  "from": "60138731899",
+  "id": "wamid.HBgLNjAxMzg3MzE4OTkVAgASGBYzRUIwNzI2MUVEN0M3NTIyMDQ3QzlDAA==",
+  "timestamp": "1719303200",
+  "type": "sticker",
+  "sticker": {
+    "mime_type": "image/webp",
+    "sha256": "IyF5H8MP6PzMl1+nqW+vHnX4NPP6d2jnzHqrpZAkP+w=",
+    "id": "1532293804390889",
+    "animated": false
+  }
 }
  Error: {
-  "code": "PGRST003",
-  "details": null,
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
   "hint": null,
-  "message": "Timed out acquiring connection from connection pool."
+  "message": "JSON object requested, multiple (or no) rows returned"
 }
-Inside handleIncomingMessage function in messages.ts {
-  "code": "PGRST003",
-  "details": null,
+Inside insertTextMessage function in insertTextMessage.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
   "hint": null,
-  "message": "Timed out acquiring connection from connection pool."
+  "message": "JSON object requested, multiple (or no) rows returned"
 }
-
-
-[2024-06-24T19:58:38.184Z]  "Error updating tunnel URL on live server: Request failed with status code 404"
 
 

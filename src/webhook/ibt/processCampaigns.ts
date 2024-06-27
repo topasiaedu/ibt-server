@@ -72,7 +72,7 @@ const processCampaigns = async (campaign: Campaign) => {
   const { data: newPhoneNumbers, error: newPhoneNumbersError } = await supabase
     .from('campaign_phone_numbers')
     .select(
-      '*, phone_numbers(*,whatsapp_business_account_id(*,business_managers(*)))'
+      '*, phone_numbers(*,whatsapp_business_accounts(*,business_manager(*)))'
     )
     .eq('campaign_id', campaign.campaign_id)
 
@@ -89,7 +89,7 @@ const processCampaigns = async (campaign: Campaign) => {
     contact_list_member.contacts.wa_id =
       contact_list_member.contacts.wa_id.trim()
 
-    console.log('Processing contact:', contact_list_member.contacts.contact_id)
+    // console.log('Processing contact:', contact_list_member.contacts.contact_id)
     // Check wa_id if it starts with 60 for malaysian numbers
     // If not, add the missing parts it could start with 0 or 1
     if (contact_list_member.contacts.wa_id.startsWith('60')) {
@@ -107,7 +107,7 @@ const processCampaigns = async (campaign: Campaign) => {
     contact_list_member.contacts.wa_id =
       contact_list_member.contacts.wa_id.replace(/\D/g, '')
 
-    console.log('Sending message to:', contact_list_member.contacts.wa_id)
+    // console.log('Sending message to:', contact_list_member.contacts.wa_id)
 
     // Create a fresh copy of the template payload
     let templatePayload: TemplateMessagePayload = JSON.parse(
@@ -131,13 +131,6 @@ const processCampaigns = async (campaign: Campaign) => {
             /%name%/g,
             contact_list_member.contacts.name
           )
-          console.log(
-            'Replaced name: ',
-            parameter.text,
-            ' for ',
-            contact_list_member.contacts.name
-          )
-          console.log('Contact List Member: ', contact_list_member)
 
           // parameter.text = parameter.text.replace(/%date%/g, campaign.created_at);
           // parameter.text = parameter.text.replace(/%time%/g, campaign.time);
@@ -192,7 +185,7 @@ const processCampaigns = async (campaign: Campaign) => {
         selectedPhoneNumber,
         newPhoneNumbers.find(
           (phone: any) => phone.phone_numbers.wa_id === selectedPhoneNumber
-        ).phone_numbers.whatsapp_business_account_id.access_token
+        ).phone_numbers.whatsapp_business_accounts.business_manager.access_token
       )
 
       console.log('Message response:', messageResponse)
@@ -273,7 +266,7 @@ const processCampaigns = async (campaign: Campaign) => {
           .update({ status: 'COMPLETED' })
           .eq('campaign_id', campaign.campaign_id)
     } catch (error) {
-      console.log('Error sending message:', error)
+      console.error('Error sending message:', error)
       logError(error as Error, 'Error sending message')
     }
   }
@@ -370,7 +363,7 @@ function scheduleCampaign(campaign: Campaign) {
     processQueue()
   } else {
     setTimeout(() => {
-      console.log('Timeout reached for campaign:', campaign.campaign_id)
+      console.error('Timeout reached for campaign:', campaign.campaign_id)
       campaignQueue.push(campaign)
       processQueue()
     }, delay)
@@ -390,7 +383,7 @@ export const reschedulePendingCampaigns = async () => {
   }
 
   if (!campaigns) {
-    console.log('No pending campaigns found')
+    console.error('No pending campaigns found')
     return
   }
 

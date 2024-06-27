@@ -36,6 +36,12 @@ const sendMessageWithTemplate = async (
   access_token: string
 ): Promise<AxiosResponse<any>> => {
   try {
+    console.log(
+      'Sending message with template:',
+      JSON.stringify(payload, null, 2),
+      phone_number_id,
+      access_token
+    )
     const response = await axios.post(
       `${whatsappApiURL}/${phone_number_id}/messages`,
       payload,
@@ -179,6 +185,7 @@ const fetchMedia = async (
   access_token: string
 ): Promise<string> => {
   try {
+    console.log('Fetching image with ID:', imageId, randomFileName, access_token)
     // Assume axios and headers are set up previously
     const response = await axios.get(`${whatsappApiURL}/${imageId}`, {
       headers: {
@@ -213,7 +220,7 @@ const fetchMedia = async (
       uploadData.path
     )
   } catch (error) {
-    console.error('Error fetching or uploading image with ID:', imageId, error)
+    console.error('Error fetching or uploading image with ID:', imageId)
     throw new Error('Failed to fetch or upload image')
   }
 }

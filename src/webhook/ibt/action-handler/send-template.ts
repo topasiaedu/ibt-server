@@ -11,7 +11,7 @@ export const sendTemplate = async (payload: any, workflowLogId: string) => {
   const { data: newPhoneNumbers, error: newPhoneNumbersError } = await supabase
     .from('workflow_phone_numbers')
     .select(
-      '*, phone_numbers(*,whatsapp_business_account_id(*,business_managers(*)))'
+      '*, phone_numbers(*,whatsapp_business_accounts(*,business_manager(*)))'
     )
     .eq('workflow_id', workflow_id)
 
@@ -61,10 +61,8 @@ export const sendTemplate = async (payload: any, workflowLogId: string) => {
   // Check template payload for %name%, %date%, %time% and replace with actual values
   templatePayload.template.components.forEach((component: any) => {
     component.parameters.forEach((parameter: any) => {
-      console.log('Parameter:', parameter)
       if (parameter.text) {
         parameter.text = parameter.text.replace(/%name%/g, contact.name)
-        console.log('Replaced name: ', parameter.text, ' for ', contact.name)
         // parameter.text = parameter.text.replace(/%date%/g, campaign.created_at);
         // parameter.text = parameter.text.replace(/%time%/g, campaign.time);
 
@@ -111,18 +109,17 @@ export const sendTemplate = async (payload: any, workflowLogId: string) => {
   const selectedPhoneNumber = weightedPhoneNumbers[randomIndex]
 
   try {
-    console.log(
-      'Sending message with template payload:',
-      JSON.stringify(templatePayload, null, 2)
-    )
-    console.log('Selected phone number:', selectedPhoneNumber)
+    // console.log(
+    //   'Sending message with template payload:',
+    //   JSON.stringify(templatePayload, null, 2)
+    // )
 
     const { data: messageResponse } = await sendMessageWithTemplate(
       templatePayload,
       selectedPhoneNumber,
       newPhoneNumbers.find(
         (phone: any) => phone.phone_numbers.wa_id === selectedPhoneNumber
-      ).phone_numbers.whatsapp_business_account_id.access_token
+      ).phone_numbers.whatsapp_business_accounts.business_manager.access_token
     )
     // Lookup template to get the text and the image if any
     const { data: template, error: templateError } = await supabase
@@ -195,5 +192,11 @@ export const sendTemplate = async (payload: any, workflowLogId: string) => {
   } catch (error) {
     console.error('Error sending message:', error)
     logError(error as Error, 'Error sending message')
+
+    const { data: updatedWorkflowLogStatus, error: updateStatusError } =
+      await supabase
+        .from('workflow_logs')
+        .update({ status: 'FAILED' })
+        .eq('id', workflowLogId)
   }
 }

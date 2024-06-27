@@ -44,13 +44,13 @@ const insertImageMessage = async (
 
     const myPhoneNumberId = await supabase
       .from('phone_numbers')
-      .select('*, whatsapp_business_account_id(*, business_managers(*))')
+      .select('*, whatsapp_business_accounts(*, business_manager(*))')
       .eq('number', display_phone_number)
       .neq('quality_rating', 'UNKNOWN')
       .single();
 
     const myPhoneNumber = myPhoneNumberId?.data?.phone_number_id;
-    const access_token = myPhoneNumberId?.data?.whatsapp_business_account_id?.business_managers?.access_token;
+    const access_token = myPhoneNumberId?.data?.whatsapp_business_accounts?.business_manager?.access_token;
 
     // Generate random file name 
     const fileName = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);

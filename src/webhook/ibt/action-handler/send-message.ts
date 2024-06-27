@@ -10,7 +10,7 @@ export const sendMessage = async (payload: any, workflowLogId: string) => {
   const { data: newPhoneNumbers, error: newPhoneNumbersError } = await supabase
     .from('workflow_phone_numbers')
     .select(
-      '*, phone_numbers(*,whatsapp_business_account_id(*,business_managers(*)))'
+      '*, phone_numbers(*,whatsapp_business_accounts(*,business_manager(*)))'
     )
     .eq('workflow_id', workflow_id)
 
@@ -98,7 +98,7 @@ export const sendMessage = async (payload: any, workflowLogId: string) => {
       selectedPhoneNumber,
       newPhoneNumbers.find(
         (phone: any) => phone.phone_numbers.wa_id === selectedPhoneNumber
-      ).phone_numbers.whatsapp_business_account_id.access_token
+      ).phone_numbers.whatsapp_business_accounts.business_manager.access_token
     )
 
     // Add the message to the database under the table messages

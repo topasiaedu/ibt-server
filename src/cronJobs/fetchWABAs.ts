@@ -4,7 +4,7 @@ import { logError } from '../utils/errorLogger'
 import { CronJob } from 'cron'
 
 const fetchWABAs = async () => {
-  console.log('Fetching WABAs...')
+  // console.log('Fetching WABAs...')
 
   try {
     const businessManagers = await supabase
@@ -12,12 +12,12 @@ const fetchWABAs = async () => {
       .select('*')
 
     if (!businessManagers) {
-      console.log('No Business Managers found')
+      console.error('No Business Managers found')
       return
     }
 
     if (!businessManagers.data) {
-      console.log('No Business Managers found')
+      console.error('No Business Managers found')
       return
     }
 
@@ -26,10 +26,10 @@ const fetchWABAs = async () => {
         businessManager.access_token,
         businessManager.id
       )
-      console.log('WABAs:', wabas)
+      // console.log('WABAs:', wabas)
 
       if (!wabas) {
-        console.log('No WABAs found')
+        console.error('No WABAs found')
         return
       }
 
@@ -82,7 +82,7 @@ const fetchWABAs = async () => {
               insertError as unknown as Error,
               'Error inserting WABA in database. WABA ID: ' + id + '\n'
             )
-            console.log(
+            console.error(
               'Error inserting WABA in database. WABA ID: ' + id + '\n'
             )
           }

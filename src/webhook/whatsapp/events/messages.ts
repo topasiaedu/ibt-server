@@ -48,10 +48,10 @@ const handleOutgoingMessage = async (value: any) => {
         .select('*')
         .single()
 
-      console.log('====================================')
-      console.log('status', status.id)
-      console.log('message', message)
-      console.log('====================================')
+      // console.log('====================================')
+      // console.log('status', status.id)
+      // console.log('message', message)
+      // console.log('====================================')
 
       if (updateError) {
         return 'Error updating outgoing message status in database'
@@ -59,7 +59,6 @@ const handleOutgoingMessage = async (value: any) => {
 
       if (status.conversation) {
         if (status.conversation.expiration_timestamp) {
-          console.log('Conversation:', status.conversation)
           let { data: existingMessageWindow, error: findError } = await supabase
             .from('message_window')
             .select('conversation_id')
@@ -78,7 +77,6 @@ const handleOutgoingMessage = async (value: any) => {
               parseInt(status.conversation.expiration_timestamp) * 1000
             )
             const formattedDate = date.toISOString()
-            console.log('Formatted Date:', formattedDate)
             // insert the message window
             let { error: insertError } = await supabase
               .from('message_window')
@@ -235,7 +233,7 @@ const handleIncomingMessage = async (value: any) => {
           )
           break
         default:
-          console.log('Unsupported message type:', type)
+          console.error('Unsupported message type:', type)
       }
     })
 
@@ -274,7 +272,6 @@ const handleKeywordTrigger = async (value: any) => {
     return
   }
 
-  console.log('messages[0].id', messages[0].id)
   // Check if the id already exist in the database
   const { data: messageData, error: messageError } = await supabase
     .from('messages')
@@ -292,7 +289,7 @@ const handleKeywordTrigger = async (value: any) => {
   }
 
   if (messageData.length > 0) {
-    console.log("Message already exists in the database")
+    console.error("Message already exists in the database")
     return
   }
 
