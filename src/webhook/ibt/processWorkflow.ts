@@ -1,8 +1,6 @@
 // cronJobs/processWorkflowLogs.ts
 import supabase from '../../db/supabaseClient'
-import { sendMessageWithTemplate } from '../../api/whatsapp'
 import { logError } from '../../utils/errorLogger'
-import { CronJob } from 'cron'
 import { Database } from '../../database.types'
 import { sendTemplate } from './action-handler/send-template'
 import { sendMessage } from './action-handler/send-message'

@@ -27,6 +27,7 @@
     "express": "^4.19.2",
     "fs": "^0.0.1-security",
     "localtunnel": "^2.0.2",
+    "node-cache": "^5.1.2",
     "redis": "^4.6.14"
   },
   "devDependencies": {

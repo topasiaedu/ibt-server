@@ -46,7 +46,7 @@ export interface TemplateMessagePayload {
 export interface Template {
   name: string;
   language: Language;
-  components: Component[];
+  components?: Component[];
 }
 
 export interface Language {
