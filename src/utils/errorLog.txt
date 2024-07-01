@@ -447,3 +447,295 @@ Inside insertTextMessage function in insertTextMessage.ts {
 [2024-07-01T10:33:12.275Z] Error sending message "TypeError: Cannot read properties of undefined (reading 'phone_numbers')\n    at C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:191:8\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
 
 
+[2024-07-01T11:06:06.512Z] Error finding contact in database{"wa_id":"0139978817","profile":{"name":"Stanley","email":"stanleh121912913@gmail.com"}}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-01T11:07:35.727Z] Error finding contact in database{"wa_id":"0139978817","profile":{"name":"Stanley","email":"stanleh121912913@gmail.com"}}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-01T11:07:37.103Z] Error sending message with template. Payload: {
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": "60139968817",
+  "type": "template",
+  "template": {
+    "name": "new_user_vip_message",
+    "language": {
+      "code": "zh_CN"
+    },
+    "components": [
+      {
+        "type": "body",
+        "parameters": [
+          {
+            "type": "text",
+            "text": "stanleh121912913@gmail.com"
+          },
+          {
+            "type": "text",
+            "text": "74h859zh"
+          }
+        ]
+      }
+    ]
+  }
+}
+ "AxiosError: Request failed with status code 400\n    at settle (C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\settle.js:19:12)\n    at BrotliDecompress.handleStreamEnd (C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\adapters\\http.js:589:11)\n    at BrotliDecompress.emit (node:events:530:35)\n    at BrotliDecompress.emit (node:domain:488:12)\n    at endReadableNT (node:internal/streams/readable:1696:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\Axios.js:45:41)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-01T11:10:45.423Z] Error finding contact in database{"wa_id":"0139978817","profile":{"name":"Stanley","email":"stanleh2121912913@gmail.com"}}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-01T11:10:46.705Z] Error sending message with template. Payload: {
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": "0139978817",
+  "type": "template",
+  "template": {
+    "name": "new_user_vip_message",
+    "language": {
+      "code": "zh_CN"
+    },
+    "components": [
+      {
+        "type": "body",
+        "parameters": [
+          {
+            "type": "text",
+            "text": "stanleh2121912913@gmail.com"
+          },
+          {
+            "type": "text",
+            "text": "szfr84t8"
+          }
+        ]
+      }
+    ]
+  }
+}
+ "AxiosError: Request failed with status code 400\n    at settle (C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\settle.js:19:12)\n    at BrotliDecompress.handleStreamEnd (C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\adapters\\http.js:589:11)\n    at BrotliDecompress.emit (node:events:530:35)\n    at BrotliDecompress.emit (node:domain:488:12)\n    at endReadableNT (node:internal/streams/readable:1696:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\Axios.js:45:41)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-01T11:11:09.310Z] Error finding contact in database{"wa_id":"60139978817","profile":{"name":"Stanley","email":"stanleh23121912913@gmail.com"}}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-01T11:11:11.132Z] Error sending message with template. Payload: {
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": "60139978817",
+  "type": "template",
+  "template": {
+    "name": "new_user_vip_message",
+    "language": {
+      "code": "zh_CN"
+    },
+    "components": [
+      {
+        "type": "body",
+        "parameters": [
+          {
+            "type": "text",
+            "text": "stanleh23121912913@gmail.com"
+          },
+          {
+            "type": "text",
+            "text": "dqyu0plo"
+          }
+        ]
+      }
+    ]
+  }
+}
+ "AxiosError: Request failed with status code 400\n    at settle (C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\settle.js:19:12)\n    at BrotliDecompress.handleStreamEnd (C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\adapters\\http.js:589:11)\n    at BrotliDecompress.emit (node:events:530:35)\n    at BrotliDecompress.emit (node:domain:488:12)\n    at endReadableNT (node:internal/streams/readable:1696:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\Axios.js:45:41)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-01T11:12:21.910Z] Error finding contact in database{"wa_id":"60139978817","profile":{"name":"Stanley","email":"stanleh223121912913@gmail.com"}}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-01T11:12:23.194Z] Error sending message with template. Payload: {
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": "60139978817",
+  "type": "template",
+  "template": {
+    "name": "new_user_vip_message",
+    "language": {
+      "code": "zh_CN"
+    },
+    "components": [
+      {
+        "type": "body",
+        "parameters": [
+          {
+            "type": "text",
+            "text": "stanleh223121912913@gmail.com"
+          },
+          {
+            "type": "text",
+            "text": "x1ix60ap"
+          }
+        ]
+      }
+    ]
+  }
+}
+ "AxiosError: Request failed with status code 400\n    at settle (C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\settle.js:19:12)\n    at BrotliDecompress.handleStreamEnd (C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\adapters\\http.js:589:11)\n    at BrotliDecompress.emit (node:events:530:35)\n    at BrotliDecompress.emit (node:domain:488:12)\n    at endReadableNT (node:internal/streams/readable:1696:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\Axios.js:45:41)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-01T11:13:48.341Z] Error finding contact in database{"wa_id":"60139978817","profile":{"name":"Stanley","email":"stanleh2231212912913@gmail.com"}}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-01T11:13:49.936Z] Error sending message with template. Payload: {
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": "60139978817",
+  "type": "template",
+  "template": {
+    "name": "new_user_vip_message",
+    "language": {
+      "code": "zh_CN"
+    },
+    "components": [
+      {
+        "type": "body",
+        "parameters": [
+          {
+            "type": "text",
+            "text": "stanleh2231212912913@gmail.com"
+          },
+          {
+            "type": "text",
+            "text": "rqadv56i"
+          }
+        ]
+      }
+    ]
+  }
+}
+ "AxiosError: Request failed with status code 400\n    at settle (C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\settle.js:19:12)\n    at BrotliDecompress.handleStreamEnd (C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\adapters\\http.js:589:11)\n    at BrotliDecompress.emit (node:events:530:35)\n    at BrotliDecompress.emit (node:domain:488:12)\n    at endReadableNT (node:internal/streams/readable:1696:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\Axios.js:45:41)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-01T11:15:47.206Z] Error finding contact in database{"wa_id":"60139978817","profile":{"name":"Stanley","email":"stanleh2231212912913@gmail.com"}}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-01T11:15:53.480Z] Error finding contact in database{"profile":{"name":"Sally Lee"},"wa_id":"60166043013"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-01T11:15:53.607Z] Error inserting inbound text message into database. Data: {
+  "context": {
+    "from": "601159946253",
+    "id": "wamid.HBgLNjAxNjYwNDMwMTMVAgARGBIwMzc3QzY3NThGNUEyRDVFQ0EA"
+  },
+  "from": "60166043013",
+  "id": "wamid.HBgLNjAxNjYwNDMwMTMVAgASGCA3OEFBNjU2QjJFMTg4RjhGMTg5Q0ZGNUIxRDhFRDg3MgA=",
+  "timestamp": "1719832550",
+  "type": "button",
+  "button": {
+    "payload": "I'M IN",
+    "text": "I'M IN"
+  }
+}
+ Error: {}
+Inside insertButtonMessage function in insertButtonMessage.ts "Error: Sender not found in database\n    at C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\src\\webhook\\whatsapp\\helpers\\insertButtonMessage.ts:38:13\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\src\\webhook\\whatsapp\\helpers\\insertButtonMessage.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-01T11:15:54.709Z] Error finding contact in database{"wa_id":"60139978817","profile":{"name":"Stanley","email":"stanleh22231212912913@gmail.com"}}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-01T11:16:18.866Z] Error finding contact in database{"profile":{"name":"Sally Lee"},"wa_id":"60166043013"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-01T11:16:19.003Z] Error inserting inbound text message into database. Data: {
+  "context": {
+    "from": "601159946253",
+    "id": "wamid.HBgLNjAxNjYwNDMwMTMVAgARGBIwMzc3QzY3NThGNUEyRDVFQ0EA"
+  },
+  "from": "60166043013",
+  "id": "wamid.HBgLNjAxNjYwNDMwMTMVAgASGCA3OEFBNjU2QjJFMTg4RjhGMTg5Q0ZGNUIxRDhFRDg3MgA=",
+  "timestamp": "1719832550",
+  "type": "button",
+  "button": {
+    "payload": "I'M IN",
+    "text": "I'M IN"
+  }
+}
+ Error: {}
+Inside insertButtonMessage function in insertButtonMessage.ts "Error: Sender not found in database\n    at C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\src\\webhook\\whatsapp\\helpers\\insertButtonMessage.ts:38:13\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\src\\webhook\\whatsapp\\helpers\\insertButtonMessage.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-01T11:16:58.424Z] Error finding contact in database{"profile":{"name":"Sally Lee"},"wa_id":"60166043013"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-01T11:16:58.555Z] Error inserting inbound text message into database. Data: {
+  "context": {
+    "from": "601159946253",
+    "id": "wamid.HBgLNjAxNjYwNDMwMTMVAgARGBIwMzc3QzY3NThGNUEyRDVFQ0EA"
+  },
+  "from": "60166043013",
+  "id": "wamid.HBgLNjAxNjYwNDMwMTMVAgASGCA3OEFBNjU2QjJFMTg4RjhGMTg5Q0ZGNUIxRDhFRDg3MgA=",
+  "timestamp": "1719832550",
+  "type": "button",
+  "button": {
+    "payload": "I'M IN",
+    "text": "I'M IN"
+  }
+}
+ Error: {}
+Inside insertButtonMessage function in insertButtonMessage.ts "Error: Sender not found in database\n    at C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\src\\webhook\\whatsapp\\helpers\\insertButtonMessage.ts:38:13\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\src\\webhook\\whatsapp\\helpers\\insertButtonMessage.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
