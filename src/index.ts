@@ -16,6 +16,10 @@ import {
   reschedulePendingWorkflowLogs,
   setupRealtimeWorkflowLogProcessing,
 } from './webhook/ibt/processWorkflow'
+import {
+  reschedulePendingCampaignLogs,
+  setupRealtimeCampaignLogProcessing,
+} from './webhook/ibt/processCampaignsLog'
 import { handlePemniVipWebhook } from './webhook/pemni/bubble-vip'
 import { handleWebhook } from './webhook/whatsapp/webhookHandler'
 dotenv.config()
@@ -131,15 +135,19 @@ const startServer = () => {
       setupRealtimeCampaignProcessing()
     const unsubscribeRealtimeWorkflowLogProcessing =
       setupRealtimeWorkflowLogProcessing()
+    const unsubscribeRealtimeCampaignLogProcessing =
+      setupRealtimeCampaignLogProcessing()
 
     // Reschedule pending tasks
     reschedulePendingCampaigns()
     reschedulePendingWorkflowLogs()
+    reschedulePendingCampaignLogs()
 
     // Gracefully handle server shutdown
     function shutdown() {
       unsubscribeRealtimeCampaignProcessing()
       unsubscribeRealtimeWorkflowLogProcessing()
+      unsubscribeRealtimeCampaignLogProcessing()
       process.exit(0)
     }
 

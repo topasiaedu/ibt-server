@@ -8,17 +8,13 @@ import { Database } from '../../database.types'
 const campaignQueue: Campaign[] = []
 
 function processQueue() {
-  // console.log('Processing queue:', campaignQueue)
   if (campaignQueue.length === 0) {
-    // console.log('Queue is empty, nothing to process.')
     return
   }
   const campaign = campaignQueue.shift() as Campaign
-  // console.log('Processing campaign from queue:', campaign.campaign_id)
   processCampaigns(campaign)
     .catch((error) => logError(error as Error, 'Error processing campaign'))
     .finally(() => {
-      // console.log('Finished processing campaign:', campaign.campaign_id)
       processQueue()
     })
 }
@@ -26,6 +22,10 @@ function processQueue() {
 export type Campaign = Database['public']['Tables']['campaigns']['Row'] & {
   read_count: number
 }
+
+export type CampaignList = Database['public']['Tables']['campaign_lists']['Row']
+export type CampaignLogsInsert =
+  Database['public']['Tables']['campaign_logs']['Insert']
 
 export interface TemplateMessagePayload {
   messaging_product: string
@@ -36,254 +36,185 @@ export interface TemplateMessagePayload {
 }
 
 const processCampaigns = async (campaign: Campaign) => {
-  const { data: updatedCampaignStatus, error: updateStatusError } =
-    await supabase
+  console.log('Processing campaign:', campaign.campaign_id)
+
+  try {
+    const { error: updateStatusError } = await supabase
       .from('campaigns')
       .update({ status: 'PROCESSING' })
       .eq('campaign_id', campaign.campaign_id)
 
-  if (updateStatusError) {
-    logError(
-      updateStatusError as unknown as Error,
-      'Error updating campaign status'
-    )
-    return
-  }
-
-  let successCount = 0
-  let failedCount = 0
-
-  // Fetch contact list members by using campaign id -> contact_list_id -> contact_list_members
-  const { data: contactListMembers, error: contactListMembersError } =
-    await supabase
-      .from('contact_list_members')
-      .select('*, contacts(*)')
-      .eq('contact_list_id', campaign.contact_list_id)
-
-  if (contactListMembersError) {
-    logError(
-      contactListMembersError as unknown as Error,
-      'Error fetching contact list members'
-    )
-    return
-  }
-
-  // Fetch new phone numbers by using campaign id in campaign_phone_numbers
-  const { data: newPhoneNumbers, error: newPhoneNumbersError } = await supabase
-    .from('campaign_phone_numbers')
-    .select(
-      '*, phone_numbers(*,whatsapp_business_accounts(*,business_manager(*)))'
-    )
-    .eq('campaign_id', campaign.campaign_id)
-
-  if (newPhoneNumbersError) {
-    logError(
-      newPhoneNumbersError as unknown as Error,
-      'Error fetching new phone numbers'
-    )
-    return
-  }
-
-  for (const contact_list_member of contactListMembers) {
-    // Trim any extraneous whitespace or control characters from wa_id
-    contact_list_member.contacts.wa_id =
-      contact_list_member.contacts.wa_id.trim()
-
-    // console.log('Processing contact:', contact_list_member.contacts.contact_id)
-    // Check wa_id if it starts with 60 for malaysian numbers
-    // If not, add the missing parts it could start with 0 or 1
-    if (contact_list_member.contacts.wa_id.startsWith('60')) {
-      contact_list_member.contacts.wa_id =
-        '' + contact_list_member.contacts.wa_id
-    } else if (contact_list_member.contacts.wa_id.startsWith('1')) {
-      contact_list_member.contacts.wa_id =
-        '60' + contact_list_member.contacts.wa_id
-    } else if (contact_list_member.contacts.wa_id.startsWith('0')) {
-      contact_list_member.contacts.wa_id =
-        '6' + contact_list_member.contacts.wa_id
+    if (updateStatusError) {
+      logError(
+        updateStatusError as unknown as Error,
+        'Error updating campaign status'
+      )
+      return
     }
 
-    // Ensure that there is only number present in the string ( as we have '\r' at the end for some numbers)
-    contact_list_member.contacts.wa_id =
-      contact_list_member.contacts.wa_id.replace(/\D/g, '')
+    // Fetch Campaign List
+    const { data: campaignLists, error: campaignListError } = await supabase
+      .from('campaign_lists')
+      .select('*')
+      .eq('campaign_id', campaign.campaign_id)
 
-    // console.log('Sending message to:', contact_list_member.contacts.wa_id)
+    if (campaignListError) {
+      logError(
+        campaignListError as unknown as Error,
+        'Error fetching campaign list'
+      )
+      return
+    }
 
-    // Create a fresh copy of the template payload
-    let templatePayload: TemplateMessagePayload = JSON.parse(
-      JSON.stringify({
-        messaging_product: 'whatsapp',
-        recipient_type: 'individual',
-        to: contact_list_member.contacts.wa_id,
-        type: 'template',
-        template:
-          campaign.template_payload as TemplateMessagePayload['template'],
-      })
-    )
+    if (!campaignLists) {
+      console.error(
+        'No campaign list found for campaign:',
+        campaign.campaign_id
+      )
+      return
+    }
 
-    let mediaUrl = ''
+    console.log('Campaign lists:', campaignLists)
 
-    // Check template payload for %name%, %date%, %time% and replace with actual values
-    templatePayload.template.components.forEach((component: any) => {
-      component.parameters.forEach((parameter: any) => {
-        if (parameter.text) {
-          parameter.text = parameter.text.replace(
-            /%name%/g,
-            contact_list_member.contacts.name
+    // Generate campaign logs
+    let campaignLogs: CampaignLogsInsert[] = []
+
+    // Process includes
+    const includePromises = campaignLists.map(async (campaignList) => {
+      switch (campaignList.type) {
+        case 'include-list':
+          const { data: contactListMembers, error: contactListMembersError } =
+            await supabase
+              .from('contact_list_members')
+              .select('contact_id')
+              .eq('contact_list_id', campaignList.contact_list_id)
+
+          if (contactListMembersError) {
+            logError(
+              contactListMembersError as unknown as Error,
+              'Error fetching contact list members'
+            )
+            return []
+          }
+
+          if (!contactListMembers) {
+            console.error(
+              'No contact list members found for list:',
+              campaignList.list_id
+            )
+            return []
+          }
+
+          return contactListMembers.map((contact) => ({
+            campaign_id: campaign.campaign_id,
+            contact_id: contact.contact_id,
+            status: 'PENDING',
+          }))
+
+        case 'include-contact':
+          return [
+            {
+              campaign_id: campaign.campaign_id,
+              contact_id: campaignList.contact_id,
+              status: 'PENDING',
+            },
+          ]
+
+        default:
+          return []
+      }
+    })
+
+    // Wait for all include operations to complete
+    const includeResults = await Promise.all(includePromises)
+    includeResults.forEach((result) => {
+      campaignLogs.push(...result)
+    })
+
+    // Process excludes
+    const excludePromises = campaignLists.map(async (campaignList) => {
+      switch (campaignList.type) {
+        case 'exclude-list':
+          const { data: excludedContactListMembers, error: excludedError } =
+            await supabase
+              .from('contact_list_members')
+              .select('contact_id')
+              .eq('list_id', campaignList.contact_list_id)
+
+          if (excludedError) {
+            logError(
+              excludedError as unknown as Error,
+              'Error fetching excluded contact list members'
+            )
+            return []
+          }
+
+          if (!excludedContactListMembers) {
+            console.error(
+              'No excluded contact list members found for list:',
+              campaignList.list_id
+            )
+            return []
+          }
+
+          const excludedContactIds = excludedContactListMembers.map(
+            (contact) => contact.contact_id
           )
 
-          // parameter.text = parameter.text.replace(/%date%/g, campaign.created_at);
-          // parameter.text = parameter.text.replace(/%time%/g, campaign.time);
+          return excludedContactIds
 
-          // Check if the parameter.text has spintax, if so, replace it with a random value
-          const spintaxRegex = /{([^{}]*)}/g
-          const spintaxMatch = parameter.text.match(spintaxRegex)
-          if (spintaxMatch) {
-            spintaxMatch.forEach((spintax: any) => {
-              const options = spintax
-                .substring(1, spintax.length - 1)
-                .split('|')
-              const randomIndex = Math.floor(Math.random() * options.length)
-              parameter.text = parameter?.text?.replace(
-                spintax,
-                options[randomIndex]
-              )
-            })
-          }
-        } else if (
-          parameter.type === 'image' ||
-          parameter.type === 'document' ||
-          parameter.type === 'video'
-        ) {
-          mediaUrl = parameter[parameter.type].link
-        }
-      })
+        case 'exclude-contact':
+          return [campaignList.contact_id]
+
+        default:
+          return []
+      }
     })
 
-    const getWeightForRating = (rating: string) => {
-      const weights: { [key: string]: number } = {
-        GREEN: 6, // Higher probability for GREEN
-        YELLOW: 3, // Moderate probability for YELLOW
-        RED: 1, // Lower probability for RED
-      }
-      return weights[rating] || 1 // Default to 1 if undefined
-    }
+    // Wait for all exclude operations to complete
+    const excludeResults = await Promise.all(excludePromises)
+    const excludedContactIds = excludeResults.flat()
 
-    // Create a weighted list of phone numbers
-    const weightedPhoneNumbers = newPhoneNumbers.flatMap((phone: any) => {
-      const weight = getWeightForRating(phone.phone_numbers.quality_rating)
-      return Array(weight).fill(phone.phone_numbers.wa_id) // Fill an array with the wa_id repeated by its weight
-    })
+    console.log('Excluded contact IDs:', excludedContactIds)
+    console.log('Campaign logs:', campaignLogs)
+    // Remove excluded contacts from campaign logs
+    campaignLogs = campaignLogs.filter(
+      (log) => !excludedContactIds.includes(log.contact_id)
+    )
 
-    // Random selection from the weighted list
-    const randomIndex = Math.floor(Math.random() * weightedPhoneNumbers.length)
-    const selectedPhoneNumber = weightedPhoneNumbers[randomIndex]
+    // Insert campaign logs into the database
+    if (campaignLogs.length > 0) {
+      const { error: insertError } = await supabase
+        .from('campaign_logs')
+        .insert(campaignLogs)
 
-    try {
-      const { data: messageResponse } = await sendMessageWithTemplate(
-        templatePayload,
-        selectedPhoneNumber,
-        newPhoneNumbers.find(
-          (phone: any) => phone.phone_numbers.wa_id === selectedPhoneNumber
-        ).phone_numbers.whatsapp_business_accounts.business_manager.access_token
-      )
-
-      console.log('Message response:', messageResponse)
-
-      // Lookup template to get the text and the image if any
-      const { data: template, error: templateError } = await supabase
-        .from('templates')
-        .select('*')
-        .eq('template_id', campaign.template_id)
-        .single()
-
-      let textContent = template?.components.data
-        .map((component: any) => {
-          if (component.type === 'BODY') {
-            return component.text
-          }
-        })
-        .join(' ')
-
-      if (textContent) {
-        const textComponent = templatePayload?.template.components.find(
-          (component: { type: string }) => component.type === 'BODY'
-        )
-        // Get the parameter text values into an array
-        const bodyInputValues =
-          textComponent?.parameters.map(
-            (parameter: { text: any }) => parameter.text
-          ) ?? []
-
-        // Replace {{index}} in the text content with the parameter text with the appropriate index
-        textContent = textContent.replace(/{{\d+}}/g, (match: any) => {
-          const index = parseInt(match.match(/\d+/g)![0])
-          return bodyInputValues[index - 1]
-        })
-      }
-
-      // Add the message to the database under the table messages
-      const { data: newMessage, error: messageError } = await supabase
-        .from('messages')
-        .insert([
-          {
-            wa_message_id: messageResponse.messages[0].id || '',
-            campaign_id: campaign.campaign_id,
-            phone_number_id: newPhoneNumbers.find(
-              (phone: any) => phone.phone_numbers.wa_id === selectedPhoneNumber
-            ).phone_numbers.phone_number_id,
-            contact_id: contact_list_member.contacts.contact_id,
-            message_type: 'TEMPLATE',
-            content: textContent,
-            direction: 'outgoing',
-            status: messageResponse.messages[0].message_status || 'failed',
-            project_id: campaign.project_id,
-            media_url: mediaUrl,
-          },
-        ])
-
-      // Update last_contacted_by for the contact using the phone_number_id
-      const { data: updatedContact, error: updateContactError } = await supabase
-        .from('contacts')
-        .update({
-          last_contacted_by: newPhoneNumbers.find(
-            (phone: any) => phone.phone_numbers.wa_id === selectedPhoneNumber
-          ).phone_numbers.phone_number_id,
-        })
-        .eq('wa_id', selectedPhoneNumber)
-
-      if (updateContactError) {
+      if (insertError) {
         logError(
-          updateContactError as unknown as Error,
-          'Error updating contact last_contacted_by'
+          insertError as unknown as Error,
+          'Error inserting campaign logs'
         )
+        return
       }
-
-      // Update the status to COMPLETED
-      const { data: updatedCampaign, error: updateCampaignError } =
-        await supabase
-          .from('campaigns')
-          .update({ status: 'COMPLETED' })
-          .eq('campaign_id', campaign.campaign_id)
-    } catch (error) {
-      console.error('Error sending message:', error)
-      logError(error as Error, 'Error sending message')
     }
-  }
 
-  // Update campaign status
-  const { data: updatedCampaign, error: updateError } = await supabase
-    .from('campaigns')
-    .update({
-      status: 'COMPLETED',
-      sent: successCount,
-      failed: failedCount,
-    })
-    .eq('campaign_id', campaign.campaign_id)
+    // Update campaign status
+    const { error: updateError } = await supabase
+      .from('campaigns')
+      .update({
+        status: 'COMPLETED',
+      })
+      .eq('campaign_id', campaign.campaign_id)
 
-  if (updateError) {
-    logError(updateError as unknown as Error, 'Error updating campaign status')
-    return
+    if (updateError) {
+      logError(
+        updateError as unknown as Error,
+        'Error updating campaign status'
+      )
+      return
+    }
+  } catch (error) {
+    logError(error as Error, 'Error processing campaign')
+    console.error('Error processing campaign:', campaign.campaign_id)
   }
 }
 
@@ -321,9 +252,8 @@ function scheduleCampaign(campaign: Campaign) {
   })
 
   // Offset by 8 hours to match Malaysia timezone
-  const currentTimeMillis = new Date(currentTime).getTime() - 8 * 60 * 60 * 1000
+  const currentTimeMillis = new Date(currentTime).getTime()
   const postTime = new Date(campaign.post_time).getTime()
-  // console.log('Current time:', currentTime, 'Post time:', postTime)
 
   if (isNaN(postTime)) {
     console.error(
@@ -374,7 +304,6 @@ export const reschedulePendingCampaigns = async () => {
   const { data: campaigns, error } = await supabase
     .from('campaigns')
     .select('*')
-    // Check for both PENDING and PROCESSING statuses
     .in('status', ['PENDING', 'PROCESSING'])
 
   if (error) {
@@ -388,8 +317,6 @@ export const reschedulePendingCampaigns = async () => {
   }
 
   campaigns.forEach((campaign) => {
-    // console.log('=====================================')
-    // console.log('Rescheduling campaign:', campaign.campaign_id)
     scheduleCampaign(campaign)
   })
 

@@ -187,3 +187,263 @@ Inside insertTextMessage function in insertTextMessage.ts {
 }
 
 
+[2024-07-01T05:45:24.310Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-01T05:45:52.264Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-01T05:46:03.588Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-01T05:46:10.655Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-01T05:48:30.689Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-01T05:48:35.345Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-01T05:48:40.563Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-01T05:48:57.415Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-01T05:53:48.748Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-01T05:54:12.448Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-01T05:54:22.803Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-01T05:54:26.419Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-01T05:54:35.111Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-01T05:54:43.042Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-01T05:54:48.916Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-01T05:54:53.283Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-01T08:05:51.666Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-01T09:56:55.468Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-01T09:59:04.404Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-01T09:59:14.036Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-01T10:04:41.739Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-01T10:06:07.792Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-01T10:07:04.178Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-01T10:07:45.798Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-01T10:11:17.908Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-01T10:11:29.610Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-01T10:12:01.855Z] Error fetching campaign list {
+  "code": "42703",
+  "details": null,
+  "hint": null,
+  "message": "column campaign_lists.campaign_id does not exist"
+}
+
+
+[2024-07-01T10:12:01.856Z] Error fetching campaign list {
+  "code": "42703",
+  "details": null,
+  "hint": null,
+  "message": "column campaign_lists.campaign_id does not exist"
+}
+
+
+[2024-07-01T10:12:02.344Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-01T10:12:41.109Z] Error fetching campaign list {
+  "code": "42703",
+  "details": null,
+  "hint": null,
+  "message": "column campaign_lists.campaign_id does not exist"
+}
+
+
+[2024-07-01T10:12:41.140Z] Error fetching campaign list {
+  "code": "42703",
+  "details": null,
+  "hint": null,
+  "message": "column campaign_lists.campaign_id does not exist"
+}
+
+
+[2024-07-01T10:12:41.670Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-01T10:12:55.507Z] Error fetching campaign list {
+  "code": "42703",
+  "details": null,
+  "hint": null,
+  "message": "column campaign_lists.campaign_id does not exist"
+}
+
+
+[2024-07-01T10:12:55.518Z] Error fetching campaign list {
+  "code": "42703",
+  "details": null,
+  "hint": null,
+  "message": "column campaign_lists.campaign_id does not exist"
+}
+
+
+[2024-07-01T10:12:56.119Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-01T10:13:09.328Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-01T10:13:20.293Z] Error fetching campaign list {
+  "code": "42703",
+  "details": null,
+  "hint": null,
+  "message": "column campaign_lists.campaign_id does not exist"
+}
+
+
+[2024-07-01T10:13:20.293Z] Error fetching campaign list {
+  "code": "42703",
+  "details": null,
+  "hint": null,
+  "message": "column campaign_lists.campaign_id does not exist"
+}
+
+
+[2024-07-01T10:13:20.851Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-01T10:13:30.756Z] Error fetching campaign list {
+  "code": "42703",
+  "details": null,
+  "hint": null,
+  "message": "column campaign_lists.campaign_id does not exist"
+}
+
+
+[2024-07-01T10:13:30.795Z] Error fetching campaign list {
+  "code": "42703",
+  "details": null,
+  "hint": null,
+  "message": "column campaign_lists.campaign_id does not exist"
+}
+
+
+[2024-07-01T10:13:31.325Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-01T10:15:39.497Z] Error fetching campaign list {
+  "code": "42703",
+  "details": null,
+  "hint": null,
+  "message": "column campaign_lists.campaign_id does not exist"
+}
+
+
+[2024-07-01T10:17:25.921Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-01T10:18:57.023Z] Error fetching contact list members {
+  "code": "42703",
+  "details": null,
+  "hint": null,
+  "message": "column contact_list_members.list_id does not exist"
+}
+
+
+[2024-07-01T10:20:04.205Z] Error fetching contact list members {
+  "code": "42703",
+  "details": null,
+  "hint": null,
+  "message": "column contact_list_members.list_id does not exist"
+}
+
+
+[2024-07-01T10:23:49.767Z] Error fetching contact list members {
+  "code": "42703",
+  "details": null,
+  "hint": null,
+  "message": "column contact_list_members.list_id does not exist"
+}
+
+
+[2024-07-01T10:27:42.795Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-01T10:27:46.811Z] Error fetching contact list members {
+  "code": "42703",
+  "details": null,
+  "hint": null,
+  "message": "column contact_list_members.list_id does not exist"
+}
+
+
+[2024-07-01T10:28:14.356Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-01T10:28:26.354Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-01T10:28:30.065Z] Error fetching contact list members {
+  "code": "42703",
+  "details": null,
+  "hint": null,
+  "message": "column contact_list_members.list_id does not exist"
+}
+
+
+[2024-07-01T10:28:52.216Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-01T10:30:52.452Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-01T10:31:12.087Z] Error sending message "TypeError: Cannot read properties of undefined (reading 'phone_numbers')\n    at C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:182:8\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-01T10:31:12.398Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-01T10:32:14.520Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-01T10:32:28.726Z] Error sending message "TypeError: Cannot read properties of undefined (reading 'phone_numbers')\n    at C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:188:8\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-01T10:33:08.756Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-01T10:33:12.275Z] Error sending message "TypeError: Cannot read properties of undefined (reading 'phone_numbers')\n    at C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:191:8\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+

@@ -84,22 +84,77 @@ export type Database = {
         }
         Relationships: []
       }
-      campaign_contacts: {
+      campaign_lists: {
+        Row: {
+          campaign_id: number | null
+          contact_id: number | null
+          contact_list_id: number | null
+          created_at: string
+          id: string
+          type: string | null
+        }
+        Insert: {
+          campaign_id?: number | null
+          contact_id?: number | null
+          contact_list_id?: number | null
+          created_at?: string
+          id?: string
+          type?: string | null
+        }
+        Update: {
+          campaign_id?: number | null
+          contact_id?: number | null
+          contact_list_id?: number | null
+          created_at?: string
+          id?: string
+          type?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "campaign_list_contact_list_id_fkey"
+            columns: ["contact_list_id"]
+            isOneToOne: false
+            referencedRelation: "contact_lists"
+            referencedColumns: ["contact_list_id"]
+          },
+          {
+            foreignKeyName: "campaign_lists_campaign_id_fkey"
+            columns: ["campaign_id"]
+            isOneToOne: false
+            referencedRelation: "campaigns"
+            referencedColumns: ["campaign_id"]
+          },
+          {
+            foreignKeyName: "campaign_lists_contact_id_fkey"
+            columns: ["contact_id"]
+            isOneToOne: false
+            referencedRelation: "contacts"
+            referencedColumns: ["contact_id"]
+          },
+        ]
+      }
+      campaign_logs: {
         Row: {
           campaign_id: number
           contact_id: number
+          created_at: string | null
+          id: string
           sent_at: string | null
           status: string
         }
         Insert: {
           campaign_id: number
           contact_id: number
+          created_at?: string | null
+          id?: string
           sent_at?: string | null
           status: string
         }
         Update: {
           campaign_id?: number
           contact_id?: number
+          created_at?: string | null
+          id?: string
           sent_at?: string | null
           status?: string
         }
@@ -159,7 +214,7 @@ export type Database = {
       campaigns: {
         Row: {
           campaign_id: number
-          contact_list_id: number
+          contact_list_id: number | null
           created_at: string | null
           failed: number | null
           name: string
@@ -176,7 +231,7 @@ export type Database = {
         }
         Insert: {
           campaign_id?: number
-          contact_list_id: number
+          contact_list_id?: number | null
           created_at?: string | null
           failed?: number | null
           name: string
@@ -193,7 +248,7 @@ export type Database = {
         }
         Update: {
           campaign_id?: number
-          contact_list_id?: number
+          contact_list_id?: number | null
           created_at?: string | null
           failed?: number | null
           name?: string
