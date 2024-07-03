@@ -51,7 +51,7 @@ const fetchUserData = async (
 export const handlePemniVipWebhook = async (req: Request, res: Response) => {
   try {
     res.status(200).send('OK')
-    console.log('Pemni VIP Webhook received')
+    console.log('Pemni VIP Webhook received', req.body)
 
     // Remove the + from the phone number
     req.body.phone = req.body.phone.replace('+', '')

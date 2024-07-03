@@ -739,3 +739,29 @@ Inside insertButtonMessage function in insertButtonMessage.ts "Error: Sender not
 Inside insertButtonMessage function in insertButtonMessage.ts "Error: Sender not found in database\n    at C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\src\\webhook\\whatsapp\\helpers\\insertButtonMessage.ts:38:13\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\Documents\\GitHub\\ibt-server\\src\\webhook\\whatsapp\\helpers\\insertButtonMessage.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
 
 
+[2024-07-03T04:16:08.918Z] Error finding contact in database{"profile":{"name":"Liza"},"wa_id":"61401358934"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-03T04:16:09.043Z] Error inserting inbound text message into database. Data: {
+  "context": {
+    "from": "601153764588",
+    "id": "wamid.HBgLNjE0MDEzNTg5MzQVAgARGBJEQkY2OTA5QjhEMjk3RTM5RDEA"
+  },
+  "from": "61401358934",
+  "id": "wamid.HBgLNjE0MDEzNTg5MzQVAgASGBQzQUYyN0EwNDlBNEJERDZDRDk5RAA=",
+  "timestamp": "1719402113",
+  "type": "button",
+  "button": {
+    "payload": "Join Live (Aus)",
+    "text": "Join Live (Aus)"
+  }
+}
+ Error: {}
+Inside insertButtonMessage function in insertButtonMessage.ts "Error: Sender not found in database\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\whatsapp\\helpers\\insertButtonMessage.ts:38:13\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\whatsapp\\helpers\\insertButtonMessage.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
