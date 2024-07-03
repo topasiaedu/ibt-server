@@ -123,10 +123,29 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
           to: req.body.phone,
           type: 'template',
           template: {
-            name: 'exisitng_user_vip_message',
+            name: 'existing_vip_onboard',
             language: {
               code: 'zh_CN',
             },
+            "components": [
+              {
+                "type": "body",
+                "parameters": [
+                  {
+                    "type": "text",
+                    "text": req.body.name 
+                  },
+                  {
+                    "type": "text",
+                    "text": contact.profile.email
+                  },
+                  {
+                    "type": "text",
+                    "text": "https://www.veed.io/view/dac5718d-2680-4f4d-a585-60b860f86b0d?panel=share"
+                  }
+                ]
+              }
+            ]
           },
         },
         '450006871520050',
@@ -161,7 +180,7 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
           "to": req.body.phone,
           "type": "template",
           "template": {
-            "name": "new_user_vip_message",
+            "name": "new_vip_onboard",
             "language": {
               "code": "zh_CN"
             },
@@ -171,11 +190,19 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
                 "parameters": [
                   {
                     "type": "text",
+                    "text": req.body.name 
+                  },
+                  {
+                    "type": "text",
                     "text": contact.profile.email
                   },
                   {
                     "type": "text",
                     "text": randomPassword
+                  },
+                  {
+                    "type": "text",
+                    "text": "https://www.veed.io/view/dac5718d-2680-4f4d-a585-60b860f86b0d?panel=share"
                   }
                 ]
               }
