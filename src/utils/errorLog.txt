@@ -796,3 +796,122 @@ Inside insertTextMessage function in insertTextMessage.ts {
 }
 
 
+[2024-07-03T04:31:33.065Z] Error finding contact in database{"profile":{"name":"Allice Ng"},"wa_id":"60174102994"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-03T04:31:33.328Z] Error inserting inbound text message into database. Data: {
+  "from": "60174102994",
+  "id": "wamid.HBgLNjAxNzQxMDI5OTQVAgASGCAzQjY1OUJGRjVGMjgwNTg0OUQyN0U2QTUwMDVFMDk1NwA=",
+  "timestamp": "1719381391",
+  "text": {
+    "body": "不看，看了也是转不到的"
+  },
+  "type": "text"
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+Inside insertTextMessage function in insertTextMessage.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-03T04:32:30.803Z] Error finding contact in database{"profile":{"name":"Allice Ng"},"wa_id":"60174102994"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-03T04:32:31.062Z] Error inserting inbound text message into database. Data: {
+  "from": "60174102994",
+  "id": "wamid.HBgLNjAxNzQxMDI5OTQVAgASGCA4QkUzNjRDNjIyRkYyQTQwQzIyQTEzQUE5RTEzMzlDQgA=",
+  "timestamp": "1719381393",
+  "text": {
+    "body": "命里有时终须有，命里无时莫强求"
+  },
+  "type": "text"
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+Inside insertTextMessage function in insertTextMessage.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-03T04:41:35.819Z] Error finding contact in database{"profile":{"name":"Concettina"},"wa_id":"61403088516"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-03T04:41:36.031Z] Error inserting inbound text message into database. Data: {
+  "from": "61403088516",
+  "id": "wamid.HBgLNjE0MDMwODg1MTYVAgASGBQzQTZGMUI0MDMyRDk3RDE2NzhDOAA=",
+  "timestamp": "1719448633",
+  "text": {
+    "body": "Sorry I missed out"
+  },
+  "type": "text"
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+Inside insertTextMessage function in insertTextMessage.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-03T04:43:28.896Z] Error finding contact in database{"profile":{"name":"Charlotte LeeQing"},"wa_id":"60177807886"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-03T04:43:29.059Z] Error inserting inbound text message into database. Data: {
+  "context": {
+    "from": "601159946253",
+    "id": "wamid.HBgLNjAxNzc4MDc4ODYVAgARGBJCMDM4QzhCRTg5NjQwQUQ5MTMA"
+  },
+  "from": "60177807886",
+  "id": "wamid.HBgLNjAxNzc4MDc4ODYVAgASGBQzQUM5QzI3NTA2M0M5NTFERDJFQwA=",
+  "timestamp": "1719906814",
+  "type": "button",
+  "button": {
+    "payload": "DONE",
+    "text": "DONE"
+  }
+}
+ Error: {}
+Inside insertButtonMessage function in insertButtonMessage.ts "Error: Sender not found in database\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\whatsapp\\helpers\\insertButtonMessage.ts:38:13\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\whatsapp\\helpers\\insertButtonMessage.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
