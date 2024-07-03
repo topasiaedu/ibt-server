@@ -161,6 +161,7 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
         'https://mylifedecode.com/version-test/api/1.1/obj/user',
         {
           email: contact.profile.email,
+          name: contact.profile.name,
           password: randomPassword,
           plan: 'VIP',
         },
