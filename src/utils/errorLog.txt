@@ -765,3 +765,34 @@ Inside insertButtonMessage function in insertButtonMessage.ts "Error: Sender not
 Inside insertButtonMessage function in insertButtonMessage.ts "Error: Sender not found in database\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\whatsapp\\helpers\\insertButtonMessage.ts:38:13\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\whatsapp\\helpers\\insertButtonMessage.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
 
 
+[2024-07-03T04:26:14.535Z] Error finding contact in database{"profile":{"name":"Kek嘉嘉-潇洒郭"},"wa_id":"60173224499"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-03T04:26:14.775Z] Error inserting inbound text message into database. Data: {
+  "from": "60173224499",
+  "id": "wamid.HBgLNjAxNzMyMjQ0OTkVAgASGBQzQTEwMzAzQjkyMDczQkQyRkEyNQA=",
+  "timestamp": "1719379562",
+  "text": {
+    "body": "yes"
+  },
+  "type": "text"
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+Inside insertTextMessage function in insertTextMessage.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
