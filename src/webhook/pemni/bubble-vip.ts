@@ -53,13 +53,15 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
     res.status(200).send('OK')
     console.log('Pemni VIP Webhook received', req.body)
 
+    const customData = req.body.customData || req.body
+
     // Remove the + from the phone number
-    req.body.phone = req.body.phone.replace('+', '')
+    customData.phone = customData.phone.replace('+', '')
 
     // Find or create contact
     let contact: { wa_id: string; profile: { name: string; email: string } } = {
-      wa_id: req.body.phone,
-      profile: { name: req.body.name, email: req.body.email },
+      wa_id: customData.phone,
+      profile: { name: customData.name, email: customData.email },
     }
 
     let contactId: string = ''
@@ -70,25 +72,25 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
 
     // Check cache for user data
     let userData: { email: string; id: string; plan: string }[] =
-      cache.get(req.body.phone) || []
+      cache.get(customData.phone) || []
 
     if (userData.length === 0) {
       // Fetch user data with retries
-      userData = await fetchUserData(req.body.phone)
+      userData = await fetchUserData(customData.phone)
 
       // Cache the data
-      cache.set(req.body.phone, userData)
+      cache.set(customData.phone, userData)
     } else {
-      console.log('Cache hit: ', userData)
+      // console.log('Cache hit: ', userData)
     }
 
     // Now userData contains the cached data or fresh data from the API
-    console.log('User Data: ', userData)
+    // console.log('User Data: ', userData)
 
     // Find or Create Bubble Account and Update Plan
     const user = userData.find((u: any) => u.email === contact.profile.email)
 
-    console.log('User: ', user)
+    // console.log('User: ', user)
 
     if (user) {
       // if use already has VIP, do nothing
@@ -99,28 +101,28 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
 
       // Check if the user's plan is tier 4, if so, update to 'VIP + Tier 4', else update to 'VIP'
       if (user.plan === 'Tier 4') {
-        req.body.plan = 'VIP + Tier 4'
+        customData.plan = 'VIP + Tier 4'
       } else {
-        req.body.plan = 'VIP'
+        customData.plan = 'VIP'
       }
 
       // Update the plan if user exists
       await axios.patch(
         `https://mylifedecode.com/version-test/api/1.1/obj/user/${user.id}`,
-        { plan: req.body.plan },
+        { plan: customData.plan },
         {
           headers: {
             Authorization: `Bearer ${process.env.BUBBLE_API_KEY}`,
           },
         }
       )
-      console.log(`Updated user ${user.email} with new plan ${req.body.plan}`)
+      console.log(`Updated user ${user.email} with new plan ${customData.plan}`)
       // Send
       const whatsappResponse = await sendMessageWithTemplate(
         {
           messaging_product: 'whatsapp',
           recipient_type: 'individual',
-          to: req.body.phone,
+          to: customData.phone,
           type: 'template',
           template: {
             name: 'existing_vip_onboard',
@@ -133,7 +135,7 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
                 "parameters": [
                   {
                     "type": "text",
-                    "text": req.body.name 
+                    "text": customData.name 
                   },
                   {
                     "type": "text",
@@ -178,7 +180,7 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
         {
           "messaging_product": "whatsapp",
           "recipient_type": "individual",
-          "to": req.body.phone,
+          "to": customData.phone,
           "type": "template",
           "template": {
             "name": "new_vip_onboard",
@@ -191,7 +193,7 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
                 "parameters": [
                   {
                     "type": "text",
-                    "text": req.body.name 
+                    "text": customData.name 
                   },
                   {
                     "type": "text",
