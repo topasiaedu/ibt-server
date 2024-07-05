@@ -125,7 +125,7 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
           to: customData.phone,
           type: 'template',
           template: {
-            name: 'existing_user_vip_onboard',
+            name: 'existing_user_vip_onboard_v3',
             language: {
               code: 'zh_CN',
             },
@@ -144,6 +144,10 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
                   {
                     "type": "text",
                     "text": "https://www.veed.io/view/45acb00e-b0a0-489c-8dec-57313be39544?panel=share"
+                  },
+                  {
+                    "type": "text",
+                    "text": "https://pemnitan.com/vip-zoom"
                   }
                 ]
               }
@@ -183,7 +187,7 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
           "to": customData.phone,
           "type": "template",
           "template": {
-            "name": "new_user_vip_onboard",
+            "name": "existing_user_vip_onboard_v2",
             "language": {
               "code": "zh_CN"
             },
@@ -206,6 +210,10 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
                   {
                     "type": "text",
                     "text": "https://www.veed.io/view/45acb00e-b0a0-489c-8dec-57313be39544?panel=share"
+                  },
+                  {
+                    "type": "text",
+                    "text": "https://pemnitan.com/vip-zoom"
                   }
                 ]
               }
