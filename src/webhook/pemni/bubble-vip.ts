@@ -143,7 +143,7 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
                   },
                   {
                     "type": "text",
-                    "text": "https://www.veed.io/view/45acb00e-b0a0-489c-8dec-57313be39544?panel=share"
+                    "text": "https://bit.ly/vip-tutorial"
                   },
                   {
                     "type": "text",
@@ -209,7 +209,7 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
                   },
                   {
                     "type": "text",
-                    "text": "https://www.veed.io/view/45acb00e-b0a0-489c-8dec-57313be39544?panel=share"
+                    "text": "https://bit.ly/vip-tutorial"
                   },
                   {
                     "type": "text",
