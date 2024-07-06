@@ -125,7 +125,7 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
           to: customData.phone,
           type: 'template',
           template: {
-            name: 'existing_user_vip_onboard_v3',
+            name: 'existing_user_vip_onboard',
             language: {
               code: 'zh_CN',
             },
@@ -154,7 +154,7 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
             ]
           },
         },
-        '450006871520050',
+        '220858504440106',
         process.env.PEMNI_WHATSAPP_API_TOKEN || ''
       )
 
@@ -187,7 +187,7 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
           "to": customData.phone,
           "type": "template",
           "template": {
-            "name": "existing_user_vip_onboard_v2",
+            "name": "new_user_vip_onboard",
             "language": {
               "code": "zh_CN"
             },
@@ -221,7 +221,7 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
           }
         }
         ,
-        '450006871520050',
+        '220858504440106',
         process.env.PEMNI_WHATSAPP_API_TOKEN || ''
       )
 
