@@ -1660,3 +1660,29 @@ Inside insertImageMessage function in insertImageMessage.ts {
 }
 
 
+[2024-07-03T07:00:14.972Z] Error finding contact in database{"profile":{"name":"tangga916"},"wa_id":"60123867852"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-03T07:00:15.143Z] Error inserting inbound text message into database. Data: {
+  "context": {
+    "from": "601127552315",
+    "id": "wamid.HBgLNjAxMjM4Njc4NTIVAgARGBI3QUM5MTAwRDBFNEQ3MjU4OUEA"
+  },
+  "from": "60123867852",
+  "id": "wamid.HBgLNjAxMjM4Njc4NTIVAgASGCA4NTJEQ0I1QzVDOUFERTY3M0E0OTBGM0Q0NTY0RjM3QgA=",
+  "timestamp": "1719990013",
+  "type": "button",
+  "button": {
+    "payload": "join cxen",
+    "text": "join cxen"
+  }
+}
+ Error: {}
+Inside insertButtonMessage function in insertButtonMessage.ts "Error: Sender not found in database\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\whatsapp\\helpers\\insertButtonMessage.ts:38:13\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\whatsapp\\helpers\\insertButtonMessage.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+

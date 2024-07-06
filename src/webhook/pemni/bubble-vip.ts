@@ -16,7 +16,7 @@ const fetchUserData = async (
 ): Promise<{ email: string; id: string; plan: string }[]> => {
   try {
     const response = await axios.get(
-      'https://mylifedecode.com/version-test/api/1.1/obj/user',
+      'https://mylifedecode.com/api/1.1/obj/user',
       {
         headers: {
           Authorization: `Bearer ${process.env.BUBBLE_API_KEY}`,
@@ -108,7 +108,7 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
 
       // Update the plan if user exists
       await axios.patch(
-        `https://mylifedecode.com/version-test/api/1.1/obj/user/${user.id}`,
+        `https://mylifedecode.com/api/1.1/obj/user/${user.id}`,
         { plan: customData.plan },
         {
           headers: {
@@ -164,7 +164,7 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
 
       // Create new user account if not found
       const newUser = await axios.post(
-        'https://mylifedecode.com/version-test/api/1.1/obj/user',
+        'https://mylifedecode.com/api/1.1/obj/user',
         {
           email: contact.profile.email,
           name: contact.profile.name,
