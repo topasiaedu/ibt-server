@@ -125,7 +125,7 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
           to: customData.phone,
           type: 'template',
           template: {
-            name: 'existing_user_vip_onboard',
+            name: 'existing_user_vip_onboard_v2',
             language: {
               code: 'zh_CN',
             },
@@ -187,7 +187,7 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
           "to": customData.phone,
           "type": "template",
           "template": {
-            "name": "new_user_vip_onboard",
+            "name": "new_user_vip_onboard_v2",
             "language": {
               "code": "zh_CN"
             },
