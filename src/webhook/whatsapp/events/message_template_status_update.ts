@@ -17,13 +17,14 @@ import { logError } from '../../../utils/errorLogger';
 
 const handleMessageTemplateStatusUpdate = async (value:any) => {
   const { event, message_template_id, message_template_name, message_template_language, reason } = value;
+  console.log('Message Template Status Update Event Received: ' + event + '\n' + 'Template ID: ' + message_template_id + '\n' + 'Template Name: ' + message_template_name + '\n' + 'Template Language: ' + message_template_language + '\n' + 'Reason: ' + reason + '\n')
 
   // Try to update the message template status in the database, if it failed call the function fetchTemplatesFunction
   const { data: updatedTemplate, error: updateError } = await supabase
     .from('templates')
-    .update({
+    .update({ 
       status: event,
-      reason: reason
+      rejected_reason: reason
     })
     .eq('wa_template_id', message_template_id)
     .single()
