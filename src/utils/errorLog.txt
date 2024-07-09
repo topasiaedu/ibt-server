@@ -1686,3 +1686,34 @@ Inside insertImageMessage function in insertImageMessage.ts {
 Inside insertButtonMessage function in insertButtonMessage.ts "Error: Sender not found in database\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\whatsapp\\helpers\\insertButtonMessage.ts:38:13\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\whatsapp\\helpers\\insertButtonMessage.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
 
 
+[2024-07-09T09:28:19.288Z] Error finding contact in database{"profile":{"name":"ᗩᒪIᖴᖴ"},"wa_id":"60178090836"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-09T09:28:19.496Z] Error inserting inbound text message into database. Data: {
+  "from": "60178090836",
+  "id": "wamid.HBgLNjAxNzgwOTA4MzYVAgASGCBENEEyQkFCOUZDOUI2QUI5Q0ZEQjExM0VEMEE4RDA3NQA=",
+  "timestamp": "1720517298",
+  "text": {
+    "body": "Yay, I have registered 【Online Free Reversing Diabetes \n Workshop】.\n\n____________________________\nI promise I will get well prepared to join this free live sharing via:\n1) Save this contact number into phone: 0103252793 \n2) Join WhatsApp community group to get latest information. https://chat.whatsapp.com/KEMpjI5b7AG7RC2aRsJWhn\n\n3) Join Zoom Live on Exact day Via this Zoom Link:  https://bit.ly/cxliveen\n\n4) Invite my friends & family to join for learning too:\nHereby the invite link: https://www.clinixero.co/en-new-fb"
+  },
+  "type": "text"
+}
+ Error: {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+Inside insertTextMessage function in insertTextMessage.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
