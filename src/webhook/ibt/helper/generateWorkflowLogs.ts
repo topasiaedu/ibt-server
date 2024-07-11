@@ -22,11 +22,28 @@ export const generateWorkflowLog = async (action: Action, contact: Contact) => {
   ]
   switch (action.type) {
     case 'add-to-contact-list':
-      const addToContactListDetails = action.details as { listId?: string }
-      payload = {
-        list_id: addToContactListDetails.listId,
-        contact_id: contact.contact_id,
-        workflow_id: action.workflow_id,
+      const addToContactListDetails = action.details as {
+        listId?: string
+        listIds?: string[]
+        currentIndex?: number
+      }
+      if (addToContactListDetails.listId) {
+        // Legacy code
+        payload = {
+          list_id: addToContactListDetails.listId,
+          contact_id: contact.contact_id,
+          workflow_id: action.workflow_id,
+        }
+      } else if (addToContactListDetails.listIds) {
+        const index = addToContactListDetails.currentIndex || 0
+        const listLength = addToContactListDetails.listIds.length
+        // Loop through the list of listIds
+        payload = {
+          list_id: addToContactListDetails.listIds[index % listLength],
+          contact_id: contact.contact_id,
+          workflow_id: action.workflow_id,
+          current_index: addToContactListDetails.currentIndex,
+        }
       }
       break
     case 'send-message':
