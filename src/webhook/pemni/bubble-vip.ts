@@ -9,7 +9,25 @@ import NodeCache from 'node-cache'
 import { sendMessageWithTemplate } from '../../api/whatsapp'
 
 const cache = new NodeCache({ stdTTL: 3600 }) // Cache items expire after 1 hour
-
+// {
+//   "data": [
+//     {
+//       "type": "BODY",
+//       "text": "亲爱的{{1}}，\n.\n🎉 恭喜你成功加人生GPS - VIP 福利包！🎉\n.\n你的会员新账号已经创建好啦，赶紧按照下面步骤来开始吧：\n.\n*【如果你是第一次登入】*\n*(1) 打开会员网站: https://mylifedecode.com/*\n*(2) 用以下信息通过电子邮件登录：*\n   *- 电子邮件:* {{2}}\n   *- 密码:* {{3}}\n\n*(3) 登录后点击 <VIP福利包> 就可以观看啦！*\n.\n*【如果你已经是网站会员】*\n*(1) 打开会员网站 https://mylifedecode.com/*\n*(2) 用facebook登入*\n*(3) 登录后点击 <VIP福利包> 就可以观看啦！*\n.\n🎈还不是很清楚怎么登入？\n点击观看，会一步一步教你：\n>> {{4}}\n.\n*Here's your Zoom Link to enter VIP Room:*\n👉 {{5}}\n.\n.\n如果有任何问题或需要帮助，随时联系我们哟。祝你学习愉快！😊\n.\n>> Support: 6011-5878 5417\n>> Serene: 6011-20560692\n.\nMaster Pemni 团队",
+//       "example": {
+//         "body_text": [
+//           [
+//             "Stanley",
+//             "stanley121499@gmail.com",
+//             "sd123uo12",
+//             "https://bit.ly/vip-tutorial",
+//             "https://pemnitan.com/vip-zoom"
+//           ]
+//         ]
+//       }
+//     }
+//   ]
+// }
 const fetchUserData = async (
   phone: string,
   retries: number = 3
@@ -118,7 +136,7 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
       )
       console.log(`Updated user ${user.email} with new plan ${customData.plan}`)
       // Send
-      const whatsappResponse = await sendMessageWithTemplate(
+      const { data: messageResponse } = await sendMessageWithTemplate(
         {
           messaging_product: 'whatsapp',
           recipient_type: 'individual',
@@ -129,36 +147,48 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
             language: {
               code: 'zh_CN',
             },
-            "components": [
+            components: [
               {
-                "type": "body",
-                "parameters": [
+                type: 'body',
+                parameters: [
                   {
-                    "type": "text",
-                    "text": customData.name 
+                    type: 'text',
+                    text: customData.name,
                   },
                   {
-                    "type": "text",
-                    "text": contact.profile.email
+                    type: 'text',
+                    text: contact.profile.email,
                   },
                   {
-                    "type": "text",
-                    "text": "https://bit.ly/vip-tutorial"
+                    type: 'text',
+                    text: 'https://bit.ly/vip-tutorial',
                   },
                   {
-                    "type": "text",
-                    "text": "https://pemnitan.com/vip-zoom"
-                  }
-                ]
-              }
-            ]
+                    type: 'text',
+                    text: 'https://pemnitan.com/vip-zoom',
+                  },
+                ],
+              },
+            ],
           },
         },
         '220858504440106',
         process.env.PEMNI_WHATSAPP_API_TOKEN || ''
       )
-
-      console.log('Whatsapp response:', whatsappResponse.data)
+      if (messageResponse.data.messages[0]) {
+        const { error: messageError } = await supabase.from('messages').insert([
+          {
+            wa_message_id: messageResponse.messages[0].id || '',
+            phone_number_id: '5',
+            contact_id: contactId,
+            message_type: 'TEMPLATE',
+            content: `亲爱的${customData.name}，\n.\n🎉 恭喜你成功加人生GPS - VIP 福利包！🎉\n.\n你的会员新账号已经创建好啦，赶紧按照下面步骤来开始吧：\n.\n*【如果你是第一次登入】*\n*(1) 打开会员网站: https://mylifedecode.com/*\n*(2) 用以下信息通过电子邮件登录：*\n   *- 电子邮件:* ${contact.profile.email}\n   *\n\n*(3) 登录后点击 <VIP福利包> 就可以观看啦！*\n.\n*【如果你已经是网站会员】*\n*(1) 打开会员网站 https://mylifedecode.com/*\n*(2) 用facebook登入*\n*(3) 登录后点击 <VIP福利包> 就可以观看啦！*\n.\n🎈还不是很清楚怎么登入？\n点击观看，会一步一步教你：\n>> https://bit.ly/vip-tutorial\n.\n*Here's your Zoom Link to enter VIP Room:*\n👉 https://pemnitan.com/vip-zoom\n.\n.\n如果有任何问题或需要帮助，随时联系我们哟。祝你学习愉快！😊\n.\n>> Support: 6011-5878 5417\n>> Serene: 6011-20560692\n.\nMaster Pemni 团队`,
+            direction: 'outgoing',
+            status: messageResponse.messages[0].message_status || 'failed',
+            project_id: '2',
+          },
+        ])
+      }
     } else {
       const randomPassword = Math.random().toString(36).slice(-8) // Generate random password
 
@@ -180,52 +210,64 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
       console.log(`Created new user ${newUser.data.email} with plan VIP`)
 
       // Send
-      const whatsappResponse = await sendMessageWithTemplate(
+      const { data: messageResponse } = await sendMessageWithTemplate(
         {
-          "messaging_product": "whatsapp",
-          "recipient_type": "individual",
-          "to": customData.phone,
-          "type": "template",
-          "template": {
-            "name": "new_user_vip_onboard_v2",
-            "language": {
-              "code": "zh_CN"
+          messaging_product: 'whatsapp',
+          recipient_type: 'individual',
+          to: customData.phone,
+          type: 'template',
+          template: {
+            name: 'new_user_vip_onboard_v2',
+            language: {
+              code: 'zh_CN',
             },
-            "components": [
+            components: [
               {
-                "type": "body",
-                "parameters": [
+                type: 'body',
+                parameters: [
                   {
-                    "type": "text",
-                    "text": customData.name 
+                    type: 'text',
+                    text: customData.name,
                   },
                   {
-                    "type": "text",
-                    "text": contact.profile.email
+                    type: 'text',
+                    text: contact.profile.email,
                   },
                   {
-                    "type": "text",
-                    "text": randomPassword
+                    type: 'text',
+                    text: randomPassword,
                   },
                   {
-                    "type": "text",
-                    "text": "https://bit.ly/vip-tutorial"
+                    type: 'text',
+                    text: 'https://bit.ly/vip-tutorial',
                   },
                   {
-                    "type": "text",
-                    "text": "https://pemnitan.com/vip-zoom"
-                  }
-                ]
-              }
-            ]
-          }
-        }
-        ,
+                    type: 'text',
+                    text: 'https://pemnitan.com/vip-zoom',
+                  },
+                ],
+              },
+            ],
+          },
+        },
         '220858504440106',
         process.env.PEMNI_WHATSAPP_API_TOKEN || ''
       )
 
-      console.log('Whatsapp response:', whatsappResponse.data)
+      if (messageResponse.data.messages[0]) {
+        const { error: messageError } = await supabase.from('messages').insert([
+          {
+            wa_message_id: messageResponse.messages[0].id || '',
+            phone_number_id: '5',
+            contact_id: contactId,
+            message_type: 'TEMPLATE',
+            content: `亲爱的${customData.name}，\n.\n🎉 恭喜你成功加人生GPS - VIP 福利包！🎉\n.\n你的会员新账号已经创建好啦，赶紧按照下面步骤来开始吧：\n.\n*【如果你是第一次登入】*\n*(1) 打开会员网站: https://mylifedecode.com/*\n*(2) 用以下信息通过电子邮件登录：*\n   *- 电子邮件:* ${contact.profile.email}\n   *- 密码:* ${randomPassword}\n\n*(3) 登录后点击 <VIP福利包> 就可以观看啦！*\n.\n*【如果你已经是网站会员】*\n*(1) 打开会员网站 https://mylifedecode.com/*\n*(2) 用facebook登入*\n*(3) 登录后点击 <VIP福利包> 就可以观看啦！*\n.\n🎈还不是很清楚怎么登入？\n点击观看，会一步一步教你：\n>> https://bit.ly/vip-tutorial\n.\n*Here's your Zoom Link to enter VIP Room:*\n👉 https://pemnitan.com/vip-zoom\n.\n.\n如果有任何问题或需要帮助，随时联系我们哟。祝你学习愉快！😊\n.\n>> Support: 6011-5878 5417\n>> Serene: 6011-20560692\n.\nMaster Pemni 团队`,
+            direction: 'outgoing',
+            status: messageResponse.messages[0].message_status || 'failed',
+            project_id: '2',
+          },
+        ])
+      }
     }
   } catch (error) {
     console.error('Error processing webhook:', error)
