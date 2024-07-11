@@ -91,12 +91,13 @@ export const handleWebhook = async (req: Request, res: Response) => {
                     //     handleMessageEchoes(req, res);
                     //     break;
                     case 'message_template_quality_update':
-                        fetchTemplatesFunction();
+                        // console.log('message_template_quality_update', value)
+                        // fetchTemplatesFunction();
                         // handleMessageTemplateQualityUpdate(req, res);
                         break;
                     case 'message_template_status_update':
-                        fetchTemplatesFunction();
-                        // handleMessageTemplateStatusUpdate(req, res);
+                        // fetchTemplatesFunction();
+                        handleMessageTemplateStatusUpdate(value);
                         break;
                     case 'messages':
                         handleMessages(value);
