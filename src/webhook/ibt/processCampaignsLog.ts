@@ -103,8 +103,7 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
       recipient_type: 'individual',
       to: contact.wa_id,
       type: 'template',
-      template:
-        campaign.template_payload as TemplateMessagePayload['template'],
+      template: campaign.template_payload as TemplateMessagePayload['template'],
     })
   )
 
@@ -114,19 +113,14 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
   templatePayload.template.components.forEach((component: any) => {
     component.parameters.forEach((parameter: any) => {
       if (parameter.text) {
-        parameter.text = parameter.text.replace(
-          /%name%/g,
-          contact.name
-        )
+        parameter.text = parameter.text.replace(/%name%/g, contact.name)
 
         // Check if the parameter.text has spintax, if so, replace it with a random value
         const spintaxRegex = /{([^{}]*)}/g
         const spintaxMatch = parameter.text.match(spintaxRegex)
         if (spintaxMatch) {
           spintaxMatch.forEach((spintax: any) => {
-            const options = spintax
-              .substring(1, spintax.length - 1)
-              .split('|')
+            const options = spintax.substring(1, spintax.length - 1).split('|')
             const randomIndex = Math.floor(Math.random() * options.length)
             parameter.text = parameter?.text?.replace(
               spintax,
@@ -225,7 +219,7 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
       })
     }
 
-    const phoneNumberId =  newPhoneNumbers.find(
+    const phoneNumberId = newPhoneNumbers.find(
       (phone: any) => phone.phone_numbers.wa_id === selectedPhoneNumber
     ).phone_numbers.phone_number_id
 
@@ -246,7 +240,7 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
     }
 
     // Add the message to the database under the table messages
-    const { error: messageError } = await supabase
+    const { data: newMessage, error: messageError } = await supabase
       .from('messages')
       .insert([
         {
@@ -263,6 +257,26 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
           conversation_id: conversation?.id,
         },
       ])
+      .select('*')
+      .single()
+
+    // Update last_message_id and updated_at in the conversation
+    const { data: updatedConversation, error: updateConversationError } =
+      await supabase
+        .from('conversations')
+        .update({
+          last_message_id: newMessage?.id,
+          updated_at: new Date(),
+        })
+        .eq('id', conversation?.id)
+
+    if (updateConversationError) {
+      logError(
+        updateConversationError as unknown as Error,
+        'Error updating conversation'
+      )
+      return
+    }
 
     // Update last_contacted_by for the contact using the phone_number_id
     const { error: updateContactError } = await supabase

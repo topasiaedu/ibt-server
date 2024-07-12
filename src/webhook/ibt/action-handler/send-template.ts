@@ -153,7 +153,7 @@ export const sendTemplate = async (payload: any, workflowLogId: string) => {
       })
     }
 
-    const phoneNumberId =  newPhoneNumbers.find(
+    const phoneNumberId = newPhoneNumbers.find(
       (phone: any) => phone.phone_numbers.wa_id === selectedPhoneNumber
     ).phone_numbers.phone_number_id
 
@@ -191,7 +191,27 @@ export const sendTemplate = async (payload: any, workflowLogId: string) => {
           conversation_id: conversation?.id,
         },
       ])
+      .select('*')
+      .single()
 
+    // Update last_message_id and updated_at in the conversation
+    const { data: updatedConversation, error: updateConversationError } =
+      await supabase
+        .from('conversations')
+        .update({
+          last_message_id: newMessage?.id,
+          updated_at: new Date(),
+        })
+        .eq('id', conversation?.id)
+
+    if (updateConversationError) {
+      logError(
+        updateConversationError as unknown as Error,
+        'Error updating conversation'
+      )
+      return
+    }
+    
     // Update last_contacted_by for the contact using the phone_number_id
     const { data: updatedContact, error: updateContactError } = await supabase
       .from('contacts')

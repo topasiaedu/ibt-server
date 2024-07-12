@@ -82,7 +82,7 @@ const insertAudioMessage = async (
       return 'Error finding conversation in database'
     }
     // Insert the message into the database
-    let { error: messageError } = await supabase
+    let { data: newMessage, error: messageError } = await supabase
       .from('messages')
       .insert([
         {
@@ -98,7 +98,26 @@ const insertAudioMessage = async (
           conversation_id: conversation?.id,
         },
       ])
+      .select('*')
       .single()
+
+    // Update last_message_id and updated_at in the conversation
+    const { data: updatedConversation, error: updateConversationError } =
+      await supabase
+        .from('conversations')
+        .update({
+          last_message_id: newMessage?.id,
+          updated_at: new Date(),
+        })
+        .eq('id', conversation?.id)
+
+    if (updateConversationError) {
+      logError(
+        updateConversationError as unknown as Error,
+        'Error updating conversation'
+      )
+      return
+    }
 
     if (messageError) {
       logError(

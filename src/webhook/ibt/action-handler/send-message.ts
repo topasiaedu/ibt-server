@@ -131,11 +131,31 @@ export const sendMessage = async (payload: any, workflowLogId: string) => {
         message_id: response.data.message_id,
         conversation_id: conversation?.id,
       })
+      .select('*')
+      .single()
 
     if (newMessageError) {
       logError(
         newMessageError as unknown as Error,
         'Error saving message to database'
+      )
+      return
+    }
+
+    // Update last_message_id and updated_at in the conversation
+    const { data: updatedConversation, error: updateConversationError } =
+      await supabase
+        .from('conversations')
+        .update({
+          last_message_id: newMessage?.id,
+          updated_at: new Date(),
+        })
+        .eq('id', conversation?.id)
+
+    if (updateConversationError) {
+      logError(
+        updateConversationError as unknown as Error,
+        'Error updating conversation'
       )
       return
     }
