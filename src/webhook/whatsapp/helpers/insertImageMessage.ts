@@ -56,7 +56,7 @@ const insertImageMessage = async (
     // Look Up conversation_id
     let { data: conversation, error: conversationError } = await supabase
       .from('conversations')
-      .select('id')
+      .select('*')
       .eq('contact_id', senderId)
       .eq('phone_number_id', myPhoneNumber)
       .single()
@@ -105,6 +105,7 @@ const insertImageMessage = async (
         .from('conversations')
         .update({
           last_message_id: newMessage?.message_id,
+          unread_messages: conversation?.unread_messages + 1,
           updated_at: new Date(),
         })
         .eq('id', conversation?.id)
