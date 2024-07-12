@@ -199,7 +199,7 @@ export const sendTemplate = async (payload: any, workflowLogId: string) => {
       await supabase
         .from('conversations')
         .update({
-          last_message_id: newMessage?.id,
+          last_message_id: newMessage?.message_id,
           updated_at: new Date(),
         })
         .eq('id', conversation?.id)
@@ -211,7 +211,7 @@ export const sendTemplate = async (payload: any, workflowLogId: string) => {
       )
       return
     }
-    
+
     // Update last_contacted_by for the contact using the phone_number_id
     const { data: updatedContact, error: updateContactError } = await supabase
       .from('contacts')

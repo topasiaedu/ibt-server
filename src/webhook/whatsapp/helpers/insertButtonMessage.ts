@@ -93,7 +93,7 @@ async function insertButtonMessage(
       await supabase
         .from('conversations')
         .update({
-          last_message_id: newMessage?.id,
+          last_message_id: newMessage?.message_id,
           updated_at: new Date(),
         })
         .eq('id', conversation?.id)
