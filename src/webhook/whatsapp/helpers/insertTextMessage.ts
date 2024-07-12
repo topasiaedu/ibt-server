@@ -87,6 +87,13 @@ async function insertTextMessage(
       .select('*')
       .single()
 
+    console.log(
+      'Type of unread_messages: ',
+      typeof conversation?.unread_messages
+    )
+
+    console.log('Value of unread_messages: ', conversation?.unread_messages)
+
     // Update last_message_id and updated_at in the conversation
     const { data: updatedConversation, error: updateConversationError } =
       await supabase
