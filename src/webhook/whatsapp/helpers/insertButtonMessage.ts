@@ -1,11 +1,14 @@
+import supabase from '../../../db/supabaseClient'
+import { logError } from '../../../utils/errorLogger'
 
-import supabase from '../../../db/supabaseClient';
-import { logError } from '../../../utils/errorLogger';
-
-async function insertButtonMessage(message: any, display_phone_number: string, project_id: string) {
+async function insertButtonMessage(
+  message: any,
+  display_phone_number: string,
+  project_id: string
+) {
   try {
-    const { from, id, timestamp, type, button } = message;
-    const { text } = button;
+    const { from, id, timestamp, type, button } = message
+    const { text } = button
 
     // Check if the database has the same wa_message_id
     let { data: existingMessage, error: findError } = await supabase
@@ -15,7 +18,7 @@ async function insertButtonMessage(message: any, display_phone_number: string, p
       .single()
 
     if (existingMessage?.wa_message_id === id) {
-      return 'Message already exists in the database';
+      return 'Message already exists in the database'
     }
 
     // Find the contact_id of the sender
@@ -24,56 +27,87 @@ async function insertButtonMessage(message: any, display_phone_number: string, p
       .select('contact_id')
       .eq('wa_id', from)
       .eq('project_id', project_id)
-      .single();
+      .single()
 
     if (senderError) {
       // Create a new contact if not found
       let { data: sender, error: contactError } = await supabase
         .from('contacts')
         .insert([{ wa_id: from }])
-        .single();
+        .single()
     }
 
     if (!sender) {
-      throw new Error('Sender not found in database');
+      throw new Error('Sender not found in database')
     }
 
-    const senderId = sender.contact_id;
+    const senderId = sender.contact_id
 
     const myPhoneNumberId = await supabase
       .from('phone_numbers')
       .select('phone_number_id')
       .eq('number', display_phone_number)
-      .single();
+      .single()
 
-    const myPhoneNumber = myPhoneNumberId?.data?.phone_number_id;
+    const myPhoneNumber = myPhoneNumberId?.data?.phone_number_id
+    // Look Up conversation_id
+    let { data: conversation, error: conversationError } = await supabase
+      .from('conversations')
+      .select('id')
+      .eq('contact_id', senderId)
+      .eq('phone_number_id', myPhoneNumber)
+      .single()
 
+    if (conversationError) {
+      console.error(
+        'Error finding conversation in database:',
+        conversationError
+      )
+      return 'Error finding conversation in database'
+    }
     // Change timestamp to DateTime format
-    const date = new Date(parseInt(timestamp) * 1000);
-    const formattedDate = date.toISOString();
+    const date = new Date(parseInt(timestamp) * 1000)
+    const formattedDate = date.toISOString()
 
     // Insert the message into the database
     let { data: newMessage, error: messageError } = await supabase
       .from('messages')
-      .insert([{
-        contact_id: senderId,
-        message_type: type,
-        content: text,
-        phone_number_id: myPhoneNumber,
-        wa_message_id: id,
-        direction: 'inbound',
-        project_id,
-        status: 'received',
-      }])
-      .single();
+      .insert([
+        {
+          contact_id: senderId,
+          message_type: type,
+          content: text,
+          phone_number_id: myPhoneNumber,
+          wa_message_id: id,
+          direction: 'inbound',
+          project_id,
+          status: 'received',
+          conversation_id: conversation?.id,
+        },
+      ])
+      .single()
 
     if (messageError) {
-      logError(messageError as unknown as Error, 'Error inserting inbound button message into database. Data: ' + JSON.stringify(message, null, 2) + '\n Error: ' + messageError);
+      logError(
+        messageError as unknown as Error,
+        'Error inserting inbound button message into database. Data: ' +
+          JSON.stringify(message, null, 2) +
+          '\n Error: ' +
+          messageError
+      )
     }
   } catch (error) {
-    logError(error as Error, 'Error inserting inbound text message into database. Data: ' + JSON.stringify(message, null, 2) + '\n Error: ' + JSON.stringify(error, null, 2) + '\n' + "Inside insertButtonMessage function in insertButtonMessage.ts");
-    return 'Error inserting inbound text message into database';
+    logError(
+      error as Error,
+      'Error inserting inbound text message into database. Data: ' +
+        JSON.stringify(message, null, 2) +
+        '\n Error: ' +
+        JSON.stringify(error, null, 2) +
+        '\n' +
+        'Inside insertButtonMessage function in insertButtonMessage.ts'
+    )
+    return 'Error inserting inbound text message into database'
   }
 }
 
-export default insertButtonMessage;
+export default insertButtonMessage

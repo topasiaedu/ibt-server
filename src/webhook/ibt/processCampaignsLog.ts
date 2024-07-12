@@ -225,6 +225,26 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
       })
     }
 
+    const phoneNumberId =  newPhoneNumbers.find(
+      (phone: any) => phone.phone_numbers.wa_id === selectedPhoneNumber
+    ).phone_numbers.phone_number_id
+
+    // Look Up conversation_id
+    let { data: conversation, error: conversationError } = await supabase
+      .from('conversations')
+      .select('id')
+      .eq('contact_id', campaignLog.contact_id)
+      .eq('phone_number_id', phoneNumberId)
+      .single()
+
+    if (conversationError) {
+      console.error(
+        'Error finding conversation in database:',
+        conversationError
+      )
+      return 'Error finding conversation in database'
+    }
+
     // Add the message to the database under the table messages
     const { error: messageError } = await supabase
       .from('messages')
@@ -232,9 +252,7 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
         {
           wa_message_id: messageResponse.messages[0].id || '',
           campaign_id: campaignLog.campaign_id,
-          phone_number_id: newPhoneNumbers.find(
-            (phone: any) => phone.phone_numbers.wa_id === selectedPhoneNumber
-          ).phone_numbers.phone_number_id,
+          phone_number_id: phoneNumberId,
           contact_id: campaignLog.contact_id,
           message_type: 'TEMPLATE',
           content: textContent,
@@ -242,6 +260,7 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
           status: messageResponse.messages[0].message_status || 'failed',
           project_id: campaign.project_id,
           media_url: mediaUrl,
+          conversation_id: conversation?.id,
         },
       ])
 

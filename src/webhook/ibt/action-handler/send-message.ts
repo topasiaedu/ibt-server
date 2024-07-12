@@ -101,17 +101,35 @@ export const sendMessage = async (payload: any, workflowLogId: string) => {
       ).phone_numbers.whatsapp_business_accounts.business_manager.access_token
     )
 
+    // Look Up conversation_id
+    let { data: conversation, error: conversationError } = await supabase
+      .from('conversations')
+      .select('id')
+      .eq('contact_id', contact.contact_id)
+      .eq('phone_number_id', selectedPhoneNumber)
+      .single()
+
+    if (conversationError) {
+      console.error(
+        'Error finding conversation in database:',
+        conversationError
+      )
+      return 'Error finding conversation in database'
+    }
+
     // Add the message to the database under the table messages
     const { data: newMessage, error: newMessageError } = await supabase
       .from('messages')
       .insert({
         contact_id,
         message: messagePayload.text.body,
+        phone_number_id: selectedPhoneNumber,
         workflow_id,
         post_time: postTime,
         time_post_type: timePostType,
         post_date: postDate,
         message_id: response.data.message_id,
+        conversation_id: conversation?.id,
       })
 
     if (newMessageError) {

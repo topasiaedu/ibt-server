@@ -153,15 +153,33 @@ export const sendTemplate = async (payload: any, workflowLogId: string) => {
       })
     }
 
+    const phoneNumberId =  newPhoneNumbers.find(
+      (phone: any) => phone.phone_numbers.wa_id === selectedPhoneNumber
+    ).phone_numbers.phone_number_id
+
+    // Look Up conversation_id
+    let { data: conversation, error: conversationError } = await supabase
+      .from('conversations')
+      .select('id')
+      .eq('contact_id', contact.contact_id)
+      .eq('phone_number_id', phoneNumberId)
+      .single()
+
+    if (conversationError) {
+      console.error(
+        'Error finding conversation in database:',
+        conversationError
+      )
+      return 'Error finding conversation in database'
+    }
+
     // Add the message to the database under the table messages
     const { data: newMessage, error: messageError } = await supabase
       .from('messages')
       .insert([
         {
           wa_message_id: messageResponse.messages[0].id || '',
-          phone_number_id: newPhoneNumbers.find(
-            (phone: any) => phone.phone_numbers.wa_id === selectedPhoneNumber
-          ).phone_number_id,
+          phone_number_id: phoneNumberId,
           contact_id: contact.contact_id,
           message_type: 'TEMPLATE',
           content: textContent,
@@ -170,6 +188,7 @@ export const sendTemplate = async (payload: any, workflowLogId: string) => {
           status: messageResponse.messages[0].message_status || 'failed',
           project_id: contact.project_id,
           media_url: mediaUrl,
+          conversation_id: conversation?.id,
         },
       ])
 

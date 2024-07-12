@@ -411,6 +411,74 @@ export type Database = {
           },
         ]
       }
+      conversations: {
+        Row: {
+          close_at: string | null
+          contact_id: number
+          created_at: string
+          id: string
+          last_message_id: number | null
+          phone_number_id: number
+          project_id: number
+          unread_messages: number
+          updated_at: string | null
+          wa_conversation_id: string | null
+        }
+        Insert: {
+          close_at?: string | null
+          contact_id: number
+          created_at?: string
+          id?: string
+          last_message_id?: number | null
+          phone_number_id: number
+          project_id: number
+          unread_messages?: number
+          updated_at?: string | null
+          wa_conversation_id?: string | null
+        }
+        Update: {
+          close_at?: string | null
+          contact_id?: number
+          created_at?: string
+          id?: string
+          last_message_id?: number | null
+          phone_number_id?: number
+          project_id?: number
+          unread_messages?: number
+          updated_at?: string | null
+          wa_conversation_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "conversations_contact_id_fkey"
+            columns: ["contact_id"]
+            isOneToOne: false
+            referencedRelation: "contacts"
+            referencedColumns: ["contact_id"]
+          },
+          {
+            foreignKeyName: "conversations_last_message_id_fkey"
+            columns: ["last_message_id"]
+            isOneToOne: false
+            referencedRelation: "messages"
+            referencedColumns: ["message_id"]
+          },
+          {
+            foreignKeyName: "conversations_phone_number_id_fkey"
+            columns: ["phone_number_id"]
+            isOneToOne: false
+            referencedRelation: "phone_numbers"
+            referencedColumns: ["phone_number_id"]
+          },
+          {
+            foreignKeyName: "conversations_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "project"
+            referencedColumns: ["project_id"]
+          },
+        ]
+      }
       events: {
         Row: {
           created_at: string
@@ -488,6 +556,7 @@ export type Database = {
           campaign_id: number | null
           contact_id: number
           content: string | null
+          conversation_id: string | null
           created_at: string | null
           direction: string | null
           error: Json | null
@@ -504,6 +573,7 @@ export type Database = {
           campaign_id?: number | null
           contact_id: number
           content?: string | null
+          conversation_id?: string | null
           created_at?: string | null
           direction?: string | null
           error?: Json | null
@@ -520,6 +590,7 @@ export type Database = {
           campaign_id?: number | null
           contact_id?: number
           content?: string | null
+          conversation_id?: string | null
           created_at?: string | null
           direction?: string | null
           error?: Json | null
@@ -533,6 +604,13 @@ export type Database = {
           workflow_id?: string | null
         }
         Relationships: [
+          {
+            foreignKeyName: "messages_conversation_id_fkey"
+            columns: ["conversation_id"]
+            isOneToOne: false
+            referencedRelation: "conversations"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "messages_phone_number_id_fkey"
             columns: ["phone_number_id"]
@@ -682,6 +760,7 @@ export type Database = {
           created_at: string | null
           language: string
           name: string
+          rejected_reason: string | null
           status: string
           template_id: number
           wa_template_id: string | null
@@ -693,6 +772,7 @@ export type Database = {
           created_at?: string | null
           language: string
           name: string
+          rejected_reason?: string | null
           status: string
           template_id?: number
           wa_template_id?: string | null
@@ -704,6 +784,7 @@ export type Database = {
           created_at?: string | null
           language?: string
           name?: string
+          rejected_reason?: string | null
           status?: string
           template_id?: number
           wa_template_id?: string | null

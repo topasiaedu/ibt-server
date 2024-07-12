@@ -59,16 +59,16 @@ const handleOutgoingMessage = async (value: any) => {
 
       if (status.conversation) {
         if (status.conversation.expiration_timestamp) {
-          let { data: existingMessageWindow, error: findError } = await supabase
-            .from('message_window')
-            .select('conversation_id')
-            .eq('conversation_id', status.conversation.id)
+          let { data: existingConversation, error: findError } = await supabase
+            .from('conversation')
+            .select('*')
+            .eq('wa_conversation_id', status.conversation.id)
             .single()
 
           if (
-            existingMessageWindow?.conversation_id === status.conversation.id
+            existingConversation?.conversation_id === status.conversation.id
           ) {
-            return 'Message already exists in the database'
+            return 'Conversation already exists in the database'
           }
 
           if (findError) {
@@ -79,21 +79,22 @@ const handleOutgoingMessage = async (value: any) => {
             const formattedDate = date.toISOString()
             // insert the message window
             let { error: insertError } = await supabase
-              .from('message_window')
+              .from('conversation')
               .insert([
                 {
                   phone_number_id: message.phone_number_id,
                   contact_id: message.contact_id,
-                  conversation_id: status.conversation.id,
+                  wa_conversation_id: status.conversation.id,
                   close_at: formattedDate,
                   updated_at: new Date().toISOString(),
+                  last_message_id: message.id,
                 },
               ])
 
             if (insertError) {
               logError(
                 insertError as unknown as Error,
-                'Error inserting message window into database' +
+                'Error inserting conversation into database' +
                   '\n' +
                   'Inside handleOutgoingMessage function in messages.ts'
               )
