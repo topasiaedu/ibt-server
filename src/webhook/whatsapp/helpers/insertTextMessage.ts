@@ -62,6 +62,9 @@ async function insertTextMessage(
         'Error finding conversation in database:',
         conversationError
       )
+
+      console.error("Sender's ID: ", senderId)
+      console.error("My Phone Number: ", myPhoneNumber)
       return 'Error finding conversation in database'
     }
 
@@ -86,13 +89,6 @@ async function insertTextMessage(
       ])
       .select('*')
       .single()
-
-    console.log(
-      'Type of unread_messages: ',
-      typeof conversation?.unread_messages
-    )
-
-    console.log('Value of unread_messages: ', conversation?.unread_messages)
 
     // Update last_message_id and updated_at in the conversation
     const { data: updatedConversation, error: updateConversationError } =
