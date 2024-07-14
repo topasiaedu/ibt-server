@@ -74,12 +74,6 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
     return
   }
 
-  console.log('Processing campaign log:', campaignLog.id)
-  console.log('Contact:', contact)
-  console.log('Campaign:', campaign)
-  console.log('Campaign Log:', campaignLog)
-  console.log('Template:', campaign.template_payload)
-
   // Trim any extraneous whitespace or control characters from wa_id
   contact.wa_id = contact.wa_id.trim()
 
@@ -184,9 +178,7 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
         (phone: any) => phone.phone_numbers.wa_id === selectedPhoneNumber
       ).phone_numbers.whatsapp_business_accounts.business_manager.access_token
     )
-
-    console.log('Message response:', messageResponse)
-
+    
     // Lookup template to get the text and the image if any
     const { data: template, error: templateError } = await supabase
       .from('templates')
@@ -221,7 +213,9 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
 
     const phoneNumberId = newPhoneNumbers.find(
       (phone: any) => phone.phone_numbers.wa_id === selectedPhoneNumber
-    ).phone_numbers.phone_number_id
+    ).phone_number_id
+
+    console.log("Phone Number ID:", phoneNumberId)
 
     // Look Up conversation_id
     let { data: conversation, error: conversationError } = await supabase

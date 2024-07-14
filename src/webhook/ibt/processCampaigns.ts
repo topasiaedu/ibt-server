@@ -36,7 +36,6 @@ export interface TemplateMessagePayload {
 }
 
 const processCampaigns = async (campaign: Campaign) => {
-  console.log('Processing campaign:', campaign.campaign_id)
 
   try {
     const { error: updateStatusError } = await supabase
@@ -73,8 +72,6 @@ const processCampaigns = async (campaign: Campaign) => {
       )
       return
     }
-
-    console.log('Campaign lists:', campaignLists)
 
     // Generate campaign logs
     let campaignLogs: CampaignLogsInsert[] = []
@@ -175,8 +172,6 @@ const processCampaigns = async (campaign: Campaign) => {
     const excludeResults = await Promise.all(excludePromises)
     const excludedContactIds = excludeResults.flat()
 
-    console.log('Excluded contact IDs:', excludedContactIds)
-    console.log('Campaign logs:', campaignLogs)
     // Remove excluded contacts from campaign logs
     campaignLogs = campaignLogs.filter(
       (log) => !excludedContactIds.includes(log.contact_id)
@@ -271,17 +266,6 @@ function scheduleCampaign(campaign: Campaign) {
   }
 
   const delay = postTime - currentTimeMillis
-  console.log(
-    'Scheduling campaign:',
-    campaign.campaign_id,
-    'in',
-    delay,
-    'ms (current time:',
-    currentTime,
-    'post time:',
-    postTime,
-    ')'
-  )
 
   if (delay < 0) {
     console.warn(
