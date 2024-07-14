@@ -1737,3 +1737,3672 @@ Inside handleOutgoingMessage function in messages.ts {}
 Inside handleOutgoingMessage function in messages.ts {}
 
 
+[2024-07-14T13:32:42.171Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-14T13:32:46.459Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:32:48.514Z] Error sending message with template. Payload: {
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": "6582994276",
+  "type": "template",
+  "template": {
+    "name": "cx_cn_tmr_v2",
+    "language": {
+      "code": "zh_CN"
+    },
+    "components": [
+      {
+        "type": "HEADER",
+        "parameters": [
+          {
+            "type": "video",
+            "video": {
+              "link": "https://yvpvhbgcawvruybkmupv.supabase.co/storage/v1/object/public/media/templates/eaakgp"
+            }
+          }
+        ]
+      },
+      {
+        "type": "BODY",
+        "parameters": [
+          {
+            "type": "text",
+            "text": "Nic"
+          }
+        ]
+      }
+    ]
+  }
+}
+ "AxiosError: Request failed with status code 400\n    at settle (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\settle.js:19:12)\n    at IncomingMessage.handleStreamEnd (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\adapters\\http.js:589:11)\n    at IncomingMessage.emit (node:events:526:35)\n    at IncomingMessage.emit (node:domain:488:12)\n    at endReadableNT (node:internal/streams/readable:1589:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\Axios.js:45:41)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-14T13:32:48.515Z] Error sending message with template. Payload: {
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": "6591159682",
+  "type": "template",
+  "template": {
+    "name": "cx_cn_tmr_v2",
+    "language": {
+      "code": "zh_CN"
+    },
+    "components": [
+      {
+        "type": "HEADER",
+        "parameters": [
+          {
+            "type": "video",
+            "video": {
+              "link": "https://yvpvhbgcawvruybkmupv.supabase.co/storage/v1/object/public/media/templates/eaakgp"
+            }
+          }
+        ]
+      },
+      {
+        "type": "BODY",
+        "parameters": [
+          {
+            "type": "text",
+            "text": "Kelvin"
+          }
+        ]
+      }
+    ]
+  }
+}
+ "AxiosError: Request failed with status code 400\n    at settle (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\settle.js:19:12)\n    at IncomingMessage.handleStreamEnd (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\adapters\\http.js:589:11)\n    at IncomingMessage.emit (node:events:526:35)\n    at IncomingMessage.emit (node:domain:488:12)\n    at endReadableNT (node:internal/streams/readable:1589:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\Axios.js:45:41)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-14T13:32:48.515Z] Error sending message with template. Payload: {
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": "60126137856",
+  "type": "template",
+  "template": {
+    "name": "cx_cn_tmr_v2",
+    "language": {
+      "code": "zh_CN"
+    },
+    "components": [
+      {
+        "type": "HEADER",
+        "parameters": [
+          {
+            "type": "video",
+            "video": {
+              "link": "https://yvpvhbgcawvruybkmupv.supabase.co/storage/v1/object/public/media/templates/eaakgp"
+            }
+          }
+        ]
+      },
+      {
+        "type": "BODY",
+        "parameters": [
+          {
+            "type": "text",
+            "text": "Koh Lay Ling"
+          }
+        ]
+      }
+    ]
+  }
+}
+ "AxiosError: Request failed with status code 400\n    at settle (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\settle.js:19:12)\n    at IncomingMessage.handleStreamEnd (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\adapters\\http.js:589:11)\n    at IncomingMessage.emit (node:events:526:35)\n    at IncomingMessage.emit (node:domain:488:12)\n    at endReadableNT (node:internal/streams/readable:1589:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\Axios.js:45:41)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-14T13:32:48.578Z] Error sending message with template. Payload: {
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": "60194404827",
+  "type": "template",
+  "template": {
+    "name": "cx_cn_tmr_v2",
+    "language": {
+      "code": "zh_CN"
+    },
+    "components": [
+      {
+        "type": "HEADER",
+        "parameters": [
+          {
+            "type": "video",
+            "video": {
+              "link": "https://yvpvhbgcawvruybkmupv.supabase.co/storage/v1/object/public/media/templates/eaakgp"
+            }
+          }
+        ]
+      },
+      {
+        "type": "BODY",
+        "parameters": [
+          {
+            "type": "text",
+            "text": "J K Ang"
+          }
+        ]
+      }
+    ]
+  }
+}
+ "AxiosError: Request failed with status code 400\n    at settle (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\settle.js:19:12)\n    at BrotliDecompress.handleStreamEnd (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\adapters\\http.js:589:11)\n    at BrotliDecompress.emit (node:events:526:35)\n    at BrotliDecompress.emit (node:domain:488:12)\n    at endReadableNT (node:internal/streams/readable:1589:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\Axios.js:45:41)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-14T13:32:48.581Z] Error sending message with template. Payload: {
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": "60198133888",
+  "type": "template",
+  "template": {
+    "name": "cx_cn_tmr_v2",
+    "language": {
+      "code": "zh_CN"
+    },
+    "components": [
+      {
+        "type": "HEADER",
+        "parameters": [
+          {
+            "type": "video",
+            "video": {
+              "link": "https://yvpvhbgcawvruybkmupv.supabase.co/storage/v1/object/public/media/templates/eaakgp"
+            }
+          }
+        ]
+      },
+      {
+        "type": "BODY",
+        "parameters": [
+          {
+            "type": "text",
+            "text": "Ng Wing Wah"
+          }
+        ]
+      }
+    ]
+  }
+}
+ "AxiosError: Request failed with status code 400\n    at settle (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\settle.js:19:12)\n    at BrotliDecompress.handleStreamEnd (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\adapters\\http.js:589:11)\n    at BrotliDecompress.emit (node:events:526:35)\n    at BrotliDecompress.emit (node:domain:488:12)\n    at endReadableNT (node:internal/streams/readable:1589:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\Axios.js:45:41)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-14T13:32:48.711Z] Error sending message with template. Payload: {
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": "60126833723",
+  "type": "template",
+  "template": {
+    "name": "cx_cn_tmr_v2",
+    "language": {
+      "code": "zh_CN"
+    },
+    "components": [
+      {
+        "type": "HEADER",
+        "parameters": [
+          {
+            "type": "video",
+            "video": {
+              "link": "https://yvpvhbgcawvruybkmupv.supabase.co/storage/v1/object/public/media/templates/eaakgp"
+            }
+          }
+        ]
+      },
+      {
+        "type": "BODY",
+        "parameters": [
+          {
+            "type": "text",
+            "text": "Chan Mui Fong"
+          }
+        ]
+      }
+    ]
+  }
+}
+ "AxiosError: Request failed with status code 400\n    at settle (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\settle.js:19:12)\n    at BrotliDecompress.handleStreamEnd (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\adapters\\http.js:589:11)\n    at BrotliDecompress.emit (node:events:526:35)\n    at BrotliDecompress.emit (node:domain:488:12)\n    at endReadableNT (node:internal/streams/readable:1589:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\Axios.js:45:41)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-14T13:32:48.713Z] Error sending message with template. Payload: {
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": "601115041941",
+  "type": "template",
+  "template": {
+    "name": "cx_cn_tmr_v2",
+    "language": {
+      "code": "zh_CN"
+    },
+    "components": [
+      {
+        "type": "HEADER",
+        "parameters": [
+          {
+            "type": "video",
+            "video": {
+              "link": "https://yvpvhbgcawvruybkmupv.supabase.co/storage/v1/object/public/media/templates/eaakgp"
+            }
+          }
+        ]
+      },
+      {
+        "type": "BODY",
+        "parameters": [
+          {
+            "type": "text",
+            "text": "Jesly"
+          }
+        ]
+      }
+    ]
+  }
+}
+ "AxiosError: Request failed with status code 400\n    at settle (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\settle.js:19:12)\n    at BrotliDecompress.handleStreamEnd (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\adapters\\http.js:589:11)\n    at BrotliDecompress.emit (node:events:526:35)\n    at BrotliDecompress.emit (node:domain:488:12)\n    at endReadableNT (node:internal/streams/readable:1589:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\Axios.js:45:41)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-14T13:32:48.734Z] Error sending message with template. Payload: {
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": "60125226675",
+  "type": "template",
+  "template": {
+    "name": "cx_cn_tmr_v2",
+    "language": {
+      "code": "zh_CN"
+    },
+    "components": [
+      {
+        "type": "HEADER",
+        "parameters": [
+          {
+            "type": "video",
+            "video": {
+              "link": "https://yvpvhbgcawvruybkmupv.supabase.co/storage/v1/object/public/media/templates/eaakgp"
+            }
+          }
+        ]
+      },
+      {
+        "type": "BODY",
+        "parameters": [
+          {
+            "type": "text",
+            "text": "Candy"
+          }
+        ]
+      }
+    ]
+  }
+}
+ "AxiosError: Request failed with status code 400\n    at settle (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\settle.js:19:12)\n    at BrotliDecompress.handleStreamEnd (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\adapters\\http.js:589:11)\n    at BrotliDecompress.emit (node:events:526:35)\n    at BrotliDecompress.emit (node:domain:488:12)\n    at endReadableNT (node:internal/streams/readable:1589:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\Axios.js:45:41)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-14T13:32:48.776Z] Error sending message with template. Payload: {
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": "60125613328",
+  "type": "template",
+  "template": {
+    "name": "cx_cn_tmr_v2",
+    "language": {
+      "code": "zh_CN"
+    },
+    "components": [
+      {
+        "type": "HEADER",
+        "parameters": [
+          {
+            "type": "video",
+            "video": {
+              "link": "https://yvpvhbgcawvruybkmupv.supabase.co/storage/v1/object/public/media/templates/eaakgp"
+            }
+          }
+        ]
+      },
+      {
+        "type": "BODY",
+        "parameters": [
+          {
+            "type": "text",
+            "text": "Apple"
+          }
+        ]
+      }
+    ]
+  }
+}
+ "AxiosError: Request failed with status code 400\n    at settle (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\settle.js:19:12)\n    at BrotliDecompress.handleStreamEnd (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\adapters\\http.js:589:11)\n    at BrotliDecompress.emit (node:events:526:35)\n    at BrotliDecompress.emit (node:domain:488:12)\n    at endReadableNT (node:internal/streams/readable:1589:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\Axios.js:45:41)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-14T13:32:49.021Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:32:49.060Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:32:49.079Z] Error sending message with template. Payload: {
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": "60192778283",
+  "type": "template",
+  "template": {
+    "name": "cx_cn_tmr_v2",
+    "language": {
+      "code": "zh_CN"
+    },
+    "components": [
+      {
+        "type": "HEADER",
+        "parameters": [
+          {
+            "type": "video",
+            "video": {
+              "link": "https://yvpvhbgcawvruybkmupv.supabase.co/storage/v1/object/public/media/templates/eaakgp"
+            }
+          }
+        ]
+      },
+      {
+        "type": "BODY",
+        "parameters": [
+          {
+            "type": "text",
+            "text": "CHING TIN HUAT"
+          }
+        ]
+      }
+    ]
+  }
+}
+ "AxiosError: Request failed with status code 400\n    at settle (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\settle.js:19:12)\n    at BrotliDecompress.handleStreamEnd (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\adapters\\http.js:589:11)\n    at BrotliDecompress.emit (node:events:526:35)\n    at BrotliDecompress.emit (node:domain:488:12)\n    at endReadableNT (node:internal/streams/readable:1589:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\Axios.js:45:41)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-14T13:32:49.080Z] Error sending message with template. Payload: {
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": "6018322895631",
+  "type": "template",
+  "template": {
+    "name": "cx_cn_tmr_v2",
+    "language": {
+      "code": "zh_CN"
+    },
+    "components": [
+      {
+        "type": "HEADER",
+        "parameters": [
+          {
+            "type": "video",
+            "video": {
+              "link": "https://yvpvhbgcawvruybkmupv.supabase.co/storage/v1/object/public/media/templates/eaakgp"
+            }
+          }
+        ]
+      },
+      {
+        "type": "BODY",
+        "parameters": [
+          {
+            "type": "text",
+            "text": "Gillian"
+          }
+        ]
+      }
+    ]
+  }
+}
+ "AxiosError: Request failed with status code 400\n    at settle (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\settle.js:19:12)\n    at BrotliDecompress.handleStreamEnd (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\adapters\\http.js:589:11)\n    at BrotliDecompress.emit (node:events:526:35)\n    at BrotliDecompress.emit (node:domain:488:12)\n    at endReadableNT (node:internal/streams/readable:1589:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\Axios.js:45:41)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-14T13:32:49.080Z] Error sending message with template. Payload: {
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": "60193583226",
+  "type": "template",
+  "template": {
+    "name": "cx_cn_tmr_v2",
+    "language": {
+      "code": "zh_CN"
+    },
+    "components": [
+      {
+        "type": "HEADER",
+        "parameters": [
+          {
+            "type": "video",
+            "video": {
+              "link": "https://yvpvhbgcawvruybkmupv.supabase.co/storage/v1/object/public/media/templates/eaakgp"
+            }
+          }
+        ]
+      },
+      {
+        "type": "BODY",
+        "parameters": [
+          {
+            "type": "text",
+            "text": "Loh Fook Loy"
+          }
+        ]
+      }
+    ]
+  }
+}
+ "AxiosError: Request failed with status code 400\n    at settle (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\settle.js:19:12)\n    at BrotliDecompress.handleStreamEnd (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\adapters\\http.js:589:11)\n    at BrotliDecompress.emit (node:events:526:35)\n    at BrotliDecompress.emit (node:domain:488:12)\n    at endReadableNT (node:internal/streams/readable:1589:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\Axios.js:45:41)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-14T13:32:49.080Z] Error sending message with template. Payload: {
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": "60197725943",
+  "type": "template",
+  "template": {
+    "name": "cx_cn_tmr_v2",
+    "language": {
+      "code": "zh_CN"
+    },
+    "components": [
+      {
+        "type": "HEADER",
+        "parameters": [
+          {
+            "type": "video",
+            "video": {
+              "link": "https://yvpvhbgcawvruybkmupv.supabase.co/storage/v1/object/public/media/templates/eaakgp"
+            }
+          }
+        ]
+      },
+      {
+        "type": "BODY",
+        "parameters": [
+          {
+            "type": "text",
+            "text": "Tey Teck Kwang"
+          }
+        ]
+      }
+    ]
+  }
+}
+ "AxiosError: Request failed with status code 400\n    at settle (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\settle.js:19:12)\n    at BrotliDecompress.handleStreamEnd (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\adapters\\http.js:589:11)\n    at BrotliDecompress.emit (node:events:526:35)\n    at BrotliDecompress.emit (node:domain:488:12)\n    at endReadableNT (node:internal/streams/readable:1589:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\Axios.js:45:41)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-14T13:32:49.080Z] Error sending message with template. Payload: {
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": "60165243398",
+  "type": "template",
+  "template": {
+    "name": "cx_cn_tmr_v2",
+    "language": {
+      "code": "zh_CN"
+    },
+    "components": [
+      {
+        "type": "HEADER",
+        "parameters": [
+          {
+            "type": "video",
+            "video": {
+              "link": "https://yvpvhbgcawvruybkmupv.supabase.co/storage/v1/object/public/media/templates/eaakgp"
+            }
+          }
+        ]
+      },
+      {
+        "type": "BODY",
+        "parameters": [
+          {
+            "type": "text",
+            "text": "King Wei"
+          }
+        ]
+      }
+    ]
+  }
+}
+ "AxiosError: Request failed with status code 400\n    at settle (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\settle.js:19:12)\n    at BrotliDecompress.handleStreamEnd (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\adapters\\http.js:589:11)\n    at BrotliDecompress.emit (node:events:526:35)\n    at BrotliDecompress.emit (node:domain:488:12)\n    at endReadableNT (node:internal/streams/readable:1589:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\Axios.js:45:41)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-14T13:32:49.080Z] Error sending message with template. Payload: {
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": "60182886477",
+  "type": "template",
+  "template": {
+    "name": "cx_cn_tmr_v2",
+    "language": {
+      "code": "zh_CN"
+    },
+    "components": [
+      {
+        "type": "HEADER",
+        "parameters": [
+          {
+            "type": "video",
+            "video": {
+              "link": "https://yvpvhbgcawvruybkmupv.supabase.co/storage/v1/object/public/media/templates/eaakgp"
+            }
+          }
+        ]
+      },
+      {
+        "type": "BODY",
+        "parameters": [
+          {
+            "type": "text",
+            "text": "LIM BILE"
+          }
+        ]
+      }
+    ]
+  }
+}
+ "AxiosError: Request failed with status code 400\n    at settle (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\settle.js:19:12)\n    at BrotliDecompress.handleStreamEnd (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\adapters\\http.js:589:11)\n    at BrotliDecompress.emit (node:events:526:35)\n    at BrotliDecompress.emit (node:domain:488:12)\n    at endReadableNT (node:internal/streams/readable:1589:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\Axios.js:45:41)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-14T13:32:49.113Z] Error sending message with template. Payload: {
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": "60193320224",
+  "type": "template",
+  "template": {
+    "name": "cx_cn_tmr_v2",
+    "language": {
+      "code": "zh_CN"
+    },
+    "components": [
+      {
+        "type": "HEADER",
+        "parameters": [
+          {
+            "type": "video",
+            "video": {
+              "link": "https://yvpvhbgcawvruybkmupv.supabase.co/storage/v1/object/public/media/templates/eaakgp"
+            }
+          }
+        ]
+      },
+      {
+        "type": "BODY",
+        "parameters": [
+          {
+            "type": "text",
+            "text": "Liew Siew Lian"
+          }
+        ]
+      }
+    ]
+  }
+}
+ "AxiosError: Request failed with status code 400\n    at settle (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\settle.js:19:12)\n    at BrotliDecompress.handleStreamEnd (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\adapters\\http.js:589:11)\n    at BrotliDecompress.emit (node:events:526:35)\n    at BrotliDecompress.emit (node:domain:488:12)\n    at endReadableNT (node:internal/streams/readable:1589:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\Axios.js:45:41)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-14T13:32:49.114Z] Error sending message with template. Payload: {
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": "60133993428",
+  "type": "template",
+  "template": {
+    "name": "cx_cn_tmr_v2",
+    "language": {
+      "code": "zh_CN"
+    },
+    "components": [
+      {
+        "type": "HEADER",
+        "parameters": [
+          {
+            "type": "video",
+            "video": {
+              "link": "https://yvpvhbgcawvruybkmupv.supabase.co/storage/v1/object/public/media/templates/eaakgp"
+            }
+          }
+        ]
+      },
+      {
+        "type": "BODY",
+        "parameters": [
+          {
+            "type": "text",
+            "text": "HAN JINTENG"
+          }
+        ]
+      }
+    ]
+  }
+}
+ "AxiosError: Request failed with status code 400\n    at settle (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\settle.js:19:12)\n    at BrotliDecompress.handleStreamEnd (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\adapters\\http.js:589:11)\n    at BrotliDecompress.emit (node:events:526:35)\n    at BrotliDecompress.emit (node:domain:488:12)\n    at endReadableNT (node:internal/streams/readable:1589:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\Axios.js:45:41)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-14T13:32:49.114Z] Error sending message with template. Payload: {
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": "60193330805",
+  "type": "template",
+  "template": {
+    "name": "cx_cn_tmr_v2",
+    "language": {
+      "code": "zh_CN"
+    },
+    "components": [
+      {
+        "type": "HEADER",
+        "parameters": [
+          {
+            "type": "video",
+            "video": {
+              "link": "https://yvpvhbgcawvruybkmupv.supabase.co/storage/v1/object/public/media/templates/eaakgp"
+            }
+          }
+        ]
+      },
+      {
+        "type": "BODY",
+        "parameters": [
+          {
+            "type": "text",
+            "text": "Richard Lee"
+          }
+        ]
+      }
+    ]
+  }
+}
+ "AxiosError: Request failed with status code 400\n    at settle (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\settle.js:19:12)\n    at BrotliDecompress.handleStreamEnd (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\adapters\\http.js:589:11)\n    at BrotliDecompress.emit (node:events:526:35)\n    at BrotliDecompress.emit (node:domain:488:12)\n    at endReadableNT (node:internal/streams/readable:1589:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\Axios.js:45:41)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-14T13:32:49.114Z] Error sending message with template. Payload: {
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": "60174898593",
+  "type": "template",
+  "template": {
+    "name": "cx_cn_tmr_v2",
+    "language": {
+      "code": "zh_CN"
+    },
+    "components": [
+      {
+        "type": "HEADER",
+        "parameters": [
+          {
+            "type": "video",
+            "video": {
+              "link": "https://yvpvhbgcawvruybkmupv.supabase.co/storage/v1/object/public/media/templates/eaakgp"
+            }
+          }
+        ]
+      },
+      {
+        "type": "BODY",
+        "parameters": [
+          {
+            "type": "text",
+            "text": "Chai"
+          }
+        ]
+      }
+    ]
+  }
+}
+ "AxiosError: Request failed with status code 400\n    at settle (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\settle.js:19:12)\n    at BrotliDecompress.handleStreamEnd (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\adapters\\http.js:589:11)\n    at BrotliDecompress.emit (node:events:526:35)\n    at BrotliDecompress.emit (node:domain:488:12)\n    at endReadableNT (node:internal/streams/readable:1589:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\Axios.js:45:41)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-14T13:32:49.114Z] Error sending message with template. Payload: {
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": "60127059012",
+  "type": "template",
+  "template": {
+    "name": "cx_cn_tmr_v2",
+    "language": {
+      "code": "zh_CN"
+    },
+    "components": [
+      {
+        "type": "HEADER",
+        "parameters": [
+          {
+            "type": "video",
+            "video": {
+              "link": "https://yvpvhbgcawvruybkmupv.supabase.co/storage/v1/object/public/media/templates/eaakgp"
+            }
+          }
+        ]
+      },
+      {
+        "type": "BODY",
+        "parameters": [
+          {
+            "type": "text",
+            "text": "KC Ng"
+          }
+        ]
+      }
+    ]
+  }
+}
+ "AxiosError: Request failed with status code 400\n    at settle (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\settle.js:19:12)\n    at BrotliDecompress.handleStreamEnd (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\adapters\\http.js:589:11)\n    at BrotliDecompress.emit (node:events:526:35)\n    at BrotliDecompress.emit (node:domain:488:12)\n    at endReadableNT (node:internal/streams/readable:1589:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\Axios.js:45:41)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-14T13:32:49.114Z] Error sending message with template. Payload: {
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": "60194809252",
+  "type": "template",
+  "template": {
+    "name": "cx_cn_tmr_v2",
+    "language": {
+      "code": "zh_CN"
+    },
+    "components": [
+      {
+        "type": "HEADER",
+        "parameters": [
+          {
+            "type": "video",
+            "video": {
+              "link": "https://yvpvhbgcawvruybkmupv.supabase.co/storage/v1/object/public/media/templates/eaakgp"
+            }
+          }
+        ]
+      },
+      {
+        "type": "BODY",
+        "parameters": [
+          {
+            "type": "text",
+            "text": "BH Chuah"
+          }
+        ]
+      }
+    ]
+  }
+}
+ "AxiosError: Request failed with status code 400\n    at settle (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\settle.js:19:12)\n    at BrotliDecompress.handleStreamEnd (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\adapters\\http.js:589:11)\n    at BrotliDecompress.emit (node:events:526:35)\n    at BrotliDecompress.emit (node:domain:488:12)\n    at endReadableNT (node:internal/streams/readable:1589:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)\n    at Axios.request (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\node_modules\\axios\\lib\\core\\Axios.js:45:41)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-14T13:32:50.544Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:32:50.675Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:32:50.793Z] Error sending message "TypeError: Cannot read properties of undefined (reading 'messages')\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:240:42\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-14T13:32:50.793Z] Error sending message "TypeError: Cannot read properties of undefined (reading 'messages')\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:240:42\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-14T13:32:50.826Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:32:50.888Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:32:50.940Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:32:50.958Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:32:50.967Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:32:51.058Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:32:51.089Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:32:51.095Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:32:51.100Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:32:51.152Z] Error sending message "TypeError: Cannot read properties of undefined (reading 'messages')\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:240:42\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-14T13:32:51.319Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:32:51.399Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:32:51.616Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:32:52.304Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:32:52.352Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:32:52.406Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:32:52.431Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:32:52.550Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:32:52.652Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:32:54.402Z] Error sending message "TypeError: Cannot read properties of undefined (reading 'messages')\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:240:42\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-14T13:32:54.425Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:32:54.509Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:32:54.545Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:32:54.575Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:32:54.691Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:32:54.822Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:32:54.878Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:32:57.373Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:32:57.386Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:32:57.680Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:32:57.851Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:32:57.898Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:32:58.041Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:32:58.164Z] Error sending message "TypeError: Cannot read properties of undefined (reading 'messages')\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:240:42\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-14T13:32:58.295Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:32:58.762Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:32:59.024Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:00.587Z] Error sending message "TypeError: Cannot read properties of undefined (reading 'messages')\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:240:42\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-14T13:33:00.713Z] Error sending message "TypeError: Cannot read properties of undefined (reading 'messages')\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:240:42\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-14T13:33:00.821Z] Error sending message "TypeError: Cannot read properties of undefined (reading 'messages')\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:240:42\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-14T13:33:00.843Z] Error sending message "TypeError: Cannot read properties of undefined (reading 'messages')\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:240:42\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-14T13:33:01.001Z] Error sending message "TypeError: Cannot read properties of undefined (reading 'messages')\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:240:42\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-14T13:33:01.011Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:01.051Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:01.071Z] Error sending message "TypeError: Cannot read properties of undefined (reading 'messages')\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:240:42\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-14T13:33:01.129Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:01.147Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:01.158Z] Error sending message "TypeError: Cannot read properties of undefined (reading 'messages')\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:240:42\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-14T13:33:01.157Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:01.196Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:01.241Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:01.250Z] Error updating campaign log status {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:01.341Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:01.418Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:01.618Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:01.634Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:01.687Z] Error sending message "TypeError: Cannot read properties of undefined (reading 'messages')\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:240:42\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-14T13:33:01.793Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:01.800Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:02.271Z] Error sending message "TypeError: Cannot read properties of undefined (reading 'messages')\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:240:42\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-14T13:33:02.321Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:02.493Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:02.648Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:02.660Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:02.675Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:02.794Z] Error sending message "TypeError: Cannot read properties of undefined (reading 'messages')\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:240:42\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-14T13:33:03.877Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:03.894Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:03.960Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:03.986Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:04.025Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:04.281Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:04.296Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:04.344Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:04.373Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:04.436Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:04.440Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:04.469Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:04.493Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:04.512Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:04.533Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:04.723Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:04.732Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:04.752Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:04.803Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:05.014Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:05.030Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:05.043Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:05.061Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:05.074Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:05.097Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:05.125Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:05.134Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:05.215Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:05.739Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:05.817Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:05.832Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:05.936Z] Error sending message "TypeError: Cannot read properties of undefined (reading 'messages')\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:240:42\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-14T13:33:06.731Z] Error sending message "TypeError: Cannot read properties of undefined (reading 'messages')\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:240:42\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-14T13:33:07.684Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:07.747Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:07.803Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:07.818Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:07.826Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:07.841Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:07.850Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:07.862Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:07.941Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:07.953Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:07.976Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:08.024Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:08.041Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:08.069Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:08.069Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:08.076Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:08.083Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:08.204Z] Error updating campaign log status {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:08.271Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:08.856Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:08.913Z] Error sending message "TypeError: Cannot read properties of undefined (reading 'messages')\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:240:42\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-14T13:33:09.185Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:09.242Z] Error sending message "TypeError: Cannot read properties of undefined (reading 'messages')\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:240:42\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-14T13:33:09.254Z] Error sending message "TypeError: Cannot read properties of undefined (reading 'messages')\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:240:42\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-14T13:33:09.256Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:09.301Z] Error sending message "TypeError: Cannot read properties of undefined (reading 'messages')\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:240:42\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\processCampaignsLog.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-07-14T13:33:09.648Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:10.398Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:10.894Z] Error updating campaign log status {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:10.993Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:11.049Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:11.109Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:11.147Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:11.154Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:11.160Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:11.178Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:11.182Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:11.184Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:11.191Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:11.217Z] Error updating campaign log status {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:11.246Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:11.254Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:11.274Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:11.366Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:11.413Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:11.480Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:11.515Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:11.535Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:11.592Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:11.733Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:11.764Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:11.777Z] Error updating campaign log status {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:11.833Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:11.836Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:11.856Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:11.886Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:11.946Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:12.269Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:12.337Z] Error updating campaign log status {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:12.374Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:12.663Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:12.688Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:12.758Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:12.858Z] Error updating campaign log status {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:13.669Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:13.671Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:13.684Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:13.729Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:13.732Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:13.749Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:13.762Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:13.765Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:13.770Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:13.775Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:13.984Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:14.001Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:14.081Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:14.324Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:14.333Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:14.340Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:14.340Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:14.379Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:14.390Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:14.404Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:14.410Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:14.417Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:14.428Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:14.445Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:14.450Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:14.452Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:14.465Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:14.479Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:14.502Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:14.681Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:14.712Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:14.741Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:14.763Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:14.882Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:15.032Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:15.116Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:15.160Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:15.192Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:15.326Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:15.327Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:15.379Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:15.382Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:15.384Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:15.389Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:15.392Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:15.838Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:15.859Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:15.860Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:15.904Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:15.996Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:16.027Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:16.078Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:16.867Z] Error updating campaign log status {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:17.197Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:17.657Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:17.817Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:17.850Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:17.859Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:18.003Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:18.018Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:18.039Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:18.049Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:18.051Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:18.051Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:18.057Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:18.059Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:18.090Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:18.095Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:18.097Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:18.218Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:18.232Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:18.275Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:18.279Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:18.303Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:18.312Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:18.317Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:18.328Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:18.386Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:18.536Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:18.579Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:18.606Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:18.626Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:18.948Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:19.085Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:19.162Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:19.241Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:19.258Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:19.281Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:19.303Z] Error updating campaign log status {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:19.376Z] Error updating campaign log status {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:19.409Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:19.506Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:20.015Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:20.018Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:20.019Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:20.020Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:20.062Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:20.597Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:20.640Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:20.643Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:20.656Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:20.657Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:20.683Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:20.692Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:20.698Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:20.710Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:20.710Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:20.729Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:20.742Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:20.745Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:20.891Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:20.934Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:21.417Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:21.503Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:21.649Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:21.810Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:21.904Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:21.914Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:21.915Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:21.922Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:21.936Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:21.953Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:21.967Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:21.970Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:21.972Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:21.973Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:21.977Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:21.983Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:21.989Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:22.001Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:22.269Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:23.098Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:23.698Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:23.704Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:23.762Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:23.793Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:23.858Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:23.876Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:24.134Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:24.209Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:24.243Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:24.259Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:24.607Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:24.649Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:24.697Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:24.745Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:24.920Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:24.992Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:25.045Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:25.070Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:25.141Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:25.181Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:25.234Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:25.258Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:25.310Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:25.510Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:25.627Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:25.720Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:26.767Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:26.770Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:26.776Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:26.816Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:26.820Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:26.839Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:26.847Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:26.879Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:26.935Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:26.941Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:26.959Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:27.258Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:27.286Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:27.389Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:27.399Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:27.399Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:27.421Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:28.051Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:28.057Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:28.063Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:28.066Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:28.077Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:28.114Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:28.114Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:28.119Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:28.156Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:28.252Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:28.344Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:28.351Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:28.400Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:28.654Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:28.773Z] Error updating conversation {
+  "code": "PGRST003",
+  "details": null,
+  "hint": null,
+  "message": "Timed out acquiring connection from connection pool."
+}
+
+
+[2024-07-14T13:33:29.147Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:29.150Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:29.186Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:29.748Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:29.761Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:29.764Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:29.833Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:33:29.834Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:35:30.357Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-14T13:35:55.339Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-14T13:36:35.310Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-14T13:36:51.910Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-14T13:38:38.581Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-14T13:39:04.282Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-14T13:39:31.385Z] Error updating conversation {
+  "code": "22P02",
+  "details": null,
+  "hint": null,
+  "message": "invalid input syntax for type uuid: \"undefined\""
+}
+
+
+[2024-07-14T13:40:14.025Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-14T13:40:57.991Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-14T13:42:28.446Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-14T13:43:14.689Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-14T13:43:45.923Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-14T13:44:08.603Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-14T13:44:27.915Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+
+[2024-07-14T13:45:40.513Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
+
+

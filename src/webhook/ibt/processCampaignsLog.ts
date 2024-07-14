@@ -158,8 +158,6 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
     return
   }
 
-  console.log('New phone numbers:', newPhoneNumbers)
-
   // Create a weighted list of phone numbers
   const weightedPhoneNumbers = newPhoneNumbers.flatMap((phone: any) => {
     const weight = getWeightForRating(phone.phone_numbers.quality_rating)
@@ -178,7 +176,7 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
         (phone: any) => phone.phone_numbers.wa_id === selectedPhoneNumber
       ).phone_numbers.whatsapp_business_accounts.business_manager.access_token
     )
-    
+
     // Lookup template to get the text and the image if any
     const { data: template, error: templateError } = await supabase
       .from('templates')
@@ -214,9 +212,7 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
     const phoneNumberId = newPhoneNumbers.find(
       (phone: any) => phone.phone_numbers.wa_id === selectedPhoneNumber
     ).phone_number_id
-
-    console.log("Phone Number ID:", phoneNumberId)
-
+    
     // Look Up conversation_id
     let { data: conversation, error: conversationError } = await supabase
       .from('conversations')
@@ -226,11 +222,29 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
       .single()
 
     if (conversationError) {
-      console.error(
-        'Error finding conversation in database:',
-        conversationError
-      )
-      return 'Error finding conversation in database'
+      // Create a new conversation if it doesn't exist
+      const { data: newConversation, error: newConversationError } =
+        await supabase
+          .from('conversations')
+          .insert([
+            {
+              contact_id: campaignLog.contact_id,
+              phone_number_id: phoneNumberId,
+              project_id: campaign.project_id,
+            },
+          ])
+          .select('*')
+          .single()
+
+      if (newConversationError) {
+        logError(
+          newConversationError as unknown as Error,
+          'Error creating conversation'
+        )
+        return
+      }
+
+      conversation = newConversation
     }
 
     // Add the message to the database under the table messages
@@ -360,7 +374,7 @@ export const reschedulePendingCampaignLogs = async () => {
     .from('campaign_logs')
     .select('*')
     // Check for both PENDING and PROCESSING statuses
-    .in('status', ['PENDING', 'PROCESSING'])
+    .in('status', ['PENDING'])
 
   if (error) {
     logError(error as unknown as Error, 'Error fetching pending campaign logs')

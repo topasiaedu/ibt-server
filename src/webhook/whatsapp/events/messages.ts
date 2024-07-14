@@ -62,7 +62,9 @@ const handleOutgoingMessage = async (value: any) => {
           let { data: existingConversation, error: findError } = await supabase
             .from('conversation')
             .select('*')
-            .eq('wa_conversation_id', status.conversation.id)
+            .or(
+              `(phone_number_id.eq.${message.phone_number_id},contact_id.eq.${message.contact_id},project_id.eq.${message.project_id}),wa_conversation_id.eq.${status.conversation.id}`
+            )
             .single()
 
           if (
@@ -88,6 +90,7 @@ const handleOutgoingMessage = async (value: any) => {
                   close_at: formattedDate,
                   updated_at: new Date().toISOString(),
                   last_message_id: message.id,
+                  project_id: message.project_id,
                 },
               ])
 
@@ -290,7 +293,7 @@ const handleKeywordTrigger = async (value: any) => {
   }
 
   if (messageData.length > 0) {
-    console.error("Message already exists in the database")
+    console.error('Message already exists in the database')
     return
   }
 
