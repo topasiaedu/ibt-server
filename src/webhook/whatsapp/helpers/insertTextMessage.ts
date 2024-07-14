@@ -31,8 +31,24 @@ async function insertTextMessage(
       .single()
 
     if (senderError) {
-      console.error('Error finding sender in database:', senderError)
-      throw senderError
+      // Create a new contact if the sender is not found
+      let { data: newContact, error: createError } = await supabase
+        .from('contacts')
+        .insert([{ wa_id: from, project_id }])
+        .single()
+
+      if (createError) {
+        console.error('Error creating new contact in database:', createError)
+        logError(
+          createError,
+          'Error creating new contact in database' +
+            JSON.stringify(message) +
+            'Inside insertAudioMessage function in insertAudioMessage.ts'
+        )
+        return
+      }
+
+      sender = newContact
     }
 
     if (!sender) {
@@ -41,6 +57,7 @@ async function insertTextMessage(
 
     const senderId = sender.contact_id
 
+    console.log('Display Phone Number: ', display_phone_number)
     const myPhoneNumberId = await supabase
       .from('phone_numbers')
       .select('phone_number_id')
@@ -58,14 +75,29 @@ async function insertTextMessage(
       .single()
 
     if (conversationError) {
-      console.error(
-        'Error finding conversation in database:',
-        conversationError
-      )
+      // Create a new conversation if it doesn't exist
+      const { data: newConversation, error: newConversationError } =
+        await supabase
+          .from('conversations')
+          .insert([
+            {
+              contact_id: senderId,
+              phone_number_id: myPhoneNumber,
+              project_id: project_id,
+            },
+          ])
+          .select('*')
+          .single()
 
-      console.error("Sender's ID: ", senderId)
-      console.error("My Phone Number: ", myPhoneNumber)
-      return 'Error finding conversation in database'
+      if (newConversationError) {
+        logError(
+          newConversationError as unknown as Error,
+          'Error creating conversation'
+        )
+        return
+      }
+
+      conversation = newConversation
     }
 
     // Change timestamp to DateTime format

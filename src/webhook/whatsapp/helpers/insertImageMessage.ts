@@ -32,8 +32,24 @@ const insertImageMessage = async (
       .single()
 
     if (senderError) {
-      console.error('Error finding sender in database:', senderError)
-      throw senderError
+      // Create a new contact if the sender is not found
+      let { data: newContact, error: createError } = await supabase
+        .from('contacts')
+        .insert([{ wa_id: from, project_id }])
+        .single()
+
+      if (createError) {
+        console.error('Error creating new contact in database:', createError)
+        logError(
+          createError,
+          'Error creating new contact in database' +
+            JSON.stringify(message) +
+            'Inside insertAudioMessage function in insertAudioMessage.ts'
+        )
+        return
+      }
+
+      sender = newContact
     }
 
     if (!sender) {
