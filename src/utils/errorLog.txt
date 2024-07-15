@@ -5406,3 +5406,719 @@ Inside handleOutgoingMessage function in messages.ts {}
 [2024-07-14T13:45:40.513Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
 
 
+[2024-07-15T06:04:45.476Z] Error finding contact in database{"wa_id":"6596828421","profile":{"name":"Chua Bee Ling","email":"beeling.cbl@gmail.com"}}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-15T06:29:09.472Z] Error finding contact in database{"wa_id":"6591719644","profile":{"name":"Lyann Hua","email":"lyann2907@yahoo.com"}}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-15T06:29:26.040Z] Error finding contact in database{"wa_id":"6582821312","profile":{"name":"Christopher Chia","email":"koolcchris@gmail.com"}}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-15T07:30:27.636Z] Error inserting conversation into database
+Inside handleOutgoingMessage function in messages.ts {}
+
+
+[2024-07-15T07:50:09.586Z] Error finding contact in database{"profile":{"name":"Michelle"},"wa_id":"60146200244"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-15T07:50:09.863Z] Error creating new contact in database{"from":"60146200244","id":"wamid.HBgLNjAxNDYyMDAyNDQVAgASGBQzQTE2NDc0MDZBM0Y3QkJBODU1NQA=","timestamp":"1720493002","text":{"body":"已经填写资料"},"type":"text"}Inside insertAudioMessage function in insertAudioMessage.ts {
+  "code": "23502",
+  "details": "Failing row contains (10277, null, null, null, 2024-07-15 07:50:11.521828+00, 60146200244, null, 3).",
+  "hint": null,
+  "message": "null value in column \"name\" of relation \"contacts\" violates not-null constraint"
+}
+
+
+[2024-07-15T07:50:35.023Z] Error finding contact in database{"profile":{"name":"Michelle"},"wa_id":"60146200244"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-15T07:50:35.315Z] Error creating new contact in database{"from":"60146200244","id":"wamid.HBgLNjAxNDYyMDAyNDQVAgASGBQzQTE2NDc0MDZBM0Y3QkJBODU1NQA=","timestamp":"1720493002","text":{"body":"已经填写资料"},"type":"text"}Inside insertAudioMessage function in insertAudioMessage.ts {
+  "code": "23502",
+  "details": "Failing row contains (10279, null, null, null, 2024-07-15 07:50:36.963137+00, 60146200244, null, 3).",
+  "hint": null,
+  "message": "null value in column \"name\" of relation \"contacts\" violates not-null constraint"
+}
+
+
+[2024-07-15T07:51:01.834Z] Error finding contact in database{"profile":{"name":"Michelle"},"wa_id":"60146200244"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-15T07:51:02.157Z] Error creating new contact in database{"from":"60146200244","id":"wamid.HBgLNjAxNDYyMDAyNDQVAgASGBQzQTE2NDc0MDZBM0Y3QkJBODU1NQA=","timestamp":"1720493002","text":{"body":"已经填写资料"},"type":"text"}Inside insertAudioMessage function in insertAudioMessage.ts {
+  "code": "23502",
+  "details": "Failing row contains (10281, null, null, null, 2024-07-15 07:51:03.826057+00, 60146200244, null, 3).",
+  "hint": null,
+  "message": "null value in column \"name\" of relation \"contacts\" violates not-null constraint"
+}
+
+
+[2024-07-15T07:51:53.020Z] Error finding contact in database{"profile":{"name":"Michelle"},"wa_id":"60146200244"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-15T07:51:53.322Z] Error creating new contact in database{"from":"60146200244","id":"wamid.HBgLNjAxNDYyMDAyNDQVAgASGBQzQTE2NDc0MDZBM0Y3QkJBODU1NQA=","timestamp":"1720493002","text":{"body":"已经填写资料"},"type":"text"}Inside insertAudioMessage function in insertAudioMessage.ts {
+  "code": "23502",
+  "details": "Failing row contains (10283, null, null, null, 2024-07-15 07:51:54.975146+00, 60146200244, null, 3).",
+  "hint": null,
+  "message": "null value in column \"name\" of relation \"contacts\" violates not-null constraint"
+}
+
+
+[2024-07-15T07:52:06.444Z] Error finding contact in database{"profile":{"name":"Audrey Low"},"wa_id":"60129832967"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-15T07:52:06.767Z] Error creating new contact in database{"from":"60129832967","id":"wamid.HBgLNjAxMjk4MzI5NjcVAgASGCA3Mzk2RkEwMDM2NzlGNTdGMjVERTEyRjY1NkFEMDk4RgA=","timestamp":"1720583142","text":{"body":"你好，很不好意思18号这个日期我已经报名报其他课程，请问还要其他日期吗？"},"type":"text"}Inside insertAudioMessage function in insertAudioMessage.ts {
+  "code": "23502",
+  "details": "Failing row contains (10285, null, null, null, 2024-07-15 07:52:08.430885+00, 60129832967, null, 2).",
+  "hint": null,
+  "message": "null value in column \"name\" of relation \"contacts\" violates not-null constraint"
+}
+
+
+[2024-07-15T07:58:23.638Z] Error finding contact in database{"profile":{"name":"Michelle"},"wa_id":"60146200244"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-15T07:58:23.938Z] Error creating new contact in database{"from":"60146200244","id":"wamid.HBgLNjAxNDYyMDAyNDQVAgASGBQzQTE2NDc0MDZBM0Y3QkJBODU1NQA=","timestamp":"1720493002","text":{"body":"已经填写资料"},"type":"text"}Inside insertAudioMessage function in insertAudioMessage.ts {
+  "code": "23502",
+  "details": "Failing row contains (10287, null, null, null, 2024-07-15 07:58:25.618778+00, 60146200244, null, 3).",
+  "hint": null,
+  "message": "null value in column \"name\" of relation \"contacts\" violates not-null constraint"
+}
+
+
+[2024-07-15T08:27:44.262Z] Error inserting conversation into database
+Inside handleOutgoingMessage function in messages.ts {}
+
+
+[2024-07-15T09:11:41.352Z] Error finding contact in database{"profile":{"name":"Isabelle Usana"},"wa_id":"601136718112"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-15T09:11:41.571Z] Error creating new contact in database{"from":"601136718112","id":"wamid.HBgMNjAxMTM2NzE4MTEyFQIAEhgUMkZBNjdDNTMwMzM3Q0I3NTg0QjEA","timestamp":"1720567148","text":{"body":"谢谢您联系 Isabelle Usana。请告诉我们应如何帮助您。"},"type":"text"}Inside insertAudioMessage function in insertAudioMessage.ts {
+  "code": "23502",
+  "details": "Failing row contains (10289, null, null, null, 2024-07-15 09:11:41.742996+00, 601136718112, null, 2).",
+  "hint": null,
+  "message": "null value in column \"name\" of relation \"contacts\" violates not-null constraint"
+}
+
+
+[2024-07-15T09:26:23.768Z] Error finding contact in database{"profile":{"name":"limcheahhui12"},"wa_id":"60173183318"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-15T09:26:24.000Z] Error creating new contact in database{"from":"60173183318","id":"wamid.HBgLNjAxNzMxODMzMTgVAgASGCA0RUMyNkU2ODdDNzU1Q0YxRUE0RTJFMjM3NEQyQjQ0RgA=","timestamp":"1721035581","text":{"body":"YES"},"type":"text"}Inside insertAudioMessage function in insertAudioMessage.ts {
+  "code": "23502",
+  "details": "Failing row contains (10291, null, null, null, 2024-07-15 09:26:24.221073+00, 60173183318, null, 2).",
+  "hint": null,
+  "message": "null value in column \"name\" of relation \"contacts\" violates not-null constraint"
+}
+
+
+[2024-07-15T09:28:25.226Z] Error finding contact in database{"profile":{"name":"May"},"wa_id":"60169973668"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-15T09:28:25.375Z] Error creating new contact in database{"from":"60169973668","id":"wamid.HBgLNjAxNjk5NzM2NjgVAgASGBQzQUI4RUJBMzhFRjBCREY1OTJERQA=","timestamp":"1720435032","type":"image","image":{"mime_type":"image/jpeg","sha256":"MRL3YS75xQ//cO4OIyGmXm1+bq3y8/eDyVSNLdpZ9dA=","id":"364968636333481"}}Inside insertAudioMessage function in insertAudioMessage.ts {
+  "code": "23502",
+  "details": "Failing row contains (10293, null, null, null, 2024-07-15 09:28:25.590909+00, 60169973668, null, 3).",
+  "hint": null,
+  "message": "null value in column \"name\" of relation \"contacts\" violates not-null constraint"
+}
+
+
+[2024-07-15T09:29:30.863Z] Error finding contact in database{"profile":{"name":"Jojo Wong"},"wa_id":"60127836933"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-15T09:29:31.020Z] Error creating new contact in database{"context":{"from":"60147021171","id":"wamid.HBgLNjAxMjc4MzY5MzMVAgARGBJCNjk0NjI3MEVBQ0M0RUU3Q0UA"},"from":"60127836933","id":"wamid.HBgLNjAxMjc4MzY5MzMVAgASGBQzQUE1NzZEQjIyRkU2MTc2REMwMQA=","timestamp":"1720710983","type":"button","button":{"payload":"Join JE Group","text":"Join JE Group"}}Inside insertAudioMessage function in insertAudioMessage.ts {
+  "code": "23502",
+  "details": "Failing row contains (10295, null, null, null, 2024-07-15 09:29:31.244214+00, 60127836933, null, 3).",
+  "hint": null,
+  "message": "null value in column \"name\" of relation \"contacts\" violates not-null constraint"
+}
+
+
+[2024-07-15T09:32:36.707Z] Error finding contact in database{"profile":{"name":"mixedricetop33"},"wa_id":"60142712719"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-15T09:32:37.039Z] Error creating new contact in database{"from":"60142712719","id":"wamid.HBgLNjAxNDI3MTI3MTkVAgASGCA2Q0YyNjYxMTNENTY1NzRCMTMyMDRBNTJCMzU1NkJFNAA=","timestamp":"1721035954","text":{"body":"Yes"},"type":"text"}Inside insertAudioMessage function in insertAudioMessage.ts {
+  "code": "23502",
+  "details": "Failing row contains (10297, null, null, null, 2024-07-15 09:32:37.279329+00, 60142712719, null, 2).",
+  "hint": null,
+  "message": "null value in column \"name\" of relation \"contacts\" violates not-null constraint"
+}
+
+
+[2024-07-15T09:39:15.260Z] Error finding contact in database{"profile":{"name":"Charlotte LeeQing"},"wa_id":"60177807886"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-15T09:39:15.533Z] Error creating new contact in database{"from":"60177807886","id":"wamid.HBgLNjAxNzc4MDc4ODYVAgASGBQzQTI5MUQ5QjAwRjhGNTZCNUI4OQA=","timestamp":"1720521661","text":{"body":"好的"},"type":"text"}Inside insertAudioMessage function in insertAudioMessage.ts {
+  "code": "23502",
+  "details": "Failing row contains (10299, null, null, null, 2024-07-15 09:39:15.787792+00, 60177807886, null, 3).",
+  "hint": null,
+  "message": "null value in column \"name\" of relation \"contacts\" violates not-null constraint"
+}
+
+
+[2024-07-15T09:39:40.486Z] Error finding contact in database{"profile":{"name":"Charlotte LeeQing"},"wa_id":"60177807886"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-15T09:39:40.798Z] Error creating new contact in database{"from":"60177807886","id":"wamid.HBgLNjAxNzc4MDc4ODYVAgASGBQzQTI5MUQ5QjAwRjhGNTZCNUI4OQA=","timestamp":"1720521661","text":{"body":"好的"},"type":"text"}Inside insertAudioMessage function in insertAudioMessage.ts {
+  "code": "23502",
+  "details": "Failing row contains (10301, null, null, null, 2024-07-15 09:39:41.058632+00, 60177807886, null, 3).",
+  "hint": null,
+  "message": "null value in column \"name\" of relation \"contacts\" violates not-null constraint"
+}
+
+
+[2024-07-15T09:40:07.780Z] Error finding contact in database{"profile":{"name":"Charlotte LeeQing"},"wa_id":"60177807886"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-15T09:40:08.073Z] Error creating new contact in database{"from":"60177807886","id":"wamid.HBgLNjAxNzc4MDc4ODYVAgASGBQzQTI5MUQ5QjAwRjhGNTZCNUI4OQA=","timestamp":"1720521661","text":{"body":"好的"},"type":"text"}Inside insertAudioMessage function in insertAudioMessage.ts {
+  "code": "23502",
+  "details": "Failing row contains (10303, null, null, null, 2024-07-15 09:40:08.335059+00, 60177807886, null, 3).",
+  "hint": null,
+  "message": "null value in column \"name\" of relation \"contacts\" violates not-null constraint"
+}
+
+
+[2024-07-15T09:40:26.804Z] Error creating conversation {
+  "code": "23502",
+  "details": "Failing row contains (9281bf69-c97e-4350-a402-6fe787df45b7, 2024-07-15 09:40:27.071917+00, 9902, 0, null, null, 1, null, null, null).",
+  "hint": null,
+  "message": "null value in column \"phone_number_id\" of relation \"conversations\" violates not-null constraint"
+}
+
+
+[2024-07-15T09:41:08.384Z] Error finding contact in database{"profile":{"name":"Charlotte LeeQing"},"wa_id":"60177807886"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-15T09:41:08.694Z] Error creating new contact in database{"from":"60177807886","id":"wamid.HBgLNjAxNzc4MDc4ODYVAgASGBQzQTI5MUQ5QjAwRjhGNTZCNUI4OQA=","timestamp":"1720521661","text":{"body":"好的"},"type":"text"}Inside insertAudioMessage function in insertAudioMessage.ts {
+  "code": "23502",
+  "details": "Failing row contains (10305, null, null, null, 2024-07-15 09:41:08.958561+00, 60177807886, null, 3).",
+  "hint": null,
+  "message": "null value in column \"name\" of relation \"contacts\" violates not-null constraint"
+}
+
+
+[2024-07-15T09:48:24.815Z] Error finding contact in database{"profile":{"name":"Charlotte LeeQing"},"wa_id":"60177807886"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-15T09:48:25.125Z] Error creating new contact in database{"from":"60177807886","id":"wamid.HBgLNjAxNzc4MDc4ODYVAgASGBQzQTI5MUQ5QjAwRjhGNTZCNUI4OQA=","timestamp":"1720521661","text":{"body":"好的"},"type":"text"}Inside insertAudioMessage function in insertAudioMessage.ts {
+  "code": "23502",
+  "details": "Failing row contains (10307, null, null, null, 2024-07-15 09:48:25.40502+00, 60177807886, null, 3).",
+  "hint": null,
+  "message": "null value in column \"name\" of relation \"contacts\" violates not-null constraint"
+}
+
+
+[2024-07-15T09:49:59.166Z] Error finding contact in database{"profile":{"name":"Michelle"},"wa_id":"60146200244"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-15T09:49:59.439Z] Error creating new contact in database{"from":"60146200244","id":"wamid.HBgLNjAxNDYyMDAyNDQVAgASGBQzQTE2NDc0MDZBM0Y3QkJBODU1NQA=","timestamp":"1720493002","text":{"body":"已经填写资料"},"type":"text"}Inside insertAudioMessage function in insertAudioMessage.ts {
+  "code": "23502",
+  "details": "Failing row contains (10309, null, null, null, 2024-07-15 09:49:59.731451+00, 60146200244, null, 3).",
+  "hint": null,
+  "message": "null value in column \"name\" of relation \"contacts\" violates not-null constraint"
+}
+
+
+[2024-07-15T09:57:48.362Z] Error finding contact in database{"profile":{"name":"Lucky Chia TK"},"wa_id":"6582821312"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-15T09:57:48.667Z] Error creating new contact in database{"from":"6582821312","id":"wamid.HBgKNjU4MjgyMTMxMhUCABIYFDNBMkQ2RDFERTBGNjIxMkRGMEJDAA==","timestamp":"1721037466","text":{"body":"请问着是什么时侯的Zoom？"},"type":"text"}Inside insertAudioMessage function in insertAudioMessage.ts {
+  "code": "23502",
+  "details": "Failing row contains (10311, null, null, null, 2024-07-15 09:57:48.979325+00, 6582821312, null, 2).",
+  "hint": null,
+  "message": "null value in column \"name\" of relation \"contacts\" violates not-null constraint"
+}
+
+
+[2024-07-15T10:00:35.330Z] Error inserting conversation into database
+Inside handleOutgoingMessage function in messages.ts {}
+
+
+[2024-07-15T10:05:21.743Z] Error finding contact in database{"profile":{"name":"Jo Ko"},"wa_id":"60176948183"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-15T10:05:22.035Z] Error creating new contact in database{"from":"60176948183","id":"wamid.HBgLNjAxNzY5NDgxODMVAgASGCA4NzJCMEREMDEyMjNGQjk0MTZBMUQ1NkQ1MjFEMEJCOAA=","timestamp":"1720832830","text":{"body":"Thank you for your message. We're unavailable right now, but will respond as soon as possible."},"type":"text"}Inside insertAudioMessage function in insertAudioMessage.ts {
+  "code": "23502",
+  "details": "Failing row contains (10313, null, null, null, 2024-07-15 10:05:22.38545+00, 60176948183, null, 2).",
+  "hint": null,
+  "message": "null value in column \"name\" of relation \"contacts\" violates not-null constraint"
+}
+
+
+[2024-07-15T10:17:47.196Z] Error finding contact in database{"profile":{"name":"Michelle"},"wa_id":"60102263379"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-15T10:17:47.321Z] Error creating new contact in database{"context":{"from":"601159946253","id":"wamid.HBgLNjAxMDIyNjMzNzkVAgARGBJBQ0I2QThCRDE3RUE4RDE3NzAA"},"from":"60102263379","id":"wamid.HBgLNjAxMDIyNjMzNzkVAgASGBQzQTM0ODM0RjkxMUFCQkM1MTRGMgA=","timestamp":"1720708569","type":"button","button":{"payload":"ME","text":"ME"}}Inside insertAudioMessage function in insertAudioMessage.ts {
+  "code": "23502",
+  "details": "Failing row contains (10315, null, null, null, 2024-07-15 10:17:47.705803+00, 60102263379, null, 3).",
+  "hint": null,
+  "message": "null value in column \"name\" of relation \"contacts\" violates not-null constraint"
+}
+
+
+[2024-07-15T10:18:12.464Z] Error finding contact in database{"profile":{"name":"Michelle"},"wa_id":"60102263379"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-15T10:18:12.585Z] Error creating new contact in database{"context":{"from":"601159946253","id":"wamid.HBgLNjAxMDIyNjMzNzkVAgARGBJBQ0I2QThCRDE3RUE4RDE3NzAA"},"from":"60102263379","id":"wamid.HBgLNjAxMDIyNjMzNzkVAgASGBQzQTM0ODM0RjkxMUFCQkM1MTRGMgA=","timestamp":"1720708569","type":"button","button":{"payload":"ME","text":"ME"}}Inside insertAudioMessage function in insertAudioMessage.ts {
+  "code": "23502",
+  "details": "Failing row contains (10317, null, null, null, 2024-07-15 10:18:12.961993+00, 60102263379, null, 3).",
+  "hint": null,
+  "message": "null value in column \"name\" of relation \"contacts\" violates not-null constraint"
+}
+
+
+[2024-07-15T10:18:41.450Z] Error finding contact in database{"profile":{"name":"Michelle"},"wa_id":"60102263379"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-15T10:18:41.595Z] Error creating new contact in database{"context":{"from":"601159946253","id":"wamid.HBgLNjAxMDIyNjMzNzkVAgARGBJBQ0I2QThCRDE3RUE4RDE3NzAA"},"from":"60102263379","id":"wamid.HBgLNjAxMDIyNjMzNzkVAgASGBQzQTM0ODM0RjkxMUFCQkM1MTRGMgA=","timestamp":"1720708569","type":"button","button":{"payload":"ME","text":"ME"}}Inside insertAudioMessage function in insertAudioMessage.ts {
+  "code": "23502",
+  "details": "Failing row contains (10319, null, null, null, 2024-07-15 10:18:41.981944+00, 60102263379, null, 3).",
+  "hint": null,
+  "message": "null value in column \"name\" of relation \"contacts\" violates not-null constraint"
+}
+
+
+[2024-07-15T10:19:27.067Z] Error finding contact in database{"profile":{"name":"Michelle"},"wa_id":"60102263379"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-15T10:19:27.183Z] Error creating new contact in database{"context":{"from":"601159946253","id":"wamid.HBgLNjAxMDIyNjMzNzkVAgARGBJBQ0I2QThCRDE3RUE4RDE3NzAA"},"from":"60102263379","id":"wamid.HBgLNjAxMDIyNjMzNzkVAgASGBQzQTM0ODM0RjkxMUFCQkM1MTRGMgA=","timestamp":"1720708569","type":"button","button":{"payload":"ME","text":"ME"}}Inside insertAudioMessage function in insertAudioMessage.ts {
+  "code": "23502",
+  "details": "Failing row contains (10321, null, null, null, 2024-07-15 10:19:27.566844+00, 60102263379, null, 3).",
+  "hint": null,
+  "message": "null value in column \"name\" of relation \"contacts\" violates not-null constraint"
+}
+
+
+[2024-07-15T10:27:04.635Z] Error finding contact in database{"profile":{"name":"Michelle"},"wa_id":"60102263379"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-15T10:27:04.806Z] Error creating new contact in database{"context":{"from":"601159946253","id":"wamid.HBgLNjAxMDIyNjMzNzkVAgARGBJBQ0I2QThCRDE3RUE4RDE3NzAA"},"from":"60102263379","id":"wamid.HBgLNjAxMDIyNjMzNzkVAgASGBQzQTM0ODM0RjkxMUFCQkM1MTRGMgA=","timestamp":"1720708569","type":"button","button":{"payload":"ME","text":"ME"}}Inside insertAudioMessage function in insertAudioMessage.ts {
+  "code": "23502",
+  "details": "Failing row contains (10323, null, null, null, 2024-07-15 10:27:05.20351+00, 60102263379, null, 3).",
+  "hint": null,
+  "message": "null value in column \"name\" of relation \"contacts\" violates not-null constraint"
+}
+
+
+[2024-07-15T10:27:53.384Z] Error finding contact in database{"profile":{"name":"祈愿钱来钱来钱来"},"wa_id":"60167091477"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-15T10:27:53.529Z] Error creating new contact in database{"from":"60167091477","id":"wamid.HBgLNjAxNjcwOTE0NzcVAgASGCA1ODYzQzlCMDRCNzEzRjdBMDgxNzM1N0I3RTA4RTU4MgA=","timestamp":"1720664834","type":"image","image":{"mime_type":"image/jpeg","sha256":"q7G6QZGVjKiKpwcoG3EuBhEOjK96YVROS+QtAV6esDw=","id":"1201485801277295"}}Inside insertAudioMessage function in insertAudioMessage.ts {
+  "code": "23502",
+  "details": "Failing row contains (10324, null, null, null, 2024-07-15 10:27:53.93742+00, 60167091477, null, 2).",
+  "hint": null,
+  "message": "null value in column \"name\" of relation \"contacts\" violates not-null constraint"
+}
+
+
+[2024-07-15T10:28:18.291Z] Error finding contact in database{"profile":{"name":"祈愿钱来钱来钱来"},"wa_id":"60167091477"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-15T10:28:18.430Z] Error creating new contact in database{"from":"60167091477","id":"wamid.HBgLNjAxNjcwOTE0NzcVAgASGCA1ODYzQzlCMDRCNzEzRjdBMDgxNzM1N0I3RTA4RTU4MgA=","timestamp":"1720664834","type":"image","image":{"mime_type":"image/jpeg","sha256":"q7G6QZGVjKiKpwcoG3EuBhEOjK96YVROS+QtAV6esDw=","id":"1201485801277295"}}Inside insertAudioMessage function in insertAudioMessage.ts {
+  "code": "23502",
+  "details": "Failing row contains (10327, null, null, null, 2024-07-15 10:28:18.806396+00, 60167091477, null, 2).",
+  "hint": null,
+  "message": "null value in column \"name\" of relation \"contacts\" violates not-null constraint"
+}
+
+
+[2024-07-15T10:28:45.236Z] Error finding contact in database{"profile":{"name":"祈愿钱来钱来钱来"},"wa_id":"60167091477"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-15T10:28:45.376Z] Error creating new contact in database{"from":"60167091477","id":"wamid.HBgLNjAxNjcwOTE0NzcVAgASGCA1ODYzQzlCMDRCNzEzRjdBMDgxNzM1N0I3RTA4RTU4MgA=","timestamp":"1720664834","type":"image","image":{"mime_type":"image/jpeg","sha256":"q7G6QZGVjKiKpwcoG3EuBhEOjK96YVROS+QtAV6esDw=","id":"1201485801277295"}}Inside insertAudioMessage function in insertAudioMessage.ts {
+  "code": "23502",
+  "details": "Failing row contains (10329, null, null, null, 2024-07-15 10:28:45.790577+00, 60167091477, null, 2).",
+  "hint": null,
+  "message": "null value in column \"name\" of relation \"contacts\" violates not-null constraint"
+}
+
+
+[2024-07-15T10:29:34.290Z] Error finding contact in database{"profile":{"name":"祈愿钱来钱来钱来"},"wa_id":"60167091477"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-15T10:29:34.420Z] Error creating new contact in database{"from":"60167091477","id":"wamid.HBgLNjAxNjcwOTE0NzcVAgASGCA1ODYzQzlCMDRCNzEzRjdBMDgxNzM1N0I3RTA4RTU4MgA=","timestamp":"1720664834","type":"image","image":{"mime_type":"image/jpeg","sha256":"q7G6QZGVjKiKpwcoG3EuBhEOjK96YVROS+QtAV6esDw=","id":"1201485801277295"}}Inside insertAudioMessage function in insertAudioMessage.ts {
+  "code": "23502",
+  "details": "Failing row contains (10331, null, null, null, 2024-07-15 10:29:34.835437+00, 60167091477, null, 2).",
+  "hint": null,
+  "message": "null value in column \"name\" of relation \"contacts\" violates not-null constraint"
+}
+
+
+[2024-07-15T10:36:44.465Z] Error finding contact in database{"profile":{"name":"祈愿钱来钱来钱来"},"wa_id":"60167091477"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-15T10:36:44.592Z] Error creating new contact in database{"from":"60167091477","id":"wamid.HBgLNjAxNjcwOTE0NzcVAgASGCA1ODYzQzlCMDRCNzEzRjdBMDgxNzM1N0I3RTA4RTU4MgA=","timestamp":"1720664834","type":"image","image":{"mime_type":"image/jpeg","sha256":"q7G6QZGVjKiKpwcoG3EuBhEOjK96YVROS+QtAV6esDw=","id":"1201485801277295"}}Inside insertAudioMessage function in insertAudioMessage.ts {
+  "code": "23502",
+  "details": "Failing row contains (10333, null, null, null, 2024-07-15 10:36:45.026615+00, 60167091477, null, 2).",
+  "hint": null,
+  "message": "null value in column \"name\" of relation \"contacts\" violates not-null constraint"
+}
+
+
+[2024-07-15T10:38:38.557Z] Error finding contact in database{"profile":{"name":"Michelle"},"wa_id":"60102263379"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-15T10:38:38.702Z] Error creating new contact in database{"context":{"from":"601159946253","id":"wamid.HBgLNjAxMDIyNjMzNzkVAgARGBJBQ0I2QThCRDE3RUE4RDE3NzAA"},"from":"60102263379","id":"wamid.HBgLNjAxMDIyNjMzNzkVAgASGBQzQTM0ODM0RjkxMUFCQkM1MTRGMgA=","timestamp":"1720708569","type":"button","button":{"payload":"ME","text":"ME"}}Inside insertAudioMessage function in insertAudioMessage.ts {
+  "code": "23502",
+  "details": "Failing row contains (10335, null, null, null, 2024-07-15 10:38:39.148941+00, 60102263379, null, 3).",
+  "hint": null,
+  "message": "null value in column \"name\" of relation \"contacts\" violates not-null constraint"
+}
+
+
+[2024-07-15T10:39:03.741Z] Error finding contact in database{"profile":{"name":"Michelle"},"wa_id":"60102263379"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-15T10:39:03.868Z] Error creating new contact in database{"context":{"from":"601159946253","id":"wamid.HBgLNjAxMDIyNjMzNzkVAgARGBJBQ0I2QThCRDE3RUE4RDE3NzAA"},"from":"60102263379","id":"wamid.HBgLNjAxMDIyNjMzNzkVAgASGBQzQTM0ODM0RjkxMUFCQkM1MTRGMgA=","timestamp":"1720708569","type":"button","button":{"payload":"ME","text":"ME"}}Inside insertAudioMessage function in insertAudioMessage.ts {
+  "code": "23502",
+  "details": "Failing row contains (10337, null, null, null, 2024-07-15 10:39:04.320488+00, 60102263379, null, 3).",
+  "hint": null,
+  "message": "null value in column \"name\" of relation \"contacts\" violates not-null constraint"
+}
+
+
+[2024-07-15T10:39:30.445Z] Error finding contact in database{"profile":{"name":"Michelle"},"wa_id":"60102263379"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-15T10:39:30.608Z] Error creating new contact in database{"context":{"from":"601159946253","id":"wamid.HBgLNjAxMDIyNjMzNzkVAgARGBJBQ0I2QThCRDE3RUE4RDE3NzAA"},"from":"60102263379","id":"wamid.HBgLNjAxMDIyNjMzNzkVAgASGBQzQTM0ODM0RjkxMUFCQkM1MTRGMgA=","timestamp":"1720708569","type":"button","button":{"payload":"ME","text":"ME"}}Inside insertAudioMessage function in insertAudioMessage.ts {
+  "code": "23502",
+  "details": "Failing row contains (10339, null, null, null, 2024-07-15 10:39:31.059036+00, 60102263379, null, 3).",
+  "hint": null,
+  "message": "null value in column \"name\" of relation \"contacts\" violates not-null constraint"
+}
+
+
+[2024-07-15T10:40:17.605Z] Error finding contact in database{"profile":{"name":"Michelle"},"wa_id":"60102263379"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-15T10:40:17.752Z] Error creating new contact in database{"context":{"from":"601159946253","id":"wamid.HBgLNjAxMDIyNjMzNzkVAgARGBJBQ0I2QThCRDE3RUE4RDE3NzAA"},"from":"60102263379","id":"wamid.HBgLNjAxMDIyNjMzNzkVAgASGBQzQTM0ODM0RjkxMUFCQkM1MTRGMgA=","timestamp":"1720708569","type":"button","button":{"payload":"ME","text":"ME"}}Inside insertAudioMessage function in insertAudioMessage.ts {
+  "code": "23502",
+  "details": "Failing row contains (10341, null, null, null, 2024-07-15 10:40:18.197638+00, 60102263379, null, 3).",
+  "hint": null,
+  "message": "null value in column \"name\" of relation \"contacts\" violates not-null constraint"
+}
+
+
+[2024-07-15T10:45:28.676Z] Error finding contact in database{"profile":{"name":"Cynthia Tan"},"wa_id":"60129444214"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-15T10:45:28.971Z] Error creating new contact in database{"from":"60129444214","id":"wamid.HBgLNjAxMjk0NDQyMTQVAgASGCBDNTg5MTc2RjgzMTcxM0RBNTUwMTU1NUQzODZGQUNCRgA=","timestamp":"1720742695","text":{"body":"对不起这个日期我不能attend."},"type":"text"}Inside insertAudioMessage function in insertAudioMessage.ts {
+  "code": "23502",
+  "details": "Failing row contains (10343, null, null, null, 2024-07-15 10:45:29.440577+00, 60129444214, null, 2).",
+  "hint": null,
+  "message": "null value in column \"name\" of relation \"contacts\" violates not-null constraint"
+}
+
+
+[2024-07-15T10:46:48.458Z] Error finding contact in database{"profile":{"name":"Michelle"},"wa_id":"60102263379"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-15T10:46:48.579Z] Error creating new contact in database{"context":{"from":"601159946253","id":"wamid.HBgLNjAxMDIyNjMzNzkVAgARGBJBQ0I2QThCRDE3RUE4RDE3NzAA"},"from":"60102263379","id":"wamid.HBgLNjAxMDIyNjMzNzkVAgASGBQzQTM0ODM0RjkxMUFCQkM1MTRGMgA=","timestamp":"1720708569","type":"button","button":{"payload":"ME","text":"ME"}}Inside insertAudioMessage function in insertAudioMessage.ts {
+  "code": "23502",
+  "details": "Failing row contains (10345, null, null, null, 2024-07-15 10:46:49.053821+00, 60102263379, null, 3).",
+  "hint": null,
+  "message": "null value in column \"name\" of relation \"contacts\" violates not-null constraint"
+}
+
+
+[2024-07-15T11:07:03.444Z] Error creating conversation {
+  "code": "23502",
+  "details": "Failing row contains (a5ec6b15-4432-45d1-babc-16c21a3bc494, 2024-07-15 11:07:03.983347+00, 10157, 0, null, null, 1, null, null, null).",
+  "hint": null,
+  "message": "null value in column \"phone_number_id\" of relation \"conversations\" violates not-null constraint"
+}
+
+
+[2024-07-15T11:07:37.990Z] Error creating conversation {
+  "code": "23502",
+  "details": "Failing row contains (83d53eaf-c964-4b32-97cd-75852a2fac97, 2024-07-15 11:07:38.520042+00, 10157, 0, null, null, 1, null, null, null).",
+  "hint": null,
+  "message": "null value in column \"phone_number_id\" of relation \"conversations\" violates not-null constraint"
+}
+
+
+[2024-07-15T11:15:03.199Z] Error finding contact in database{"profile":{"name":"Lester Au"},"wa_id":"60165426300"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-15T11:15:03.554Z] Error creating new contact in database{"from":"60165426300","id":"wamid.HBgLNjAxNjU0MjYzMDAVAgASGCBEMkVBODRGN0U0MEFDQTg5NzUzOTVDNUFDQ0NGMzRFMgA=","timestamp":"1721041992","text":{"body":"今天加入还来得及？明天还可以进zoom？"},"type":"text"}Inside insertAudioMessage function in insertAudioMessage.ts {
+  "code": "23502",
+  "details": "Failing row contains (10348, null, null, null, 2024-07-15 11:15:04.113488+00, 60165426300, null, 2).",
+  "hint": null,
+  "message": "null value in column \"name\" of relation \"contacts\" violates not-null constraint"
+}
+
+
+[2024-07-15T11:15:57.001Z] Error finding contact in database{"profile":{"name":"Lucky Chia TK"},"wa_id":"6582821312"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-15T11:15:57.239Z] Error creating new contact in database{"from":"6582821312","id":"wamid.HBgKNjU4MjgyMTMxMhUCABIYFDNBOEY2NUM5MTE3QTY1QkY4MDQzAA==","timestamp":"1721042050","text":{"body":"Yes"},"type":"text"}Inside insertAudioMessage function in insertAudioMessage.ts {
+  "code": "23502",
+  "details": "Failing row contains (10349, null, null, null, 2024-07-15 11:15:57.796383+00, 6582821312, null, 2).",
+  "hint": null,
+  "message": "null value in column \"name\" of relation \"contacts\" violates not-null constraint"
+}
+
+
+[2024-07-15T11:26:04.096Z] Error finding contact in database{"profile":{"name":"Goh"},"wa_id":"60102909262"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-15T11:26:04.353Z] Error creating new contact in database{"from":"60102909262","id":"wamid.HBgLNjAxMDI5MDkyNjIVAgASGBYzRUIwNzM1NTdGRjFDREVFOTY0MkVGAA==","timestamp":"1720489044","text":{"body":"ok le~ xie xie"},"type":"text"}Inside insertAudioMessage function in insertAudioMessage.ts {
+  "code": "23502",
+  "details": "Failing row contains (10351, null, null, null, 2024-07-15 11:26:04.945159+00, 60102909262, null, 3).",
+  "hint": null,
+  "message": "null value in column \"name\" of relation \"contacts\" violates not-null constraint"
+}
+
+
+[2024-07-15T11:26:39.351Z] Error finding contact in database{"profile":{"name":"Goh"},"wa_id":"60102909262"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-15T11:26:39.647Z] Error creating new contact in database{"from":"60102909262","id":"wamid.HBgLNjAxMDI5MDkyNjIVAgASGBYzRUIwNzM1NTdGRjFDREVFOTY0MkVGAA==","timestamp":"1720489044","text":{"body":"ok le~ xie xie"},"type":"text"}Inside insertAudioMessage function in insertAudioMessage.ts {
+  "code": "23502",
+  "details": "Failing row contains (10353, null, null, null, 2024-07-15 11:26:40.244024+00, 60102909262, null, 3).",
+  "hint": null,
+  "message": "null value in column \"name\" of relation \"contacts\" violates not-null constraint"
+}
+
+
+[2024-07-15T11:27:14.575Z] Error finding contact in database{"profile":{"name":"Goh"},"wa_id":"60102909262"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-15T11:27:14.825Z] Error creating new contact in database{"from":"60102909262","id":"wamid.HBgLNjAxMDI5MDkyNjIVAgASGBYzRUIwNzM1NTdGRjFDREVFOTY0MkVGAA==","timestamp":"1720489044","text":{"body":"ok le~ xie xie"},"type":"text"}Inside insertAudioMessage function in insertAudioMessage.ts {
+  "code": "23502",
+  "details": "Failing row contains (10355, null, null, null, 2024-07-15 11:27:15.419467+00, 60102909262, null, 3).",
+  "hint": null,
+  "message": "null value in column \"name\" of relation \"contacts\" violates not-null constraint"
+}
+
+
+[2024-07-15T11:28:00.567Z] Error finding contact in database{"profile":{"name":"Goh"},"wa_id":"60102909262"}Inside findOrCreateContact function in findOrCreateContact.ts {
+  "code": "PGRST116",
+  "details": "The result contains 0 rows",
+  "hint": null,
+  "message": "JSON object requested, multiple (or no) rows returned"
+}
+
+
+[2024-07-15T11:28:01.029Z] Error creating new contact in database{"from":"60102909262","id":"wamid.HBgLNjAxMDI5MDkyNjIVAgASGBYzRUIwNzM1NTdGRjFDREVFOTY0MkVGAA==","timestamp":"1720489044","text":{"body":"ok le~ xie xie"},"type":"text"}Inside insertAudioMessage function in insertAudioMessage.ts {
+  "code": "23502",
+  "details": "Failing row contains (10357, null, null, null, 2024-07-15 11:28:01.616109+00, 60102909262, null, 3).",
+  "hint": null,
+  "message": "null value in column \"name\" of relation \"contacts\" violates not-null constraint"
+}
+
+

@@ -68,13 +68,49 @@ const fetchUserData = async (
 
 export const handlePemniVipWebhook = async (req: Request, res: Response) => {
   try {
-    res.status(200).send('OK')
-    console.log('Pemni VIP Webhook received', req.body)
+    res.status(200).send('OK');
+    console.log('Pemni VIP Webhook received', req.body);
 
-    const customData = req.body.customData || req.body
+    const customData = req.body.customData || req.body;
 
     // Remove the + from the phone number
-    customData.phone = customData.phone.replace('+', '')
+    customData.phone = customData.phone.replace('+', '');
+
+    // Function to correct Singaporean numbers mistakenly prefixed with "60"
+    const correctPhoneNumber = (phone: string): string => {
+      // Remove leading '0' if present
+      if (phone.startsWith('0')) {
+        phone = phone.substring(1);
+      }
+      // Check if the number starts with "60"
+      if (phone.startsWith('60')) {
+        const numberAfterCountryCode = phone.substring(2);
+        // Check if it's a valid Singaporean number (8 digits long)
+        if (/^\d{8}$/.test(numberAfterCountryCode)) {
+          // Convert to Singapore number by replacing "60" with "65"
+          phone = `65${numberAfterCountryCode}`;
+        } else if (/^[13-8]/.test(numberAfterCountryCode)) {
+          // Otherwise, assume it's a valid Malaysian number (no change needed)
+          phone = `60${numberAfterCountryCode}`;
+        } else {
+          // If it doesn't match any criteria, mark as invalid
+          phone = 'Invalid';
+        }
+      } else if (phone.startsWith('65')) {
+        // Ensure it's a valid Singaporean number (must be 8 digits)
+        const numberAfterCountryCode = phone.substring(2);
+        if (!/^\d{8}$/.test(numberAfterCountryCode)) {
+          phone = 'Invalid';
+        }
+      } else {
+        // If it doesn't start with "60" or "65", mark as invalid
+        phone = 'Invalid';
+      }
+      return phone;
+    };
+
+    // Correct the phone number
+    customData.phone = correctPhoneNumber(customData.phone);
 
     // Find or create contact
     let contact: { wa_id: string; profile: { name: string; email: string } } = {
@@ -254,7 +290,36 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
         process.env.PEMNI_WHATSAPP_API_TOKEN || ''
       )
 
-      if (messageResponse.data.messages[0]) {
+      if (messageResponse.messages[0]) {
+        var conversationId = ''
+        // Look Up Conversation ID
+        const { data: conversationData, error: conversationError } = await supabase
+          .from('conversations')
+          .select('id')
+          .eq('phone_number_id', '5')
+          .eq('contact_id', contactId)
+          .single()
+
+          if (conversationError) {
+            // Create a new conversation if not found
+            const { data: newConversationData, error: newConversationError } = await supabase.from('conversations').insert([
+              {
+                phone_number_id: '5',
+                contact_id: contactId,
+                project_id: '2',
+              },
+            ]).select('*').single()
+            if (newConversationError) {
+              console.error('Error creating new conversation:', newConversationError)
+              logError(newConversationError, 'Error creating new conversation')
+            }
+            conversationId = newConversationData.id
+          } else {
+            conversationId = conversationData.id
+          }
+        // Insert the message into the messages table
+        
+
         const { error: messageError } = await supabase.from('messages').insert([
           {
             wa_message_id: messageResponse.messages[0].id || '',
@@ -265,6 +330,7 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
             direction: 'outgoing',
             status: messageResponse.messages[0].message_status || 'failed',
             project_id: '2',
+            conversation_id: conversationId,            
           },
         ])
       }
