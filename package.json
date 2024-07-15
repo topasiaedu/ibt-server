@@ -11,7 +11,8 @@
     "lint": "eslint . --ext .ts",
     "format": "prettier --write .",
     "supabase-sync": "npx supabase gen types typescript --project-id yvpvhbgcawvruybkmupv > src/database.types.ts",
-    "ngrok": "ngrok http 8080 --region us"
+    "ngrok": "ngrok http 8080 --region us",
+    "update-server": "git pull && tsc && pm2 restart ibt-server && pm2 logs"
   },
   "keywords": [],
   "author": "",

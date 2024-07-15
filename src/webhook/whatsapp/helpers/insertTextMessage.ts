@@ -11,6 +11,8 @@ async function insertTextMessage(
     const { from, id, timestamp, type, text } = message
     const { body } = text
 
+    console.log("From: ", from)
+
     // Check if the database has the same wa_message_id
     let { data: existingMessage, error: findError } = await supabase
       .from('messages')
