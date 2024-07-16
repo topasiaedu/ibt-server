@@ -125,3 +125,7 @@
 [2024-07-16T09:15:15.081Z]  "Error updating tunnel URL on live server: Request failed with status code 502"
 
 
+[2024-07-16T09:30:28.122Z] Error inserting conversation into database
+Inside handleOutgoingMessage function in messages.ts {}
+
+

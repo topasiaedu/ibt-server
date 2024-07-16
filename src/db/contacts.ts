@@ -23,3 +23,25 @@ export const updateContactLastContactedBy = async (
     .eq('wa_id', waId)
   if (error) throw error
 }
+
+export const findOrCreateContact = async (
+  waId: string,
+  name: string,
+  projectId: number
+): Promise<Contact> => {
+  const { data, error } = await supabase
+    .from('contacts')
+    .select('*')
+    .eq('wa_id', waId)
+    .eq('project_id', projectId)
+    .single()
+  if (error) throw error
+  if (data) return data
+  const { data: newData, error: newError } = await supabase
+    .from('contacts')
+    .insert([{ wa_id: waId, name, project_id: projectId }])
+    .select('*')
+    .single()
+  if (newError) throw newError
+  return newData
+}

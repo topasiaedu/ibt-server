@@ -14,17 +14,6 @@ async function findOrCreateContact(contact: any, project_id: string) {
     .eq('project_id', project_id)
     .single()
 
-  if (findError) {
-    console.error('Error finding contact in database:', findError)
-    logError(
-      findError,
-      'Error finding contact in database' +
-        JSON.stringify(contact) +
-        'Inside findOrCreateContact function in findOrCreateContact.ts'
-    )
-    return
-  }
-
   // If the contact is found, return the existing contact_id
   if (existingContact) {
     return existingContact.contact_id
@@ -34,6 +23,8 @@ async function findOrCreateContact(contact: any, project_id: string) {
   let { data: newContact, error: createError } = await supabase
     .from('contacts')
     .insert([{ wa_id, name, project_id }])
+    .select('*')
+    .single()
 
   if (createError) {
     console.error('Error creating new contact in database:', createError)
