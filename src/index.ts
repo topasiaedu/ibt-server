@@ -83,7 +83,6 @@ app.use(errorHandler)
 // Pemni VIP webhook
 app.post('/pemni/vip', handlePemniVipWebhook)
 
-
 let server: Server
 
 const startServer = () => {
@@ -94,40 +93,44 @@ const startServer = () => {
 
     // Local tunnel
     if (environment === 'development') {
-      const tunnel = localtunnel(
-        port,
-        { subdomain: uniqueSubdomain },
-        (err, tunnel) => {
-          if (err) {
-            console.error(err)
-            logError(`Local tunnel error: ${err}`)
-            process.exit(1)
+      try {
+        const tunnel = localtunnel(
+          port,
+          { subdomain: uniqueSubdomain },
+          (err, tunnel) => {
+            if (err) {
+              console.error(err)
+              logError(`Local tunnel error: ${err}`)
+              process.exit(1)
+            }
+
+            console.log(`Local tunnel running on ${tunnel?.url}`)
+
+            // Send post request to live server (ibts.whatsgenie.com) to update the tunnel URL
+            axios
+              .post('https://ibts3.whatsgenie.com/update-tunnel-url', {
+                tunnelURl: tunnel?.url,
+              })
+              .then((response) => {
+                console.log('Tunnel URL updated on live server')
+              })
+              .catch((error) => {
+                console.error('Error updating tunnel URL on live server')
+                logError(
+                  `Error updating tunnel URL on live server: ${error.message}`
+                )
+              })
           }
+        )
 
-          console.log(`Local tunnel running on ${tunnel?.url}`)
-
-          // Send post request to live server (ibts.whatsgenie.com) to update the tunnel URL
-          axios
-            .post('https://ibts3.whatsgenie.com/update-tunnel-url', {
-              tunnelURl: tunnel?.url,
-            })
-            .then((response) => {
-              console.log('Tunnel URL updated on live server')
-            })
-            .catch((error) => {
-              console.error('Error updating tunnel URL on live server')
-              logError(
-                `Error updating tunnel URL on live server: ${error.message}`
-              )
-            })
-        }
-      )
-
-      tunnel?.on('close', () => {
-        console.log('Local tunnel closed')
-        logError('Local tunnel closed')
-        process.exit(1)
-      })
+        tunnel?.on('close', () => {
+          console.log('Local tunnel closed')
+          logError('Local tunnel closed')
+          process.exit(1)
+        })
+      } catch (e) {
+        console.error(e)
+      }
     }
 
     // Setup realtime processing

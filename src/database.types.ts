@@ -225,7 +225,7 @@ export type Database = {
           read: number
           sent: number
           status: string | null
-          template_id: number | null
+          template_id: number
           template_payload: Json | null
           updated_at: string | null
         }
@@ -242,7 +242,7 @@ export type Database = {
           read?: number
           sent?: number
           status?: string | null
-          template_id?: number | null
+          template_id: number
           template_payload?: Json | null
           updated_at?: string | null
         }
@@ -259,7 +259,7 @@ export type Database = {
           read?: number
           sent?: number
           status?: string | null
-          template_id?: number | null
+          template_id?: number
           template_payload?: Json | null
           updated_at?: string | null
         }
@@ -656,7 +656,7 @@ export type Database = {
           phone_number_id: number
           quality_rating: string | null
           throughput_level: string | null
-          wa_id: string | null
+          wa_id: string
           waba_id: number | null
         }
         Insert: {
@@ -666,7 +666,7 @@ export type Database = {
           phone_number_id?: number
           quality_rating?: string | null
           throughput_level?: string | null
-          wa_id?: string | null
+          wa_id: string
           waba_id?: number | null
         }
         Update: {
@@ -676,7 +676,7 @@ export type Database = {
           phone_number_id?: number
           quality_rating?: string | null
           throughput_level?: string | null
-          wa_id?: string | null
+          wa_id?: string
           waba_id?: number | null
         }
         Relationships: [
@@ -756,7 +756,7 @@ export type Database = {
         Row: {
           account_id: number | null
           category: string
-          components: Json | null
+          components: Json
           created_at: string | null
           language: string
           name: string
@@ -768,7 +768,7 @@ export type Database = {
         Insert: {
           account_id?: number | null
           category?: string
-          components?: Json | null
+          components: Json
           created_at?: string | null
           language: string
           name: string
@@ -780,7 +780,7 @@ export type Database = {
         Update: {
           account_id?: number | null
           category?: string
-          components?: Json | null
+          components?: Json
           created_at?: string | null
           language?: string
           name?: string

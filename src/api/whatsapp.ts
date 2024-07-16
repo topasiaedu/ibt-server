@@ -36,6 +36,7 @@ const sendMessageWithTemplate = async (
   access_token: string
 ): Promise<AxiosResponse<any>> => {
   try {
+
     const response = await axios.post(
       `${whatsappApiURL}/${phone_number_id}/messages`,
       payload,
@@ -56,7 +57,7 @@ const sendMessageWithTemplate = async (
         JSON.stringify(payload, null, 2) +
         '\n'
     )
-    console.error('Error sending message with template:', JSON.stringify((error as any).data) )
+    console.error('Error sending message with template:', JSON.stringify((error as any).message) )
     return error as AxiosResponse<any>
   }
 }

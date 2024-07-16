@@ -291,6 +291,7 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
       )
 
       if (messageResponse.messages[0]) {
+        console.log("Contact ID: ", contactId)
         var conversationId = ''
         // Look Up Conversation ID
         const { data: conversationData, error: conversationError } = await supabase
