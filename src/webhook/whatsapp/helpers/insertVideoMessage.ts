@@ -5,11 +5,14 @@ import { fetchImageURL, fetchMedia } from '../../../api/whatsapp'
 const insertVideoMessage = async (
   message: any,
   display_phone_number: string,
-  project_id: string
+  project_id: string,
+  contacts: any[]
 ) => {
   try {
     const { from, id, timestamp, type, video } = message
     const { id: imageId, caption } = video
+    const name = contacts[0].profile?.name
+    const wa_id = contacts[0].wa_id
 
     // Check if the database has the same wa_message_id
     let { data: existingMessage, error: findError } = await supabase
@@ -25,8 +28,8 @@ const insertVideoMessage = async (
     // Find the contact_id of the sender
     let { data: sender, error: senderError } = await supabase
       .from('contacts')
-      .select('contact_id')
-      .eq('wa_id', from)
+      .select('*')
+      .eq('wa_id', wa_id)
       .eq('project_id', project_id)
       .single()
 
@@ -34,7 +37,8 @@ const insertVideoMessage = async (
       // Create a new contact if the sender is not found
       let { data: newContact, error: createError } = await supabase
         .from('contacts')
-        .insert([{ wa_id: from, project_id }])
+        .insert([{ wa_id: from, project_id, name }])
+        .select('*')
         .single()
 
       if (createError) {

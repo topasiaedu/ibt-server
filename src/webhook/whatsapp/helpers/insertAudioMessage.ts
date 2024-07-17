@@ -5,13 +5,16 @@ import { fetchMedia } from '../../../api/whatsapp'
 const insertAudioMessage = async (
   message: any,
   display_phone_number: string,
-  project_id: string
+  project_id: string,
+  contacts: any[]
 ) => {
   console.log('Inserting audio message into database')
   try {
     const { from, id, timestamp, type, audio } = message
     const { id: audioId, caption } = audio
-    
+    const name = contacts[0].profile?.name
+    const wa_id = contacts[0].wa_id
+
     // Check if the database has the same wa_message_id
     let { data: existingMessage, error: findError } = await supabase
       .from('messages')
@@ -26,8 +29,8 @@ const insertAudioMessage = async (
     // Find the contact_id of the sender
     let { data: sender, error: senderError } = await supabase
       .from('contacts')
-      .select('contact_id')
-      .eq('wa_id', from)
+      .select('*')
+      .eq('wa_id', wa_id)
       .eq('project_id', project_id)
       .single()
 
@@ -35,7 +38,8 @@ const insertAudioMessage = async (
       // Create a new contact if the sender is not found
       let { data: newContact, error: createError } = await supabase
         .from('contacts')
-        .insert([{ wa_id: from, project_id }])
+        .insert([{ wa_id: from, project_id, name }])
+        .select('*')
         .single()
 
       if (createError) {
@@ -57,7 +61,7 @@ const insertAudioMessage = async (
     }
 
     const senderId = sender.contact_id
-
+    
     const myPhoneNumberId = await supabase
       .from('phone_numbers')
       .select('*, whatsapp_business_accounts(*, business_manager(*))')

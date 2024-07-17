@@ -137,3 +137,15 @@ Inside handleOutgoingMessage function in messages.ts {}
 }
 
 
+[2024-07-17T03:42:47.729Z] Error creating conversation {
+  "code": "23502",
+  "details": "Failing row contains (9e2e1d2d-13af-4e48-b52f-35398df5a520, 2024-07-17 03:42:49.77405+00, 10841, 0, null, null, 1, null, null, null).",
+  "hint": null,
+  "message": "null value in column \"phone_number_id\" of relation \"conversations\" violates not-null constraint"
+}
+
+
+[2024-07-17T22:36:16.046Z] Error inserting conversation into database
+Inside handleOutgoingMessage function in messages.ts {}
+
+

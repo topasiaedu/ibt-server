@@ -188,9 +188,13 @@ const handleIncomingMessage = async (value: any) => {
       throw new Error('Project not found in database')
     }
 
-    contacts.forEach(async (contact: any) => {
-      await findOrCreateContact(contact, project.project_id)
-    })
+    // var contact_list: any[] = 
+    // contacts.forEach(async (contact: any) => {
+    //   const foundContact = await findOrCreateContact(contact, project.project_id)
+    //   contact_list.push(foundContact)
+    // })
+
+    // console.log("Contacts: ", contacts)
 
     messages.forEach(async (message: any) => {
       const { type } = message
@@ -198,42 +202,47 @@ const handleIncomingMessage = async (value: any) => {
       switch (type) {
         case 'text':
           await handleKeywordTrigger(value).then(() => {
-            insertTextMessage(message, display_phone_number, project.project_id)
+            insertTextMessage(message, display_phone_number, project.project_id, contacts)
           })
           break
         case 'image':
           await insertImageMessage(
             message,
             display_phone_number,
-            project.project_id
+            project.project_id,
+            contacts
           )
           break
         case 'video':
           await insertVideoMessage(
             message,
             display_phone_number,
-            project.project_id
+            project.project_id,
+            contacts
           )
           break
         case 'button':
           await insertButtonMessage(
             message,
             display_phone_number,
-            project.project_id
+            project.project_id,
+            contacts
           )
           break
         case 'sticker':
           await insertStickerMessage(
             message,
             display_phone_number,
-            project.project_id
+            project.project_id,
+            contacts
           )
           break
         case 'audio':
           await insertAudioMessage(
             message,
             display_phone_number,
-            project.project_id
+            project.project_id,
+            contacts
           )
           break
         default:
