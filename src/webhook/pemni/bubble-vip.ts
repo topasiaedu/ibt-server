@@ -33,8 +33,6 @@ const fetchUserData = async (
       type: user.authentication.email ? 'email' : 'facebook',
     }))
 
-    console.log('User Data length: ', userData.length)
-
     // Check if the user with the specified email exists
     const userFound = userData.some((user: any) => user.email === email)
 
@@ -56,7 +54,7 @@ const fetchUserData = async (
 
     return []
   } catch (error) {
-    console.error('Error fetching user data: ', error)
+    console.error('Error fetching user data: ', (error as any).data)
     if (retries > 0) {
       console.log('Retrying fetch...')
       return await fetchUserData(email, retries - 1, cursor)
@@ -126,25 +124,16 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
     let userData: { email: string; id: string; plan: string }[] =
       cache.get(customData.email) || []
 
-    console.log('User Data: ', userData)
-
     if (userData.length === 0) {
       // Fetch user data with retries
       userData = await fetchUserData(customData.email)
 
       // Cache the data
       cache.set(customData.phone, userData)
-    } else {
-      // console.log('Cache hit: ', userData)
     }
-
-    // Now userData contains the cached data or fresh data from the API
-    // console.log('User Data: ', userData)
 
     // Find or Create Bubble Account and Update Plan
     const user = userData.find((u: any) => u.email === contact.profile.email)
-
-    // console.log('User: ', user)
 
     if (user) {
       // if use already has VIP, do nothing
@@ -152,8 +141,6 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
         console.log(`User ${user.email} already has VIP plan`)
         return
       }
-
-      console.log('Found user: ', user)
 
       // Check if the user's plan is tier 4, if so, update to 'VIP + Tier 4', else update to 'VIP'
       if (user.plan === 'Tier 4' || user.plan === 'Tier 3') {
@@ -293,7 +280,6 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
       )
 
       if (messageResponse.messages[0]) {
-        console.log('Contact ID: ', contactId)
         var conversationId = ''
         // Look Up Conversation ID
         const { data: conversationData, error: conversationError } =

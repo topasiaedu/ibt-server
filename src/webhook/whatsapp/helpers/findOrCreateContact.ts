@@ -36,8 +36,7 @@ async function findOrCreateContact(contact: any, project_id: string) {
     )
     return
   }
-
-  console.log('newContact:', newContact)
+  return newContact.contact_id
 }
 
 export default findOrCreateContact
