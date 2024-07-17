@@ -22,6 +22,7 @@ export const fetchConversation = async (
           project_id: projectId,
         },
       ])
+      .select('id')
       .single()
     if (error) throw error
     return data
