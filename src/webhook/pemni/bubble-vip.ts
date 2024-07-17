@@ -8,33 +8,16 @@ import axios from 'axios'
 import NodeCache from 'node-cache'
 import { sendMessageWithTemplate } from '../../api/whatsapp'
 
-const cache = new NodeCache({ stdTTL: 3600 }) // Cache items expire after 1 hour
-// {
-//   "data": [
-//     {
-//       "type": "BODY",
-//       "text": "亲爱的{{1}}，\n.\n🎉 恭喜你成功加人生GPS - VIP 福利包！🎉\n.\n你的会员新账号已经创建好啦，赶紧按照下面步骤来开始吧：\n.\n*【如果你是第一次登入】*\n*(1) 打开会员网站: https://mylifedecode.com/*\n*(2) 用以下信息通过电子邮件登录：*\n   *- 电子邮件:* {{2}}\n   *- 密码:* {{3}}\n\n*(3) 登录后点击 <VIP福利包> 就可以观看啦！*\n.\n*【如果你已经是网站会员】*\n*(1) 打开会员网站 https://mylifedecode.com/*\n*(2) 用facebook登入*\n*(3) 登录后点击 <VIP福利包> 就可以观看啦！*\n.\n🎈还不是很清楚怎么登入？\n点击观看，会一步一步教你：\n>> {{4}}\n.\n*Here's your Zoom Link to enter VIP Room:*\n👉 {{5}}\n.\n.\n如果有任何问题或需要帮助，随时联系我们哟。祝你学习愉快！😊\n.\n>> Support: 6011-5878 5417\n>> Serene: 6011-20560692\n.\nMaster Pemni 团队",
-//       "example": {
-//         "body_text": [
-//           [
-//             "Stanley",
-//             "stanley121499@gmail.com",
-//             "sd123uo12",
-//             "https://bit.ly/vip-tutorial",
-//             "https://pemnitan.com/vip-zoom"
-//           ]
-//         ]
-//       }
-//     }
-//   ]
-// }
+const cache = new NodeCache({ stdTTL: 3600 })
+
 const fetchUserData = async (
-  phone: string,
-  retries: number = 3
+  email: string,
+  retries: number = 3,
+  cursor: number = 0
 ): Promise<{ email: string; id: string; plan: string }[]> => {
   try {
     const response = await axios.get(
-      'https://mylifedecode.com/api/1.1/obj/user',
+      `https://mylifedecode.com/api/1.1/obj/user/?key=email&constraint%20type=equals&Value=${email}&cursor=${cursor}&limit=100`,
       {
         headers: {
           Authorization: `Bearer ${process.env.BUBBLE_API_KEY}`,
@@ -50,17 +33,33 @@ const fetchUserData = async (
       type: user.authentication.email ? 'email' : 'facebook',
     }))
 
-    if (userData.length === 0 && retries > 0) {
-      console.log('No users found, retrying...')
-      return await fetchUserData(phone, retries - 1)
+    console.log('User Data length: ', userData.length)
+
+    // Check if the user with the specified email exists
+    const userFound = userData.some((user: any) => user.email === email)
+
+    if (userFound) {
+      return userData.filter((user: any) => user.email === email)
     }
 
-    return userData
+    // If user data is not empty and user is not found, try the next page
+    if (userData.length === 100 && !userFound) {
+      console.log('User not found, fetching next page...')
+      return await fetchUserData(email, retries, cursor + 100)
+    }
+
+    // If no more data and retries are left, return an empty array
+    if (userData.length === 0 && retries > 0) {
+      console.log('No users found, retrying...')
+      return await fetchUserData(email, retries - 1)
+    }
+
+    return []
   } catch (error) {
     console.error('Error fetching user data: ', error)
     if (retries > 0) {
       console.log('Retrying fetch...')
-      return await fetchUserData(phone, retries - 1)
+      return await fetchUserData(email, retries - 1, cursor)
     }
     throw error
   }
@@ -68,49 +67,48 @@ const fetchUserData = async (
 
 export const handlePemniVipWebhook = async (req: Request, res: Response) => {
   try {
-    res.status(200).send('OK');
-    console.log('Pemni VIP Webhook received', req.body);
+    res.status(200).send('OK')
 
-    const customData = req.body.customData || req.body;
+    const customData = req.body.customData || req.body
 
     // Remove the + from the phone number
-    customData.phone = customData.phone.replace('+', '');
+    customData.phone = customData.phone.replace('+', '')
 
     // Function to correct Singaporean numbers mistakenly prefixed with "60"
     const correctPhoneNumber = (phone: string): string => {
       // Remove leading '0' if present
       if (phone.startsWith('0')) {
-        phone = phone.substring(1);
+        phone = phone.substring(1)
       }
       // Check if the number starts with "60"
       if (phone.startsWith('60')) {
-        const numberAfterCountryCode = phone.substring(2);
+        const numberAfterCountryCode = phone.substring(2)
         // Check if it's a valid Singaporean number (8 digits long)
         if (/^\d{8}$/.test(numberAfterCountryCode)) {
           // Convert to Singapore number by replacing "60" with "65"
-          phone = `65${numberAfterCountryCode}`;
+          phone = `65${numberAfterCountryCode}`
         } else if (/^[13-8]/.test(numberAfterCountryCode)) {
           // Otherwise, assume it's a valid Malaysian number (no change needed)
-          phone = `60${numberAfterCountryCode}`;
+          phone = `60${numberAfterCountryCode}`
         } else {
           // If it doesn't match any criteria, mark as invalid
-          phone = 'Invalid';
+          phone = 'Invalid'
         }
       } else if (phone.startsWith('65')) {
         // Ensure it's a valid Singaporean number (must be 8 digits)
-        const numberAfterCountryCode = phone.substring(2);
+        const numberAfterCountryCode = phone.substring(2)
         if (!/^\d{8}$/.test(numberAfterCountryCode)) {
-          phone = 'Invalid';
+          phone = 'Invalid'
         }
       } else {
         // If it doesn't start with "60" or "65", mark as invalid
-        phone = 'Invalid';
+        phone = 'Invalid'
       }
-      return phone;
-    };
+      return phone
+    }
 
     // Correct the phone number
-    customData.phone = correctPhoneNumber(customData.phone);
+    customData.phone = correctPhoneNumber(customData.phone)
 
     // Find or create contact
     let contact: { wa_id: string; profile: { name: string; email: string } } = {
@@ -126,11 +124,13 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
 
     // Check cache for user data
     let userData: { email: string; id: string; plan: string }[] =
-      cache.get(customData.phone) || []
+      cache.get(customData.email) || []
+
+    console.log('User Data: ', userData)
 
     if (userData.length === 0) {
       // Fetch user data with retries
-      userData = await fetchUserData(customData.phone)
+      userData = await fetchUserData(customData.email)
 
       // Cache the data
       cache.set(customData.phone, userData)
@@ -153,8 +153,10 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
         return
       }
 
+      console.log('Found user: ', user)
+
       // Check if the user's plan is tier 4, if so, update to 'VIP + Tier 4', else update to 'VIP'
-      if (user.plan === 'Tier 4') {
+      if (user.plan === 'Tier 4' || user.plan === 'Tier 3') {
         customData.plan = 'VIP + Tier 4'
       } else {
         customData.plan = 'VIP'
@@ -291,35 +293,43 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
       )
 
       if (messageResponse.messages[0]) {
-        console.log("Contact ID: ", contactId)
+        console.log('Contact ID: ', contactId)
         var conversationId = ''
         // Look Up Conversation ID
-        const { data: conversationData, error: conversationError } = await supabase
-          .from('conversations')
-          .select('id')
-          .eq('phone_number_id', '5')
-          .eq('contact_id', contactId)
-          .single()
+        const { data: conversationData, error: conversationError } =
+          await supabase
+            .from('conversations')
+            .select('id')
+            .eq('phone_number_id', '5')
+            .eq('contact_id', contactId)
+            .single()
 
-          if (conversationError) {
-            // Create a new conversation if not found
-            const { data: newConversationData, error: newConversationError } = await supabase.from('conversations').insert([
-              {
-                phone_number_id: '5',
-                contact_id: contactId,
-                project_id: '2',
-              },
-            ]).select('*').single()
-            if (newConversationError) {
-              console.error('Error creating new conversation:', newConversationError)
-              logError(newConversationError, 'Error creating new conversation')
-            }
-            conversationId = newConversationData.id
-          } else {
-            conversationId = conversationData.id
+        if (conversationError) {
+          // Create a new conversation if not found
+          const { data: newConversationData, error: newConversationError } =
+            await supabase
+              .from('conversations')
+              .insert([
+                {
+                  phone_number_id: '5',
+                  contact_id: contactId,
+                  project_id: '2',
+                },
+              ])
+              .select('*')
+              .single()
+          if (newConversationError) {
+            console.error(
+              'Error creating new conversation:',
+              newConversationError
+            )
+            logError(newConversationError, 'Error creating new conversation')
           }
+          conversationId = newConversationData.id
+        } else {
+          conversationId = conversationData.id
+        }
         // Insert the message into the messages table
-        
 
         const { error: messageError } = await supabase.from('messages').insert([
           {
@@ -331,13 +341,13 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
             direction: 'outgoing',
             status: messageResponse.messages[0].message_status || 'failed',
             project_id: '2',
-            conversation_id: conversationId,            
+            conversation_id: conversationId,
           },
         ])
       }
     }
   } catch (error) {
-    console.error('Error processing webhook:', error)
+    console.error('Error processing webhook:', (error as any).data)
     logError(error, 'Error processing webhook')
     res.status(500).json({ error: 'Internal server error' })
   }
