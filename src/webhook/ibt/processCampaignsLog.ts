@@ -56,14 +56,16 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
     return
   }
 
+  // Fetch the contact
+  const contact = await fetchContact(campaignLog.contact_id)
+
+  console.log('Sending to contact', contact.name, 'with wa_id', contact.wa_id)
+
   // Fetch campaign
   const campaign = await fetchCampaign(campaignLog.campaign_id)
 
   // Update campaignLog status to PROCESSING
   updateCampaignLogStatus(campaignLog.id, 'PROCESSING')
-
-  // Fetch the contact
-  const contact = await fetchContact(campaignLog.contact_id)
 
   // Trim any extraneous whitespace or control characters from wa_id
   contact.wa_id = formatPhoneNumber(contact.wa_id)
