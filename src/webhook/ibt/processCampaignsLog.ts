@@ -90,6 +90,8 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
     campaign.project_id || 5
   )
 
+  console.log('Sending message to conversation', conversation.id)
+
   try {
     const { data: messageResponse } = await sendMessageWithTemplate(
       processedPayload,
@@ -107,6 +109,9 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
       campaign,
       mediaUrl,
     })
+
+    console.log('Message created successfully:', newMessage.message_id)
+
     // Update last_message_id and updated_at in the conversation
     await updateConversation(conversation.id, newMessage.message_id)
 
