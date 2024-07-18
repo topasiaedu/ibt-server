@@ -127,7 +127,7 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
     await updateCampaignLogStatus(campaignLog.id, 'FAILED')
 
     // Insert a message with status failed
-    await insertMessage({
+    const failedMessage = await insertMessage({
       campaignLog,
       phoneNumberId: phone_number_id,
       textContent: textContent,
@@ -135,6 +135,9 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
       campaign,
       mediaUrl,
     })
+
+    // Update last_message_id and updated_at in the conversation
+    await updateConversation(conversation.id, failedMessage.message_id)    
     return
   }
 }
