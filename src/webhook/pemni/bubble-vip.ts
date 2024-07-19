@@ -7,6 +7,7 @@ import findOrCreateContact from '../whatsapp/helpers/findOrCreateContact'
 import axios from 'axios'
 import NodeCache from 'node-cache'
 import { sendMessageWithTemplate } from '../../api/whatsapp'
+import { updateConversation } from '../../db/conversations'
 
 const cache = new NodeCache({ stdTTL: 3600 })
 
@@ -201,7 +202,43 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
         process.env.PEMNI_WHATSAPP_API_TOKEN || ''
       )
       if (messageResponse.data.messages[0]) {
-        const { error: messageError } = await supabase.from('messages').insert([
+        var conversationId = ''
+        // Look Up Conversation ID
+        const { data: conversationData, error: conversationError } =
+          await supabase
+            .from('conversations')
+            .select('id')
+            .eq('phone_number_id', '5')
+            .eq('contact_id', contactId)
+            .single()
+
+        if (conversationError) {
+          // Create a new conversation if not found
+          const { data: newConversationData, error: newConversationError } =
+            await supabase
+              .from('conversations')
+              .insert([
+                {
+                  phone_number_id: '5',
+                  contact_id: contactId,
+                  project_id: '2',
+                },
+              ])
+              .select('*')
+              .single()
+          if (newConversationError) {
+            console.error(
+              'Error creating new conversation:',
+              newConversationError
+            )
+            logError(newConversationError, 'Error creating new conversation')
+          }
+          conversationId = newConversationData.id
+        } else {
+          conversationId = conversationData.id
+        }
+
+        const { data:newMessage, error: messageError } = await supabase.from('messages').insert([
           {
             wa_message_id: messageResponse.messages[0].id || '',
             phone_number_id: '5',
@@ -211,8 +248,18 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
             direction: 'outgoing',
             status: messageResponse.messages[0].message_status || 'failed',
             project_id: '2',
+            conversation_id: conversationId,
           },
-        ])
+        ]).select('*').single()
+
+        if (messageError) {
+          console.error('Error inserting message:', messageError)
+          logError(messageError, 'Error inserting message')
+        }
+
+        // Update to conversation to have the latest message
+        await updateConversation(conversationId, newMessage.message_id)
+
       }
     } else {
       const randomPassword = Math.random().toString(36).slice(-8) // Generate random password
@@ -317,7 +364,7 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
         }
         // Insert the message into the messages table
 
-        const { error: messageError } = await supabase.from('messages').insert([
+        const { data:newMessage, error: messageError } = await supabase.from('messages').insert([
           {
             wa_message_id: messageResponse.messages[0].id || '',
             phone_number_id: '5',
@@ -329,7 +376,15 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
             project_id: '2',
             conversation_id: conversationId,
           },
-        ])
+        ]).select('*').single()
+
+        if (messageError) {
+          console.error('Error inserting message:', messageError)
+          logError(messageError, 'Error inserting message')
+        }
+
+        // Update to conversation to have the latest message
+        await updateConversation(conversationId, newMessage.message_id)
       }
     }
   } catch (error) {
