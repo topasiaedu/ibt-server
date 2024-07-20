@@ -121,6 +121,12 @@ export const sendTemplate = async (payload: any, workflowLogId: string) => {
         (phone: any) => phone.phone_numbers.wa_id === selectedPhoneNumber
       ).phone_numbers.whatsapp_business_accounts.business_manager.access_token
     )
+
+    console.log("Template Payload", JSON.stringify(templatePayload, null, 2) )
+    console.log("Selected Phone Number", selectedPhoneNumber)
+    console.log("Access Token", newPhoneNumbers.find(
+      (phone: any) => phone.phone_numbers.wa_id === selectedPhoneNumber
+    ).phone_numbers.whatsapp_business_accounts.business_manager.access_token)
     // Lookup template to get the text and the image if any
     const { data: template, error: templateError } = await supabase
       .from('templates')

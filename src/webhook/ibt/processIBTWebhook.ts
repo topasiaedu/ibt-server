@@ -80,6 +80,9 @@ export const handleIBTWebhook = async (req: Request, res: Response) => {
       contact = data
     }
 
+    console.log("Action data", actionData)
+    console.log("Contact data", contact)
+
     actionData.forEach(async (action: Action) => {
       generateWorkflowLog(action, contact as Contact)
     })

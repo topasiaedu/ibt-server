@@ -3,6 +3,7 @@ import supabase from "../../../db/supabaseClient";
 import { logError } from "../../../utils/errorLogger";
 
 export const addToContactList = async (payload: any, workflowLogId: string) => {
+  console.log("Payload", payload);
   const { contact_list_id, contact_id } = payload;
 
   const { data: contactListMember, error: contactListMemberError } = await supabase
@@ -15,6 +16,7 @@ export const addToContactList = async (payload: any, workflowLogId: string) => {
     ]);
 
   if (contactListMemberError) {
+    console.error('Error adding contact to contact list:', contactListMemberError);
     logError(contactListMemberError as unknown as Error, 'Error adding contact to contact list');
     return;
   }

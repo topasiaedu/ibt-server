@@ -238,19 +238,23 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
           conversationId = conversationData.id
         }
 
-        const { data:newMessage, error: messageError } = await supabase.from('messages').insert([
-          {
-            wa_message_id: messageResponse.messages[0].id || '',
-            phone_number_id: '5',
-            contact_id: contactId,
-            message_type: 'TEMPLATE',
-            content: `亲爱的${customData.name}，\n.\n🎉 恭喜你成功加人生GPS - VIP 福利包！🎉\n.\n你的会员新账号已经创建好啦，赶紧按照下面步骤来开始吧：\n.\n*【如果你是第一次登入】*\n*(1) 打开会员网站: https://mylifedecode.com/*\n*(2) 用以下信息通过电子邮件登录：*\n   *- 电子邮件:* ${contact.profile.email}\n   *\n\n*(3) 登录后点击 <VIP福利包> 就可以观看啦！*\n.\n*【如果你已经是网站会员】*\n*(1) 打开会员网站 https://mylifedecode.com/*\n*(2) 用facebook登入*\n*(3) 登录后点击 <VIP福利包> 就可以观看啦！*\n.\n🎈还不是很清楚怎么登入？\n点击观看，会一步一步教你：\n>> https://bit.ly/vip-tutorial\n.\n*Here's your Zoom Link to enter VIP Room:*\n👉 https://pemnitan.com/vip-zoom\n.\n.\n如果有任何问题或需要帮助，随时联系我们哟。祝你学习愉快！😊\n.\n>> Support: 6011-5878 5417\n>> Serene: 6011-20560692\n.\nMaster Pemni 团队`,
-            direction: 'outgoing',
-            status: messageResponse.messages[0].message_status || 'failed',
-            project_id: '2',
-            conversation_id: conversationId,
-          },
-        ]).select('*').single()
+        const { data: newMessage, error: messageError } = await supabase
+          .from('messages')
+          .insert([
+            {
+              wa_message_id: messageResponse.messages[0].id || '',
+              phone_number_id: '5',
+              contact_id: contactId,
+              message_type: 'TEMPLATE',
+              content: `亲爱的${customData.name}，\n.\n🎉 恭喜你成功加人生GPS - VIP 福利包！🎉\n.\n你的会员新账号已经创建好啦，赶紧按照下面步骤来开始吧：\n.\n*【如果你是第一次登入】*\n*(1) 打开会员网站: https://mylifedecode.com/*\n*(2) 用以下信息通过电子邮件登录：*\n   *- 电子邮件:* ${contact.profile.email}\n   *\n\n*(3) 登录后点击 <VIP福利包> 就可以观看啦！*\n.\n*【如果你已经是网站会员】*\n*(1) 打开会员网站 https://mylifedecode.com/*\n*(2) 用facebook登入*\n*(3) 登录后点击 <VIP福利包> 就可以观看啦！*\n.\n🎈还不是很清楚怎么登入？\n点击观看，会一步一步教你：\n>> https://bit.ly/vip-tutorial\n.\n*Here's your Zoom Link to enter VIP Room:*\n👉 https://pemnitan.com/vip-zoom\n.\n.\n如果有任何问题或需要帮助，随时联系我们哟。祝你学习愉快！😊\n.\n>> Support: 6011-5878 5417\n>> Serene: 6011-20560692\n.\nMaster Pemni 团队`,
+              direction: 'outgoing',
+              status: messageResponse.messages[0].message_status || 'failed',
+              project_id: '2',
+              conversation_id: conversationId,
+            },
+          ])
+          .select('*')
+          .single()
 
         if (messageError) {
           console.error('Error inserting message:', messageError)
@@ -260,6 +264,23 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
         // Update to conversation to have the latest message
         await updateConversation(conversationId, newMessage.message_id)
 
+        // Update to the table pemni_vip_logs
+        await supabase.from('pemni_vip_logs').insert([
+          {
+            contact_id: contactId,
+            password: 'N/A',
+            status: 'SUCCESS',
+          },
+        ])
+      } else {
+        // Update to the table pemni_vip_logs
+        await supabase.from('pemni_vip_logs').insert([
+          {
+            contact_id: contactId,
+            password: 'N/A',
+            status: 'FAILED',
+          },
+        ])
       }
     } else {
       const randomPassword = Math.random().toString(36).slice(-8) // Generate random password
@@ -364,19 +385,23 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
         }
         // Insert the message into the messages table
 
-        const { data:newMessage, error: messageError } = await supabase.from('messages').insert([
-          {
-            wa_message_id: messageResponse.messages[0].id || '',
-            phone_number_id: '5',
-            contact_id: contactId,
-            message_type: 'TEMPLATE',
-            content: `亲爱的${customData.name}，\n.\n🎉 恭喜你成功加人生GPS - VIP 福利包！🎉\n.\n你的会员新账号已经创建好啦，赶紧按照下面步骤来开始吧：\n.\n*【如果你是第一次登入】*\n*(1) 打开会员网站: https://mylifedecode.com/*\n*(2) 用以下信息通过电子邮件登录：*\n   *- 电子邮件:* ${contact.profile.email}\n   *- 密码:* ${randomPassword}\n\n*(3) 登录后点击 <VIP福利包> 就可以观看啦！*\n.\n*【如果你已经是网站会员】*\n*(1) 打开会员网站 https://mylifedecode.com/*\n*(2) 用facebook登入*\n*(3) 登录后点击 <VIP福利包> 就可以观看啦！*\n.\n🎈还不是很清楚怎么登入？\n点击观看，会一步一步教你：\n>> https://bit.ly/vip-tutorial\n.\n*Here's your Zoom Link to enter VIP Room:*\n👉 https://pemnitan.com/vip-zoom\n.\n.\n如果有任何问题或需要帮助，随时联系我们哟。祝你学习愉快！😊\n.\n>> Support: 6011-5878 5417\n>> Serene: 6011-20560692\n.\nMaster Pemni 团队`,
-            direction: 'outgoing',
-            status: messageResponse.messages[0].message_status || 'failed',
-            project_id: '2',
-            conversation_id: conversationId,
-          },
-        ]).select('*').single()
+        const { data: newMessage, error: messageError } = await supabase
+          .from('messages')
+          .insert([
+            {
+              wa_message_id: messageResponse.messages[0].id || '',
+              phone_number_id: '5',
+              contact_id: contactId,
+              message_type: 'TEMPLATE',
+              content: `亲爱的${customData.name}，\n.\n🎉 恭喜你成功加人生GPS - VIP 福利包！🎉\n.\n你的会员新账号已经创建好啦，赶紧按照下面步骤来开始吧：\n.\n*【如果你是第一次登入】*\n*(1) 打开会员网站: https://mylifedecode.com/*\n*(2) 用以下信息通过电子邮件登录：*\n   *- 电子邮件:* ${contact.profile.email}\n   *- 密码:* ${randomPassword}\n\n*(3) 登录后点击 <VIP福利包> 就可以观看啦！*\n.\n*【如果你已经是网站会员】*\n*(1) 打开会员网站 https://mylifedecode.com/*\n*(2) 用facebook登入*\n*(3) 登录后点击 <VIP福利包> 就可以观看啦！*\n.\n🎈还不是很清楚怎么登入？\n点击观看，会一步一步教你：\n>> https://bit.ly/vip-tutorial\n.\n*Here's your Zoom Link to enter VIP Room:*\n👉 https://pemnitan.com/vip-zoom\n.\n.\n如果有任何问题或需要帮助，随时联系我们哟。祝你学习愉快！😊\n.\n>> Support: 6011-5878 5417\n>> Serene: 6011-20560692\n.\nMaster Pemni 团队`,
+              direction: 'outgoing',
+              status: messageResponse.messages[0].message_status || 'failed',
+              project_id: '2',
+              conversation_id: conversationId,
+            },
+          ])
+          .select('*')
+          .single()
 
         if (messageError) {
           console.error('Error inserting message:', messageError)
@@ -385,6 +410,24 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
 
         // Update to conversation to have the latest message
         await updateConversation(conversationId, newMessage.message_id)
+
+        // Update to the table pemni_vip_logs
+        await supabase.from('pemni_vip_logs').insert([
+          {
+            contact_id: contactId,
+            password: randomPassword,
+            status: 'SUCCESS',
+          },
+        ])
+      } else {
+        // Update to the table pemni_vip_logs
+        await supabase.from('pemni_vip_logs').insert([
+          {
+            contact_id: contactId,
+            password: randomPassword,
+            status: 'FAILED',
+          },
+        ])
       }
     }
   } catch (error) {

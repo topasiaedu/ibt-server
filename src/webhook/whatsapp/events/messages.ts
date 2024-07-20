@@ -35,7 +35,7 @@ const handleMessages = async (value: any) => {
 
 const handleOutgoingMessage = async (value: any) => {
   console.log('Outgoing message received!')
-  // console.log('Outgoing message:', JSON.stringify(value, null, 2));
+  console.log('Outgoing message:', JSON.stringify(value, null, 2));
   try {
     const { statuses } = value
 

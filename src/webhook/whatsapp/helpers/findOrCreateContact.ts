@@ -5,6 +5,7 @@ import { Database } from '../../../database.types'
 async function findOrCreateContact(contact: any, project_id: string) {
   const { wa_id, profile } = contact
   const name = profile.name
+  const email = profile.email || null
 
   // Attempt to find the contact in the database by wa_id
   let { data: existingContact, error: findError } = await supabase
@@ -22,7 +23,7 @@ async function findOrCreateContact(contact: any, project_id: string) {
   // If not found, create a new contact
   let { data: newContact, error: createError } = await supabase
     .from('contacts')
-    .insert([{ wa_id, name, project_id }])
+    .insert([{ wa_id, name, project_id, email }])
     .select('*')
     .single()
 
