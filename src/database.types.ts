@@ -648,6 +648,38 @@ export type Database = {
           },
         ]
       }
+      pemni_vip_logs: {
+        Row: {
+          contact_id: number
+          created_at: string
+          id: string
+          password: string | null
+          status: string
+        }
+        Insert: {
+          contact_id: number
+          created_at?: string
+          id?: string
+          password?: string | null
+          status?: string
+        }
+        Update: {
+          contact_id?: number
+          created_at?: string
+          id?: string
+          password?: string | null
+          status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "pemni_vip_logs_contact_id_fkey"
+            columns: ["contact_id"]
+            isOneToOne: false
+            referencedRelation: "contacts"
+            referencedColumns: ["contact_id"]
+          },
+        ]
+      }
       phone_numbers: {
         Row: {
           created_at: string | null
@@ -1043,6 +1075,7 @@ export type Database = {
           post_time: string
           sent: number
           failed: number
+          total_contacts: number
         }[]
       }
       fetch_conversations: {

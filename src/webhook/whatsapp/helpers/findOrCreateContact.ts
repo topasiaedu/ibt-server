@@ -10,13 +10,33 @@ async function findOrCreateContact(contact: any, project_id: string) {
   // Attempt to find the contact in the database by wa_id
   let { data: existingContact, error: findError } = await supabase
     .from('contacts')
-    .select('contact_id')
+    .select('*')
     .eq('wa_id', wa_id)
     .eq('project_id', project_id)
     .single()
 
   // If the contact is found, return the existing contact_id
   if (existingContact) {
+    if (email) {
+      // Update the email if it is not already set
+      if (!existingContact.email) {
+        let { error: updateError } = await supabase
+          .from('contacts')
+          .update({ email })
+          .eq('contact_id', existingContact.contact_id)
+        if (updateError) {
+          console.error('Error updating contact email in database:', updateError)
+          logError(
+            updateError,
+            'Error updating contact email in database' +
+              JSON.stringify(contact) +
+              'Inside findOrCreateContact function in findOrCreateContact.ts'
+          )
+          return existingContact.contact_id
+        }
+      }
+    }
+
     return existingContact.contact_id
   }
 
