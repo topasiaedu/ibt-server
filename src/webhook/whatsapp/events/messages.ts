@@ -78,8 +78,6 @@ const handleOutgoingMessage = async (value: any) => {
             const date = new Date(
               parseInt(status.conversation.expiration_timestamp) * 1000
             )
-            const formattedDate = date.toISOString()
-            console.log('formattedDate', formattedDate)
             // insert the message window
             let { error: insertError } = await supabase
               .from('conversation')
@@ -88,7 +86,7 @@ const handleOutgoingMessage = async (value: any) => {
                   phone_number_id: message.phone_number_id,
                   contact_id: message.contact_id,
                   wa_conversation_id: status.conversation.id,
-                  close_at: formattedDate,
+                  close_at: date,
                   updated_at: new Date().toISOString(),
                   last_message_id: message.id,
                   project_id: message.project_id,
