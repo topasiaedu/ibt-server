@@ -35,7 +35,7 @@ const handleMessages = async (value: any) => {
 
 const handleOutgoingMessage = async (value: any) => {
   console.log('Outgoing message received!')
-  console.log('Outgoing message:', JSON.stringify(value, null, 2));
+  // console.log('Outgoing message:', JSON.stringify(value, null, 2));
   try {
     const { statuses } = value
 
@@ -48,10 +48,10 @@ const handleOutgoingMessage = async (value: any) => {
         .select('*')
         .single()
 
-      // console.log('====================================')
-      // console.log('status', status.id)
-      // console.log('message', message)
-      // console.log('====================================')
+      console.log('====================================')
+      console.log('status', status.id)
+      console.log('message', message)
+      console.log('====================================')
 
       if (updateError) {
         return 'Error updating outgoing message status in database'
@@ -79,6 +79,7 @@ const handleOutgoingMessage = async (value: any) => {
               parseInt(status.conversation.expiration_timestamp) * 1000
             )
             const formattedDate = date.toISOString()
+            console.log('formattedDate', formattedDate)
             // insert the message window
             let { error: insertError } = await supabase
               .from('conversation')

@@ -140,7 +140,6 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
       // if use already has VIP, do nothing
       if (user.plan === 'VIP' || user.plan === 'VIP + Tier 4') {
         console.log(`User ${user.email} already has VIP plan`)
-        return
       }
 
       // Check if the user's plan is tier 4, if so, update to 'VIP + Tier 4', else update to 'VIP'
