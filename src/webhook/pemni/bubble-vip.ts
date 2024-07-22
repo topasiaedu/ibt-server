@@ -430,8 +430,7 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
       }
     }
   } catch (error) {
-    console.error('Error processing webhook:', (error as any).data)
+    console.error('Error processing webhook:', (error as any))
     logError(error, 'Error processing webhook')
-    res.status(500).json({ error: 'Internal server error' })
   }
 }
