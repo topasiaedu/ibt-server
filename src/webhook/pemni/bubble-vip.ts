@@ -200,7 +200,9 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
         '220858504440106',
         process.env.PEMNI_WHATSAPP_API_TOKEN || ''
       )
-      if (messageResponse.data.messages[0]) {
+
+      console.log('Message Response:', messageResponse)
+      if (messageResponse.messages[0]) {
         var conversationId = ''
         // Look Up Conversation ID
         const { data: conversationData, error: conversationError } =
