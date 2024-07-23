@@ -18,8 +18,8 @@ import { insertMessage } from '../../db/messages'
 
 const campaignLogQueue: CampaignLog[] = []
 
-const MAX_RETRIES = 3;
-const RETRY_DELAY = 2000; // 2 seconds
+const MAX_RETRIES = 5;
+const RETRY_DELAY = 10000; // 10 seconds
 
 async function withRetry<T>(fn: () => Promise<T>, retries = MAX_RETRIES): Promise<T> {
   try {
