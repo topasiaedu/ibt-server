@@ -107,6 +107,8 @@ const handleOutgoingMessage = async (value: any) => {
             const date = new Date(
               parseInt(status.conversation.expiration_timestamp) * 1000
             )
+            console.log('Date:', date)
+            console.log('Conversation ID:', existingConversation?.conversation_id)
             // Update the message window
             let { error: updateError } = await supabase
               .from('conversation')
