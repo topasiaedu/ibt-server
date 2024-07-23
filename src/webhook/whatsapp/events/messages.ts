@@ -78,9 +78,7 @@ const handleOutgoingMessage = async (value: any) => {
             const date = new Date(
               parseInt(status.conversation.expiration_timestamp) * 1000
             )
-            console.log("status.conversation.expiration_timestamp", status.conversation.expiration_timestamp)
-            console.log("date", date)
-            console.log("status.conversation.id", status.conversation.id)
+
             // insert the message window
             let { error: insertError } = await supabase
               .from('conversation')
@@ -100,6 +98,26 @@ const handleOutgoingMessage = async (value: any) => {
               logError(
                 insertError as unknown as Error,
                 'Error inserting conversation into database' +
+                  '\n' +
+                  'Inside handleOutgoingMessage function in messages.ts'
+              )
+            }
+          } else {
+            // Change the data from 1717424940 to Date format
+            const date = new Date(
+              parseInt(status.conversation.expiration_timestamp) * 1000
+            )
+            // Update the message window
+            let { error: updateError } = await supabase
+              .from('conversation')
+              .update({ close_at: date, last_message_id: message.id })
+              .eq('wa_conversation_id', status.conversation.id)
+              .eq('project_id', message.project_id)
+
+            if (updateError) {
+              logError(
+                updateError as unknown as Error,
+                'Error updating conversation in database' +
                   '\n' +
                   'Inside handleOutgoingMessage function in messages.ts'
               )
