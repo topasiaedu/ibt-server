@@ -69,12 +69,13 @@ const handleOutgoingMessage = async (value: any) => {
         
           if (findError) {
             console.log('Error finding conversation in database:', findError);
+            console.log("Existing Conversations: ", existingConversations)
           }
         
           const date = new Date(
             parseInt(status.conversation.expiration_timestamp) * 1000
           );
-        console.log("Existing Conversations: ", existingConversations)
+          
           if (!existingConversations || existingConversations.length === 0) {
             console.log('No existing conversation found, inserting a new one.');
         
