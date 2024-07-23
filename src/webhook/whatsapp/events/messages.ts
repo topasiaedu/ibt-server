@@ -87,7 +87,7 @@ const handleOutgoingMessage = async (value: any) => {
                   contact_id: message.contact_id,
                   close_at: date,
                   updated_at: new Date().toISOString(),
-                  last_message_id: message.id,
+                  last_message_id: message.message_id,
                   project_id: message.project_id,
                 },
               ]);
@@ -125,7 +125,7 @@ const handleOutgoingMessage = async (value: any) => {
                 .from('conversations')
                 .update({
                   close_at: date,
-                  last_message_id: message.id,
+                  last_message_id: message.message_id,
                   updated_at: new Date().toISOString(),
                 })
                 .eq('id', latestConversation.id);
@@ -144,7 +144,7 @@ const handleOutgoingMessage = async (value: any) => {
                 .from('conversations')
                 .update({
                   close_at: date,
-                  last_message_id: message.id,
+                  last_message_id: message.message_id,
                   updated_at: new Date().toISOString(),
                 })
                 .eq('id', existingConversations[0].id);
