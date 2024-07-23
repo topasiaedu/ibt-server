@@ -63,10 +63,10 @@ const handleOutgoingMessage = async (value: any) => {
           let { data: existingConversations, error: findError } = await supabase
             .from('conversations')
             .select('*')
-            .or(
-              `phone_number_id.eq.${message.phone_number_id},contact_id.eq.${message.contact_id},project_id.eq.${message.project_id}`
-            );
-        
+            .eq('phone_number_id', message.phone_number_id)
+            .eq('contact_id', message.contact_id)
+            .eq('project_id', message.project_id)
+            
           if (findError) {
             console.log('Error finding conversation in database:', findError);
             console.log("Existing Conversations: ", existingConversations)
@@ -75,7 +75,7 @@ const handleOutgoingMessage = async (value: any) => {
           const date = new Date(
             parseInt(status.conversation.expiration_timestamp) * 1000
           );
-          
+
           if (!existingConversations || existingConversations.length === 0) {
             console.log('No existing conversation found, inserting a new one.');
         
