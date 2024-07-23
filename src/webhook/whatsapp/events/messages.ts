@@ -74,7 +74,7 @@ const handleOutgoingMessage = async (value: any) => {
         
           const date = new Date(
             parseInt(status.conversation.expiration_timestamp) * 1000
-          );
+          ).toISOString();
 
           if (!existingConversations || existingConversations.length === 0) {
             console.log('No existing conversation found, inserting a new one.');
