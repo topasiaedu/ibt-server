@@ -59,71 +59,107 @@ const handleOutgoingMessage = async (value: any) => {
 
       if (status.conversation) {
         if (status.conversation.expiration_timestamp) {
-          let { data: existingConversation, error: findError } = await supabase
+          // Find existing conversation(s)
+          let { data: existingConversations, error: findError } = await supabase
             .from('conversations')
             .select('*')
             .or(
-              `phone_number_id.eq.${message.phone_number_id},contact_id.eq.${message.contact_id},project_id.eq.${message.project_id},wa_conversation_id.eq.${status.conversation.id}`
-            )
-            .single()
-
+              `phone_number_id.eq.${message.phone_number_id},contact_id.eq.${message.contact_id},project_id.eq.${message.project_id}`
+            );
+        
           if (findError) {
-            console.log('Error finding conversation in database:', findError)
-            // Change the data from 1717424940 to Date format
-            const date = new Date(
-              parseInt(status.conversation.expiration_timestamp) * 1000
-            )
-
-            // insert the message window
+            console.log('Error finding conversation in database:', findError);
+          }
+        
+          const date = new Date(
+            parseInt(status.conversation.expiration_timestamp) * 1000
+          );
+        
+          if (!existingConversations || existingConversations.length === 0) {
+            console.log('No existing conversation found, inserting a new one.');
+        
+            // Insert the message window
             let { error: insertError } = await supabase
               .from('conversations')
               .insert([
                 {
                   phone_number_id: message.phone_number_id,
                   contact_id: message.contact_id,
-                  wa_conversation_id: status.conversation.id,
                   close_at: date,
                   updated_at: new Date().toISOString(),
                   last_message_id: message.id,
                   project_id: message.project_id,
                 },
-              ])
-
+              ]);
+        
             if (insertError) {
               logError(
                 insertError as unknown as Error,
                 'Error inserting conversation into database' +
                   '\n' +
                   'Inside handleOutgoingMessage function in messages.ts'
-              )
+              );
             }
           } else {
-            // Change the data from 1717424940 to Date format
-            const date = new Date(
-              parseInt(status.conversation.expiration_timestamp) * 1000
-            )
-            console.log('Date:', date)
-            console.log(
-              'Conversation ID:',
-              existingConversation?.conversation_id
-            )
-            // Update the message window
-            let { error: updateError } = await supabase
-              .from('conversations')
-              .update({ close_at: date, last_message_id: message.id })
-              .eq('wa_conversation_id', status.conversation.id)
-              .eq('project_id', message.project_id)
-
-            if (updateError) {
-              logError(
-                updateError as unknown as Error,
-                'Error updating conversation in database' +
-                  '\n' +
-                  'Inside handleOutgoingMessage function in messages.ts'
-              )
+            console.log('Existing conversation(s) found, updating the conversation.');
+        
+            // If multiple conversations are found, keep only the latest one
+            if (existingConversations.length > 1) {
+              console.log('Warning: Multiple existing conversations found, removing duplicates.');
+        
+              // Sort conversations by created_at date to find the latest one
+              existingConversations.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+        
+              // Keep the latest conversation
+              const latestConversation = existingConversations[0];
+              
+              // Remove all other conversations
+              const idsToDelete = existingConversations.slice(1).map(convo => convo.id);
+              await supabase
+                .from('conversations')
+                .delete()
+                .in('id', idsToDelete);
+              
+              // Update the latest conversation
+              let { error: updateError } = await supabase
+                .from('conversations')
+                .update({
+                  close_at: date,
+                  last_message_id: message.id,
+                  updated_at: new Date().toISOString(),
+                })
+                .eq('id', latestConversation.id);
+        
+              if (updateError) {
+                logError(
+                  updateError as unknown as Error,
+                  'Error updating conversation in database' +
+                    '\n' +
+                    'Inside handleOutgoingMessage function in messages.ts'
+                );
+              }
+            } else {
+              // Update the single existing conversation
+              let { error: updateError } = await supabase
+                .from('conversations')
+                .update({
+                  close_at: date,
+                  last_message_id: message.id,
+                  updated_at: new Date().toISOString(),
+                })
+                .eq('id', existingConversations[0].id);
+        
+              if (updateError) {
+                logError(
+                  updateError as unknown as Error,
+                  'Error updating conversation in database' +
+                    '\n' +
+                    'Inside handleOutgoingMessage function in messages.ts'
+                );
+              }
             }
           }
-        }
+        }        
       }
 
       if (status.errors) {
