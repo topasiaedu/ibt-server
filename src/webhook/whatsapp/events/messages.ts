@@ -34,7 +34,7 @@ const handleMessages = async (value: any) => {
 }
 
 const handleOutgoingMessage = async (value: any) => {
-  console.log('Outgoing message received!')
+  // console.log('Outgoing message received!')
   // console.log('Outgoing message:', JSON.stringify(value, null, 2));
   try {
     const { statuses } = value
@@ -48,10 +48,10 @@ const handleOutgoingMessage = async (value: any) => {
         .select('*')
         .single()
 
-      console.log('====================================')
-      console.log('status', status.id)
-      console.log('message', message)
-      console.log('====================================')
+      // console.log('====================================')
+      // console.log('status', status.id)
+      // console.log('message', message)
+      // console.log('====================================')
 
       if (updateError) {
         return 'Error updating outgoing message status in database'
@@ -78,6 +78,9 @@ const handleOutgoingMessage = async (value: any) => {
             const date = new Date(
               parseInt(status.conversation.expiration_timestamp) * 1000
             )
+            console.log("status.conversation.expiration_timestamp", status.conversation.expiration_timestamp)
+            console.log("date", date)
+            console.log("status.conversation.id", status.conversation.id)
             // insert the message window
             let { error: insertError } = await supabase
               .from('conversation')
@@ -140,7 +143,7 @@ const handleOutgoingMessage = async (value: any) => {
 }
 
 const handleIncomingMessage = async (value: any) => {
-  console.log('Incoming message received!')
+  // console.log('Incoming message received!')
   // console.log('Incoming message:', JSON.stringify(value, null, 2))
   try {
     // Assuming the structure of the incoming payload matches your example
