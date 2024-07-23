@@ -63,11 +63,12 @@ const handleOutgoingMessage = async (value: any) => {
             .from('conversations')
             .select('*')
             .or(
-              `(phone_number_id.eq.${message.phone_number_id},contact_id.eq.${message.contact_id},project_id.eq.${message.project_id}),wa_conversation_id.eq.${status.conversation.id}`
+              `phone_number_id.eq.${message.phone_number_id},contact_id.eq.${message.contact_id},project_id.eq.${message.project_id},wa_conversation_id.eq.${status.conversation.id}`
             )
             .single()
 
           if (findError) {
+            console.log('Error finding conversation in database:', findError)
             // Change the data from 1717424940 to Date format
             const date = new Date(
               parseInt(status.conversation.expiration_timestamp) * 1000
@@ -102,7 +103,10 @@ const handleOutgoingMessage = async (value: any) => {
               parseInt(status.conversation.expiration_timestamp) * 1000
             )
             console.log('Date:', date)
-            console.log('Conversation ID:', existingConversation?.conversation_id)
+            console.log(
+              'Conversation ID:',
+              existingConversation?.conversation_id
+            )
             // Update the message window
             let { error: updateError } = await supabase
               .from('conversations')
@@ -204,7 +208,7 @@ const handleIncomingMessage = async (value: any) => {
       throw new Error('Project not found in database')
     }
 
-    // var contact_list: any[] = 
+    // var contact_list: any[] =
     // contacts.forEach(async (contact: any) => {
     //   const foundContact = await findOrCreateContact(contact, project.project_id)
     //   contact_list.push(foundContact)
@@ -218,7 +222,12 @@ const handleIncomingMessage = async (value: any) => {
       switch (type) {
         case 'text':
           await handleKeywordTrigger(value).then(() => {
-            insertTextMessage(message, display_phone_number, project.project_id, contacts)
+            insertTextMessage(
+              message,
+              display_phone_number,
+              project.project_id,
+              contacts
+            )
           })
           break
         case 'image':
