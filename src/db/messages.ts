@@ -46,6 +46,9 @@ export const insertMessage = async (params: InsertMessageParams): Promise<Messag
     .select('*')
     .single()
 
-  if (error) throw error
+  if (error) {
+    console.error('Error inserting message in database:', error)
+    console.error('Failed message:', messageResponse)
+  }
   return data
 }
