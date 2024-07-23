@@ -60,18 +60,12 @@ const handleOutgoingMessage = async (value: any) => {
       if (status.conversation) {
         if (status.conversation.expiration_timestamp) {
           let { data: existingConversation, error: findError } = await supabase
-            .from('conversation')
+            .from('conversations')
             .select('*')
             .or(
               `(phone_number_id.eq.${message.phone_number_id},contact_id.eq.${message.contact_id},project_id.eq.${message.project_id}),wa_conversation_id.eq.${status.conversation.id}`
             )
             .single()
-
-          if (
-            existingConversation?.conversation_id === status.conversation.id
-          ) {
-            return 'Conversation already exists in the database'
-          }
 
           if (findError) {
             // Change the data from 1717424940 to Date format
@@ -81,7 +75,7 @@ const handleOutgoingMessage = async (value: any) => {
 
             // insert the message window
             let { error: insertError } = await supabase
-              .from('conversation')
+              .from('conversations')
               .insert([
                 {
                   phone_number_id: message.phone_number_id,
@@ -111,7 +105,7 @@ const handleOutgoingMessage = async (value: any) => {
             console.log('Conversation ID:', existingConversation?.conversation_id)
             // Update the message window
             let { error: updateError } = await supabase
-              .from('conversation')
+              .from('conversations')
               .update({ close_at: date, last_message_id: message.id })
               .eq('wa_conversation_id', status.conversation.id)
               .eq('project_id', message.project_id)
