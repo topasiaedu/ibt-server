@@ -28,6 +28,7 @@ async function withRetry<T>(fn: () => Promise<T>, retries = MAX_RETRIES): Promis
     if (retries > 0) {
       console.warn(`Retrying due to error: ${error}. Retries left: ${retries}`);
       await new Promise(res => setTimeout(res, RETRY_DELAY));
+      console.log('Retrying...');
       return withRetry(fn, retries - 1);
     } else {
       throw error;
