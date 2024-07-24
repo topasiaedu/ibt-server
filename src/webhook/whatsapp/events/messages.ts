@@ -66,19 +66,19 @@ const handleOutgoingMessage = async (value: any) => {
             .eq('phone_number_id', message.phone_number_id)
             .eq('contact_id', message.contact_id)
             .eq('project_id', message.project_id)
-            
+
           if (findError) {
-            console.log('Error finding conversation in database:', findError);
-            console.log("Existing Conversations: ", existingConversations)
+            console.log('Error finding conversation in database:', findError)
+            console.log('Existing Conversations: ', existingConversations)
           }
-        
+
           const date = new Date(
             parseInt(status.conversation.expiration_timestamp) * 1000
-          ).toISOString();
+          ).toISOString()
 
           if (!existingConversations || existingConversations.length === 0) {
-            console.log('No existing conversation found, inserting a new one.');
-        
+            console.log('No existing conversation found, inserting a new one.')
+
             // Insert the message window
             let { error: insertError } = await supabase
               .from('conversations')
@@ -91,36 +91,46 @@ const handleOutgoingMessage = async (value: any) => {
                   last_message_id: message.message_id,
                   project_id: message.project_id,
                 },
-              ]);
-        
+              ])
+
             if (insertError) {
               logError(
                 insertError as unknown as Error,
                 'Error inserting conversation into database' +
                   '\n' +
                   'Inside handleOutgoingMessage function in messages.ts'
-              );
+              )
             }
           } else {
-            console.log('Existing conversation(s) found, updating the conversation.');
-        
+            console.log(
+              'Existing conversation(s) found, updating the conversation.'
+            )
+
             // If multiple conversations are found, keep only the latest one
             if (existingConversations.length > 1) {
-              console.log('Warning: Multiple existing conversations found, removing duplicates.');
-        
+              console.log(
+                'Warning: Multiple existing conversations found, removing duplicates.'
+              )
+
               // Sort conversations by created_at date to find the latest one
-              existingConversations.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
-        
+              existingConversations.sort(
+                (a, b) =>
+                  new Date(b.created_at).getTime() -
+                  new Date(a.created_at).getTime()
+              )
+
               // Keep the latest conversation
-              const latestConversation = existingConversations[0];
-              
+              const latestConversation = existingConversations[0]
+
               // Remove all other conversations
-              const idsToDelete = existingConversations.slice(1).map(convo => convo.id);
+              const idsToDelete = existingConversations
+                .slice(1)
+                .map((convo) => convo.id)
               await supabase
                 .from('conversations')
                 .delete()
-                .in('id', idsToDelete);
-              
+                .in('id', idsToDelete)
+
               // Update the latest conversation
               let { error: updateError } = await supabase
                 .from('conversations')
@@ -129,15 +139,15 @@ const handleOutgoingMessage = async (value: any) => {
                   last_message_id: message.message_id,
                   updated_at: new Date().toISOString(),
                 })
-                .eq('id', latestConversation.id);
-        
+                .eq('id', latestConversation.id)
+
               if (updateError) {
                 logError(
                   updateError as unknown as Error,
                   'Error updating conversation in database' +
                     '\n' +
                     'Inside handleOutgoingMessage function in messages.ts'
-                );
+                )
               }
             } else {
               // Update the single existing conversation
@@ -148,19 +158,19 @@ const handleOutgoingMessage = async (value: any) => {
                   last_message_id: message.message_id,
                   updated_at: new Date().toISOString(),
                 })
-                .eq('id', existingConversations[0].id);
-        
+                .eq('id', existingConversations[0].id)
+
               if (updateError) {
                 logError(
                   updateError as unknown as Error,
                   'Error updating conversation in database' +
                     '\n' +
                     'Inside handleOutgoingMessage function in messages.ts'
-                );
+                )
               }
             }
           }
-        }        
+        }
       }
 
       if (status.errors) {
@@ -204,6 +214,13 @@ const handleIncomingMessage = async (value: any) => {
     // Assuming the structure of the incoming payload matches your example
     const { metadata, contacts, messages } = value
     const { display_phone_number, phone_number_id } = metadata
+
+    // Debug: Check if there is expiration_timestamp in the conversation
+    console.log('====================================')
+    console.log('metadata', metadata)
+    console.log('contacts', contacts)
+    console.log('messages', messages)
+    console.log('====================================')
 
     // Based on phone number id, find the phone number in the database in which we use to find the project id
     const { data: phoneNumber, error: phoneError } = await supabase

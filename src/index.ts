@@ -91,45 +91,54 @@ const startServer = () => {
   server.listen(port, () => {
     console.log(`Server running on port ${port}`)
 
-    // Local tunnel
     if (environment === 'development') {
       try {
+        console.log('Starting local tunnel...');
+    
         const tunnel = localtunnel(
           port,
           { subdomain: uniqueSubdomain },
           (err, tunnel) => {
             if (err) {
-              console.error(err)
-              logError(`Local tunnel error: ${err}`)
-              process.exit(1)
+              console.error('Local tunnel error:', err);
+              process.exit(1);
+              return;
             }
-
-            console.log(`Local tunnel running on ${tunnel?.url}`)
-
-            // Send post request to live server (ibts.whatsgenie.com) to update the tunnel URL
-            axios
-              .post('https://ibts3.whatsgenie.com/update-tunnel-url', {
-                tunnelURl: tunnel?.url,
-              })
-              .then((response) => {
-                console.log('Tunnel URL updated on live server')
-              })
-              .catch((error) => {
-                console.error('Error updating tunnel URL on live server')
-                logError(
-                  `Error updating tunnel URL on live server: ${error.message}`
-                )
-              })
+    
+            if (tunnel && tunnel.url) {
+              console.log(`Local tunnel running on ${tunnel.url}`);
+    
+              // Send post request to live server to update the tunnel URL
+              axios
+                .post('https://ibts3.whatsgenie.com/update-tunnel-url', {
+                  tunnelUrl: tunnel.url,
+                })
+                .then((response) => {
+                  console.log('Tunnel URL updated on live server');
+                })
+                .catch((error) => {
+                  console.error('Error updating tunnel URL on live server:', error);
+                  logError(
+                    `Error updating tunnel URL on live server: ${error.message}`
+                  );
+                });
+            } else {
+              console.error('Tunnel creation failed.');
+              logError('Tunnel creation failed.');
+              process.exit(1);
+            }
           }
-        )
-
+        );
+    
         tunnel?.on('close', () => {
-          console.log('Local tunnel closed')
-          logError('Local tunnel closed')
-          process.exit(1)
-        })
+          console.log('Local tunnel closed');
+          logError('Local tunnel closed');
+          process.exit(1);
+        });
+    
       } catch (e) {
-        console.error(e)
+        console.error('Unexpected error:', e);
+        process.exit(1);
       }
     }
 
