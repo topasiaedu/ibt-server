@@ -121,7 +121,7 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
   } catch (error) {
     console.error('Error sending message:', error);
     logError(error as Error, 'Error sending message');
-    await updateCampaignLogStatus(campaignLog.id, 'FAILED');
+    await updateCampaignLogStatus(campaignLog.id, 'FAILED', error as string);
 
     const failedMessage = await insertMessage({
       campaignLog,
