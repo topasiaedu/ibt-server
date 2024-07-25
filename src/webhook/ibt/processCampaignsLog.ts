@@ -20,7 +20,7 @@ const campaignLogQueue: CampaignLog[] = []
 
 const MAX_RETRIES = 5;
 const RETRY_DELAY = 10000; // 10 seconds
-const CONCURRENCY_LIMIT = 50;
+const CONCURRENCY_LIMIT = 10000;
 let activeProcesses = 0;
 
 async function withRetry<T>(fn: () => Promise<T>, retries = MAX_RETRIES): Promise<T> {
@@ -72,19 +72,19 @@ export interface TemplateMessagePayload {
 const processCampaignLog = async (campaignLog: CampaignLog) => {
   if (campaignLog.status === 'TESTING') {
     console.log(`Processing test campaign log with id: ${campaignLog.id}`);
-    await updateCampaignLogStatus(campaignLog.id, 'TESTING-PROCESSING');
-    await updateCampaignLogStatus(campaignLog.id, 'TESTING-STAGE-1');
-    await updateCampaignLogStatus(campaignLog.id, 'TESTING-STAGE-2');
-    await updateCampaignLogStatus(campaignLog.id, 'TESTING-STAGE-3');
-    await updateCampaignLogStatus(campaignLog.id, 'TESTING-STAGE-4');
-    await updateCampaignLogStatus(campaignLog.id, 'TESTING-STAGE-5');
+    await withRetry(() => updateCampaignLogStatus(campaignLog.id, 'TESTING-STARTED'));
+    await withRetry(() => updateCampaignLogStatus(campaignLog.id, 'TESTING-STAGE-1'));
+    await withRetry(() => updateCampaignLogStatus(campaignLog.id, 'TESTING-STAGE-2'));
+    await withRetry(() => updateCampaignLogStatus(campaignLog.id, 'TESTING-STAGE-3'));
+    await withRetry(() => updateCampaignLogStatus(campaignLog.id, 'TESTING-STAGE-4'));
+    await withRetry(() => updateCampaignLogStatus(campaignLog.id, 'TESTING-STAGE-5'));
     await new Promise((resolve) => setTimeout(resolve, 1000)); // 1-second timeout to mimic processing
-    await updateCampaignLogStatus(campaignLog.id, 'TESTING-STAGE-6');
-    await updateCampaignLogStatus(campaignLog.id, 'TESTING-STAGE-7');
-    await updateCampaignLogStatus(campaignLog.id, 'TESTING-STAGE-8');
-    await updateCampaignLogStatus(campaignLog.id, 'TESTING-STAGE-9');
+    await withRetry(() => updateCampaignLogStatus(campaignLog.id, 'TESTING-STAGE-6'));
+    await withRetry(() => updateCampaignLogStatus(campaignLog.id, 'TESTING-STAGE-7'));
+    await withRetry(() => updateCampaignLogStatus(campaignLog.id, 'TESTING-STAGE-8'));
+    await withRetry(() => updateCampaignLogStatus(campaignLog.id, 'TESTING-STAGE-9'));
     console.log(`Completed test campaign log with id: ${campaignLog.id}`);
-    await updateCampaignLogStatus(campaignLog.id, 'TESTING-COMPLETED');
+    await withRetry(() => updateCampaignLogStatus(campaignLog.id, 'TESTING-COMPLETED'));
     return;
   }
 
