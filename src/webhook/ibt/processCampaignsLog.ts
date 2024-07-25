@@ -20,7 +20,7 @@ const campaignLogQueue: CampaignLog[] = []
 
 const MAX_RETRIES = 5;
 const RETRY_DELAY = 10000; // 10 seconds
-const CONCURRENCY_LIMIT = 1000;
+const CONCURRENCY_LIMIT = 50;
 let activeProcesses = 0;
 
 async function withRetry<T>(fn: () => Promise<T>, retries = MAX_RETRIES): Promise<T> {
