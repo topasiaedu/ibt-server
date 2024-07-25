@@ -20,7 +20,7 @@ const campaignLogQueue: CampaignLog[] = []
 
 const MAX_RETRIES = 5;
 const RETRY_DELAY = 10000; // 10 seconds
-const CONCURRENCY_LIMIT = 5;
+const CONCURRENCY_LIMIT = 1000;
 let activeProcesses = 0;
 
 async function withRetry<T>(fn: () => Promise<T>, retries = MAX_RETRIES): Promise<T> {
@@ -83,7 +83,7 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
     await updateCampaignLogStatus(campaignLog.id, 'TESTING-STAGE-7');
     await updateCampaignLogStatus(campaignLog.id, 'TESTING-STAGE-8');
     await updateCampaignLogStatus(campaignLog.id, 'TESTING-STAGE-9');
-    console.log(`Processed test campaign log with id: ${campaignLog.id}`);
+    console.log(`Completed test campaign log with id: ${campaignLog.id}`);
     await updateCampaignLogStatus(campaignLog.id, 'TESTING-COMPLETED');
     return;
   }
