@@ -1,20 +1,55 @@
-// cronJobs/processCampaigns.ts
 import supabase from '../../db/supabaseClient'
 import { sendMessageWithTemplate } from '../../api/whatsapp'
 import { logError } from '../../utils/errorLogger'
 import { CronJob } from 'cron'
 import { Database } from '../../database.types'
+import { updateCampaignStatus } from '../../db/campaigns'
+import { Contact } from '../../db/contacts'
+import {
+  ContactListMembers,
+  fetchContactListMembers,
+} from '../../db/contactListMembers'
+import { CampaignListInsert, fetchCampaignList } from '../../db/campaignLists'
+import { insertCampaignLogs } from '../../db/campaignLogs'
 
 const campaignQueue: Campaign[] = []
 
+const MAX_RETRIES = 5
+const RETRY_DELAY = 60000 // 60 seconds
+const CONCURRENCY_LIMIT = 5
+let activeProcesses = 0
+
+async function withRetry<T>(
+  fn: () => Promise<T>,
+  retries = MAX_RETRIES
+): Promise<T> {
+  try {
+    return await fn()
+  } catch (error) {
+    if (retries > 0) {
+      console.warn(`Retrying due to error: ${error}. Retries left: ${retries}`)
+      await new Promise((res) =>
+        setTimeout(res, RETRY_DELAY * (MAX_RETRIES - retries + 1))
+      ) // Exponential backoff
+      console.log(`Retrying attempt ${MAX_RETRIES - retries + 1}`)
+      return withRetry(fn, retries - 1)
+    } else {
+      logError(error, 'Max retries reached')
+      throw error
+    }
+  }
+}
+
 function processQueue() {
-  if (campaignQueue.length === 0) {
+  if (campaignQueue.length === 0 || activeProcesses >= CONCURRENCY_LIMIT) {
     return
   }
+  activeProcesses++
   const campaign = campaignQueue.shift() as Campaign
   processCampaigns(campaign)
     .catch((error) => logError(error as Error, 'Error processing campaign'))
     .finally(() => {
+      activeProcesses--
       processQueue()
     })
 }
@@ -36,34 +71,15 @@ export interface TemplateMessagePayload {
 }
 
 const processCampaigns = async (campaign: Campaign) => {
-
   try {
-    const { error: updateStatusError } = await supabase
-      .from('campaigns')
-      .update({ status: 'PROCESSING' })
-      .eq('campaign_id', campaign.campaign_id)
-
-    if (updateStatusError) {
-      logError(
-        updateStatusError as unknown as Error,
-        'Error updating campaign status'
-      )
-      return
-    }
+    await withRetry(() =>
+      updateCampaignStatus(campaign.campaign_id, 'PROCESSING')
+    )
 
     // Fetch Campaign List
-    const { data: campaignLists, error: campaignListError } = await supabase
-      .from('campaign_lists')
-      .select('*')
-      .eq('campaign_id', campaign.campaign_id)
-
-    if (campaignListError) {
-      logError(
-        campaignListError as unknown as Error,
-        'Error fetching campaign list'
-      )
-      return
-    }
+    const campaignLists: CampaignList[] = await withRetry(() =>
+      fetchCampaignList(campaign.campaign_id)
+    )
 
     if (!campaignLists) {
       console.error(
@@ -80,35 +96,34 @@ const processCampaigns = async (campaign: Campaign) => {
     const includePromises = campaignLists.map(async (campaignList) => {
       switch (campaignList.type) {
         case 'include-list':
-          const { data: contactListMembers, error: contactListMembersError } =
-            await supabase
-              .from('contact_list_members')
-              .select('contact_id')
-              .eq('contact_list_id', campaignList.contact_list_id)
-
-          if (contactListMembersError) {
-            logError(
-              contactListMembersError as unknown as Error,
-              'Error fetching contact list members'
-            )
+          if (!campaignList.contact_list_id) {
+            console.error('No contact list id found for list:', campaignList.id)
             return []
           }
+
+          const contactListMembers: ContactListMembers[] = await withRetry(() =>
+            fetchContactListMembers(campaignList.contact_list_id || 0)
+          )
 
           if (!contactListMembers) {
             console.error(
               'No contact list members found for list:',
-              campaignList.list_id
+              campaignList.id
             )
             return []
           }
 
-          return contactListMembers.map((contact) => ({
+          return contactListMembers.map((contactListMember) => ({
             campaign_id: campaign.campaign_id,
-            contact_id: contact.contact_id,
+            contact_id: contactListMember.contact_id,
             status: 'PENDING',
           }))
 
         case 'include-contact':
+          if (!campaignList.contact_id) {
+            console.error('No contact id found for list:', campaignList.id)
+            return []
+          }
           return [
             {
               campaign_id: campaign.campaign_id,
@@ -132,35 +147,31 @@ const processCampaigns = async (campaign: Campaign) => {
     const excludePromises = campaignLists.map(async (campaignList) => {
       switch (campaignList.type) {
         case 'exclude-list':
-          const { data: excludedContactListMembers, error: excludedError } =
-            await supabase
-              .from('contact_list_members')
-              .select('contact_id')
-              .eq('list_id', campaignList.contact_list_id)
-
-          if (excludedError) {
-            logError(
-              excludedError as unknown as Error,
-              'Error fetching excluded contact list members'
-            )
+          if (!campaignList.contact_list_id) {
+            console.error('No contact list id found for list:', campaignList.id)
             return []
           }
+
+          const excludedContactListMembers: ContactListMembers[] =
+            await withRetry(() =>
+              fetchContactListMembers(campaignList.contact_list_id || 0)
+            )
 
           if (!excludedContactListMembers) {
             console.error(
               'No excluded contact list members found for list:',
-              campaignList.list_id
+              campaignList.id
             )
             return []
           }
 
-          const excludedContactIds = excludedContactListMembers.map(
-            (contact) => contact.contact_id
-          )
-
-          return excludedContactIds
+          return excludedContactListMembers.map((contact) => contact.contact_id)
 
         case 'exclude-contact':
+          if (!campaignList.contact_id) {
+            console.error('No contact id found for list:', campaignList.id)
+            return []
+          }
           return [campaignList.contact_id]
 
         default:
@@ -179,34 +190,13 @@ const processCampaigns = async (campaign: Campaign) => {
 
     // Insert campaign logs into the database
     if (campaignLogs.length > 0) {
-      const { error: insertError } = await supabase
-        .from('campaign_logs')
-        .insert(campaignLogs)
-
-      if (insertError) {
-        logError(
-          insertError as unknown as Error,
-          'Error inserting campaign logs'
-        )
-        return
-      }
+      await withRetry(() => insertCampaignLogs(campaignLogs))
     }
 
     // Update campaign status
-    const { error: updateError } = await supabase
-      .from('campaigns')
-      .update({
-        status: 'COMPLETED',
-      })
-      .eq('campaign_id', campaign.campaign_id)
-
-    if (updateError) {
-      logError(
-        updateError as unknown as Error,
-        'Error updating campaign status'
-      )
-      return
-    }
+    await withRetry(() =>
+      updateCampaignStatus(campaign.campaign_id, 'COMPLETED')
+    )
   } catch (error) {
     logError(error as Error, 'Error processing campaign')
     console.error('Error processing campaign:', campaign.campaign_id)

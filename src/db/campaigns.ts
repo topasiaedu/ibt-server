@@ -15,3 +15,12 @@ export const fetchCampaign = async (campaignId: number): Promise<Campaign> => {
   if (error) throw error
   return data as Campaign
 }
+
+export const updateCampaignStatus = async (campaignId: number, status: string) => {
+  const { error } = await supabase
+    .from('campaigns')
+    .update({ status })
+    .eq('campaign_id', campaignId)
+  
+  if (error) throw error
+}
