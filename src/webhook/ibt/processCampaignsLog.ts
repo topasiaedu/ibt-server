@@ -19,7 +19,9 @@ import { insertMessage } from '../../db/messages'
 const campaignLogQueue: CampaignLog[] = []
 
 const MAX_RETRIES = 5;
-const RETRY_DELAY = 60000; // 60 seconds
+const RETRY_DELAY = 10000; // 10 seconds
+const CONCURRENCY_LIMIT = 5;
+let activeProcesses = 0;
 
 async function withRetry<T>(fn: () => Promise<T>, retries = MAX_RETRIES): Promise<T> {
   try {
@@ -27,23 +29,26 @@ async function withRetry<T>(fn: () => Promise<T>, retries = MAX_RETRIES): Promis
   } catch (error) {
     if (retries > 0) {
       console.warn(`Retrying due to error: ${error}. Retries left: ${retries}`);
-      await new Promise(res => setTimeout(res, RETRY_DELAY));
-      console.log('Retrying...');
+      await new Promise(res => setTimeout(res, RETRY_DELAY * (MAX_RETRIES - retries + 1))); // Exponential backoff
+      console.log(`Retrying attempt ${MAX_RETRIES - retries + 1}`);
       return withRetry(fn, retries - 1);
     } else {
+      logError(error, 'Max retries reached');
       throw error;
     }
   }
 }
 
 function processQueue() {
-  if (campaignLogQueue.length === 0) {
+  if (campaignLogQueue.length === 0 || activeProcesses >= CONCURRENCY_LIMIT) {
     return;
   }
+  activeProcesses++;
   const campaignLog = campaignLogQueue.shift() as CampaignLog;
   processCampaignLog(campaignLog)
     .catch((error) => logError(error as Error, 'Error processing campaign log'))
     .finally(() => {
+      activeProcesses--;
       processQueue();
     });
 }
@@ -67,37 +72,47 @@ export interface TemplateMessagePayload {
 const processCampaignLog = async (campaignLog: CampaignLog) => {
   if (campaignLog.status === 'TESTING') {
     console.log(`Processing test campaign log with id: ${campaignLog.id}`);
-    await new Promise((resolve) => setTimeout(resolve, 10000)); // 10-second timeout to mimic processing
+    await updateCampaignLogStatus(campaignLog.id, 'TESTING-PROCESSING');
+    await updateCampaignLogStatus(campaignLog.id, 'TESTING-STAGE-1');
+    await updateCampaignLogStatus(campaignLog.id, 'TESTING-STAGE-2');
+    await updateCampaignLogStatus(campaignLog.id, 'TESTING-STAGE-3');
+    await updateCampaignLogStatus(campaignLog.id, 'TESTING-STAGE-4');
+    await updateCampaignLogStatus(campaignLog.id, 'TESTING-STAGE-5');
+    await new Promise((resolve) => setTimeout(resolve, 1000)); // 1-second timeout to mimic processing
+    await updateCampaignLogStatus(campaignLog.id, 'TESTING-STAGE-6');
+    await updateCampaignLogStatus(campaignLog.id, 'TESTING-STAGE-7');
+    await updateCampaignLogStatus(campaignLog.id, 'TESTING-STAGE-8');
+    await updateCampaignLogStatus(campaignLog.id, 'TESTING-STAGE-9');
     console.log(`Processed test campaign log with id: ${campaignLog.id}`);
-    updateCampaignLogStatus(campaignLog.id, 'TESTING-COMPLETED');
+    await updateCampaignLogStatus(campaignLog.id, 'TESTING-COMPLETED');
     return;
   }
 
-  const contact = await withRetry(() => fetchContact(campaignLog.contact_id));
-  console.log('Sending to contact', contact.name, 'with wa_id', contact.wa_id);
-
-  const campaign = await withRetry(() => fetchCampaign(campaignLog.campaign_id));
-  updateCampaignLogStatus(campaignLog.id, 'PROCESSING');
-
-  contact.wa_id = formatPhoneNumber(contact.wa_id);
-
-  const { processedPayload, mediaUrl } = processTemplatePayload(campaign, contact);
-
-  const { selectedPhoneNumber, accessToken, phone_number_id } =
-    await withRetry(() => getCampaignPhoneNumber(campaign.campaign_id));
-
-  const template = await withRetry(() => fetchTemplate(campaign.template_id));
-  const textContent = generateMessageContent(template, processedPayload);
-
-  const conversation = await withRetry(() => fetchConversation(
-    contact.contact_id,
-    phone_number_id,
-    campaign.project_id || 5
-  ));
-
-  console.log('Sending message to conversation', conversation.id);
-
   try {
+    const contact = await withRetry(() => fetchContact(campaignLog.contact_id));
+    console.log('Sending to contact', contact.name, 'with wa_id', contact.wa_id);
+
+    const campaign = await withRetry(() => fetchCampaign(campaignLog.campaign_id));
+    await updateCampaignLogStatus(campaignLog.id, 'PROCESSING');
+
+    contact.wa_id = formatPhoneNumber(contact.wa_id);
+
+    const { processedPayload, mediaUrl } = processTemplatePayload(campaign, contact);
+
+    const { selectedPhoneNumber, accessToken, phone_number_id } =
+      await withRetry(() => getCampaignPhoneNumber(campaign.campaign_id));
+
+    const template = await withRetry(() => fetchTemplate(campaign.template_id));
+    const textContent = generateMessageContent(template, processedPayload);
+
+    const conversation = await withRetry(() => fetchConversation(
+      contact.contact_id,
+      phone_number_id,
+      campaign.project_id || 5
+    ));
+
+    console.log('Sending message to conversation', conversation.id);
+
     const { data: messageResponse } = await withRetry(() => sendMessageWithTemplate(
       processedPayload,
       selectedPhoneNumber,
@@ -123,18 +138,6 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
     console.error('Error sending message:', error);
     logError(error as Error, 'Error sending message');
     await updateCampaignLogStatus(campaignLog.id, 'FAILED', error as string);
-
-    const failedMessage = await insertMessage({
-      campaignLog,
-      phoneNumberId: phone_number_id,
-      textContent: textContent,
-      conversationId: conversation.id,
-      campaign,
-      mediaUrl,
-    });
-
-    await updateConversation(conversation.id, failedMessage.message_id);
-    return;
   }
 };
 
@@ -177,7 +180,6 @@ export const reschedulePendingCampaignLogs = async () => {
   const { data: campaignLogs, error } = await supabase
     .from('campaign_logs')
     .select('*')
-    // Check for both PENDING and PROCESSING statuses
     .in('status', ['PENDING', 'TESTING'])
 
   if (error) {
