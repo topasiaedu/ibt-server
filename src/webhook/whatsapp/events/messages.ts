@@ -90,6 +90,7 @@ const handleOutgoingMessage = async (value: any) => {
                   updated_at: new Date().toISOString(),
                   last_message_id: message.message_id,
                   project_id: message.project_id,
+                  wa_conversation_id: status.conversation.id,
                 },
               ])
 
@@ -138,6 +139,7 @@ const handleOutgoingMessage = async (value: any) => {
                   close_at: date,
                   last_message_id: message.message_id,
                   updated_at: new Date().toISOString(),
+                  wa_conversation_id: status.conversation.id,
                 })
                 .eq('id', latestConversation.id)
 

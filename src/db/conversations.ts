@@ -7,10 +7,12 @@ export const fetchConversation = async (
 ) => {
   const { data, error } = await supabase
     .from('conversations')
-    .select('id')
+    .select('*')
     .eq('contact_id', contactId)
     .eq('phone_number_id', phoneNumberId)
-    .single()
+    .eq('project_id', projectId)
+    .order('created_at', { ascending: false })
+
   // If not found Create a new conversation
   if (error) {
     const { data, error } = await supabase
@@ -25,10 +27,30 @@ export const fetchConversation = async (
       .select('id')
       .single()
     if (error) throw error
+
     return data
   }
 
-  return data
+  // If multiple is returned, return the latest one
+  // Remove the rest, and correct all the messages to point to the latest conversation
+  if (data.length > 1) {
+    const conversationId = data[0].id
+    const conversationIds = data.map((conversation: any) => conversation.id)
+
+    const { error } = await supabase
+      .from('messages')
+      .update({ conversation_id: conversationId })
+      .in('conversation_id', conversationIds)
+    if (error) throw error
+
+    const { error: deleteError } = await supabase
+      .from('conversations')
+      .delete()
+      .in('id', conversationIds)
+    if (deleteError) throw deleteError
+  }
+
+  return data[0]
 }
 
 export const insertConversation = async (

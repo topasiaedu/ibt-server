@@ -34,14 +34,40 @@ export const findOrCreateContact = async (
     .select('*')
     .eq('wa_id', waId)
     .eq('project_id', projectId)
-    .single()
-  if (error) throw error
-  if (data) return data
-  const { data: newData, error: newError } = await supabase
-    .from('contacts')
-    .insert([{ wa_id: waId, name, project_id: projectId }])
-    .select('*')
-    .single()
-  if (newError) throw newError
-  return newData
+
+  // If None found, create a new contact
+  // If multiple found, return the first one and delete the rest
+  if (error) {
+    const { data, error } = await supabase
+      .from('contacts')
+      .insert([
+        {
+          wa_id: waId,
+          name,
+          project_id: projectId,
+        },
+      ])
+      .select('*')
+    if (error) throw error
+    return data[0]
+  }
+
+  if (data.length > 1) {
+    const contactId = data[0].contact_id
+    const contactIds = data.map((contact: any) => contact.contact_id)
+
+    const { error } = await supabase
+      .from('conversations')
+      .update({ contact_id: contactId })
+      .in('contact_id', contactIds)
+    if (error) throw error
+
+    const { error: deleteError } = await supabase
+      .from('contacts')
+      .delete()
+      .in('contact_id', contactIds)
+    if (deleteError) throw deleteError
+  }
+
+  return data[0]
 }
