@@ -1,26 +1,27 @@
-import supabase from '../../db/supabaseClient'
-import { sendMessageWithTemplate } from '../../api/whatsapp'
-import { logError } from '../../utils/errorLogger'
-import { CronJob } from 'cron'
-import { Database } from '../../database.types'
-import { fetchCampaign } from '../../db/campaigns'
-import { updateCampaignLogStatus } from '../../db/campaignLogs'
-import { fetchContact, updateContactLastContactedBy } from '../../db/contacts'
-import { formatPhoneNumber } from './helper/formatPhoneNumber'
+import supabase from '../../db/supabaseClient';
+import { sendMessageWithTemplate } from '../../api/whatsapp';
+import { logError } from '../../utils/errorLogger';
+import { CronJob } from 'cron';
+import { Database } from '../../database.types';
+import { fetchCampaign } from '../../db/campaigns';
+import { updateCampaignLogStatus } from '../../db/campaignLogs';
+import { fetchContact, updateContactLastContactedBy } from '../../db/contacts';
+import { formatPhoneNumber } from './helper/formatPhoneNumber';
 import {
   generateMessageContent,
   processTemplatePayload,
-} from '../../utils/templateUtils'
-import { getCampaignPhoneNumber } from './helper/getCampaignPhoneNumber'
-import { fetchTemplate } from '../../db/templates'
-import { fetchConversation, updateConversation } from '../../db/conversations'
-import { insertMessage } from '../../db/messages'
+} from '../../utils/templateUtils';
+import { getCampaignPhoneNumber } from './helper/getCampaignPhoneNumber';
+import { fetchTemplate } from '../../db/templates';
+import { fetchConversation, updateConversation } from '../../db/conversations';
+import { insertMessage } from '../../db/messages';
 
-const campaignLogQueue: CampaignLog[] = []
+const campaignLogQueue: CampaignLog[] = [];
 
 const MAX_RETRIES = 5;
 const RETRY_DELAY = 10000; // 10 seconds
 const CONCURRENCY_LIMIT = 10;
+const BATCH_SIZE = 1000; // Adjust as needed
 let activeProcesses = 0;
 
 async function withRetry<T>(fn: () => Promise<T>, retries = MAX_RETRIES): Promise<T> {
@@ -177,24 +178,37 @@ function scheduleCampaignLog(campaignLog: CampaignLog) {
 }
 
 export const reschedulePendingCampaignLogs = async () => {
-  const { data: campaignLogs, error } = await supabase
-    .from('campaign_logs')
-    .select('*')
-    .in('status', ['PENDING', 'TESTING'])
+  let campaignLogs: CampaignLog[] = [];
+  let offset = 0;
 
-  if (error) {
-    logError(error as unknown as Error, 'Error fetching pending campaign logs')
-    return
+  while (true) {
+    const { data, error } = await supabase
+      .from('campaign_logs')
+      .select('*')
+      .in('status', ['PENDING', 'TESTING'])
+      .range(offset, offset + BATCH_SIZE - 1);
+
+    if (error) {
+      logError(error as unknown as Error, 'Error fetching pending campaign logs');
+      return;
+    }
+
+    if (!data || data.length === 0) {
+      break;
+    }
+
+    campaignLogs = campaignLogs.concat(data);
+    offset += BATCH_SIZE;
   }
 
-  if (!campaignLogs) {
-    console.error('No pending campaign logs found')
-    return
+  if (campaignLogs.length === 0) {
+    console.error('No pending campaign logs found');
+    return;
   }
 
   campaignLogs.forEach((campaignLog) => {
-    scheduleCampaignLog(campaignLog)
-  })
+    scheduleCampaignLog(campaignLog);
+  });
 
-  processQueue()
+  processQueue();
 }
