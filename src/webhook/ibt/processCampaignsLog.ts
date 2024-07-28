@@ -24,15 +24,13 @@ const INITIAL_CONCURRENCY_LIMIT = 10;
 let CONCURRENCY_LIMIT = INITIAL_CONCURRENCY_LIMIT;
 const BATCH_SIZE = 1000; // Adjust as needed
 let activeProcesses = 0;
+let errorCount = 0;
+const ERROR_THRESHOLD = 2; // Maximum number of errors before adjusting the limit
 
 async function withRetry<T>(fn: () => Promise<T>, retries = MAX_RETRIES): Promise<T> {
   try {
     return await fn();
   } catch (error) {
-    console.log('=====================================================');
-    console.log('LIMIT REACHED', CONCURRENCY_LIMIT);
-    CONCURRENCY_LIMIT--;
-    console.log('=====================================================');
     if (retries > 0) {
       console.warn(`Retrying due to error: ${error}. Retries left: ${retries}`);
       await new Promise(res => setTimeout(res, RETRY_DELAY * (MAX_RETRIES - retries + 1))); // Exponential backoff
@@ -46,17 +44,32 @@ async function withRetry<T>(fn: () => Promise<T>, retries = MAX_RETRIES): Promis
 }
 
 function processQueue() {
-  if (campaignLogQueue.length === 0 || activeProcesses >= CONCURRENCY_LIMIT) {
-    return;
+  while (activeProcesses < CONCURRENCY_LIMIT && campaignLogQueue.length > 0) {
+    activeProcesses++;
+    const campaignLog = campaignLogQueue.shift() as CampaignLog;
+    processCampaignLog(campaignLog)
+      .then(() => {
+        // Optionally, adjust concurrency limit based on success
+        if (activeProcesses < CONCURRENCY_LIMIT) {
+          CONCURRENCY_LIMIT++;
+          console.log(`Increased CONCURRENCY_LIMIT to ${CONCURRENCY_LIMIT}`);
+        }
+      })
+      .catch((error) => {
+        errorCount++;
+        console.error(`Error processing campaign log: ${error}`);
+        logError(error as Error, 'Error processing campaign log');
+        if (errorCount >= ERROR_THRESHOLD) {
+          console.warn(`Error threshold reached. Current CONCURRENCY_LIMIT: ${CONCURRENCY_LIMIT}`);
+          CONCURRENCY_LIMIT = Math.max(INITIAL_CONCURRENCY_LIMIT, CONCURRENCY_LIMIT - 1);
+          console.warn(`Decreased CONCURRENCY_LIMIT to ${CONCURRENCY_LIMIT}`);
+        }
+      })
+      .finally(() => {
+        activeProcesses--;
+        processQueue(); // Call processQueue again to check for more work
+      });
   }
-  activeProcesses++;
-  const campaignLog = campaignLogQueue.shift() as CampaignLog;
-  processCampaignLog(campaignLog)
-    .catch((error) => logError(error as Error, 'Error processing campaign log'))
-    .finally(() => {
-      activeProcesses--;
-      processQueue();
-    });
 }
 
 export type Campaign = Database['public']['Tables']['campaigns']['Row'] & {
@@ -89,13 +102,8 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
     await withRetry(() => updateCampaignLogStatus(campaignLog.id, 'TESTING-STAGE-7'));
     await withRetry(() => updateCampaignLogStatus(campaignLog.id, 'TESTING-STAGE-8'));
     await withRetry(() => updateCampaignLogStatus(campaignLog.id, 'TESTING-STAGE-9'));
-    // console.log(`Completed test campaign log with id: ${campaignLog.id}`);
+    console.log(`Completed test campaign log with id: ${campaignLog.id}`);
     await withRetry(() => updateCampaignLogStatus(campaignLog.id, 'TESTING-COMPLETED'));
-    console.log('=====================================================');
-    console.log('Test campaign log completed successfully, adding concurrency limit');
-    CONCURRENCY_LIMIT++;
-    console.log('Concurrency limit increased to', CONCURRENCY_LIMIT);
-    console.log('=====================================================');
     return;
   }
 
