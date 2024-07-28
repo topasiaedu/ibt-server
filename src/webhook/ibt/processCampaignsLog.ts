@@ -26,6 +26,8 @@ const BATCH_SIZE = 1000; // Adjust as needed
 let activeProcesses = 0;
 let errorCount = 0;
 const ERROR_THRESHOLD = 2; // Maximum number of errors before adjusting the limit
+let successCount = 0;
+const SUCCESS_THRESHOLD = 10; // Maximum number of successes before adjusting the limit
 
 async function withRetry<T>(fn: () => Promise<T>, retries = MAX_RETRIES): Promise<T> {
   try {
@@ -49,8 +51,10 @@ function processQueue() {
     const campaignLog = campaignLogQueue.shift() as CampaignLog;
     processCampaignLog(campaignLog)
       .then(() => {
-        // Optionally, adjust concurrency limit based on success
-        if (activeProcesses < CONCURRENCY_LIMIT) {
+        // Increment success counter and adjust concurrency limit
+        successCount++;
+        if (successCount >= SUCCESS_THRESHOLD) {
+          successCount = 0; // Reset counter
           CONCURRENCY_LIMIT++;
           console.log(`Increased CONCURRENCY_LIMIT to ${CONCURRENCY_LIMIT}`);
         }
@@ -63,15 +67,15 @@ function processQueue() {
           console.warn(`Error threshold reached. Current CONCURRENCY_LIMIT: ${CONCURRENCY_LIMIT}`);
           CONCURRENCY_LIMIT = Math.max(INITIAL_CONCURRENCY_LIMIT, CONCURRENCY_LIMIT - 1);
           console.warn(`Decreased CONCURRENCY_LIMIT to ${CONCURRENCY_LIMIT}`);
+          errorCount = 0; // Reset error counter after adjustment
         }
       })
       .finally(() => {
         activeProcesses--;
-        processQueue(); // Call processQueue again to check for more work
+        processQueue(); // Continue processing the queue
       });
   }
 }
-
 export type Campaign = Database['public']['Tables']['campaigns']['Row'] & {
   read_count: number;
 };
