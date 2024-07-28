@@ -14,7 +14,7 @@ export const fetchConversation = async (
     .order('created_at', { ascending: false })
 
   // If not found Create a new conversation
-  if (error) {
+  if (error || !data || data.length === 0) {
     const { data, error } = await supabase
       .from('conversations')
       .insert([
@@ -24,7 +24,7 @@ export const fetchConversation = async (
           project_id: projectId,
         },
       ])
-      .select('id')
+      .select('*')
       .single()
     if (error) throw error
 
