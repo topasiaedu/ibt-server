@@ -159,12 +159,12 @@ export function setupRealtimeCampaignLogProcessing() {
       'postgres_changes',
       { event: '*', schema: 'public', table: 'campaign_logs' },
       (payload) => {
-        console.log('Campaign log Event Detected');
         const campaignLog = payload.new as CampaignLog;
         if (
           campaignLog.status === 'PENDING' ||
           campaignLog.status === 'TESTING'
         ) {
+          console.log('Campaign log Event Detected');
           scheduleCampaignLog(campaignLog);
         } else if (campaignLog.status === 'PROCESSING') {
           const index = campaignLogQueue.findIndex(
