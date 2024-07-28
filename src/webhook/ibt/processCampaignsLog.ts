@@ -100,7 +100,7 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
     // Check the message table if can find message with the same campaign_id and contact_id and status is 'failed'
     // If found, continue sending the message
     // Else, skip sending the message
-    if (campaignLog.campaign_id === 232) {
+    if (campaignLog.campaign_id === 232 || campaignLog.campaign_id === 233) {
       const { data: existingMessages, error: fetchError } = await supabase
         .from('messages')
         .select('id')
