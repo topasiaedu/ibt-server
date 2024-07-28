@@ -20,14 +20,9 @@ const campaignLogQueue: CampaignLog[] = [];
 
 const MAX_RETRIES = 5;
 const RETRY_DELAY = 10000; // 10 seconds
-const INITIAL_CONCURRENCY_LIMIT = 10;
-let CONCURRENCY_LIMIT = INITIAL_CONCURRENCY_LIMIT;
+let CONCURRENCY_LIMIT = 10;
 const BATCH_SIZE = 1000; // Adjust as needed
 let activeProcesses = 0;
-let errorCount = 0;
-const ERROR_THRESHOLD = 2; // Maximum number of errors before adjusting the limit
-let successCount = 0;
-const SUCCESS_THRESHOLD = 10; // Maximum number of successes before adjusting the limit
 
 async function withRetry<T>(fn: () => Promise<T>, retries = MAX_RETRIES): Promise<T> {
   try {
@@ -46,36 +41,19 @@ async function withRetry<T>(fn: () => Promise<T>, retries = MAX_RETRIES): Promis
 }
 
 function processQueue() {
-  while (activeProcesses < CONCURRENCY_LIMIT && campaignLogQueue.length > 0) {
-    activeProcesses++;
-    const campaignLog = campaignLogQueue.shift() as CampaignLog;
-    processCampaignLog(campaignLog)
-      .then(() => {
-        // Increment success counter and adjust concurrency limit
-        successCount++;
-        if (successCount >= SUCCESS_THRESHOLD) {
-          successCount = 0; // Reset counter
-          CONCURRENCY_LIMIT++;
-          console.log(`Increased CONCURRENCY_LIMIT to ${CONCURRENCY_LIMIT}`);
-        }
-      })
-      .catch((error) => {
-        errorCount++;
-        console.error(`Error processing campaign log: ${error}`);
-        logError(error as Error, 'Error processing campaign log');
-        if (errorCount >= ERROR_THRESHOLD) {
-          console.warn(`Error threshold reached. Current CONCURRENCY_LIMIT: ${CONCURRENCY_LIMIT}`);
-          CONCURRENCY_LIMIT = Math.max(INITIAL_CONCURRENCY_LIMIT, CONCURRENCY_LIMIT - 1);
-          console.warn(`Decreased CONCURRENCY_LIMIT to ${CONCURRENCY_LIMIT}`);
-          errorCount = 0; // Reset error counter after adjustment
-        }
-      })
-      .finally(() => {
-        activeProcesses--;
-        processQueue(); // Continue processing the queue
-      });
+  if (campaignLogQueue.length === 0 || activeProcesses >= CONCURRENCY_LIMIT) {
+    return;
   }
+  activeProcesses++;
+  const campaignLog = campaignLogQueue.shift() as CampaignLog;
+  processCampaignLog(campaignLog)
+    .catch((error) => logError(error as Error, 'Error processing campaign log'))
+    .finally(() => {
+      activeProcesses--;
+      processQueue();
+    });
 }
+
 export type Campaign = Database['public']['Tables']['campaigns']['Row'] & {
   read_count: number;
 };
@@ -171,12 +149,12 @@ export function setupRealtimeCampaignLogProcessing() {
       'postgres_changes',
       { event: '*', schema: 'public', table: 'campaign_logs' },
       (payload) => {
+        // console.log('Campaign log Event Detected');
         const campaignLog = payload.new as CampaignLog;
         if (
           campaignLog.status === 'PENDING' ||
           campaignLog.status === 'TESTING'
         ) {
-          console.log('Campaign log Event Detected');
           scheduleCampaignLog(campaignLog);
         } else if (campaignLog.status === 'PROCESSING') {
           const index = campaignLogQueue.findIndex(
