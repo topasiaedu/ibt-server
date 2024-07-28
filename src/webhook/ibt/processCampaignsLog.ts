@@ -110,7 +110,10 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
 
       if (fetchError) {
         console.error(`Error checking existence for campaign_id: ${campaignLog.campaign_id}, contact_id: ${campaignLog.contact_id}`, fetchError);
+        // Update the campaign log status to 'COMPLETED' if no failed message found
+        await updateCampaignLogStatus(campaignLog.id, 'COMPLETED');
         return; // Skip this log if there's an error
+
       }
 
       if (existingMessages && existingMessages.length > 0) {
