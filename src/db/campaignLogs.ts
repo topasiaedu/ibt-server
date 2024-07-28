@@ -21,11 +21,43 @@ export const updateCampaignLogStatus = async (
 export const insertCampaignLogs = async (
   campaignLogs: CampaignLogsInsert[]
 ) => {
-  const { error } = await supabase
-    .from('campaign_logs')
-    .insert(campaignLogs)
-  if (error) throw error
+  try {
+    const logsToInsert: CampaignLogsInsert[] = [];
+
+    for (const log of campaignLogs) {
+      // Check if a log with the same campaign_id and contact_id already exists
+      const { data: existingLogs, error: fetchError } = await supabase
+        .from('campaign_logs')
+        .select('id')
+        .eq('campaign_id', log.campaign_id)
+        .eq('contact_id', log.contact_id);
+
+      if (fetchError) {
+        console.error(`Error checking existence for campaign_id: ${log.campaign_id}, contact_id: ${log.contact_id}`, fetchError);
+        continue; // Skip this log if there's an error
+      }
+
+      if (!existingLogs || existingLogs.length === 0) {
+        logsToInsert.push(log); // Only add to insert list if no existing log is found
+      }
+    }
+
+    if (logsToInsert.length > 0) {
+      const { error } = await supabase
+        .from('campaign_logs')
+        .insert(logsToInsert);
+      if (error) throw error;
+
+      console.log(`${logsToInsert.length} new logs inserted.`);
+    } else {
+      console.log('No new logs to insert.');
+    }
+  } catch (error) {
+    console.error('Error inserting campaign logs:', error);
+    throw error;
+  }
 }
+
 
 export const insertCampaignLog = async (
   campaignLog: CampaignLogsInsert
