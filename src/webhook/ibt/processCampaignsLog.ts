@@ -96,6 +96,31 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
     const campaign = await withRetry(() => fetchCampaign(campaignLog.campaign_id));
     await updateCampaignLogStatus(campaignLog.id, 'PROCESSING');
 
+    // Temp
+    // Check the message table if can find message with the same campaign_id and contact_id and status is 'failed'
+    // If found, continue sending the message
+    // Else, skip sending the message
+    if (campaignLog.campaign_id === 232) {
+      const { data: existingMessages, error: fetchError } = await supabase
+        .from('messages')
+        .select('id')
+        .eq('campaign_id', 231)
+        .eq('contact_id', campaignLog.contact_id)
+        .eq('status', 'failed');
+
+      if (fetchError) {
+        console.error(`Error checking existence for campaign_id: ${campaignLog.campaign_id}, contact_id: ${campaignLog.contact_id}`, fetchError);
+        return; // Skip this log if there's an error
+      }
+
+      if (existingMessages && existingMessages.length > 0) {
+        console.log('Found existing failed message for campaign_id:', campaignLog.campaign_id, 'contact_id:', campaignLog.contact_id);
+      } else {
+        console.log('No existing failed message found for campaign_id:', campaignLog.campaign_id, 'contact_id:', campaignLog.contact_id);
+        return
+      }
+      
+    }
     contact.wa_id = formatPhoneNumber(contact.wa_id);
 
     const { processedPayload, mediaUrl } = processTemplatePayload(campaign, contact);
