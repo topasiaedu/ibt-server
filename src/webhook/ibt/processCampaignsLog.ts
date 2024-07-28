@@ -20,7 +20,8 @@ const campaignLogQueue: CampaignLog[] = [];
 
 const MAX_RETRIES = 5;
 const RETRY_DELAY = 10000; // 10 seconds
-const CONCURRENCY_LIMIT = 10;
+const INITIAL_CONCURRENCY_LIMIT = 10;
+let CONCURRENCY_LIMIT = INITIAL_CONCURRENCY_LIMIT;
 const BATCH_SIZE = 1000; // Adjust as needed
 let activeProcesses = 0;
 
@@ -28,6 +29,10 @@ async function withRetry<T>(fn: () => Promise<T>, retries = MAX_RETRIES): Promis
   try {
     return await fn();
   } catch (error) {
+    console.log('=====================================================');
+    console.log('LIMIT REACHED', CONCURRENCY_LIMIT);
+    CONCURRENCY_LIMIT--;
+    console.log('=====================================================');
     if (retries > 0) {
       console.warn(`Retrying due to error: ${error}. Retries left: ${retries}`);
       await new Promise(res => setTimeout(res, RETRY_DELAY * (MAX_RETRIES - retries + 1))); // Exponential backoff
@@ -84,8 +89,13 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
     await withRetry(() => updateCampaignLogStatus(campaignLog.id, 'TESTING-STAGE-7'));
     await withRetry(() => updateCampaignLogStatus(campaignLog.id, 'TESTING-STAGE-8'));
     await withRetry(() => updateCampaignLogStatus(campaignLog.id, 'TESTING-STAGE-9'));
-    console.log(`Completed test campaign log with id: ${campaignLog.id}`);
+    // console.log(`Completed test campaign log with id: ${campaignLog.id}`);
     await withRetry(() => updateCampaignLogStatus(campaignLog.id, 'TESTING-COMPLETED'));
+    console.log('=====================================================');
+    console.log('Test campaign log completed successfully, adding concurrency limit');
+    CONCURRENCY_LIMIT++;
+    console.log('Concurrency limit increased to', CONCURRENCY_LIMIT);
+    console.log('=====================================================');
     return;
   }
 
@@ -149,6 +159,7 @@ export function setupRealtimeCampaignLogProcessing() {
       'postgres_changes',
       { event: '*', schema: 'public', table: 'campaign_logs' },
       (payload) => {
+        console.log('Campaign log Event Detected');
         const campaignLog = payload.new as CampaignLog;
         if (
           campaignLog.status === 'PENDING' ||
