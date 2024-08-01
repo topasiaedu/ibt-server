@@ -55,8 +55,6 @@ app.get('/webhook', (req, res) => {
 })
 
 app.post('/webhook', (req, res) => {
-  handleWebhook(req, res)
-
   if (environment !== 'development') {
     // Proxy the request to tunnel ( we send the same exact request to the tunnel which is our local server for development )
     axios
@@ -68,6 +66,7 @@ app.post('/webhook', (req, res) => {
         // console.error('Error forwarding webhook to tunnel')
       })
   }
+  handleWebhook(req, res)
 })
 
 app.post('/ibt/webhook/:id', handleIBTWebhook)
@@ -93,52 +92,54 @@ const startServer = () => {
 
     if (environment === 'development') {
       try {
-        console.log('Starting local tunnel...');
-    
+        console.log('Starting local tunnel...')
+
         const tunnel = localtunnel(
           port,
           { subdomain: uniqueSubdomain },
           (err, tunnel) => {
             if (err) {
-              console.error('Local tunnel error:', err);
-              process.exit(1);
-              return;
+              console.error('Local tunnel error:', err)
+              process.exit(1)
+              return
             }
-    
+
             if (tunnel && tunnel.url) {
-              console.log(`Local tunnel running on ${tunnel.url}`);
-    
+              console.log(`Local tunnel running on ${tunnel.url}`)
+
               // Send post request to live server to update the tunnel URL
               axios
                 .post('https://ibts3.whatsgenie.com/update-tunnel-url', {
                   tunnelUrl: tunnel.url,
                 })
                 .then((response) => {
-                  console.log('Tunnel URL updated on live server');
+                  console.log('Tunnel URL updated on live server')
                 })
                 .catch((error) => {
-                  console.error('Error updating tunnel URL on live server:', error);
+                  console.error(
+                    'Error updating tunnel URL on live server:',
+                    error
+                  )
                   logError(
                     `Error updating tunnel URL on live server: ${error.message}`
-                  );
-                });
+                  )
+                })
             } else {
-              console.error('Tunnel creation failed.');
-              logError('Tunnel creation failed.');
-              process.exit(1);
+              console.error('Tunnel creation failed.')
+              logError('Tunnel creation failed.')
+              process.exit(1)
             }
           }
-        );
-    
+        )
+
         tunnel?.on('close', () => {
-          console.log('Local tunnel closed');
-          logError('Local tunnel closed');
-          process.exit(1);
-        });
-    
+          console.log('Local tunnel closed')
+          logError('Local tunnel closed')
+          process.exit(1)
+        })
       } catch (e) {
-        console.error('Unexpected error:', e);
-        process.exit(1);
+        console.error('Unexpected error:', e)
+        process.exit(1)
       }
     }
 

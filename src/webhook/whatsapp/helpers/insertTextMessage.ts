@@ -13,8 +13,6 @@ async function insertTextMessage(
     const { body } = text
     const name = contacts[0].profile?.name
     const wa_id = contacts[0].wa_id
-
-    console.log('Inserting Text Message into database', message)
     
     // Check if the database has the same wa_message_id
     let { data: existingMessage, error: findError } = await supabase

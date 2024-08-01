@@ -391,8 +391,10 @@ const handleKeywordTrigger = async (value: any) => {
 
   data.forEach(async (trigger: any) => {
     if (trigger.trigger.type === 'keyword') {
+      console.log('Keyword trigger found:', trigger)
       const { keywords } = trigger.trigger.details
       const { phone_numbers } = trigger
+      console.log('Keywords:', keywords)
 
       phone_numbers.forEach(async (phone: any) => {
         if (phone.wa_id === phone_number_id) {
