@@ -387,24 +387,18 @@ const handleKeywordTrigger = async (value: any) => {
     return
   }
 
-  console.log('Checking for keyword triggers')
-
   for (const trigger of data) {
     if (trigger.trigger.type === 'keyword') {
       const { keywords } = trigger.trigger.details
       const { phone_numbers } = trigger
 
-      console.log('Keywords:', keywords)
-
       for (const phone of phone_numbers) {
         if (phone.wa_id === phone_number_id) {
           for (const message of messages) {
-            console.log('Checking message:', message)
             const { text } = message
             const { body } = text
 
             const normalizedBody = body.trim().toLowerCase()
-            console.log('Checking body:', normalizedBody)
 
             // Convert keywords to lower case for comparison
             const lowerCaseKeywords = keywords.map((kw: string) =>
@@ -412,8 +406,6 @@ const handleKeywordTrigger = async (value: any) => {
             )
 
             if (lowerCaseKeywords.includes(normalizedBody)) {
-              console.log('Keyword found:', normalizedBody)
-
               // Check if the Contact exists in the database
               const { data: contact, error: contactError } = await supabase
                 .from('contacts')
@@ -447,10 +439,12 @@ const handleKeywordTrigger = async (value: any) => {
 
                 if (newContact) {
                   for (const action of trigger.actions) {
-                    await generateWorkflowLog(
-                      action,
-                      newContact as unknown as Contact
-                    )
+                    if (action.active) {
+                      await generateWorkflowLog(
+                        action,
+                        newContact as unknown as Contact
+                      )
+                    }
                   }
                 }
               }

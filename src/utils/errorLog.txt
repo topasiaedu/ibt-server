@@ -9,3 +9,11 @@ Inside handleOutgoingMessage function in messages.ts {}
 Inside handleOutgoingMessage function in messages.ts {}
 
 
+[2024-08-01T15:07:19.891Z] Error adding contact to contact list {
+  "code": "23505",
+  "details": "Key (contact_list_id, contact_id)=(2, 2) already exists.",
+  "hint": null,
+  "message": "duplicate key value violates unique constraint \"contact_list_members_pkey\""
+}
+
+
