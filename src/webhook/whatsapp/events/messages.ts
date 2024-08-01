@@ -391,7 +391,6 @@ const handleKeywordTrigger = async (value: any) => {
 
   data.forEach(async (trigger: any) => {
     if (trigger.trigger.type === 'keyword') {
-      console.log('Keyword trigger found:', trigger)
       const { keywords } = trigger.trigger.details
       const { phone_numbers } = trigger
       console.log('Keywords:', keywords)
@@ -399,8 +398,10 @@ const handleKeywordTrigger = async (value: any) => {
       phone_numbers.forEach(async (phone: any) => {
         if (phone.wa_id === phone_number_id) {
           messages.forEach(async (message: any) => {
+            console.log('Checking message:', message) 
             const { text } = message
             const { body } = text
+            console.log('Checking body:', body)
             if (keywords.includes(body)) {
               console.log('Keyword found:', body)
               // Check if the Contact exists in the database
