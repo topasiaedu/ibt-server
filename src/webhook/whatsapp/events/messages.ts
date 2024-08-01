@@ -389,21 +389,24 @@ const handleKeywordTrigger = async (value: any) => {
 
   console.log('Checking for keyword triggers')
 
-  data.forEach(async (trigger: any) => {
+  for (const trigger of data) {
     if (trigger.trigger.type === 'keyword') {
       const { keywords } = trigger.trigger.details
       const { phone_numbers } = trigger
+
       console.log('Keywords:', keywords)
 
-      phone_numbers.forEach(async (phone: any) => {
+      for (const phone of phone_numbers) {
         if (phone.wa_id === phone_number_id) {
-          messages.forEach(async (message: any) => {
-            console.log('Checking message:', message) 
+          for (const message of messages) {
+            console.log('Checking message:', message)
             const { text } = message
             const { body } = text
             console.log('Checking body:', body)
+
             if (keywords.includes(body)) {
               console.log('Keyword found:', body)
+
               // Check if the Contact exists in the database
               const { data: contact, error: contactError } = await supabase
                 .from('contacts')
@@ -436,24 +439,24 @@ const handleKeywordTrigger = async (value: any) => {
                 }
 
                 if (newContact) {
-                  trigger.actions.forEach(async (action: any) => {
-                    generateWorkflowLog(
+                  for (const action of trigger.actions) {
+                    await generateWorkflowLog(
                       action,
                       newContact as unknown as Contact
                     )
-                  })
+                  }
                 }
               }
 
               if (contact) {
-                trigger.actions.forEach(async (action: any) => {
-                  generateWorkflowLog(action, contact as Contact)
-                })
+                for (const action of trigger.actions) {
+                  await generateWorkflowLog(action, contact as Contact)
+                }
               }
             }
-          })
+          }
         }
-      })
+      }
     }
-  })
+  }
 }
