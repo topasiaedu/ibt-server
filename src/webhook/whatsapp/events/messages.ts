@@ -218,11 +218,11 @@ const handleIncomingMessage = async (value: any) => {
     const { display_phone_number, phone_number_id } = metadata
 
     // Debug: Check if there is expiration_timestamp in the conversation
-    console.log('====================================')
-    console.log('metadata', metadata)
-    console.log('contacts', contacts)
-    console.log('messages', messages)
-    console.log('====================================')
+    // console.log('====================================')
+    // console.log('metadata', metadata)
+    // console.log('contacts', contacts)
+    // console.log('messages', messages)
+    // console.log('====================================')
 
     // Based on phone number id, find the phone number in the database in which we use to find the project id
     const { data: phoneNumber, error: phoneError } = await supabase
@@ -400,6 +400,7 @@ const handleKeywordTrigger = async (value: any) => {
             const { text } = message
             const { body } = text
             if (keywords.includes(body)) {
+              console.log('Keyword found:', body)
               // Check if the Contact exists in the database
               const { data: contact, error: contactError } = await supabase
                 .from('contacts')

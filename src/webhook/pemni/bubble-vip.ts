@@ -3,11 +3,19 @@ import supabase from '../../db/supabaseClient'
 import { logError } from '../../utils/errorLogger'
 import { Database } from '../../database.types'
 import { Request, Response } from 'express'
-import findOrCreateContact from '../whatsapp/helpers/findOrCreateContact'
+import { Contact, findOrCreateContact } from '../../db/contacts'
 import axios from 'axios'
 import NodeCache from 'node-cache'
 import { sendMessageWithTemplate } from '../../api/whatsapp'
-import { updateConversation } from '../../db/conversations'
+import { fetchConversation, updateConversation } from '../../db/conversations'
+import { withRetry } from '../../utils/withRetry'
+import {
+  createPemniVipLog,
+  PemniVipLogs,
+  updatePemniVipLog,
+} from '../../db/pemniVipLogs'
+import { formatPhoneNumber } from '../ibt/helper/formatPhoneNumber'
+import { insertMessage } from '../../db/messages'
 
 const cache = new NodeCache({ stdTTL: 3600 })
 
@@ -73,53 +81,19 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
     // Remove the + from the phone number
     customData.phone = customData.phone.replace('+', '')
 
-    // Function to correct Singaporean numbers mistakenly prefixed with "60"
-    const correctPhoneNumber = (phone: string): string => {
-      // Remove leading '0' if present
-      if (phone.startsWith('0')) {
-        phone = phone.substring(1)
-      }
-      // Check if the number starts with "60"
-      if (phone.startsWith('60')) {
-        const numberAfterCountryCode = phone.substring(2)
-        // Check if it's a valid Singaporean number (8 digits long)
-        if (/^\d{8}$/.test(numberAfterCountryCode)) {
-          // Convert to Singapore number by replacing "60" with "65"
-          phone = `65${numberAfterCountryCode}`
-        } else if (/^[13-8]/.test(numberAfterCountryCode)) {
-          // Otherwise, assume it's a valid Malaysian number (no change needed)
-          phone = `60${numberAfterCountryCode}`
-        } else {
-          // If it doesn't match any criteria, mark as invalid
-          phone = 'Invalid'
-        }
-      } else if (phone.startsWith('65')) {
-        // Ensure it's a valid Singaporean number (must be 8 digits)
-        const numberAfterCountryCode = phone.substring(2)
-        if (!/^\d{8}$/.test(numberAfterCountryCode)) {
-          phone = 'Invalid'
-        }
-      } else {
-        // If it doesn't start with "60" or "65", mark as invalid
-        phone = 'Invalid'
-      }
-      return phone
-    }
-
     // Correct the phone number
-    customData.phone = correctPhoneNumber(customData.phone)
+    customData.phone = formatPhoneNumber(customData.phone)
 
-    // Find or create contact
-    let contact: { wa_id: string; profile: { name: string; email: string } } = {
-      wa_id: customData.phone,
-      profile: { name: customData.name, email: customData.email },
-    }
+    const contact = await withRetry(() =>
+      findOrCreateContact(customData.phone, customData.name, 2)
+    )
 
-    let contactId: string = ''
-
-    await findOrCreateContact(contact, '2').then((result) => {
-      contactId = result
-    })
+    const log = await withRetry(() =>
+      createPemniVipLog({
+        contact_id: contact.contact_id,
+        status: 'WEBHOOK_RECEIVED',
+      })
+    )
 
     // Check cache for user data
     let userData: { email: string; id: string; plan: string }[] =
@@ -134,7 +108,7 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
     }
 
     // Find or Create Bubble Account and Update Plan
-    const user = userData.find((u: any) => u.email === contact.profile.email)
+    const user = userData.find((u: any) => u.email === customData.email)
 
     if (user) {
       // if use already has VIP, do nothing
@@ -159,129 +133,98 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
           },
         }
       )
+
+      await withRetry(() =>
+        updatePemniVipLog(log.id, {
+          ...log,
+          status: 'BUBBLE_UPDATED',
+        })
+      )
+
       console.log(`Updated user ${user.email} with new plan ${customData.plan}`)
+
       // Send
-      const { data: messageResponse } = await sendMessageWithTemplate(
-        {
-          messaging_product: 'whatsapp',
-          recipient_type: 'individual',
-          to: customData.phone,
-          type: 'template',
-          template: {
-            name: 'existing_user_vip_onboard_v2',
-            language: {
-              code: 'zh_CN',
-            },
-            components: [
-              {
-                type: 'body',
-                parameters: [
-                  {
-                    type: 'text',
-                    text: customData.name,
-                  },
-                  {
-                    type: 'text',
-                    text: contact.profile.email,
-                  },
-                  {
-                    type: 'text',
-                    text: 'https://bit.ly/vip-tutorial',
-                  },
-                  {
-                    type: 'text',
-                    text: 'https://pemnitan.com/vip-zoom',
-                  },
-                ],
+      const { data: messageResponse } = await withRetry(() =>
+        sendMessageWithTemplate(
+          {
+            messaging_product: 'whatsapp',
+            recipient_type: 'individual',
+            to: customData.phone,
+            type: 'template',
+            template: {
+              name: 'existing_user_vip_onboard_v2',
+              language: {
+                code: 'zh_CN',
               },
-            ],
+              components: [
+                {
+                  type: 'body',
+                  parameters: [
+                    {
+                      type: 'text',
+                      text: customData.name,
+                    },
+                    {
+                      type: 'text',
+                      text: customData.email,
+                    },
+                    {
+                      type: 'text',
+                      text: 'https://bit.ly/vip-tutorial',
+                    },
+                    {
+                      type: 'text',
+                      text: 'https://pemnitan.com/vip-zoom',
+                    },
+                  ],
+                },
+              ],
+            },
           },
-        },
-        '220858504440106',
-        process.env.PEMNI_WHATSAPP_API_TOKEN || ''
+          '220858504440106',
+          process.env.PEMNI_WHATSAPP_API_TOKEN || ''
+        )
       )
 
       console.log('Message Response:', messageResponse)
+
       if (messageResponse.messages[0]) {
-        var conversationId = ''
-        // Look Up Conversation ID
-        const { data: conversationData, error: conversationError } =
-          await supabase
-            .from('conversations')
-            .select('id')
-            .eq('phone_number_id', '5')
-            .eq('contact_id', contactId)
-            .single()
+        const conversation = await withRetry(() =>
+          fetchConversation(contact.contact_id, 5, 2)
+        )
 
-        if (conversationError) {
-          // Create a new conversation if not found
-          const { data: newConversationData, error: newConversationError } =
-            await supabase
-              .from('conversations')
-              .insert([
-                {
-                  phone_number_id: '5',
-                  contact_id: contactId,
-                  project_id: '2',
-                },
-              ])
-              .select('*')
-              .single()
-          if (newConversationError) {
-            console.error(
-              'Error creating new conversation:',
-              newConversationError
-            )
-            logError(newConversationError, 'Error creating new conversation')
-          }
-          conversationId = newConversationData.id
-        } else {
-          conversationId = conversationData.id
-        }
-
-        const { data: newMessage, error: messageError } = await supabase
-          .from('messages')
-          .insert([
-            {
-              wa_message_id: messageResponse.messages[0].id || '',
-              phone_number_id: '5',
-              contact_id: contactId,
-              message_type: 'TEMPLATE',
-              content: `亲爱的${customData.name}，\n.\n🎉 恭喜你成功加人生GPS - VIP 福利包！🎉\n.\n你的会员新账号已经创建好啦，赶紧按照下面步骤来开始吧：\n.\n*【如果你是第一次登入】*\n*(1) 打开会员网站: https://mylifedecode.com/*\n*(2) 用以下信息通过电子邮件登录：*\n   *- 电子邮件:* ${contact.profile.email}\n   *\n\n*(3) 登录后点击 <VIP福利包> 就可以观看啦！*\n.\n*【如果你已经是网站会员】*\n*(1) 打开会员网站 https://mylifedecode.com/*\n*(2) 用facebook登入*\n*(3) 登录后点击 <VIP福利包> 就可以观看啦！*\n.\n🎈还不是很清楚怎么登入？\n点击观看，会一步一步教你：\n>> https://bit.ly/vip-tutorial\n.\n*Here's your Zoom Link to enter VIP Room:*\n👉 https://pemnitan.com/vip-zoom\n.\n.\n如果有任何问题或需要帮助，随时联系我们哟。祝你学习愉快！😊\n.\n>> Support: 6011-5878 5417\n>> Serene: 6011-20560692\n.\nMaster Pemni 团队`,
-              direction: 'outgoing',
-              status: messageResponse.messages[0].message_status || 'failed',
-              project_id: '2',
-              conversation_id: conversationId,
-            },
-          ])
-          .select('*')
-          .single()
-
-        if (messageError) {
-          console.error('Error inserting message:', messageError)
-          logError(messageError, 'Error inserting message')
-        }
-
+        const newMessage = await withRetry(() =>
+          insertMessage({
+            messageResponse,
+            phoneNumberId: 5,
+            contactId: contact.contact_id,
+            projectId: 2,
+            conversationId: conversation.id,
+            textContent: `亲爱的${customData.name}，\n.\n🎉 恭喜你成功加人生GPS - VIP 福利包！🎉\n.\n你的会员新账号已经创建好啦，赶紧按照下面步骤来开始吧：\n.\n*【如果你是第一次登入】*\n*(1) 打开会员网站: https://mylifedecode.com/*\n*(2) 用以下信息通过电子邮件登录：*\n   *- 电子邮件:* ${customData.email}\n   *\n\n*(3) 登录后点击 <VIP福利包> 就可以观看啦！*\n.\n*【如果你已经是网站会员】*\n*(1) 打开会员网站 https://mylifedecode.com/*\n*(2) 用facebook登入*\n*(3) 登录后点击 <VIP福利包> 就可以观看啦！*\n.\n🎈还不是很清楚怎么登入？\n点击观看，会一步一步教你：\n>> https://bit.ly/vip-tutorial\n.\n*Here's your Zoom Link to enter VIP Room:*\n👉 https://pemnitan.com/vip-zoom\n.\n.\n如果有任何问题或需要帮助，随时联系我们哟。祝你学习愉快！😊\n.\n>> Support: 6011-5878 5417\n>> Serene: 6011-20560692\n.\nMaster Pemni 团队`,
+          })
+        )
         // Update to conversation to have the latest message
-        await updateConversation(conversationId, newMessage.message_id)
+        await withRetry(() =>
+          updateConversation(conversation.id, newMessage.message_id)
+        )
 
-        // Update to the table pemni_vip_logs
-        await supabase.from('pemni_vip_logs').insert([
-          {
-            contact_id: contactId,
-            password: 'N/A',
-            status: 'SUCCESS',
-          },
-        ])
+        // Update Message Id to log
+
+        await withRetry(() =>
+          updatePemniVipLog(log.id, {
+            ...log,
+            message_id: newMessage.message_id,
+            status: 'MESSAGE_SENT',
+          })
+        )
       } else {
         // Update to the table pemni_vip_logs
-        await supabase.from('pemni_vip_logs').insert([
-          {
-            contact_id: contactId,
-            password: 'N/A',
-            status: 'FAILED',
-          },
-        ])
+        await withRetry(() =>
+          updatePemniVipLog(log.id, {
+            ...log,
+            status: 'MESSAGE_FAILED',
+          })
+        )
       }
     } else {
       const randomPassword = Math.random().toString(36).slice(-8) // Generate random password
@@ -290,8 +233,8 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
       const newUser = await axios.post(
         'https://mylifedecode.com/api/1.1/obj/user',
         {
-          email: contact.profile.email,
-          name: contact.profile.name,
+          email: customData.email,
+          name: customData.name,
           password: randomPassword,
           plan: 'VIP',
         },
@@ -304,135 +247,101 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
       console.log(`Created new user ${newUser.data.email} with plan VIP`)
 
       // Send
-      const { data: messageResponse } = await sendMessageWithTemplate(
-        {
-          messaging_product: 'whatsapp',
-          recipient_type: 'individual',
-          to: customData.phone,
-          type: 'template',
-          template: {
-            name: 'new_user_vip_onboard_v2',
-            language: {
-              code: 'zh_CN',
-            },
-            components: [
-              {
-                type: 'body',
-                parameters: [
-                  {
-                    type: 'text',
-                    text: customData.name,
-                  },
-                  {
-                    type: 'text',
-                    text: contact.profile.email,
-                  },
-                  {
-                    type: 'text',
-                    text: randomPassword,
-                  },
-                  {
-                    type: 'text',
-                    text: 'https://bit.ly/vip-tutorial',
-                  },
-                  {
-                    type: 'text',
-                    text: 'https://pemnitan.com/vip-zoom',
-                  },
-                ],
+      const { data: messageResponse } = await withRetry(() =>
+        sendMessageWithTemplate(
+          {
+            messaging_product: 'whatsapp',
+            recipient_type: 'individual',
+            to: customData.phone,
+            type: 'template',
+            template: {
+              name: 'new_user_vip_onboard_v2',
+              language: {
+                code: 'zh_CN',
               },
-            ],
+              components: [
+                {
+                  type: 'body',
+                  parameters: [
+                    {
+                      type: 'text',
+                      text: customData.name,
+                    },
+                    {
+                      type: 'text',
+                      text: customData.email,
+                    },
+                    {
+                      type: 'text',
+                      text: randomPassword,
+                    },
+                    {
+                      type: 'text',
+                      text: 'https://bit.ly/vip-tutorial',
+                    },
+                    {
+                      type: 'text',
+                      text: 'https://pemnitan.com/vip-zoom',
+                    },
+                  ],
+                },
+              ],
+            },
           },
-        },
-        '220858504440106',
-        process.env.PEMNI_WHATSAPP_API_TOKEN || ''
+          '220858504440106',
+          process.env.PEMNI_WHATSAPP_API_TOKEN || ''
+        )
       )
 
       if (messageResponse.messages[0]) {
-        var conversationId = ''
-        // Look Up Conversation ID
-        const { data: conversationData, error: conversationError } =
-          await supabase
-            .from('conversations')
-            .select('id')
-            .eq('phone_number_id', '5')
-            .eq('contact_id', contactId)
-            .single()
-
-        if (conversationError) {
-          // Create a new conversation if not found
-          const { data: newConversationData, error: newConversationError } =
-            await supabase
-              .from('conversations')
-              .insert([
-                {
-                  phone_number_id: '5',
-                  contact_id: contactId,
-                  project_id: '2',
-                },
-              ])
-              .select('*')
-              .single()
-          if (newConversationError) {
-            console.error(
-              'Error creating new conversation:',
-              newConversationError
-            )
-            logError(newConversationError, 'Error creating new conversation')
-          }
-          conversationId = newConversationData.id
-        } else {
-          conversationId = conversationData.id
-        }
+        var conversation = await withRetry(() =>
+          fetchConversation(contact.contact_id, 5, 2)
+        )
         // Insert the message into the messages table
 
-        const { data: newMessage, error: messageError } = await supabase
-          .from('messages')
-          .insert([
-            {
-              wa_message_id: messageResponse.messages[0].id || '',
-              phone_number_id: '5',
-              contact_id: contactId,
-              message_type: 'TEMPLATE',
-              content: `亲爱的${customData.name}，\n.\n🎉 恭喜你成功加人生GPS - VIP 福利包！🎉\n.\n你的会员新账号已经创建好啦，赶紧按照下面步骤来开始吧：\n.\n*【如果你是第一次登入】*\n*(1) 打开会员网站: https://mylifedecode.com/*\n*(2) 用以下信息通过电子邮件登录：*\n   *- 电子邮件:* ${contact.profile.email}\n   *- 密码:* ${randomPassword}\n\n*(3) 登录后点击 <VIP福利包> 就可以观看啦！*\n.\n*【如果你已经是网站会员】*\n*(1) 打开会员网站 https://mylifedecode.com/*\n*(2) 用facebook登入*\n*(3) 登录后点击 <VIP福利包> 就可以观看啦！*\n.\n🎈还不是很清楚怎么登入？\n点击观看，会一步一步教你：\n>> https://bit.ly/vip-tutorial\n.\n*Here's your Zoom Link to enter VIP Room:*\n👉 https://pemnitan.com/vip-zoom\n.\n.\n如果有任何问题或需要帮助，随时联系我们哟。祝你学习愉快！😊\n.\n>> Support: 6011-5878 5417\n>> Serene: 6011-20560692\n.\nMaster Pemni 团队`,
-              direction: 'outgoing',
-              status: messageResponse.messages[0].message_status || 'failed',
-              project_id: '2',
-              conversation_id: conversationId,
-            },
-          ])
-          .select('*')
-          .single()
-
-        if (messageError) {
-          console.error('Error inserting message:', messageError)
-          logError(messageError, 'Error inserting message')
-        }
-
+        const newMessage = await withRetry(() =>
+          insertMessage({
+            messageResponse,
+            phoneNumberId: 5,
+            contactId: contact.contact_id,
+            projectId: 2,
+            conversationId: conversation.id,
+            textContent: `亲爱的${customData.name}，\n.\n🎉 恭喜你成功加人生GPS - VIP 福利包！🎉\n.\n你的会员新账号已经创建好啦，赶紧按照下面步骤来开始吧：\n.\n*【如果你是第一次登入】*\n*(1) 打开会员网站: https://mylifedecode.com/*\n*(2) 用以下信息通过电子邮件登录：*\n   *- 电子邮件:* ${customData.email}\n   *- 密码:* ${randomPassword}\n\n*(3) 登录后点击 <VIP福利包> 就可以观看啦！*\n.\n*【如果你已经是网站会员】*\n*(1) 打开会员网站 https://mylifedecode.com/*\n*(2) 用facebook登入*\n*(3) 登录后点击 <VIP福利包> 就可以观看啦！*\n.\n🎈还不是很清楚怎么登入？\n点击观看，会一步一步教你：\n>> https://bit.ly/vip-tutorial\n.\n*Here's your Zoom Link to enter VIP Room:*\n👉 https://pemnitan.com/vip-zoom\n.\n.\n如果有任何问题或需要帮助，随时联系我们哟。祝你学习愉快！😊\n.\n>> Support: 6011-5878 5417\n>> Serene: 6011-20560692\n.\nMaster Pemni 团队`,
+          })
+        )
         // Update to conversation to have the latest message
-        await updateConversation(conversationId, newMessage.message_id)
+        await withRetry(() =>
+          updateConversation(conversation.id, newMessage.message_id)
+        )
 
-        // Update to the table pemni_vip_logs
-        await supabase.from('pemni_vip_logs').insert([
-          {
-            contact_id: contactId,
-            password: randomPassword,
-            status: 'SUCCESS',
-          },
-        ])
+        // Update Message Id to log
+        await withRetry(() =>
+          updatePemniVipLog(log.id, {
+            ...log,
+            message_id: newMessage.message_id,
+            status: 'MESSAGE_SENT',
+          })
+        )
       } else {
         // Update to the table pemni_vip_logs
-        await supabase.from('pemni_vip_logs').insert([
-          {
-            contact_id: contactId,
-            password: randomPassword,
-            status: 'FAILED',
-          },
-        ])
+        await withRetry(() =>
+          updatePemniVipLog(log.id, {
+            ...log,
+            status: 'MESSAGE_FAILED',
+          })
+        )
       }
     }
   } catch (error) {
-    console.error('Error processing webhook:', (error as any))
+    console.error('Error processing webhook:', error as any)
     logError(error, 'Error processing webhook')
+
+    // Update to the table pemni_vip_logs
+    await withRetry(() =>
+      createPemniVipLog({
+        contact_id: 0,
+        status: 'WEBHOOK_ERROR',
+      })
+    )
   }
 }

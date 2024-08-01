@@ -1,44 +1,23 @@
-import supabase from '../../db/supabaseClient'
-import { sendMessageWithTemplate } from '../../api/whatsapp'
-import { logError } from '../../utils/errorLogger'
 import { CronJob } from 'cron'
+import { sendMessageWithTemplate } from '../../api/whatsapp'
 import { Database } from '../../database.types'
+import { CampaignListInsert, fetchCampaignList } from '../../db/campaignLists'
+import { insertCampaignLogs } from '../../db/campaignLogs'
 import { updateCampaignStatus } from '../../db/campaigns'
-import { Contact } from '../../db/contacts'
 import {
   ContactListMembers,
   fetchContactListMembers,
 } from '../../db/contactListMembers'
-import { CampaignListInsert, fetchCampaignList } from '../../db/campaignLists'
-import { insertCampaignLogs } from '../../db/campaignLogs'
+import { Contact } from '../../db/contacts'
+import supabase from '../../db/supabaseClient'
+import { logError } from '../../utils/errorLogger'
+import { withRetry } from '../../utils/withRetry'
 
 const campaignQueue: Campaign[] = []
 
-const MAX_RETRIES = 5
-const RETRY_DELAY = 60000 // 60 seconds
 const CONCURRENCY_LIMIT = 5
 let activeProcesses = 0
 
-async function withRetry<T>(
-  fn: () => Promise<T>,
-  retries = MAX_RETRIES
-): Promise<T> {
-  try {
-    return await fn()
-  } catch (error) {
-    if (retries > 0) {
-      console.warn(`Retrying due to error: ${error}. Retries left: ${retries}`)
-      await new Promise((res) =>
-        setTimeout(res, RETRY_DELAY * (MAX_RETRIES - retries + 1))
-      ) // Exponential backoff
-      console.log(`Retrying attempt ${MAX_RETRIES - retries + 1}`)
-      return withRetry(fn, retries - 1)
-    } else {
-      logError(error, 'Max retries reached')
-      throw error
-    }
-  }
-}
 
 function processQueue() {
   if (campaignQueue.length === 0 || activeProcesses >= CONCURRENCY_LIMIT) {
@@ -156,7 +135,6 @@ const processCampaigns = async (campaign: Campaign) => {
             await withRetry(() =>
               fetchContactListMembers(campaignList.contact_list_id || 0)
             )
-
           if (!excludedContactListMembers) {
             console.error(
               'No excluded contact list members found for list:',
@@ -164,7 +142,6 @@ const processCampaigns = async (campaign: Campaign) => {
             )
             return []
           }
-
           return excludedContactListMembers.map((contact) => contact.contact_id)
 
         case 'exclude-contact':

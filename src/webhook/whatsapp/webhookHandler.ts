@@ -106,10 +106,12 @@ export const handleWebhook = async (req: Request, res: Response) => {
                     //     handleMessagingHandovers(req, res);
                     //     break;
                     case 'phone_number_name_update':
+                        console.log('phone_number_name_update', value)
                         fetchWABAPhoneNumbersFunction();
                         // handlePhoneNumberNameUpdate(req, res);
                         break;
                     case 'phone_number_quality_update':
+                        console.log('phone_number_quality_update', value)
                         fetchWABAPhoneNumbersFunction();
                         // handlePhoneNumberQualityUpdate(req, res);
                         break;

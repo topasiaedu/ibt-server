@@ -163,18 +163,18 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: "campaign_contacts_campaign_id_fkey"
-            columns: ["campaign_id"]
-            isOneToOne: false
-            referencedRelation: "campaigns"
-            referencedColumns: ["campaign_id"]
-          },
-          {
             foreignKeyName: "campaign_contacts_contact_id_fkey"
             columns: ["contact_id"]
             isOneToOne: false
             referencedRelation: "contacts"
             referencedColumns: ["contact_id"]
+          },
+          {
+            foreignKeyName: "campaign_logs_campaign_id_fkey"
+            columns: ["campaign_id"]
+            isOneToOne: false
+            referencedRelation: "campaigns"
+            referencedColumns: ["campaign_id"]
           },
         ]
       }
@@ -407,6 +407,48 @@ export type Database = {
           },
           {
             foreignKeyName: "public_contacts_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "project"
+            referencedColumns: ["project_id"]
+          },
+        ]
+      }
+      conversation_history: {
+        Row: {
+          conversation_id: string
+          created_at: string
+          id: string
+          new_wa_conversation_id: string
+          old_wa_conversation_id: string
+          project_id: number
+        }
+        Insert: {
+          conversation_id: string
+          created_at?: string
+          id?: string
+          new_wa_conversation_id: string
+          old_wa_conversation_id: string
+          project_id: number
+        }
+        Update: {
+          conversation_id?: string
+          created_at?: string
+          id?: string
+          new_wa_conversation_id?: string
+          old_wa_conversation_id?: string
+          project_id?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "conversation_history_conversation_id_fkey"
+            columns: ["conversation_id"]
+            isOneToOne: false
+            referencedRelation: "conversations"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "conversation_history_project_id_fkey"
             columns: ["project_id"]
             isOneToOne: false
             referencedRelation: "project"
@@ -656,6 +698,7 @@ export type Database = {
           contact_id: number
           created_at: string
           id: string
+          message_id: number | null
           password: string | null
           status: string
         }
@@ -663,6 +706,7 @@ export type Database = {
           contact_id: number
           created_at?: string
           id?: string
+          message_id?: number | null
           password?: string | null
           status?: string
         }
@@ -670,6 +714,7 @@ export type Database = {
           contact_id?: number
           created_at?: string
           id?: string
+          message_id?: number | null
           password?: string | null
           status?: string
         }
@@ -680,6 +725,13 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "contacts"
             referencedColumns: ["contact_id"]
+          },
+          {
+            foreignKeyName: "pemni_vip_logs_message_id_fkey"
+            columns: ["message_id"]
+            isOneToOne: false
+            referencedRelation: "messages"
+            referencedColumns: ["message_id"]
           },
         ]
       }

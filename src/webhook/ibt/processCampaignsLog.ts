@@ -154,8 +154,9 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
       phoneNumberId: phone_number_id,
       textContent,
       conversationId: conversation.id,
-      campaign,
+      projectId: campaign.project_id || 5,
       mediaUrl,
+      contactId: contact.contact_id
     }));
 
     console.log('Message created successfully:', newMessage.message_id);
