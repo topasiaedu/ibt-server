@@ -4,6 +4,7 @@ import { withRetry } from '../../../utils/withRetry'
 import { updateWorkflowLog } from '../../../db/workflowLogs'
 
 export const zoom = async (payload: any, workflowId:string) => {
+  console.log('Zoom action handler', payload)
   const { project_id, email, first_name, last_name, meeting_id } = payload
   // Fetch Zoom
   const zoom: Zoom = await withRetry(() => fetchZoomByProjectId(project_id))

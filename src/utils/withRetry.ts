@@ -12,7 +12,7 @@ async function withRetry<T>(
     return await fn()
   } catch (error) {
     if (retries > 0) {
-      console.warn(`Retrying due to error: ${error}. Retries left: ${retries}`)
+      console.warn(`Retrying due to error: ${error as string}. Retries left: ${retries}`)
       await new Promise((res) =>
         setTimeout(res, RETRY_DELAY * (MAX_RETRIES - retries + 1))
       ) // Exponential backoff
