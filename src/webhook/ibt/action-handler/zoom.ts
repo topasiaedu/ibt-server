@@ -3,8 +3,7 @@ import { Zoom, fetchZoomByProjectId, updateZoom } from '../../../db/zoom'
 import { withRetry } from '../../../utils/withRetry'
 import { updateWorkflowLog } from '../../../db/workflowLogs'
 
-export const zoom = async (payload: any, workflowId:string) => {
-  console.log('Zoom action handler', payload)
+export const zoom = async (payload: any, workflowId: string) => {
   const { project_id, email, first_name, last_name, meeting_id } = payload
 
   // Fetch Zoom
@@ -18,8 +17,6 @@ export const zoom = async (payload: any, workflowId:string) => {
     // Update Zoom
     await withRetry(() => updateZoom(zoom.id, { gen_token: zoom.gen_token }))
   }
-
-  console.log('Zoom', zoom)
 
   // Get Access Token
   let accessToken: string
@@ -35,13 +32,9 @@ export const zoom = async (payload: any, workflowId:string) => {
     }
   )
 
-  console.log('Zoom response', response)
-
   if (response.ok) {
     const json = await response.json()
     accessToken = json.access_token
-
-    console.log('Zoom access token', accessToken)
 
     const addContactResponse = await fetch(
       `https://api.zoom.us/v2/meetings/${meeting_id}/registrants`,
@@ -54,7 +47,7 @@ export const zoom = async (payload: any, workflowId:string) => {
         body: JSON.stringify({
           email,
           first_name,
-          last_name
+          last_name,
         }),
       }
     )
@@ -66,9 +59,9 @@ export const zoom = async (payload: any, workflowId:string) => {
       )
     }
 
-    console.log('Contact added to Zoom', addContactResponse)
-
     // Update workflow log status to completed
-    await withRetry(() => updateWorkflowLog(workflowId, { status: 'COMPLETED' }))
+    await withRetry(() =>
+      updateWorkflowLog(workflowId, { status: 'COMPLETED' })
+    )
   }
 }
