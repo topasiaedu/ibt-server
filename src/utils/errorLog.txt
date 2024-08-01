@@ -103,3 +103,19 @@ Inside handleOutgoingMessage function in messages.ts {}
 [2024-08-01T15:12:01.035Z] Error sending message "TypeError: Cannot read properties of undefined (reading 'messages')\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\action-handler\\send-template.ts:182:42\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\action-handler\\send-template.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
 
 
+[2024-08-01T15:13:14.916Z] Error adding contact to contact list {
+  "code": "23505",
+  "details": "Key (contact_list_id, contact_id)=(2, 2) already exists.",
+  "hint": null,
+  "message": "duplicate key value violates unique constraint \"contact_list_members_pkey\""
+}
+
+
+[2024-08-01T15:13:45.748Z] Error adding contact to contact list {
+  "code": "23505",
+  "details": "Key (contact_list_id, contact_id)=(2, 2) already exists.",
+  "hint": null,
+  "message": "duplicate key value violates unique constraint \"contact_list_members_pkey\""
+}
+
+

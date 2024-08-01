@@ -108,6 +108,19 @@ export const generateWorkflowLog = async (action: Action, contact: Contact) => {
         action_time = new Date()
       }
       break
+
+    case 'zoom':
+      const zoomDetails = action.details as {
+        meetingId?: string
+      }
+      payload = {
+        meeting_id: zoomDetails.meetingId,
+        project_id: contact.project_id,
+        email: contact.email,
+        first_name: contact.name,
+        last_name: contact.name,
+      }
+      break
     default:
       break
   }

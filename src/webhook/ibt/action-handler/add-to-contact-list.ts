@@ -1,30 +1,16 @@
-import { Database } from "../../../database.types"
-import supabase from "../../../db/supabaseClient";
-import { logError } from "../../../utils/errorLogger";
+import { insertContactListMembers } from '../../../db/contactListMembers'
+import { updateWorkflowLog } from '../../../db/workflowLogs'
+import { withRetry } from '../../../utils/withRetry'
 
 export const addToContactList = async (payload: any, workflowLogId: string) => {
-  console.log("Payload", payload);
-  const { contact_list_id, contact_id } = payload;
+  const { contact_list_id, contact_id } = payload
 
-  const { data: contactListMember, error: contactListMemberError } = await supabase
-    .from('contact_list_members')
-    .insert([
-      {
-        contact_list_id,
-        contact_id
-      }
-    ]);
-
-  if (contactListMemberError) {
-    console.error('Error adding contact to contact list:', contactListMemberError);
-    logError(contactListMemberError as unknown as Error, 'Error adding contact to contact list');
-    return;
-  }
+  await withRetry(() =>
+    insertContactListMembers([{ contact_list_id, contact_id }])
+  )
 
   // Update workflow log status to completed
-  const { data: updatedWorkflowLogStatus, error: updateStatusError } = await supabase
-    .from('workflow_logs')
-    .update({ status: 'COMPLETED' })
-    .eq('id', workflowLogId);
-  
+  await withRetry(() =>
+    updateWorkflowLog(workflowLogId, { status: 'COMPLETED' })
+  )
 }

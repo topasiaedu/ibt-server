@@ -5,6 +5,7 @@ import { Database } from '../../database.types'
 import { sendTemplate } from './action-handler/send-template'
 import { sendMessage } from './action-handler/send-message'
 import { addToContactList } from './action-handler/add-to-contact-list'
+import { zoom } from './action-handler/zoom'
 
 const workflowLogQueue: WorkflowLog[] = []
 
@@ -54,6 +55,8 @@ const processWorkflowLogs = async (workflowLog: WorkflowLog) => {
       case 'add-to-contact-list':
         await addToContactList(workflowLog.payload, workflowLog.id)
         break
+      case 'zoom':
+        await zoom(workflowLog.payload, workflowLog.id)
       default:
         console.warn(`Unknown workflow log type: ${workflowLog.type}`)
         break

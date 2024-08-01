@@ -439,7 +439,6 @@ const handleKeywordTrigger = async (value: any) => {
 
                 if (newContact) {
                   for (const action of trigger.actions) {
-                    console.log('Action:', action)
                     if (action.active) {
                       await generateWorkflowLog(
                         action,
@@ -452,7 +451,6 @@ const handleKeywordTrigger = async (value: any) => {
 
               if (contact) {
                 for (const action of trigger.actions) {
-                  console.log('Action:', action)
                   if (action.active) {
                     await generateWorkflowLog(action, contact as Contact)
                   }

@@ -12,35 +12,35 @@ export type Database = {
       actions: {
         Row: {
           active: boolean | null
-          created_at: string
+          created_at: string | null
           details: Json | null
-          execution_order: number
+          execution_order: number | null
           id: string
-          project_id: number
+          project_id: number | null
           type: string
-          updated_at: string
+          updated_at: string | null
           workflow_id: string
         }
         Insert: {
           active?: boolean | null
-          created_at?: string
+          created_at?: string | null
           details?: Json | null
-          execution_order: number
+          execution_order?: number | null
           id: string
-          project_id: number
+          project_id?: number | null
           type: string
-          updated_at?: string
+          updated_at?: string | null
           workflow_id: string
         }
         Update: {
           active?: boolean | null
-          created_at?: string
+          created_at?: string | null
           details?: Json | null
-          execution_order?: number
+          execution_order?: number | null
           id?: string
-          project_id?: number
+          project_id?: number | null
           type?: string
-          updated_at?: string
+          updated_at?: string | null
           workflow_id?: string
         }
         Relationships: [
@@ -1103,6 +1103,44 @@ export type Database = {
           },
         ]
       }
+      zoom: {
+        Row: {
+          account_id: string | null
+          client_id: string | null
+          client_secret: string | null
+          created_at: string
+          gen_token: string | null
+          id: string
+          project_id: number
+        }
+        Insert: {
+          account_id?: string | null
+          client_id?: string | null
+          client_secret?: string | null
+          created_at?: string
+          gen_token?: string | null
+          id?: string
+          project_id: number
+        }
+        Update: {
+          account_id?: string | null
+          client_id?: string | null
+          client_secret?: string | null
+          created_at?: string
+          gen_token?: string | null
+          id?: string
+          project_id?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "zoom_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "project"
+            referencedColumns: ["project_id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
@@ -1167,7 +1205,7 @@ export type Database = {
           total_sent: number
           total_failed: number
           total_unique_contacts: number
-          triggers: Json
+          trigger: Json
           actions: Json
           phone_numbers: Json
         }[]
