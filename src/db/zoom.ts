@@ -8,7 +8,7 @@ export const fetchZoom = async (zoomId: number): Promise<Zoom> => {
   const { data, error } = await supabase
     .from('zoom')
     .select('*')
-    .eq('zoom_id', zoomId)
+    .eq('id', zoomId)
     .single()
 
   if (error) throw error
@@ -36,7 +36,7 @@ export const updateZoom = async (
   const { data, error } = await supabase
     .from('zoom')
     .update(update)
-    .eq('zoom_id', zoomId)
+    .eq('id', zoomId)
     .single()
 
   if (error) throw error
