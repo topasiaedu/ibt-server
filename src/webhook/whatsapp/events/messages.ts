@@ -402,10 +402,17 @@ const handleKeywordTrigger = async (value: any) => {
             console.log('Checking message:', message)
             const { text } = message
             const { body } = text
-            console.log('Checking body:', body)
 
-            if (keywords.includes(body)) {
-              console.log('Keyword found:', body)
+            const normalizedBody = body.trim().toLowerCase()
+            console.log('Checking body:', normalizedBody)
+
+            // Convert keywords to lower case for comparison
+            const lowerCaseKeywords = keywords.map((kw: string) =>
+              kw.toLowerCase().trim()
+            )
+
+            if (lowerCaseKeywords.includes(normalizedBody)) {
+              console.log('Keyword found:', normalizedBody)
 
               // Check if the Contact exists in the database
               const { data: contact, error: contactError } = await supabase
