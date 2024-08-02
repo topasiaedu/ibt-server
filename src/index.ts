@@ -82,6 +82,27 @@ app.use(errorHandler)
 // Pemni VIP webhook
 app.post('/pemni/vip', handlePemniVipWebhook)
 
+// Temp
+app.get('/proxy', async (req: Request, res: Response) => {
+  const url = req.query.url as string;
+  if (!url) {
+    res.status(400).send('Missing url parameter');
+    return;
+  }
+
+  try {
+    const response = await axios.get(url, {
+      headers: {
+        'Authorization': req.headers.authorization || ''
+      },
+      responseType: 'arraybuffer'
+    });
+    res.set('Content-Type', 'application/octet-stream');
+    res.send(response.data);
+  } catch (error) {
+    res.status(500).send((error as any).toString());
+  }
+});
 let server: Server
 
 const startServer = () => {
