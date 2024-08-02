@@ -42,6 +42,8 @@ const corsOptions = {
 
 // Enable CORS with configured options
 app.use(cors(corsOptions));
+// Handle preflight (OPTIONS) requests for all routes
+app.options('*', cors(corsOptions));
 
 app.use(express.json()) // Parse JSON bodies
 app.use(loggerMiddleware) // Use the logger middleware for all requests
