@@ -31,7 +31,13 @@ const environment = process.env.NODE_ENV || 'development'
 let tunnelURl: string = 'https://ibtnmndcqrsyx6t4n7um.loca.lt'
 
 // Middleware
-app.use(cors()) // Enable CORS for all requests
+// Configure CORS options
+const corsOptions = {
+  origin: '*', // Allow all origins
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Allowed methods
+  allowedHeaders:
+    'Origin, X-Requested-With, Content-Type, Accept, Authorization', // Allowed headers
+}
 app.use(express.json()) // Parse JSON bodies
 app.use(loggerMiddleware) // Use the logger middleware for all requests
 
@@ -84,25 +90,25 @@ app.post('/pemni/vip', handlePemniVipWebhook)
 
 // Temp
 app.get('/proxy', async (req: Request, res: Response) => {
-  const url = req.query.url as string;
+  const url = req.query.url as string
   if (!url) {
-    res.status(400).send('Missing url parameter');
-    return;
+    res.status(400).send('Missing url parameter')
+    return
   }
 
   try {
     const response = await axios.get(url, {
       headers: {
-        'Authorization': req.headers.authorization || ''
+        Authorization: req.headers.authorization || '',
       },
-      responseType: 'arraybuffer'
-    });
-    res.set('Content-Type', 'application/octet-stream');
-    res.send(response.data);
+      responseType: 'arraybuffer',
+    })
+    res.set('Content-Type', 'application/octet-stream')
+    res.send(response.data)
   } catch (error) {
-    res.status(500).send((error as any).toString());
+    res.status(500).send((error as any).toString())
   }
-});
+})
 let server: Server
 
 const startServer = () => {
