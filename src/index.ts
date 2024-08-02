@@ -32,12 +32,17 @@ let tunnelURl: string = 'https://ibtnmndcqrsyx6t4n7um.loca.lt'
 
 // Middleware
 // Configure CORS options
+// Configure CORS options
 const corsOptions = {
   origin: '*', // Allow all origins
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Allowed methods
-  allowedHeaders:
-    'Origin, X-Requested-With, Content-Type, Accept, Authorization', // Allowed headers
-}
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allowed methods
+  allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization'], // Allowed headers
+  optionsSuccessStatus: 200, // Some legacy browsers choke on 204
+};
+
+// Enable CORS with configured options
+app.use(cors(corsOptions));
+
 app.use(express.json()) // Parse JSON bodies
 app.use(loggerMiddleware) // Use the logger middleware for all requests
 
