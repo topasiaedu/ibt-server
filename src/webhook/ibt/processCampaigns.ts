@@ -215,7 +215,7 @@ function scheduleCampaign(campaign: Campaign) {
 
   // Offset by 8 hours to match Malaysia timezone
   const currentTimeMillis = new Date(currentTime).getTime()
-  const postTime = new Date(campaign.post_time).getTime()
+  const postTime = new Date(campaign.post_time).getTime() + 8 * 60 * 60 * 1000
 
   if (isNaN(postTime)) {
     console.error(
