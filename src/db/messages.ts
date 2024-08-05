@@ -27,6 +27,7 @@ export const insertMessage = async (params: InsertMessageParams): Promise<Messag
     mediaUrl
   } = params
 
+  console.log('Inserting message:', messageResponse)
   const { data, error } = await supabase
     .from('messages')
     .insert([
