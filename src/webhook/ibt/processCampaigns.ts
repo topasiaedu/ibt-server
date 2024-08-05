@@ -232,6 +232,9 @@ function scheduleCampaign(campaign: Campaign) {
     return
   }
 
+  console.log("postTime: ", postTime)
+  console.log("currentTimeMillis: ", currentTimeMillis)
+
   const delay = postTime - currentTimeMillis
 
   if (delay < 0) {
