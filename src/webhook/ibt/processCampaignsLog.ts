@@ -148,6 +148,10 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
       accessToken
     ));
 
+    if (!messageResponse) {
+      throw new Error('Message sending failed');
+    }
+
     const newMessage = await withRetry(() => insertMessage({
       messageResponse,
       campaignLog,
