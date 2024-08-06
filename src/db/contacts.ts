@@ -27,7 +27,8 @@ export const updateContactLastContactedBy = async (
 export const findOrCreateContact = async (
   waId: string,
   name: string,
-  projectId: number
+  projectId: number,
+  email?: string
 ): Promise<Contact> => {
   const { data, error } = await supabase
     .from('contacts')
@@ -44,6 +45,7 @@ export const findOrCreateContact = async (
         {
           wa_id: waId,
           name,
+          email,
           project_id: projectId,
         },
       ])
