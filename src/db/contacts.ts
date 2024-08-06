@@ -36,6 +36,18 @@ export const findOrCreateContact = async (
     .eq('wa_id', waId)
     .eq('project_id', projectId)
 
+    // Update the contact's name, email if it's different
+  if (data?.length === 1) {
+    const contact = data[0]
+    if (contact.name !== name || contact.email !== email) {
+      const { error } = await supabase
+        .from('contacts')
+        .update({ name, email })
+        .eq('contact_id', contact.contact_id)
+      if (error) throw error
+    }
+  }
+
   // If None found, create a new contact
   // If multiple found, return the first one and delete the rest
   if (data?.length === 0) {
