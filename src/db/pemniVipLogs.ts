@@ -12,7 +12,7 @@ export const createPemniVipLog = async (
 ): Promise<PemniVipLogs> => {
   const { data, error } = await supabase
     .from('pemni_vip_logs')
-    .insert([log])
+    .insert(log)
     .single()
   if (error) throw error
   return data as PemniVipLogs
