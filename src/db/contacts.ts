@@ -37,8 +37,8 @@ export const findOrCreateContact = async (
 
   // If None found, create a new contact
   // If multiple found, return the first one and delete the rest
-  if (error) {
-    const { data, error } = await supabase
+  if (data?.length === 0) {
+    const { data, error: createError } = await supabase
       .from('contacts')
       .insert([
         {
@@ -48,11 +48,14 @@ export const findOrCreateContact = async (
         },
       ])
       .select('*')
-    if (error) throw error
-    return data[0]
+      .single()
+    if (createError) throw error
+    return data
   }
 
-  if (data.length > 1) {
+  if (error) throw error
+
+  if (data?.length > 1) {
     const contactId = data[0].contact_id
     const contactIds = data.map((contact: any) => contact.contact_id)
 

@@ -88,6 +88,8 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
       findOrCreateContact(customData.phone, customData.name, 2)
     )
 
+    console.log("Contact:", contact)
+
     const log = await withRetry(() =>
       createPemniVipLog({
         contact_id: contact.contact_id,
