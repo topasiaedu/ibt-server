@@ -123,6 +123,8 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
         customData.plan = 'VIP'
       }
 
+      console.log(`User ID: ${user.id}, Plan: ${user.plan}`)
+
       // Update the plan if user exists
       await axios.patch(
         `https://mylifedecode.com/api/1.1/obj/user/${user.id}`,

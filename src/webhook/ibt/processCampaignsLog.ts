@@ -18,7 +18,7 @@ import { insertMessage } from '../../db/messages';
 
 const campaignLogQueue: CampaignLog[] = [];
 
-const MAX_RETRIES = 5;
+const MAX_RETRIES = 3;
 const RETRY_DELAY = 10000; // 10 seconds
 let CONCURRENCY_LIMIT = 10;
 const BATCH_SIZE = 1000; // Adjust as needed
