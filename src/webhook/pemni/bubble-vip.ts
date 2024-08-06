@@ -85,10 +85,15 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
     customData.phone = formatPhoneNumber(customData.phone)
 
     const contact = await withRetry(() =>
-      findOrCreateContact(customData.phone, customData.name, 2, customData.email)
+      findOrCreateContact(
+        customData.phone,
+        customData.name,
+        2,
+        customData.email
+      )
     )
 
-    console.log("Contact:", contact)
+    console.log('Contact:', contact)
 
     const log = await withRetry(() =>
       createPemniVipLog({
@@ -199,7 +204,6 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
         const conversation = await withRetry(() =>
           fetchConversation(contact.contact_id, 5, 2)
         )
-        
 
         const newMessage = await withRetry(() =>
           insertMessage({
@@ -326,6 +330,7 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
         await withRetry(() =>
           updatePemniVipLog(log.id, {
             ...log,
+            password: randomPassword,
             message_id: newMessage.message_id,
             status: 'MESSAGE_SENT',
           })
@@ -335,6 +340,7 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
         await withRetry(() =>
           updatePemniVipLog(log.id, {
             ...log,
+            password: randomPassword,
             status: 'MESSAGE_FAILED',
           })
         )
