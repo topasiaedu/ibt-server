@@ -13,6 +13,7 @@ export const createPemniVipLog = async (
   const { data, error } = await supabase
     .from('pemni_vip_logs')
     .insert(log)
+    .select('*')
     .single()
   if (error) throw error
   return data as PemniVipLogs
