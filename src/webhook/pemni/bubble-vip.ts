@@ -95,6 +95,8 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
       })
     )
 
+    console.log('Log:', log)
+
     // Check cache for user data
     let userData: { email: string; id: string; plan: string }[] =
       cache.get(customData.email) || []
@@ -136,6 +138,7 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
         }
       )
 
+      console.log('log.id', log.id)
       await withRetry(() =>
         updatePemniVipLog(log.id, {
           ...log,
@@ -194,6 +197,7 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
         const conversation = await withRetry(() =>
           fetchConversation(contact.contact_id, 5, 2)
         )
+        
 
         const newMessage = await withRetry(() =>
           insertMessage({
