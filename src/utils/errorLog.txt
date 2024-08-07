@@ -119,3 +119,21 @@ Inside handleOutgoingMessage function in messages.ts {}
 }
 
 
+[2024-08-07T18:54:43.798Z] Error adding contact to Zoom "Error: Error adding contact to Zoom\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\action-handler\\zoom.ts:57:9\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\action-handler\\zoom.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-08-07T18:56:50.043Z] Error adding contact to Zoom "Error: Error adding contact to Zoom\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\action-handler\\zoom.ts:57:9\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\action-handler\\zoom.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-08-07T18:58:11.383Z] Error adding contact to Zoom "Error: Error adding contact to Zoom\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\action-handler\\zoom.ts:57:9\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\action-handler\\zoom.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-08-07T18:59:06.095Z] Error adding contact to Zoom "Error: Error adding contact to Zoom\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\action-handler\\zoom.ts:60:9\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\action-handler\\zoom.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-08-07T19:01:34.116Z] Error adding contact to Zoom "Error: Error adding contact to Zoom\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\action-handler\\zoom.ts:60:9\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\action-handler\\zoom.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+
+[2024-08-07T19:03:13.732Z] Error adding contact to Zoom "Error: Error adding contact to Zoom\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\action-handler\\zoom.ts:60:9\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\action-handler\\zoom.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
+
+

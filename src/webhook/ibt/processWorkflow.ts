@@ -57,6 +57,7 @@ const processWorkflowLogs = async (workflowLog: WorkflowLog) => {
         break
       case 'zoom':
         await zoom(workflowLog.payload, workflowLog.id)
+        break
       default:
         console.warn(`Unknown workflow log type: ${workflowLog.type}`)
         break

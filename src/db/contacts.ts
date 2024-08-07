@@ -36,7 +36,7 @@ export const findOrCreateContact = async (
     .eq('wa_id', waId)
     .eq('project_id', projectId)
 
-    // Update the contact's name, email if it's different
+  // Update the contact's name, email if it's different
   if (data?.length === 1) {
     const contact = data[0]
     if (contact.name !== name || contact.email !== email) {
