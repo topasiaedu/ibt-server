@@ -12,7 +12,6 @@ type Action = Database['public']['Tables']['actions']['Row']
 
 export const handleIBTWebhook = async (req: Request, res: Response) => {
   try {
-    res.status(200).send('OK')
     console.log('IBT Webhook received')
 
     const workflowId = req.params.id
@@ -45,18 +44,25 @@ export const handleIBTWebhook = async (req: Request, res: Response) => {
       return
     }
 
-    let contact: Contact = await withRetry(() =>
-      findOrCreateContact(
-        webhookData.phone,
-        webhookData.name,
-        actionData[0].project_id,
-        webhookData.email
-      ), 'handleIBTWebhook > findOrCreateContact'
+    let contact: Contact = await withRetry(
+      () =>
+        findOrCreateContact(
+          webhookData.phone,
+          webhookData.name,
+          actionData[0].project_id,
+          webhookData.email
+        ),
+      'handleIBTWebhook > findOrCreateContact'
     )
 
     actionData.forEach(async (action: Action) => {
-      await withRetry(() => generateWorkflowLog(action, contact as Contact), 'handleIBTWebhook > generateWorkflowLog')
+      await withRetry(
+        () => generateWorkflowLog(action, contact as Contact),
+        'handleIBTWebhook > generateWorkflowLog'
+      )
     })
+    
+    res.status(200).send('OK')
   } catch (error) {
     console.error('Error processing webhook:', error)
     res.status(500).json({ error: 'Internal server error' })

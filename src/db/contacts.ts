@@ -73,16 +73,11 @@ export const findOrCreateContact = async (
     const contactId = data[0].contact_id
     const contactIds = data.map((contact: any) => contact.contact_id)
 
-    const { error } = await supabase
-      .from('conversations')
-      .update({ contact_id: contactId })
-      .in('contact_id', contactIds)
-    if (error) throw error
-
     const { error: deleteError } = await supabase
       .from('contacts')
       .delete()
       .in('contact_id', contactIds)
+
     if (deleteError) throw deleteError
   }
 
