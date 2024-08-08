@@ -137,3 +137,227 @@ Inside handleOutgoingMessage function in messages.ts {}
 [2024-08-07T19:03:13.732Z] Error adding contact to Zoom "Error: Error adding contact to Zoom\n    at C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\action-handler\\zoom.ts:60:9\n    at Generator.next (<anonymous>)\n    at fulfilled (C:\\Users\\Stanley\\OneDrive\\Documents\\GitHub\\ibt-server\\src\\webhook\\ibt\\action-handler\\zoom.ts:5:58)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)"
 
 
+[2024-08-07T19:15:59.012Z] Error creating conversation {
+  "code": "23502",
+  "details": "Failing row contains (74128cdf-dd12-4a42-a03d-5a03d70e70cb, 2024-08-07 19:16:00.166351+00, 9939, 0, null, null, 1, null, null, null).",
+  "hint": null,
+  "message": "null value in column \"phone_number_id\" of relation \"conversations\" violates not-null constraint"
+}
+
+
+[2024-08-07T19:31:07.905Z] Error creating conversation {
+  "code": "23502",
+  "details": "Failing row contains (8a0362d5-233d-4ed2-adc4-edcac4c5df6d, 2024-08-07 19:31:09.107876+00, 13309, 0, null, null, 1, null, null, null).",
+  "hint": null,
+  "message": "null value in column \"phone_number_id\" of relation \"conversations\" violates not-null constraint"
+}
+
+
+[2024-08-07T19:43:13.606Z] Error creating conversation {
+  "code": "23502",
+  "details": "Failing row contains (af706cdd-8dd9-49bf-b4ad-ff7abca4874f, 2024-08-07 19:43:14.847591+00, 13309, 0, null, null, 1, null, null, null).",
+  "hint": null,
+  "message": "null value in column \"phone_number_id\" of relation \"conversations\" violates not-null constraint"
+}
+
+
+[2024-08-07T20:26:35.438Z] Error creating conversation {
+  "code": "23502",
+  "details": "Failing row contains (adab5533-90af-4006-b6a2-66d7507cb4b3, 2024-08-07 20:26:36.823368+00, 13309, 0, null, null, 1, null, null, null).",
+  "hint": null,
+  "message": "null value in column \"phone_number_id\" of relation \"conversations\" violates not-null constraint"
+}
+
+
+[2024-08-07T21:16:59.206Z] Error creating conversation {
+  "code": "23502",
+  "details": "Failing row contains (14fca974-2022-46c9-bb41-68cb0952de5d, 2024-08-07 21:17:00.752007+00, 9939, 0, null, null, 1, null, null, null).",
+  "hint": null,
+  "message": "null value in column \"phone_number_id\" of relation \"conversations\" violates not-null constraint"
+}
+
+
+[2024-08-07T21:22:03.250Z] Error creating conversation {
+  "code": "23502",
+  "details": "Failing row contains (19146cd0-b398-430c-9b46-e2482782b861, 2024-08-07 21:22:04.812782+00, 9939, 0, null, null, 1, null, null, null).",
+  "hint": null,
+  "message": "null value in column \"phone_number_id\" of relation \"conversations\" violates not-null constraint"
+}
+
+
+[2024-08-07T21:28:01.255Z] Error creating conversation {
+  "code": "23502",
+  "details": "Failing row contains (13ed2528-7839-4b51-b349-80a52633711b, 2024-08-07 21:28:02.83471+00, 9939, 0, null, null, 1, null, null, null).",
+  "hint": null,
+  "message": "null value in column \"phone_number_id\" of relation \"conversations\" violates not-null constraint"
+}
+
+
+[2024-08-07T21:38:09.477Z] Error creating conversation {
+  "code": "23502",
+  "details": "Failing row contains (8f4e989d-ceb4-451a-a878-fe793c758eca, 2024-08-07 21:38:11.090643+00, 9939, 0, null, null, 1, null, null, null).",
+  "hint": null,
+  "message": "null value in column \"phone_number_id\" of relation \"conversations\" violates not-null constraint"
+}
+
+
+[2024-08-07T22:32:25.902Z] Error creating conversation {
+  "code": "23502",
+  "details": "Failing row contains (27365471-72f0-4f7f-9d34-9d4e5c54ff0e, 2024-08-07 22:32:25.92321+00, 9939, 0, null, null, 1, null, null, null).",
+  "hint": null,
+  "message": "null value in column \"phone_number_id\" of relation \"conversations\" violates not-null constraint"
+}
+
+
+[2024-08-07T22:43:21.170Z] Error creating conversation {
+  "code": "23502",
+  "details": "Failing row contains (34290755-62e1-4f9d-b547-ae8a3eb136a9, 2024-08-07 22:43:21.225145+00, 9939, 0, null, null, 1, null, null, null).",
+  "hint": null,
+  "message": "null value in column \"phone_number_id\" of relation \"conversations\" violates not-null constraint"
+}
+
+
+[2024-08-07T22:46:22.658Z] Error creating conversation {
+  "code": "23502",
+  "details": "Failing row contains (d1b57662-863c-401f-84ed-9d3fef8f166c, 2024-08-07 22:46:22.723279+00, 13309, 0, null, null, 1, null, null, null).",
+  "hint": null,
+  "message": "null value in column \"phone_number_id\" of relation \"conversations\" violates not-null constraint"
+}
+
+
+[2024-08-07T22:53:30.206Z] Error creating conversation {
+  "code": "23502",
+  "details": "Failing row contains (9c194b24-c426-4a98-9bcb-3855a3b3e803, 2024-08-07 22:53:30.297764+00, 9939, 0, null, null, 1, null, null, null).",
+  "hint": null,
+  "message": "null value in column \"phone_number_id\" of relation \"conversations\" violates not-null constraint"
+}
+
+
+[2024-08-07T23:07:54.957Z] Error creating conversation {
+  "code": "23502",
+  "details": "Failing row contains (f1f6c0a3-6c98-43d9-9351-f6db15fe2795, 2024-08-07 23:07:55.095643+00, 9939, 0, null, null, 1, null, null, null).",
+  "hint": null,
+  "message": "null value in column \"phone_number_id\" of relation \"conversations\" violates not-null constraint"
+}
+
+
+[2024-08-07T23:57:23.892Z] Error creating conversation {
+  "code": "23502",
+  "details": "Failing row contains (f69a8216-8ad2-4471-a321-ba6693e95445, 2024-08-07 23:57:24.181234+00, 9939, 0, null, null, 1, null, null, null).",
+  "hint": null,
+  "message": "null value in column \"phone_number_id\" of relation \"conversations\" violates not-null constraint"
+}
+
+
+[2024-08-08T00:18:34.175Z] Error creating conversation {
+  "code": "23502",
+  "details": "Failing row contains (1f87635a-5190-4f8b-bd58-d88d47bca552, 2024-08-08 00:18:34.536952+00, 9939, 0, null, null, 1, null, null, null).",
+  "hint": null,
+  "message": "null value in column \"phone_number_id\" of relation \"conversations\" violates not-null constraint"
+}
+
+
+[2024-08-08T00:19:22.173Z] Error creating conversation {
+  "code": "23502",
+  "details": "Failing row contains (28b4c46e-a7e4-4cc3-ab71-fc3a27673238, 2024-08-08 00:19:22.533856+00, 9939, 0, null, null, 1, null, null, null).",
+  "hint": null,
+  "message": "null value in column \"phone_number_id\" of relation \"conversations\" violates not-null constraint"
+}
+
+
+[2024-08-08T00:19:34.658Z] Error creating conversation {
+  "code": "23502",
+  "details": "Failing row contains (53c765a2-0fe4-41fe-a407-07e34cc4c364, 2024-08-08 00:19:35.018854+00, 9939, 0, null, null, 1, null, null, null).",
+  "hint": null,
+  "message": "null value in column \"phone_number_id\" of relation \"conversations\" violates not-null constraint"
+}
+
+
+[2024-08-08T00:20:35.142Z] Error creating conversation {
+  "code": "23502",
+  "details": "Failing row contains (dd602634-6d3e-4e6e-bc9c-ba8fb56bd63e, 2024-08-08 00:20:35.50917+00, 9939, 0, null, null, 1, null, null, null).",
+  "hint": null,
+  "message": "null value in column \"phone_number_id\" of relation \"conversations\" violates not-null constraint"
+}
+
+
+[2024-08-08T00:23:24.047Z] Error creating conversation {
+  "code": "23502",
+  "details": "Failing row contains (7096d4c7-a435-4be9-b8ec-60e014ef77e6, 2024-08-08 00:23:24.417979+00, 9939, 0, null, null, 1, null, null, null).",
+  "hint": null,
+  "message": "null value in column \"phone_number_id\" of relation \"conversations\" violates not-null constraint"
+}
+
+
+[2024-08-08T01:34:46.962Z] Error creating conversation {
+  "code": "23502",
+  "details": "Failing row contains (9e0959db-e45c-49d8-8420-74f36fb3da77, 2024-08-08 01:34:47.55978+00, 9956, 0, null, null, 1, null, null, null).",
+  "hint": null,
+  "message": "null value in column \"phone_number_id\" of relation \"conversations\" violates not-null constraint"
+}
+
+
+[2024-08-08T02:02:01.702Z] Error creating conversation {
+  "code": "23502",
+  "details": "Failing row contains (f35cd9f8-b17b-454b-8233-e86eca856d7d, 2024-08-08 02:02:02.388808+00, 13540, 0, null, null, 1, null, null, null).",
+  "hint": null,
+  "message": "null value in column \"phone_number_id\" of relation \"conversations\" violates not-null constraint"
+}
+
+
+[2024-08-08T02:24:30.615Z] Error creating conversation {
+  "code": "23502",
+  "details": "Failing row contains (8f25deed-dc49-4319-ba89-de132671a56c, 2024-08-08 02:24:31.367214+00, 13309, 0, null, null, 1, null, null, null).",
+  "hint": null,
+  "message": "null value in column \"phone_number_id\" of relation \"conversations\" violates not-null constraint"
+}
+
+
+[2024-08-08T03:48:02.896Z] Error creating conversation {
+  "code": "23502",
+  "details": "Failing row contains (db9956ba-a2d6-452c-b0e3-e14736bf407d, 2024-08-08 03:48:03.891978+00, 9939, 0, null, null, 1, null, null, null).",
+  "hint": null,
+  "message": "null value in column \"phone_number_id\" of relation \"conversations\" violates not-null constraint"
+}
+
+
+[2024-08-08T03:48:54.720Z] Error creating conversation {
+  "code": "23502",
+  "details": "Failing row contains (ec314848-cb4a-46cb-966b-21a3e380343e, 2024-08-08 03:48:55.734451+00, 9939, 0, null, null, 1, null, null, null).",
+  "hint": null,
+  "message": "null value in column \"phone_number_id\" of relation \"conversations\" violates not-null constraint"
+}
+
+
+[2024-08-08T03:49:15.607Z] Error creating conversation {
+  "code": "23502",
+  "details": "Failing row contains (3698afd0-0466-4239-b816-a578f378f479, 2024-08-08 03:49:16.628254+00, 9939, 0, null, null, 1, null, null, null).",
+  "hint": null,
+  "message": "null value in column \"phone_number_id\" of relation \"conversations\" violates not-null constraint"
+}
+
+
+[2024-08-08T03:52:16.441Z] Error creating conversation {
+  "code": "23502",
+  "details": "Failing row contains (6c6063f7-c2fb-415d-bd13-78535c27e50c, 2024-08-08 03:52:17.464229+00, 9939, 0, null, null, 1, null, null, null).",
+  "hint": null,
+  "message": "null value in column \"phone_number_id\" of relation \"conversations\" violates not-null constraint"
+}
+
+
+[2024-08-08T04:01:11.029Z] Error creating conversation {
+  "code": "23502",
+  "details": "Failing row contains (1a6a186b-5bc1-4303-a832-f76d60a56495, 2024-08-08 04:01:12.088991+00, 9939, 0, null, null, 1, null, null, null).",
+  "hint": null,
+  "message": "null value in column \"phone_number_id\" of relation \"conversations\" violates not-null constraint"
+}
+
+
+[2024-08-08T04:38:52.498Z] Error creating conversation {
+  "code": "23502",
+  "details": "Failing row contains (a6ae446a-ffc8-465b-a6ae-abd88e317dd5, 2024-08-08 04:38:53.674783+00, 9939, 0, null, null, 1, null, null, null).",
+  "hint": null,
+  "message": "null value in column \"phone_number_id\" of relation \"conversations\" violates not-null constraint"
+}
+
+

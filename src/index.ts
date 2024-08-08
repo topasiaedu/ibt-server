@@ -68,7 +68,9 @@ app.get('/webhook', (req, res) => {
 })
 
 app.post('/webhook', (req, res) => {
+  console.log('Received webhook', environment)
   if (environment !== 'development') {
+    console.log('Forwarding webhook to tunnel...')
     // Proxy the request to tunnel ( we send the same exact request to the tunnel which is our local server for development )
     axios
       .post(tunnelURl + '/webhook', req.body)
