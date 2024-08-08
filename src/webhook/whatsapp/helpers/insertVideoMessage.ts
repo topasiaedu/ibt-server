@@ -31,7 +31,10 @@ const insertVideoMessage = async (
     const name = contacts[0].profile?.name
     const wa_id = contacts[0].wa_id
 
-    const exist: Message | null = await withRetry(() => fetchMessageByWAMID(id))
+    const exist: Message | null = await withRetry(
+      () => fetchMessageByWAMID(id),
+      'insertVideoMessage > fetchMessageByWAMID'
+    )
 
     if (exist) {
       console.log('Message exists', exist.message_id)
@@ -39,17 +42,20 @@ const insertVideoMessage = async (
       return
     }
 
-    const contact: Contact = await withRetry(() =>
-      findOrCreateContact(wa_id, name, project_id)
+    const contact: Contact = await withRetry(
+      () => findOrCreateContact(wa_id, name, project_id),
+      'insertVideoMessage > findOrCreateContact'
     )
     console.log('Contact found or created', contact.contact_id)
 
-    const phoneNumber: PhoneNumber = await withRetry(() =>
-      fetchPhoneNumberByNumber(display_phone_number)
+    const phoneNumber: PhoneNumber = await withRetry(
+      () => fetchPhoneNumberByNumber(display_phone_number),
+      'insertVideoMessage > fetchPhoneNumberByNumber'
     )
 
-    const accessToken: string = await withRetry(() =>
-      fetchPhoneNumberBMAccessTokenByNumber(display_phone_number)
+    const accessToken: string = await withRetry(
+      () => fetchPhoneNumberBMAccessTokenByNumber(display_phone_number),
+      'insertVideoMessage > fetchPhoneNumberBMAccessTokenByNumber'
     )
 
     // Generate random file name
@@ -63,12 +69,14 @@ const insertVideoMessage = async (
       throw new Error('Error fetching media from WhatsApp API')
     }
 
-    const conversation: Conversation = await withRetry(() =>
-      fetchConversation(
-        contact.contact_id,
-        phoneNumber.phone_number_id,
-        project_id
-      )
+    const conversation: Conversation = await withRetry(
+      () =>
+        fetchConversation(
+          contact.contact_id,
+          phoneNumber.phone_number_id,
+          project_id
+        ),
+      'insertVideoMessage > fetchConversation'
     )
 
     console.log('Conversation found or created', conversation.id)
@@ -87,8 +95,9 @@ const insertVideoMessage = async (
     }
 
     if (context) {
-      const contextMessage: Message | null = await withRetry(() =>
-        fetchMessageByWAMID(context.id)
+      const contextMessage: Message | null = await withRetry(
+        () => fetchMessageByWAMID(context.id),
+        'insertVideoMessage > fetchMessageByWAMID'
       )
       if (contextMessage) {
         messageInsert = {
@@ -98,12 +107,15 @@ const insertVideoMessage = async (
       }
     }
 
-    const newMessage: Message = await withRetry(() =>
-      insertMessage(messageInsert)
+    const newMessage: Message = await withRetry(
+      () => insertMessage(messageInsert),
+      'insertVideoMessage > insertMessage'
     )
 
-    await withRetry(() =>
-      updateConversationLastMessageId(conversation.id, newMessage.message_id)
+    await withRetry(
+      () =>
+        updateConversationLastMessageId(conversation.id, newMessage.message_id),
+      'insertVideoMessage > updateConversationLastMessageId'
     )
   } catch (error) {
     logError(

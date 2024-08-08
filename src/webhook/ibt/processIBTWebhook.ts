@@ -51,11 +51,11 @@ export const handleIBTWebhook = async (req: Request, res: Response) => {
         webhookData.name,
         actionData[0].project_id,
         webhookData.email
-      )
+      ), 'handleIBTWebhook > findOrCreateContact'
     )
 
     actionData.forEach(async (action: Action) => {
-      await withRetry(() => generateWorkflowLog(action, contact as Contact))
+      await withRetry(() => generateWorkflowLog(action, contact as Contact), 'handleIBTWebhook > generateWorkflowLog')
     })
   } catch (error) {
     console.error('Error processing webhook:', error)

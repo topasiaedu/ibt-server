@@ -180,7 +180,6 @@ const fetchMedia = async (
   access_token: string
 ): Promise<string> => {
   try {
-    console.log('Fetching image with ID:', imageId, randomFileName, access_token)
     // Assume axios and headers are set up previously
     const response = await axios.get(`${whatsappApiURL}/${imageId}`, {
       headers: {

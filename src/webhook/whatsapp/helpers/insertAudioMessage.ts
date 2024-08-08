@@ -32,7 +32,10 @@ const insertAudioMessage = async (
     const name = contacts[0].profile?.name
     const wa_id = contacts[0].wa_id
 
-    const exist: Message | null = await withRetry(() => fetchMessageByWAMID(id))
+    const exist: Message | null = await withRetry(
+      () => fetchMessageByWAMID(id),
+      'insertAudioMessage > fetchMessageByWAMID'
+    )
 
     if (exist) {
       console.log('Message exists', exist.message_id)
@@ -40,17 +43,20 @@ const insertAudioMessage = async (
       return
     }
 
-    const contact: Contact = await withRetry(() =>
-      findOrCreateContact(wa_id, name, project_id)
+    const contact: Contact = await withRetry(
+      () => findOrCreateContact(wa_id, name, project_id),
+      'insertAudioMessage > findOrCreateContact'
     )
     console.log('Contact found or created', contact.contact_id)
 
-    const phoneNumber: PhoneNumber = await withRetry(() =>
-      fetchPhoneNumberByNumber(display_phone_number)
+    const phoneNumber: PhoneNumber = await withRetry(
+      () => fetchPhoneNumberByNumber(display_phone_number),
+      'insertAudioMessage > fetchPhoneNumberByNumber'
     )
 
-    const accessToken: string = await withRetry(() =>
-      fetchPhoneNumberBMAccessTokenByNumber(display_phone_number)
+    const accessToken: string = await withRetry(
+      () => fetchPhoneNumberBMAccessTokenByNumber(display_phone_number),
+      'insertAudioMessage > fetchPhoneNumberBMAccessTokenByNumber'
     )
 
     // Generate random file name
@@ -64,12 +70,14 @@ const insertAudioMessage = async (
       throw new Error('Error fetching media from WhatsApp API')
     }
 
-    const conversation: Conversation = await withRetry(() =>
-      fetchConversation(
-        contact.contact_id,
-        phoneNumber.phone_number_id,
-        project_id
-      )
+    const conversation: Conversation = await withRetry(
+      () =>
+        fetchConversation(
+          contact.contact_id,
+          phoneNumber.phone_number_id,
+          project_id
+        ),
+      'insertAudioMessage > fetchConversation'
     )
 
     console.log('Conversation found or created', conversation.id)
@@ -88,8 +96,9 @@ const insertAudioMessage = async (
     }
 
     if (context) {
-      const contextMessage: Message | null = await withRetry(() =>
-        fetchMessageByWAMID(context.id)
+      const contextMessage: Message | null = await withRetry(
+        () => fetchMessageByWAMID(context.id),
+        'insertAudioMessage > fetchMessageByWAMID'
       )
       if (contextMessage) {
         messageInsert = {
@@ -99,12 +108,15 @@ const insertAudioMessage = async (
       }
     }
 
-    const newMessage: Message = await withRetry(() =>
-      insertMessage(messageInsert)
+    const newMessage: Message = await withRetry(
+      () => insertMessage(messageInsert),
+      'insertAudioMessage > insertMessage'
     )
 
-    await withRetry(() =>
-      updateConversationLastMessageId(conversation.id, newMessage.message_id)
+    await withRetry(
+      () =>
+        updateConversationLastMessageId(conversation.id, newMessage.message_id),
+      'insertAudioMessage > updateConversationLastMessageId'
     )
   } catch (error) {
     logError(

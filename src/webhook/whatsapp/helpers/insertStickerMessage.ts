@@ -32,7 +32,7 @@ const insertStickerMessage = async (
     const name = contacts[0].profile?.name
     const wa_id = contacts[0].wa_id
 
-    const exist: Message | null = await withRetry(() => fetchMessageByWAMID(id))
+    const exist: Message | null = await withRetry(() => fetchMessageByWAMID(id), 'insertStickerMessage > fetchMessageByWAMID')
 
     if (exist) {
       console.log('Message exists', exist.message_id)
@@ -41,16 +41,16 @@ const insertStickerMessage = async (
     }
 
     const contact: Contact = await withRetry(() =>
-      findOrCreateContact(wa_id, name, project_id)
+      findOrCreateContact(wa_id, name, project_id), 'insertStickerMessage > findOrCreateContact'
     )
     console.log('Contact found or created', contact.contact_id)
 
     const phoneNumber: PhoneNumber = await withRetry(() =>
-      fetchPhoneNumberByNumber(display_phone_number)
+      fetchPhoneNumberByNumber(display_phone_number), 'insertStickerMessage > fetchPhoneNumberByNumber'
     )
 
     const accessToken: string = await withRetry(() =>
-      fetchPhoneNumberBMAccessTokenByNumber(display_phone_number)
+      fetchPhoneNumberBMAccessTokenByNumber(display_phone_number),  'insertStickerMessage > fetchPhoneNumberBMAccessTokenByNumber'
     )
 
     // Generate random file name
@@ -69,7 +69,7 @@ const insertStickerMessage = async (
         contact.contact_id,
         phoneNumber.phone_number_id,
         project_id
-      )
+      ), 'insertStickerMessage > fetchConversation'
     )
 
     console.log('Conversation found or created', conversation.id)
@@ -89,7 +89,7 @@ const insertStickerMessage = async (
 
     if (context) {
       const contextMessage: Message | null = await withRetry(() =>
-        fetchMessageByWAMID(context.id)
+        fetchMessageByWAMID(context.id), 'insertStickerMessage > fetchMessageByWAMID'
       )
       if (contextMessage) {
         messageInsert = {
@@ -100,11 +100,11 @@ const insertStickerMessage = async (
     }
 
     const newMessage: Message = await withRetry(() =>
-      insertMessage(messageInsert)
+      insertMessage(messageInsert), 'insertStickerMessage > insertMessage'
     )
 
     await withRetry(() =>
-      updateConversationLastMessageId(conversation.id, newMessage.message_id)
+      updateConversationLastMessageId(conversation.id, newMessage.message_id), 'insertStickerMessage > updateConversationLastMessageId'
     )
   } catch (error) {
     logError(

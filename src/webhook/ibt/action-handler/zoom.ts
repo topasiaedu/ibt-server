@@ -9,7 +9,10 @@ export const zoom = async (payload: any, workflowId: string) => {
   console.log('Adding contact to Zoom', payload)
 
   // Fetch Zoom
-  const zoom: Zoom = await withRetry(() => fetchZoomByProjectId(project_id))
+  const zoom: Zoom = await withRetry(
+    () => fetchZoomByProjectId(project_id),
+    'zoom > fetchZoomByProjectId'
+  )
 
   if (!zoom.gen_token) {
     zoom.gen_token = Buffer.from(
@@ -17,7 +20,10 @@ export const zoom = async (payload: any, workflowId: string) => {
     ).toString('base64')
 
     // Update Zoom
-    await withRetry(() => updateZoom(zoom.id, { gen_token: zoom.gen_token }))
+    await withRetry(
+      () => updateZoom(zoom.id, { gen_token: zoom.gen_token }),
+      'zoom > updateZoom'
+    )
   }
 
   // Get Access Token
@@ -55,7 +61,10 @@ export const zoom = async (payload: any, workflowId: string) => {
     )
 
     if (!addContactResponse.ok) {
-      console.error('Error adding contact to Zoom', await addContactResponse.text())
+      console.error(
+        'Error adding contact to Zoom',
+        await addContactResponse.text()
+      )
       logError(
         new Error('Error adding contact to Zoom'),
         'Error adding contact to Zoom'
@@ -63,8 +72,9 @@ export const zoom = async (payload: any, workflowId: string) => {
     }
 
     // Update workflow log status to completed
-    await withRetry(() =>
-      updateWorkflowLog(workflowId, { status: 'COMPLETED' })
+    await withRetry(
+      () => updateWorkflowLog(workflowId, { status: 'COMPLETED' }),
+      'zoom > updateWorkflowLog'
     )
   }
 }

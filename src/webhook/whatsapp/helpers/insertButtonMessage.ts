@@ -27,7 +27,10 @@ async function insertButtonMessage(
     const name = contacts[0].profile?.name
     const wa_id = contacts[0].wa_id
 
-    const exist: Message | null = await withRetry(() => fetchMessageByWAMID(id))
+    const exist: Message | null = await withRetry(
+      () => fetchMessageByWAMID(id),
+      'insertButtonMessage > fetchMessageByWAMID'
+    )
 
     if (exist) {
       console.log('Message exists', exist.message_id)
@@ -35,20 +38,24 @@ async function insertButtonMessage(
       return
     }
 
-    const contact: Contact = await withRetry(() =>
-      findOrCreateContact(wa_id, name, project_id)
+    const contact: Contact = await withRetry(
+      () => findOrCreateContact(wa_id, name, project_id),
+      'insertButtonMessage > findOrCreateContact'
     )
 
-    const phoneNumber: PhoneNumber = await withRetry(() =>
-      fetchPhoneNumberByNumber(display_phone_number)
+    const phoneNumber: PhoneNumber = await withRetry(
+      () => fetchPhoneNumberByNumber(display_phone_number),
+      'insertButtonMessage > fetchPhoneNumberByNumber'
     )
 
-    const conversation: Conversation = await withRetry(() =>
-      fetchConversation(
-        contact.contact_id,
-        phoneNumber.phone_number_id,
-        project_id
-      )
+    const conversation: Conversation = await withRetry(
+      () =>
+        fetchConversation(
+          contact.contact_id,
+          phoneNumber.phone_number_id,
+          project_id
+        ),
+      'insertButtonMessage > fetchConversation'
     )
 
     let messageInsert: MessageInsert = {
@@ -64,8 +71,9 @@ async function insertButtonMessage(
     }
 
     if (context) {
-      const contextMessage: Message | null = await withRetry(() =>
-        fetchMessageByWAMID(context.id)
+      const contextMessage: Message | null = await withRetry(
+        () => fetchMessageByWAMID(context.id),
+        'insertButtonMessage > fetchMessageByWAMID'
       )
       if (contextMessage) {
         messageInsert = {
@@ -75,12 +83,15 @@ async function insertButtonMessage(
       }
     }
 
-    const newMessage: Message = await withRetry(() =>
-      insertMessage(messageInsert)
+    const newMessage: Message = await withRetry(
+      () => insertMessage(messageInsert),
+      'insertButtonMessage > insertMessage'
     )
 
-    await withRetry(() =>
-      updateConversationLastMessageId(conversation.id, newMessage.message_id)
+    await withRetry(
+      () =>
+        updateConversationLastMessageId(conversation.id, newMessage.message_id),
+      'insertButtonMessage > updateConversationLastMessageId'
     )
   } catch (error) {
     logError(

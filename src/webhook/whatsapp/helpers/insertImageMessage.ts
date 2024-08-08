@@ -31,8 +31,11 @@ const insertImageMessage = async (
     const { id: imageId, caption } = image
     const name = contacts[0].profile?.name
     const wa_id = contacts[0].wa_id
-    
-    const exist: Message | null = await withRetry(() => fetchMessageByWAMID(id))
+
+    const exist: Message | null = await withRetry(
+      () => fetchMessageByWAMID(id),
+      'insertImageMessage > fetchMessageByWAMID'
+    )
 
     if (exist) {
       console.log('Message exists', exist.message_id)
@@ -40,17 +43,20 @@ const insertImageMessage = async (
       return
     }
 
-    const contact: Contact = await withRetry(() =>
-      findOrCreateContact(wa_id, name, project_id)
+    const contact: Contact = await withRetry(
+      () => findOrCreateContact(wa_id, name, project_id),
+      'insertImageMessage > findOrCreateContact'
     )
     console.log('Contact found or created', contact.contact_id)
 
-    const phoneNumber: PhoneNumber = await withRetry(() =>
-      fetchPhoneNumberByNumber(display_phone_number)
+    const phoneNumber: PhoneNumber = await withRetry(
+      () => fetchPhoneNumberByNumber(display_phone_number),
+      'insertImageMessage > fetchPhoneNumberByNumber'
     )
 
-    const accessToken: string = await withRetry(() =>
-      fetchPhoneNumberBMAccessTokenByNumber(display_phone_number)
+    const accessToken: string = await withRetry(
+      () => fetchPhoneNumberBMAccessTokenByNumber(display_phone_number),
+      'insertImageMessage > fetchPhoneNumberBMAccessTokenByNumber'
     )
 
     // Generate random file name
@@ -64,12 +70,14 @@ const insertImageMessage = async (
       throw new Error('Error fetching media from WhatsApp API')
     }
 
-    const conversation: Conversation = await withRetry(() =>
-      fetchConversation(
-        contact.contact_id,
-        phoneNumber.phone_number_id,
-        project_id
-      )
+    const conversation: Conversation = await withRetry(
+      () =>
+        fetchConversation(
+          contact.contact_id,
+          phoneNumber.phone_number_id,
+          project_id
+        ),
+      'insertImageMessage > fetchConversation'
     )
 
     console.log('Conversation found or created', conversation.id)
@@ -88,8 +96,9 @@ const insertImageMessage = async (
     }
 
     if (context) {
-      const contextMessage: Message | null = await withRetry(() =>
-        fetchMessageByWAMID(context.id)
+      const contextMessage: Message | null = await withRetry(
+        () => fetchMessageByWAMID(context.id),
+        'insertImageMessage > fetchMessageByWAMID'
       )
       if (contextMessage) {
         messageInsert = {
@@ -100,11 +109,13 @@ const insertImageMessage = async (
     }
 
     const newMessage: Message = await withRetry(() =>
-      insertMessage(messageInsert)
+      insertMessage(messageInsert), 'insertImageMessage > insertMessage'
     )
 
-    await withRetry(() =>
-      updateConversationLastMessageId(conversation.id, newMessage.message_id)
+    await withRetry(
+      () =>
+        updateConversationLastMessageId(conversation.id, newMessage.message_id),
+      'insertImageMessage > updateConversationLastMessageId'
     )
   } catch (error) {
     logError(

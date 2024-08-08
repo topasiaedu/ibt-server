@@ -53,11 +53,11 @@ const processCampaigns = async (campaign: Campaign) => {
   try {
     await withRetry(() =>
       updateCampaignStatus(campaign.campaign_id, 'PROCESSING')
-    )
+    , 'processCampaigns > updateCampaignStatus')
 
     // Fetch Campaign List
     const campaignLists: CampaignList[] = await withRetry(() =>
-      fetchCampaignList(campaign.campaign_id)
+      fetchCampaignList(campaign.campaign_id), 'processCampaigns > fetchCampaignList'
     )
 
     if (!campaignLists) {
@@ -81,7 +81,7 @@ const processCampaigns = async (campaign: Campaign) => {
           }
 
           const contactListMembers: ContactListMembers[] = await withRetry(() =>
-            fetchContactListMembers(campaignList.contact_list_id || 0)
+            fetchContactListMembers(campaignList.contact_list_id || 0), 'processCampaigns > fetchContactListMembers'
           )
 
           if (!contactListMembers) {
@@ -133,7 +133,7 @@ const processCampaigns = async (campaign: Campaign) => {
 
           const excludedContactListMembers: ContactListMembers[] =
             await withRetry(() =>
-              fetchContactListMembers(campaignList.contact_list_id || 0)
+              fetchContactListMembers(campaignList.contact_list_id || 0) , 'processCampaigns > fetchContactListMembers'
             )
           if (!excludedContactListMembers) {
             console.error(
@@ -167,12 +167,12 @@ const processCampaigns = async (campaign: Campaign) => {
 
     // Insert campaign logs into the database
     if (campaignLogs.length > 0) {
-      await withRetry(() => insertCampaignLogs(campaignLogs))
+      await withRetry(() => insertCampaignLogs(campaignLogs), 'processCampaigns > insertCampaignLogs')
     }
 
     // Update campaign status
     await withRetry(() =>
-      updateCampaignStatus(campaign.campaign_id, 'COMPLETED')
+      updateCampaignStatus(campaign.campaign_id, 'COMPLETED'), 'processCampaigns > updateCampaignStatus'
     )
   } catch (error) {
     logError(error as Error, 'Error processing campaign')
