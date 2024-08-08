@@ -88,10 +88,13 @@ const handleOutgoingMessage = async (value: any) => {
                 close_at: date,
                 last_message_id: message.message_id,
                 updated_at: new Date().toISOString(),
-                wa_conversation_id: status.conversation.id,
+                ...(conversation.wa_conversation_id !== status.conversation.id
+                  ? { wa_conversation_id: status.conversation.id }
+                  : {})
               }),
             'handleOutgoingMessage > updateConversation'
-          )
+          );
+          
         }
       }
 
