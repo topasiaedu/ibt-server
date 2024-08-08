@@ -12,7 +12,7 @@ import {
 import { fetchPhoneNumberByWAId, PhoneNumber } from '../../../db/phoneNumbers'
 import supabase from '../../../db/supabaseClient'
 import {
-  fetchWhatsAppBusinessAccountByWabaId,
+  fetchWhatsAppBusinessAccount,
   WhatsAppBusinessAccount,
 } from '../../../db/whatsappBusinessAccounts'
 import { logError } from '../../../utils/errorLogger'
@@ -144,9 +144,11 @@ const handleIncomingMessage = async (value: any) => {
       'handleIncomingMessage > fetchPhoneNumberByWAId'
     )
 
+    console.log('Phone Number:', phoneNumber)
+
     const whatsAppBusinessAccount: WhatsAppBusinessAccount = await withRetry(
-      () => fetchWhatsAppBusinessAccountByWabaId(phoneNumber.waba_id),
-      'handleIncomingMessage > fetchWhatsAppBusinessAccountByWabaId'
+      () => fetchWhatsAppBusinessAccount(phoneNumber.waba_id),
+      'handleIncomingMessage > fetchWhatsAppBusinessAccount'
     )
 
     messages.forEach(async (message: any) => {
