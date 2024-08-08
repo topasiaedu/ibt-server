@@ -67,14 +67,29 @@ export const fetchMessage = async (messageId: number): Promise<Message> => {
   return data
 }
 
-export const fetchMessageByWAMID = async (waMessageId: string): Promise<Message> => {
+export const fetchMessageByWAMID = async (waMessageId: string): Promise<Message | null> => {
   const { data, error } = await supabase
     .from('messages')
     .select('*')
     .eq('wa_message_id', waMessageId)
-    .single()
   if (error) throw error
-  return data
+
+  // If more than 1 delete duplicates, save the oldest one
+  if (data.length > 1) {
+    const sortedData = data.sort((a, b) => {
+      return new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
+    })
+    const [oldestMessage, ...rest] = sortedData
+    const restIds = rest.map((r) => r.message_id)
+    await supabase
+      .from('messages')
+      .delete()
+      .in('message_id', restIds)
+  }
+
+  if (data.length === 0) return null
+
+  return data[0]
 }
 
 export const insertMessage = async (message: MessageInsert): Promise<Message> => {

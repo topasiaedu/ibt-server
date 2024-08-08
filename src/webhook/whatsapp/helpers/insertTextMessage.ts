@@ -26,9 +26,10 @@ async function insertTextMessage(
     const name = contacts[0].profile?.name
     const wa_id = contacts[0].wa_id
 
-    const exist: Message = await withRetry(() => fetchMessageByWAMID(id))
+    const exist: Message | null = await withRetry(() => fetchMessageByWAMID(id))
 
     if (exist) {
+      console.log('Message exists', exist.message_id)
       console.log('Message already exists in the database')
       return
     }
@@ -67,13 +68,14 @@ async function insertTextMessage(
     }
 
     if (context) {
-      const contextMessage: Message = await withRetry(() =>
+      const contextMessage: Message | null = await withRetry(() =>
         fetchMessageByWAMID(context.id)
       )
-
-      messageInsert = {
-        ...messageInsert,
-        context: contextMessage.message_id,
+      if (contextMessage) {
+        messageInsert = {
+          ...messageInsert,
+          context: contextMessage.message_id,
+        }
       }
     }
 

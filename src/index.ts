@@ -29,6 +29,7 @@ const port: number = parseInt(process.env.PORT as string, 10) || 8080
 const uniqueSubdomain = 'ibtnm' + 'ndcqrsyx6t4n7um'
 const environment = process.env.NODE_ENV || 'development'
 let tunnelURl: string = 'https://ibtnmndcqrsyx6t4n7um.loca.lt'
+let tunnelActive: boolean = false
 
 // Middleware
 // Configure CORS options
@@ -70,7 +71,7 @@ app.get('/webhook', (req, res) => {
 app.post('/webhook', (req, res) => {
   // console.log('Received webhook', environment);
 
-  if (environment !== 'development') {
+  if (environment !== 'development' && tunnelActive) {
     // console.log('Forwarding webhook to tunnel...');
 
     axios.post(tunnelURl + '/webhook', req.body, {
@@ -82,6 +83,7 @@ app.post('/webhook', (req, res) => {
       // console.log('Webhook forwarded to tunnel successfully:', response.status, response.statusText);
     })
     .catch((error) => {
+      tunnelActive = false
       // console.error('Error forwarding webhook to tunnel:', error.message);
       // if (error.response) {
         // console.error('Response data:', error.response.data);
@@ -97,6 +99,7 @@ app.post('/ibt/webhook/:id', handleIBTWebhook)
 
 app.post('/update-tunnel-url', (req, res) => {
   tunnelURl = req.body.tunnelURl
+  tunnelActive = true
   res.json({ message: 'Tunnel URL updated' })
 })
 
