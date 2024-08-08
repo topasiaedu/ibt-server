@@ -3,8 +3,10 @@ import { CampaignLog } from './campaignLogs'
 import { Database } from '../database.types';
 
 export type Message = Database['public']['Tables']['messages']['Row']
+export type MessageInsert = Database['public']['Tables']['messages']['Insert']
+export type MessageUpdate = Database['public']['Tables']['messages']['Update']
 
-interface InsertMessageParams {
+interface InsertTemplateMessageParams {
   messageResponse?: any;
   campaignLog?: CampaignLog;
   contactId:number;
@@ -15,7 +17,7 @@ interface InsertMessageParams {
   mediaUrl?: string;
 }
 
-export const insertMessage = async (params: InsertMessageParams): Promise<Message> => {
+export const insertTemplateMessage = async (params: InsertTemplateMessageParams): Promise<Message> => {
   const {
     messageResponse,
     campaignLog,
@@ -52,5 +54,35 @@ export const insertMessage = async (params: InsertMessageParams): Promise<Messag
     console.error('Error inserting message in database:', error)
     console.error('Failed message:', messageResponse)
   }
+  return data
+}
+
+export const fetchMessage = async (messageId: number): Promise<Message> => {
+  const { data, error } = await supabase
+    .from('messages')
+    .select('*')
+    .eq('message_id', messageId)
+    .single()
+  if (error) throw error
+  return data
+}
+
+export const fetchMessageByWAMID = async (waMessageId: string): Promise<Message> => {
+  const { data, error } = await supabase
+    .from('messages')
+    .select('*')
+    .eq('wa_message_id', waMessageId)
+    .single()
+  if (error) throw error
+  return data
+}
+
+export const insertMessage = async (message: MessageInsert): Promise<Message> => {
+  const { data, error } = await supabase
+    .from('messages')
+    .insert([message])
+    .select('*')
+    .single()
+  if (error) throw error
   return data
 }

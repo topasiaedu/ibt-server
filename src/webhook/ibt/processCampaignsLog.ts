@@ -13,8 +13,8 @@ import {
 } from '../../utils/templateUtils';
 import { getCampaignPhoneNumber } from './helper/getCampaignPhoneNumber';
 import { fetchTemplate } from '../../db/templates';
-import { fetchConversation, updateConversation } from '../../db/conversations';
-import { insertMessage } from '../../db/messages';
+import { fetchConversation, updateConversationLastMessageId } from '../../db/conversations';
+import { insertTemplateMessage } from '../../db/messages';
 
 const campaignLogQueue: CampaignLog[] = [];
 
@@ -152,7 +152,7 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
       throw new Error('Message sending failed');
     }
 
-    const newMessage = await withRetry(() => insertMessage({
+    const newMessage = await withRetry(() => insertTemplateMessage({
       messageResponse,
       campaignLog,
       phoneNumberId: phone_number_id,
@@ -165,7 +165,7 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
 
     console.log('Message created successfully:', newMessage.message_id);
 
-    await withRetry(() => updateConversation(conversation.id, newMessage.message_id));
+    await withRetry(() => updateConversationLastMessageId(conversation.id, newMessage.message_id));
     await withRetry(() => updateContactLastContactedBy(contact.wa_id, phone_number_id));
     await updateCampaignLogStatus(campaignLog.id, 'COMPLETED');
   } catch (error) {

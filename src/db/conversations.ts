@@ -1,10 +1,15 @@
 import supabase from './supabaseClient'
+import { Database } from '../database.types'
+
+export type Conversation = Database['public']['Tables']['conversations']['Row']
+export type ConversationInsert = Database['public']['Tables']['conversations']['Insert']
+export type ConversationUpdate = Database['public']['Tables']['conversations']['Update']
 
 export const fetchConversation = async (
   contactId: number,
   phoneNumberId: number,
   projectId: number
-) => {
+): Promise<Conversation> => {
   const { data, error } = await supabase
     .from('conversations')
     .select('*')
@@ -72,7 +77,7 @@ export const insertConversation = async (
   return data
 }
 
-export const updateConversation = async (
+export const updateConversationLastMessageId = async (
   conversationId: string,
   messageId: number
 ) => {

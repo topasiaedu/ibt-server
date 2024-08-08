@@ -163,18 +163,18 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: "campaign_contacts_contact_id_fkey"
-            columns: ["contact_id"]
-            isOneToOne: false
-            referencedRelation: "contacts"
-            referencedColumns: ["contact_id"]
-          },
-          {
             foreignKeyName: "campaign_logs_campaign_id_fkey"
             columns: ["campaign_id"]
             isOneToOne: false
             referencedRelation: "campaigns"
             referencedColumns: ["campaign_id"]
+          },
+          {
+            foreignKeyName: "campaign_logs_contact_id_fkey"
+            columns: ["contact_id"]
+            isOneToOne: false
+            referencedRelation: "contacts"
+            referencedColumns: ["contact_id"]
           },
         ]
       }
@@ -419,24 +419,24 @@ export type Database = {
           conversation_id: string
           created_at: string
           id: string
-          new_wa_conversation_id: string
-          old_wa_conversation_id: string
+          new_wa_conversation_id: string | null
+          old_wa_conversation_id: string | null
           project_id: number
         }
         Insert: {
           conversation_id: string
           created_at?: string
           id?: string
-          new_wa_conversation_id: string
-          old_wa_conversation_id: string
+          new_wa_conversation_id?: string | null
+          old_wa_conversation_id?: string | null
           project_id: number
         }
         Update: {
           conversation_id?: string
           created_at?: string
           id?: string
-          new_wa_conversation_id?: string
-          old_wa_conversation_id?: string
+          new_wa_conversation_id?: string | null
+          old_wa_conversation_id?: string | null
           project_id?: number
         }
         Relationships: [
@@ -601,6 +601,7 @@ export type Database = {
           campaign_id: number | null
           contact_id: number
           content: string | null
+          context: number | null
           conversation_id: string | null
           created_at: string | null
           direction: string | null
@@ -618,6 +619,7 @@ export type Database = {
           campaign_id?: number | null
           contact_id: number
           content?: string | null
+          context?: number | null
           conversation_id?: string | null
           created_at?: string | null
           direction?: string | null
@@ -635,6 +637,7 @@ export type Database = {
           campaign_id?: number | null
           contact_id?: number
           content?: string | null
+          context?: number | null
           conversation_id?: string | null
           created_at?: string | null
           direction?: string | null
@@ -649,6 +652,13 @@ export type Database = {
           workflow_id?: string | null
         }
         Relationships: [
+          {
+            foreignKeyName: "messages_context_fkey"
+            columns: ["context"]
+            isOneToOne: false
+            referencedRelation: "messages"
+            referencedColumns: ["message_id"]
+          },
           {
             foreignKeyName: "messages_conversation_id_fkey"
             columns: ["conversation_id"]
@@ -1054,7 +1064,7 @@ export type Database = {
             referencedColumns: ["phone_number_id"]
           },
           {
-            foreignKeyName: "workflow_phone_number_workflow_id_fkey"
+            foreignKeyName: "workflow_phone_numbers_workflow_id_fkey"
             columns: ["workflow_id"]
             isOneToOne: false
             referencedRelation: "workflows"

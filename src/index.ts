@@ -68,10 +68,10 @@ app.get('/webhook', (req, res) => {
 })
 
 app.post('/webhook', (req, res) => {
-  console.log('Received webhook', environment);
+  // console.log('Received webhook', environment);
 
   if (environment !== 'development') {
-    console.log('Forwarding webhook to tunnel...');
+    // console.log('Forwarding webhook to tunnel...');
 
     axios.post(tunnelURl + '/webhook', req.body, {
       headers: {
@@ -79,7 +79,7 @@ app.post('/webhook', (req, res) => {
       }
     })
     .then((response) => {
-      console.log('Webhook forwarded to tunnel successfully:', response.status, response.statusText);
+      // console.log('Webhook forwarded to tunnel successfully:', response.status, response.statusText);
     })
     .catch((error) => {
       console.error('Error forwarding webhook to tunnel:', error.message);

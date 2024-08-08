@@ -7,7 +7,7 @@ import { Contact, findOrCreateContact } from '../../db/contacts'
 import axios from 'axios'
 import NodeCache from 'node-cache'
 import { sendMessageWithTemplate } from '../../api/whatsapp'
-import { fetchConversation, updateConversation } from '../../db/conversations'
+import { fetchConversation, updateConversationLastMessageId } from '../../db/conversations'
 import { withRetry } from '../../utils/withRetry'
 import {
   createPemniVipLog,
@@ -15,7 +15,7 @@ import {
   updatePemniVipLog,
 } from '../../db/pemniVipLogs'
 import { formatPhoneNumber } from '../ibt/helper/formatPhoneNumber'
-import { insertMessage } from '../../db/messages'
+import { insertTemplateMessage } from '../../db/messages'
 
 const cache = new NodeCache({ stdTTL: 3600 })
 
@@ -206,7 +206,7 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
         )
 
         const newMessage = await withRetry(() =>
-          insertMessage({
+          insertTemplateMessage({
             messageResponse,
             phoneNumberId: 5,
             contactId: contact.contact_id,
@@ -217,7 +217,7 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
         )
         // Update to conversation to have the latest message
         await withRetry(() =>
-          updateConversation(conversation.id, newMessage.message_id)
+          updateConversationLastMessageId(conversation.id, newMessage.message_id)
         )
 
         // Update Message Id to log
@@ -312,7 +312,7 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
         // Insert the message into the messages table
 
         const newMessage = await withRetry(() =>
-          insertMessage({
+          insertTemplateMessage({
             messageResponse,
             phoneNumberId: 5,
             contactId: contact.contact_id,
@@ -323,7 +323,7 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
         )
         // Update to conversation to have the latest message
         await withRetry(() =>
-          updateConversation(conversation.id, newMessage.message_id)
+          updateConversationLastMessageId(conversation.id, newMessage.message_id)
         )
 
         // Update Message Id to log
