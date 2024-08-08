@@ -82,12 +82,12 @@ app.post('/webhook', (req, res) => {
       // console.log('Webhook forwarded to tunnel successfully:', response.status, response.statusText);
     })
     .catch((error) => {
-      console.error('Error forwarding webhook to tunnel:', error.message);
-      if (error.response) {
-        console.error('Response data:', error.response.data);
-        console.error('Response status:', error.response.status);
-        console.error('Response headers:', error.response.headers);
-      }
+      // console.error('Error forwarding webhook to tunnel:', error.message);
+      // if (error.response) {
+        // console.error('Response data:', error.response.data);
+        // console.error('Response status:', error.response.status);
+        // console.error('Response headers:', error.response.headers);
+      // }
     });
   }
 
