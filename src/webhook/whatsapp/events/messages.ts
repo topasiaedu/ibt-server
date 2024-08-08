@@ -26,7 +26,6 @@ import insertTextMessage from '../helpers/insertTextMessage'
 import insertVideoMessage from '../helpers/insertVideoMessage'
 
 const handleMessages = async (value: any) => {
-  // console.log('Message:', JSON.stringify(value, null, 2));
   try {
     // Check if its Outgoing or Incoming message
     if (value?.statuses) {
@@ -48,7 +47,6 @@ const handleMessages = async (value: any) => {
 }
 
 const handleOutgoingMessage = async (value: any) => {
-  // console.log('Outgoing message received!')
   // console.log('Outgoing message:', JSON.stringify(value, null, 2));
   try {
     const { statuses } = value
@@ -133,7 +131,6 @@ const handleOutgoingMessage = async (value: any) => {
 }
 
 const handleIncomingMessage = async (value: any) => {
-  // console.log('Incoming message received!')
   // console.log('Incoming message:', JSON.stringify(value, null, 2))
   try {
     const { metadata, contacts, messages } = value
@@ -143,8 +140,6 @@ const handleIncomingMessage = async (value: any) => {
       () => fetchPhoneNumberByWAId(phone_number_id),
       'handleIncomingMessage > fetchPhoneNumberByWAId'
     )
-
-    console.log('Phone Number:', phoneNumber)
 
     const whatsAppBusinessAccount: WhatsAppBusinessAccount = await withRetry(
       () => fetchWhatsAppBusinessAccount(phoneNumber.waba_id),
