@@ -87,3 +87,15 @@ export const updateConversationLastMessageId = async (
     .eq('id', conversationId)
   if (error) throw error
 }
+
+
+export const updateConversation = async (
+  conversationId: string,
+  data: ConversationUpdate
+) => {
+  const { error } = await supabase
+    .from('conversations')
+    .update(data)
+    .eq('id', conversationId)
+  if (error) throw error
+}

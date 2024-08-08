@@ -34,3 +34,23 @@ export const fetchPhoneNumberBMAccessTokenByNumber = async (phoneNumber: string)
   if (error) throw error
   return data.whatsapp_business_accounts.business_manager.access_token
 }
+
+export const fetchPhoneNumberByWABAId = async (wabaId: string): Promise<PhoneNumber> => {
+  const { data, error } = await supabase
+    .from('phone_numbers')
+    .select('*')
+    .eq('waba_id', wabaId)
+    .single()
+  if (error) throw error
+  return data
+}
+
+export const fetchPhoneNumberByWAId = async (waId: string): Promise<PhoneNumber> => {
+  const { data, error } = await supabase
+    .from('phone_numbers')
+    .select('*')
+    .eq('wa_id', waId)
+    .single()
+  if (error) throw error
+  return data
+}

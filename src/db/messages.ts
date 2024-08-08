@@ -1,23 +1,25 @@
 import supabase from './supabaseClient'
 import { CampaignLog } from './campaignLogs'
-import { Database } from '../database.types';
+import { Database } from '../database.types'
 
 export type Message = Database['public']['Tables']['messages']['Row']
 export type MessageInsert = Database['public']['Tables']['messages']['Insert']
 export type MessageUpdate = Database['public']['Tables']['messages']['Update']
 
 interface InsertTemplateMessageParams {
-  messageResponse?: any;
-  campaignLog?: CampaignLog;
-  contactId:number;
-  phoneNumberId: number;
-  textContent: string;
-  conversationId: string;
-  projectId: number;
-  mediaUrl?: string;
+  messageResponse?: any
+  campaignLog?: CampaignLog
+  contactId: number
+  phoneNumberId: number
+  textContent: string
+  conversationId: string
+  projectId: number
+  mediaUrl?: string
 }
 
-export const insertTemplateMessage = async (params: InsertTemplateMessageParams): Promise<Message> => {
+export const insertTemplateMessage = async (
+  params: InsertTemplateMessageParams
+): Promise<Message> => {
   const {
     messageResponse,
     campaignLog,
@@ -26,7 +28,7 @@ export const insertTemplateMessage = async (params: InsertTemplateMessageParams)
     textContent,
     conversationId,
     projectId: project_id,
-    mediaUrl
+    mediaUrl,
   } = params
 
   console.log('Inserting message:', messageResponse)
@@ -67,7 +69,9 @@ export const fetchMessage = async (messageId: number): Promise<Message> => {
   return data
 }
 
-export const fetchMessageByWAMID = async (waMessageId: string): Promise<Message | null> => {
+export const fetchMessageByWAMID = async (
+  waMessageId: string
+): Promise<Message | null> => {
   const { data, error } = await supabase
     .from('messages')
     .select('*')
@@ -81,10 +85,7 @@ export const fetchMessageByWAMID = async (waMessageId: string): Promise<Message 
     })
     const [oldestMessage, ...rest] = sortedData
     const restIds = rest.map((r) => r.message_id)
-    await supabase
-      .from('messages')
-      .delete()
-      .in('message_id', restIds)
+    await supabase.from('messages').delete().in('message_id', restIds)
   }
 
   if (data.length === 0) return null
@@ -92,10 +93,26 @@ export const fetchMessageByWAMID = async (waMessageId: string): Promise<Message 
   return data[0]
 }
 
-export const insertMessage = async (message: MessageInsert): Promise<Message> => {
+export const insertMessage = async (
+  message: MessageInsert
+): Promise<Message> => {
   const { data, error } = await supabase
     .from('messages')
     .insert([message])
+    .select('*')
+    .single()
+  if (error) throw error
+  return data
+}
+
+export const updateMessage = async (
+  messageId: number,
+  message: MessageUpdate
+): Promise<Message> => {
+  const { data, error } = await supabase
+    .from('messages')
+    .update(message)
+    .eq('message_id', messageId)
     .select('*')
     .single()
   if (error) throw error
