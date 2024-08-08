@@ -11,15 +11,15 @@ import {
   reschedulePendingCampaigns,
   setupRealtimeCampaignProcessing,
 } from './webhook/ibt/processCampaigns'
+import {
+  reschedulePendingCampaignLogs,
+  setupRealtimeCampaignLogProcessing,
+} from './webhook/ibt/processCampaignsLog'
 import { handleIBTWebhook } from './webhook/ibt/processIBTWebhook'
 import {
   reschedulePendingWorkflowLogs,
   setupRealtimeWorkflowLogProcessing,
 } from './webhook/ibt/processWorkflow'
-import {
-  reschedulePendingCampaignLogs,
-  setupRealtimeCampaignLogProcessing,
-} from './webhook/ibt/processCampaignsLog'
 import { handlePemniVipWebhook } from './webhook/pemni/bubble-vip'
 import { handleWebhook } from './webhook/whatsapp/webhookHandler'
 dotenv.config()
@@ -68,22 +68,31 @@ app.get('/webhook', (req, res) => {
 })
 
 app.post('/webhook', (req, res) => {
-  console.log('Received webhook', environment)
-  if (environment !== 'development') {
-    console.log('Forwarding webhook to tunnel...')
-    // Proxy the request to tunnel ( we send the same exact request to the tunnel which is our local server for development )
-    axios
-      .post(tunnelURl + '/webhook', req.body)
-      .then((response) => {
-        console.log('Webhook forwarded to tunnel')
-      })
-      .catch((error) => {
-        // console.error('Error forwarding webhook to tunnel')
-      })
-  }
-  handleWebhook(req, res)
-})
+  console.log('Received webhook', environment);
 
+  if (environment !== 'development') {
+    console.log('Forwarding webhook to tunnel...');
+
+    axios.post(tunnelURl + '/webhook', req.body, {
+      headers: {
+        'Content-Type': req.get('Content-Type') || 'application/json'
+      }
+    })
+    .then((response) => {
+      console.log('Webhook forwarded to tunnel successfully:', response.status, response.statusText);
+    })
+    .catch((error) => {
+      console.error('Error forwarding webhook to tunnel:', error.message);
+      if (error.response) {
+        console.error('Response data:', error.response.data);
+        console.error('Response status:', error.response.status);
+        console.error('Response headers:', error.response.headers);
+      }
+    });
+  }
+
+  handleWebhook(req, res);
+});
 app.post('/ibt/webhook/:id', handleIBTWebhook)
 
 app.post('/update-tunnel-url', (req, res) => {
