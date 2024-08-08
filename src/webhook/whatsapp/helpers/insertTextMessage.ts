@@ -37,13 +37,10 @@ async function insertTextMessage(
     const contact: Contact = await withRetry(() =>
       findOrCreateContact(wa_id, name, project_id)
     )
-    console.log('Contact found or created', contact.contact_id)
 
     const phoneNumber: PhoneNumber = await withRetry(() =>
       fetchPhoneNumberByNumber(display_phone_number)
     )
-
-    console.log('Phone number found', phoneNumber.phone_number_id)
 
     const conversation: Conversation = await withRetry(() =>
       fetchConversation(
@@ -52,8 +49,6 @@ async function insertTextMessage(
         project_id
       )
     )
-
-    console.log('Conversation found or created', conversation.id)
 
     let messageInsert: MessageInsert = {
       contact_id: contact.contact_id,
@@ -83,15 +78,8 @@ async function insertTextMessage(
       insertMessage(messageInsert)
     )
 
-    console.log('Text Message inserted into database', newMessage.message_id)
-
     await withRetry(() =>
       updateConversationLastMessageId(conversation.id, newMessage.message_id)
-    )
-
-    console.log(
-      'Conversation updated with last message id',
-      newMessage.message_id
     )
   } catch (error) {
     logError(

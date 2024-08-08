@@ -1,152 +1,111 @@
-import supabase from '../../../db/supabaseClient'
-import { logError } from '../../../utils/errorLogger'
 import { fetchMedia } from '../../../api/whatsapp'
+import { Contact, findOrCreateContact } from '../../../db/contacts'
+import {
+  Conversation,
+  fetchConversation,
+  updateConversationLastMessageId,
+} from '../../../db/conversations'
+import {
+  fetchMessageByWAMID,
+  insertMessage,
+  Message,
+  MessageInsert,
+} from '../../../db/messages'
+import {
+  fetchPhoneNumberBMAccessTokenByNumber,
+  fetchPhoneNumberByNumber,
+  PhoneNumber,
+} from '../../../db/phoneNumbers'
+import { logError } from '../../../utils/errorLogger'
+import { withRetry } from '../../../utils/withRetry'
 
 const insertAudioMessage = async (
   message: any,
   display_phone_number: string,
-  project_id: string,
+  project_id: number,
   contacts: any[]
 ) => {
   console.log('Inserting audio message into database')
   try {
-    const { from, id, timestamp, type, audio } = message
+    const { from, id, timestamp, type, audio, context } = message
     const { id: audioId, caption } = audio
     const name = contacts[0].profile?.name
     const wa_id = contacts[0].wa_id
 
-    // Check if the database has the same wa_message_id
-    let { data: existingMessage, error: findError } = await supabase
-      .from('messages')
-      .select('wa_message_id')
-      .eq('wa_message_id', id)
-      .single()
+    const exist: Message | null = await withRetry(() => fetchMessageByWAMID(id))
 
-    if (existingMessage?.wa_message_id === id) {
-      return 'Message already exists in the database'
+    if (exist) {
+      console.log('Message exists', exist.message_id)
+      console.log('Message already exists in the database')
+      return
     }
 
-    // Find the contact_id of the sender
-    let { data: sender, error: senderError } = await supabase
-      .from('contacts')
-      .select('*')
-      .eq('wa_id', wa_id)
-      .eq('project_id', project_id)
-      .single()
+    const contact: Contact = await withRetry(() =>
+      findOrCreateContact(wa_id, name, project_id)
+    )
+    console.log('Contact found or created', contact.contact_id)
 
-    if (senderError) {
-      // Create a new contact if the sender is not found
-      let { data: newContact, error: createError } = await supabase
-        .from('contacts')
-        .insert([{ wa_id: from, project_id, name }])
-        .select('*')
-        .single()
+    const phoneNumber: PhoneNumber = await withRetry(() =>
+      fetchPhoneNumberByNumber(display_phone_number)
+    )
 
-      if (createError) {
-        console.error('Error creating new contact in database:', createError)
-        logError(
-          createError,
-          'Error creating new contact in database' +
-            JSON.stringify(message) +
-            'Inside insertAudioMessage function in insertAudioMessage.ts'
-        )
-        return
-      }
-
-      sender = newContact
-    }
-
-    if (!sender) {
-      throw new Error('Sender not found in database')
-    }
-
-    const senderId = sender.contact_id
-    
-    const myPhoneNumberId = await supabase
-      .from('phone_numbers')
-      .select('*, whatsapp_business_accounts(*, business_manager(*))')
-      .eq('number', display_phone_number)
-      .neq('quality_rating', 'UNKNOWN')
-      .single()
-
-    const myPhoneNumber = myPhoneNumberId?.data?.phone_number_id
-    const access_token =
-      myPhoneNumberId?.data?.whatsapp_business_accounts?.business_manager
-        ?.access_token
+    const accessToken: string = await withRetry(() =>
+      fetchPhoneNumberBMAccessTokenByNumber(display_phone_number)
+    )
 
     // Generate random file name
     const fileName =
       Math.random().toString(36).substring(2, 15) +
       Math.random().toString(36).substring(2, 15)
 
-    const media = await fetchMedia(audioId, fileName, access_token)
+    const media = await fetchMedia(audioId, fileName, accessToken)
 
     if (!media) {
       throw new Error('Error fetching media from WhatsApp API')
     }
-    // Look Up conversation_id
-    let { data: conversation, error: conversationError } = await supabase
-      .from('conversations')
-      .select('*')
-      .eq('contact_id', senderId)
-      .eq('phone_number_id', myPhoneNumber)
-      .single()
 
-    if (conversationError) {
-      console.error(
-        'Error finding conversation in database:',
-        conversationError
+    const conversation: Conversation = await withRetry(() =>
+      fetchConversation(
+        contact.contact_id,
+        phoneNumber.phone_number_id,
+        project_id
       )
-      return 'Error finding conversation in database'
-    }
-    // Insert the message into the database
-    let { data: newMessage, error: messageError } = await supabase
-      .from('messages')
-      .insert([
-        {
-          contact_id: senderId,
-          message_type: type,
-          content: caption,
-          phone_number_id: myPhoneNumber,
-          wa_message_id: id,
-          direction: 'inbound',
-          media_url: media,
-          project_id,
-          status: 'received',
-          conversation_id: conversation?.id,
-        },
-      ])
-      .select('*')
-      .single()
+    )
 
-    // Update last_message_id and updated_at in the conversation
-    const { data: updatedConversation, error: updateConversationError } =
-      await supabase
-        .from('conversations')
-        .update({
-          last_message_id: newMessage?.message_id,
-          unread_messages: conversation?.unread_messages + 1,
-          updated_at: new Date(),
-        })
-        .eq('id', conversation?.id)
+    console.log('Conversation found or created', conversation.id)
 
-    if (updateConversationError) {
-      logError(
-        updateConversationError as unknown as Error,
-        'Error updating conversation'
-      )
-      return
+    let messageInsert: MessageInsert = {
+      contact_id: contact.contact_id,
+      message_type: type,
+      content: caption,
+      phone_number_id: phoneNumber.phone_number_id,
+      wa_message_id: id,
+      direction: 'inbound',
+      media_url: media,
+      project_id,
+      status: 'received',
+      conversation_id: conversation?.id,
     }
 
-    if (messageError) {
-      logError(
-        messageError as unknown as Error,
-        'Error inserting inbound audio message into database. Data: ' +
-          JSON.stringify(message, null, 2) +
-          '\n Error: ' +
-          JSON.stringify(messageError, null, 2)
+    if (context) {
+      const contextMessage: Message | null = await withRetry(() =>
+        fetchMessageByWAMID(context.id)
       )
+      if (contextMessage) {
+        messageInsert = {
+          ...messageInsert,
+          context: contextMessage.message_id,
+        }
+      }
     }
+
+    const newMessage: Message = await withRetry(() =>
+      insertMessage(messageInsert)
+    )
+
+    await withRetry(() =>
+      updateConversationLastMessageId(conversation.id, newMessage.message_id)
+    )
   } catch (error) {
     logError(
       error as Error,

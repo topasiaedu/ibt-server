@@ -24,3 +24,13 @@ export const fetchPhoneNumberByNumber = async (phoneNumber: string): Promise<Pho
   if (error) throw error
   return data
 }
+
+export const fetchPhoneNumberBMAccessTokenByNumber = async (phoneNumber: string): Promise<string> => {
+  const { data, error } = await supabase
+    .from('phone_numbers')
+    .select('*, whatsapp_business_accounts(*, business_manager(*))')
+    .eq('number', phoneNumber)
+    .single()
+  if (error) throw error
+  return data.whatsapp_business_accounts.business_manager.access_token
+}
