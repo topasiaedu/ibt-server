@@ -15,6 +15,7 @@ interface InsertTemplateMessageParams {
   conversationId: string
   projectId: number
   mediaUrl?: string
+  workflowId?: string
 }
 
 export const insertTemplateMessage = async (
@@ -29,6 +30,7 @@ export const insertTemplateMessage = async (
     conversationId,
     projectId: project_id,
     mediaUrl,
+    workflowId,
   } = params
 
   console.log('Inserting message:', messageResponse)
@@ -47,6 +49,7 @@ export const insertTemplateMessage = async (
         project_id: project_id,
         media_url: mediaUrl,
         conversation_id: conversationId,
+        workflow_id: workflowId? workflowId : null,
       },
     ])
     .select('*')

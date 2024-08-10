@@ -374,7 +374,7 @@ export type Database = {
           last_contacted_by: number | null
           name: string
           phone: string | null
-          project_id: number | null
+          project_id: number
           wa_id: string
         }
         Insert: {
@@ -384,7 +384,7 @@ export type Database = {
           last_contacted_by?: number | null
           name: string
           phone?: string | null
-          project_id?: number | null
+          project_id: number
           wa_id: string
         }
         Update: {
@@ -394,7 +394,7 @@ export type Database = {
           last_contacted_by?: number | null
           name?: string
           phone?: string | null
-          project_id?: number | null
+          project_id?: number
           wa_id?: string
         }
         Relationships: [
@@ -1003,6 +1003,7 @@ export type Database = {
           action_id: string
           action_time: string
           created_at: string
+          error: string | null
           id: string
           payload: Json
           status: string
@@ -1012,6 +1013,7 @@ export type Database = {
           action_id: string
           action_time: string
           created_at?: string
+          error?: string | null
           id?: string
           payload: Json
           status?: string
@@ -1021,6 +1023,7 @@ export type Database = {
           action_id?: string
           action_time?: string
           created_at?: string
+          error?: string | null
           id?: string
           payload?: Json
           status?: string
@@ -1220,6 +1223,25 @@ export type Database = {
           phone_numbers: Json
         }[]
       }
+      get_conversation_counts:
+        | {
+            Args: Record<PropertyKey, never>
+            Returns: {
+              conversation_id: string
+            }[]
+          }
+        | {
+            Args: {
+              start_date: string
+              end_date: string
+              interval_type: string
+            }
+            Returns: {
+              time_interval: string
+              conversation_count: number
+              project_id: number
+            }[]
+          }
       get_triggers_with_details: {
         Args: Record<PropertyKey, never>
         Returns: Json

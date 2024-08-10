@@ -1,6 +1,3 @@
-import { Campaign } from '../db/campaigns'
-import { Template } from '../db/templates'
-
 export interface TemplateMessagePayload {
   messaging_product: string
   recipient_type: string
@@ -9,14 +6,14 @@ export interface TemplateMessagePayload {
   template: any
 }
 
-export const processTemplatePayload = (campaign: Campaign, contact: any) => {
+export const processTemplatePayload = (template_payload: any, contact: any) => {
   let processedPayload: TemplateMessagePayload = JSON.parse(
     JSON.stringify({
       messaging_product: 'whatsapp',
       recipient_type: 'individual',
       to: contact.wa_id,
       type: 'template',
-      template: campaign.template_payload as TemplateMessagePayload['template'],
+      template: template_payload as TemplateMessagePayload['template'],
     })
   )
 

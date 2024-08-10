@@ -76,7 +76,7 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
     contact.wa_id = formatPhoneNumber(contact.wa_id)
 
     const { processedPayload, mediaUrl } = processTemplatePayload(
-      campaign,
+      campaign.template_payload,
       contact
     )
 
@@ -85,24 +85,6 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
         () => getCampaignPhoneNumber(campaign.campaign_id),
         'processCampaignLog > getCampaignPhoneNumber'
       )
-
-    const template = await withRetry(
-      () => fetchTemplate(campaign.template_id),
-      'processCampaignLog > fetchTemplate'
-    )
-    const textContent = generateMessageContent(template, processedPayload)
-
-    const conversation = await withRetry(
-      () =>
-        fetchConversation(
-          contact.contact_id,
-          phone_number_id,
-          campaign.project_id || 5
-        ),
-      'processCampaignLog > fetchConversation'
-    )
-
-    console.log('Sending message to conversation', conversation.id)
 
     const { data: messageResponse } = await withRetry(
       () =>
@@ -117,6 +99,22 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
     if (!messageResponse) {
       throw new Error('Message sending failed')
     }
+
+    const conversation = await withRetry(
+      () =>
+        fetchConversation(
+          contact.contact_id,
+          phone_number_id,
+          campaign.project_id || 5
+        ),
+      'processCampaignLog > fetchConversation'
+    )
+    
+    const template = await withRetry(
+      () => fetchTemplate(campaign.template_id),
+      'processCampaignLog > fetchTemplate'
+    )
+    const textContent = generateMessageContent(template, processedPayload)
 
     const newMessage = await withRetry(
       () =>
