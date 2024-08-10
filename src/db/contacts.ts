@@ -9,8 +9,9 @@ export const fetchContact = async (contactId: number): Promise<Contact> => {
     .select('*')
     .eq('contact_id', contactId)
     .single()
-  if (error) throw error
-  return data
+  
+  if (error) throw new Error(`Failed to fetch contact with ID ${contactId}: ${error.message}`);
+  return data as Contact;
 }
 
 export const updateContactLastContactedBy = async (
@@ -21,7 +22,8 @@ export const updateContactLastContactedBy = async (
     .from('contacts')
     .update({ last_contacted_by: phoneNumberId })
     .eq('wa_id', waId)
-  if (error) throw error
+  
+  if (error) throw new Error(`Failed to update contact for waId ${waId}: ${error.message}`);
 }
 
 export const findOrCreateContact = async (
@@ -30,28 +32,44 @@ export const findOrCreateContact = async (
   projectId: number,
   email?: string
 ): Promise<Contact> => {
+  // Fetch contacts by waId and projectId
   const { data, error } = await supabase
     .from('contacts')
     .select('*')
     .eq('wa_id', waId)
     .eq('project_id', projectId)
+  
+  if (error) throw new Error(`Failed to fetch contacts for waId ${waId} and projectId ${projectId}: ${error.message}`);
 
-  // Update the contact's name, email if it's different
-  if (data?.length === 1) {
-    const contact = data[0]
+  // Handle case where multiple contacts are found
+  if (data?.length > 1) {
+    const contactId = data[0].contact_id;
+    const contactIds = data.map((contact: any) => contact.contact_id);
+
+    const { error: deleteError } = await supabase
+      .from('contacts')
+      .delete()
+      .in('contact_id', contactIds.filter(id => id !== contactId));
+
+    if (deleteError) throw new Error(`Failed to delete duplicate contacts: ${deleteError.message}`);
+
+    // Update the first contact if necessary
+    const contact = data[0];
     if (contact.name !== name || contact.email !== email) {
-      const { error } = await supabase
+      const { error: updateError } = await supabase
         .from('contacts')
         .update({ name, email })
-        .eq('contact_id', contact.contact_id)
-      if (error) throw error
+        .eq('contact_id', contactId);
+      
+      if (updateError) throw new Error(`Failed to update contact with ID ${contactId}: ${updateError.message}`);
     }
+
+    return contact;
   }
 
-  // If None found, create a new contact
-  // If multiple found, return the first one and delete the rest
+  // Handle case where no contacts are found
   if (data?.length === 0) {
-    const { data, error: createError } = await supabase
+    const { data: newData, error: createError } = await supabase
       .from('contacts')
       .insert([
         {
@@ -62,24 +80,22 @@ export const findOrCreateContact = async (
         },
       ])
       .select('*')
-      .single()
-    if (createError) throw error
-    return data
+      .single();
+    
+    if (createError) throw new Error(`Failed to create new contact: ${createError.message}`);
+    return newData as Contact;
   }
 
-  if (error) throw error
-
-  if (data?.length > 1) {
-    const contactId = data[0].contact_id
-    const contactIds = data.map((contact: any) => contact.contact_id)
-
-    const { error: deleteError } = await supabase
+  // Handle case where exactly one contact is found
+  const contact = data[0];
+  if (contact.name !== name || contact.email !== email) {
+    const { error: updateError } = await supabase
       .from('contacts')
-      .delete()
-      .in('contact_id', contactIds)
-
-    if (deleteError) throw deleteError
+      .update({ name, email })
+      .eq('contact_id', contact.contact_id);
+    
+    if (updateError) throw new Error(`Failed to update contact with ID ${contact.contact_id}: ${updateError.message}`);
   }
 
-  return data[0]
+  return contact;
 }
