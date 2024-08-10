@@ -20,6 +20,7 @@ import {
 import { formatPhoneNumber } from '../ibt/helper/formatPhoneNumber'
 import { insertTemplateMessage } from '../../db/messages'
 import { insertContactListMembers } from '../../db/contactListMembers'
+import { generateWorkflowLog } from '../ibt/helper/generateWorkflowLogs'
 
 const cache = new NodeCache({ stdTTL: 3600 })
 

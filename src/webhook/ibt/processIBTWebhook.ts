@@ -15,7 +15,7 @@ export const handleIBTWebhook = async (req: Request, res: Response) => {
     console.log('IBT Webhook received')
 
     const workflowId = req.params.id
-    const webhookData = req.body
+    const webhookData = req.body.customData || req.body
 
     // Fetch the workflow and check if the run is true
     const { data: workflowData, error: workflowError } = await supabase
