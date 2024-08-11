@@ -1,14 +1,10 @@
 // cronJobs/processWorkflowLogs.ts
-import supabase from '../../db/supabaseClient'
-import { logError } from '../../utils/errorLogger'
-import { Database } from '../../database.types'
 import { Request, Response } from 'express'
 import { generateWorkflowLog } from './helper/generateWorkflowLogs'
 import { withRetry } from '../../utils/withRetry'
-import { findOrCreateContact } from '../../db/contacts'
-
-type Contact = Database['public']['Tables']['contacts']['Row']
-type Action = Database['public']['Tables']['actions']['Row']
+import { Contact, findOrCreateContact } from '../../db/contacts'
+import { fetchWorkflow, Workflow } from '../../db/workflow'
+import { Action, fetchActiveActions } from '../../db/action'
 
 export const handleIBTWebhook = async (req: Request, res: Response) => {
   try {
@@ -18,50 +14,39 @@ export const handleIBTWebhook = async (req: Request, res: Response) => {
     const webhookData = req.body.customData || req.body
 
     // Fetch the workflow and check if the run is true
-    const { data: workflowData, error: workflowError } = await supabase
-      .from('workflows')
-      .select('*')
-      .eq('id', workflowId)
-      .single()
+    const workflow: Workflow = await withRetry(
+      () => fetchWorkflow(workflowId),
+      'handleIBTWebhook > fetchWorkflow'
+    )
 
-    if (workflowError) {
-      logError(workflowError as unknown as Error, 'Error fetching workflow')
-      return
-    }
-
-    if (!workflowData?.run) {
+    if (!workflow?.run) {
       console.error('Workflow is not running')
       return
     }
 
-    const { data: actionData, error: actionError } = await supabase
-      .from('actions')
-      .select('*')
-      .eq('workflow_id', workflowId)
-
-    if (actionError) {
-      logError(actionError as unknown as Error, 'Error fetching action')
-      return
-    }
+    const actions: Action[] = await withRetry(
+      () => fetchActiveActions(workflowId),
+      'handleIBTWebhook > fetchActions'
+    )
 
     let contact: Contact = await withRetry(
       () =>
         findOrCreateContact(
           webhookData.phone,
           webhookData.name,
-          actionData[0].project_id,
+          workflow.project_id,
           webhookData.email
         ),
       'handleIBTWebhook > findOrCreateContact'
     )
 
-    actionData.forEach(async (action: Action) => {
+    actions.forEach(async (action: Action) => {
       await withRetry(
         () => generateWorkflowLog(action, contact as Contact),
         'handleIBTWebhook > generateWorkflowLog'
       )
     })
-    
+
     res.status(200).send('OK')
   } catch (error) {
     console.error('Error processing webhook:', error)
