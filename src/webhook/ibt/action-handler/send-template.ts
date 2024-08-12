@@ -25,6 +25,8 @@ export const sendTemplate = async (payload: any, workflowLogId: string) => {
   const { workflow_id, contact_id, template_payload, selected_template } =
     payload
 
+  console.log('sendTemplate > payload:', payload)
+
   const { selectedPhoneNumber, accessToken, phone_number_id } = await withRetry(
     () => getWorkflowPhoneNumber(workflow_id),
     'sendTemplate > getWorkflowPhoneNumber'
