@@ -2,7 +2,7 @@ import { sendMessageWithTemplate } from '../../../api/whatsapp'
 import {
   Contact,
   fetchContact,
-  updateContactLastContactedBy,
+  updateContactLastContactedByUsingWaID,
 } from '../../../db/contacts'
 import {
   Conversation,
@@ -25,14 +25,14 @@ export const sendTemplate = async (payload: any, workflowLogId: string) => {
   const { workflow_id, contact_id, template_payload, selected_template } =
     payload
 
-  const { selectedPhoneNumber, accessToken, phone_number_id } = await withRetry(
-    () => getWorkflowPhoneNumber(workflow_id),
-    'sendTemplate > getWorkflowPhoneNumber'
-  )
-
   const contact: Contact = await withRetry(
     () => fetchContact(contact_id),
     'sendTemplate > fetchContact'
+  )
+  
+  const { selectedPhoneNumber, accessToken, phone_number_id } = await withRetry(
+    () => getWorkflowPhoneNumber(workflow_id, contact),
+    'sendTemplate > getWorkflowPhoneNumber'
   )
 
   contact.wa_id = formatPhoneNumber(contact.wa_id)
@@ -91,7 +91,8 @@ export const sendTemplate = async (payload: any, workflowLogId: string) => {
     )
 
     await withRetry(
-      () => updateContactLastContactedBy(contact.wa_id, phone_number_id),
+      () =>
+        updateContactLastContactedByUsingWaID(contact.wa_id, phone_number_id),
       'processCampaignLog > updateContactLastContactedBy'
     )
 

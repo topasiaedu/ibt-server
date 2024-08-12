@@ -1,4 +1,4 @@
-import { Contact } from '../../../db/contacts'
+import { Contact, updateContactLastContactedBy } from '../../../db/contacts'
 import {
   Conversation,
   fetchConversation,
@@ -64,6 +64,12 @@ const handleOutgoingMessage = async (value: any) => {
       await withRetry(
         () => updateMessage(message.message_id, { status: status.status }),
         'handleOutgoingMessage > updateMessage'
+      )
+
+      // Update Contact Last Contacted By
+      await withRetry(
+        () => updateContactLastContactedBy(message.contact_id, message.phone_number_id),
+        'handleOutgoingMessage > updateContactLastContactedBy'
       )
 
       if (status.conversation) {

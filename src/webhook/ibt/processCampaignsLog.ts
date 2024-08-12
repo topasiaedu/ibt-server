@@ -5,7 +5,7 @@ import { CronJob } from 'cron'
 import { Database } from '../../database.types'
 import { fetchCampaign } from '../../db/campaigns'
 import { updateCampaignLogStatus } from '../../db/campaignLogs'
-import { fetchContact, updateContactLastContactedBy } from '../../db/contacts'
+import { fetchContact, updateContactLastContactedByUsingWaID } from '../../db/contacts'
 import { formatPhoneNumber } from './helper/formatPhoneNumber'
 import {
   generateMessageContent,
@@ -82,7 +82,7 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
 
     const { selectedPhoneNumber, accessToken, phone_number_id } =
       await withRetry(
-        () => getCampaignPhoneNumber(campaign.campaign_id),
+        () => getCampaignPhoneNumber(campaign.campaign_id, contact),
         'processCampaignLog > getCampaignPhoneNumber'
       )
 
@@ -139,7 +139,7 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
       'processCampaignLog > updateConversationLastMessageId'
     )
     await withRetry(
-      () => updateContactLastContactedBy(contact.wa_id, phone_number_id),
+      () => updateContactLastContactedByUsingWaID(contact.wa_id, phone_number_id),
       'processCampaignLog > updateContactLastContactedBy'
     )
     await withRetry(
