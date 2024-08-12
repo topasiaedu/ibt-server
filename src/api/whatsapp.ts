@@ -57,7 +57,12 @@ const sendMessageWithTemplate = async (
         JSON.stringify(payload, null, 2) +
         '\n'
     )
-    console.error('Error sending message with template:', JSON.stringify((error as any).message) )
+    if ((error as any).message === 'Request failed with status code 400') {
+      console.error('Error sending message with template:', JSON.stringify(payload, null, 2)
+      )
+    } else {
+      console.error('Error sending message with template:', JSON.stringify((error as any).message) )
+    }
     return error as AxiosResponse<any>
   }
 }
