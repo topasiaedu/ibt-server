@@ -1,4 +1,10 @@
 export const formatPhoneNumber = (phone: string) => {
+  // Remove '+' if present
+  if (phone.startsWith('+')) {
+    phone = phone.substring(1
+    )
+  }
+
   /// Remove leading '0' if present
   if (phone.startsWith('0')) {
     phone = phone.substring(1)
