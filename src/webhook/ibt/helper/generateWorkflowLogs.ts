@@ -136,6 +136,8 @@ export const generateWorkflowLog = async (action: Action, contact: Contact) => {
         type: action.type,
       },
     ])
+    .select('*')
+    .single()
 
   if (newWorkflowLogError) {
     logError(
@@ -146,6 +148,6 @@ export const generateWorkflowLog = async (action: Action, contact: Contact) => {
     return
   }
 
-  console.log('New workflow log created:', newWorkflowLog)
+  console.log('New workflow log created:', newWorkflowLog.id)
   return newWorkflowLog
 }

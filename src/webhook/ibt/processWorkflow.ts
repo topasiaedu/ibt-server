@@ -87,6 +87,7 @@ export function setupRealtimeWorkflowLogProcessing() {
       'postgres_changes',
       { event: '*', schema: 'public', table: 'workflow_logs' },
       (payload) => {
+        console.log("Received workflow log change")
         const workflowLog = payload.new as WorkflowLog
         if (workflowLog.status === 'PENDING') {
           scheduleWorkflowLog(workflowLog)
