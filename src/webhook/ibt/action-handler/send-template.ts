@@ -37,6 +37,16 @@ export const sendTemplate = async (payload: any, workflowLogId: string) => {
 
   contact.wa_id = formatPhoneNumber(contact.wa_id)
 
+  
+  if (contact.wa_id === 'Invalid') {
+    console.error('Invalid phone number:', contact.wa_id)
+    await updateWorkflowLog(workflowLogId, {
+      status: 'FAILED',
+      error: 'Invalid phone number',
+    })
+    return
+  }
+
   const { processedPayload, mediaUrl } = processTemplatePayload(
     template_payload,
     contact
