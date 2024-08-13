@@ -76,6 +76,9 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
       'processCampaignLog > updateCampaignLogStatus'
     )
 
+
+    console.log("Contact 1", contact)
+
     contact.wa_id = formatPhoneNumber(contact.wa_id)
 
     if (contact.wa_id === 'Invalid') {
@@ -87,6 +90,8 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
       )
       return
     }
+
+    console.log("Contact 2", contact)
 
     const { processedPayload, mediaUrl } = processTemplatePayload(
       campaign.template_payload,
