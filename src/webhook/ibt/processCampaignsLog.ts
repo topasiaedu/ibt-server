@@ -5,7 +5,10 @@ import { CronJob } from 'cron'
 import { Database } from '../../database.types'
 import { fetchCampaign } from '../../db/campaigns'
 import { updateCampaignLogStatus } from '../../db/campaignLogs'
-import { fetchContact, updateContactLastContactedByUsingWaID } from '../../db/contacts'
+import {
+  fetchContact,
+  updateContactLastContactedByUsingWaID,
+} from '../../db/contacts'
 import { formatPhoneNumber } from './helper/formatPhoneNumber'
 import {
   generateMessageContent,
@@ -75,6 +78,16 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
 
     contact.wa_id = formatPhoneNumber(contact.wa_id)
 
+    if (contact.wa_id === 'Invalid') {
+      console.error('Invalid phone number:', contact.wa_id)
+      await updateCampaignLogStatus(
+        campaignLog.id,
+        'FAILED',
+        'Invalid phone number'
+      )
+      return
+    }
+
     const { processedPayload, mediaUrl } = processTemplatePayload(
       campaign.template_payload,
       contact
@@ -109,7 +122,7 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
         ),
       'processCampaignLog > fetchConversation'
     )
-    
+
     const template = await withRetry(
       () => fetchTemplate(campaign.template_id),
       'processCampaignLog > fetchTemplate'
@@ -139,7 +152,8 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
       'processCampaignLog > updateConversationLastMessageId'
     )
     await withRetry(
-      () => updateContactLastContactedByUsingWaID(contact.wa_id, phone_number_id),
+      () =>
+        updateContactLastContactedByUsingWaID(contact.wa_id, phone_number_id),
       'processCampaignLog > updateContactLastContactedBy'
     )
     await withRetry(
