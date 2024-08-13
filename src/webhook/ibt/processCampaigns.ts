@@ -1,14 +1,11 @@
 import { CronJob } from 'cron'
-import { sendMessageWithTemplate } from '../../api/whatsapp'
-import { Database } from '../../database.types'
-import { CampaignListInsert, fetchCampaignList } from '../../db/campaignLists'
-import { insertCampaignLogs } from '../../db/campaignLogs'
-import { updateCampaignStatus } from '../../db/campaigns'
+import { CampaignList, fetchCampaignList } from '../../db/campaignLists'
+import { CampaignLogsInsert, insertCampaignLogs } from '../../db/campaignLogs'
+import { Campaign, updateCampaignStatus } from '../../db/campaigns'
 import {
   ContactListMembers,
   fetchContactListMembers,
 } from '../../db/contactListMembers'
-import { Contact } from '../../db/contacts'
 import supabase from '../../db/supabaseClient'
 import { logError } from '../../utils/errorLogger'
 import { withRetry } from '../../utils/withRetry'
@@ -17,7 +14,6 @@ const campaignQueue: Campaign[] = []
 
 const CONCURRENCY_LIMIT = 5
 let activeProcesses = 0
-
 
 function processQueue() {
   if (campaignQueue.length === 0 || activeProcesses >= CONCURRENCY_LIMIT) {
@@ -31,22 +27,6 @@ function processQueue() {
       activeProcesses--
       processQueue()
     })
-}
-
-export type Campaign = Database['public']['Tables']['campaigns']['Row'] & {
-  read_count: number
-}
-
-export type CampaignList = Database['public']['Tables']['campaign_lists']['Row']
-export type CampaignLogsInsert =
-  Database['public']['Tables']['campaign_logs']['Insert']
-
-export interface TemplateMessagePayload {
-  messaging_product: string
-  recipient_type: string
-  to: string
-  type: string
-  template: any
 }
 
 const processCampaigns = async (campaign: Campaign) => {
@@ -209,13 +189,7 @@ export function setupRealtimeCampaignProcessing() {
 }
 
 function scheduleCampaign(campaign: Campaign) {
-  const currentTime = new Date().toLocaleString('en-US', {
-    timeZone: 'Asia/Kuala_Lumpur',
-  })
-
-  // Offset by 8 hours to match Malaysia timezone
-  const currentTimeMillis = new Date(currentTime).getTime()
-  const postTime = new Date(campaign.post_time).getTime() + 8 * 60 * 60 * 1000
+  const postTime = new Date(campaign.post_time).getTime()
 
   if (isNaN(postTime)) {
     console.error(
@@ -232,26 +206,13 @@ function scheduleCampaign(campaign: Campaign) {
     return
   }
 
-  console.log("postTime: ", postTime)
-  console.log("currentTimeMillis: ", currentTimeMillis)
-
-  const delay = postTime - currentTimeMillis
-
-  if (delay < 0) {
-    console.warn(
-      'Post time is in the past for campaign:',
-      campaign.campaign_id,
-      '. Adding to the queue immediately.'
-    )
+  const job = new CronJob(new Date(postTime), () => {
+    console.log('Cron job triggered for campaign:', campaign.campaign_id)
     campaignQueue.push(campaign)
     processQueue()
-  } else {
-    setTimeout(() => {
-      console.error('Timeout reached for campaign:', campaign.campaign_id)
-      campaignQueue.push(campaign)
-      processQueue()
-    }, delay)
-  }
+  })
+
+  job.start()
 }
 
 export const reschedulePendingCampaigns = async () => {
