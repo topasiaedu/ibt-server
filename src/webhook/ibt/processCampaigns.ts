@@ -218,6 +218,7 @@ function scheduleCampaign(campaign: Campaign) {
   if (postTime < Date.now()) {
     campaignQueue.push(campaign)
     processQueue()
+    return
   }
 
   const job = new CronJob(new Date(postTime), () => {
