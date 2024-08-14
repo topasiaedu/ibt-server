@@ -102,7 +102,7 @@ const handleOutgoingMessage = async (value: any) => {
               'handleOutgoingMessage > updateConversation'
             );
           } else {
-            console.warn(`wa_conversation_id ${status.conversation.id} already exists in another record.`);
+            // console.warn(`wa_conversation_id ${status.conversation.id} already exists in another record.`);
           }
           
         }
@@ -271,7 +271,7 @@ const handleKeywordTrigger = async (value: any) => {
   }
 
   if (messageData.length > 0) {
-    console.error('Message already exists in the database')
+    // console.error('Message already exists in the database')
     return
   }
 

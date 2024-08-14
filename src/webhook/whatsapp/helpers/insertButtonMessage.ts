@@ -33,8 +33,8 @@ async function insertButtonMessage(
     )
 
     if (exist) {
-      console.log('Message exists', exist.message_id)
-      console.log('Message already exists in the database')
+      // console.log('Message exists', exist.message_id)
+      // console.log('Message already exists in the database')
       return
     }
 
