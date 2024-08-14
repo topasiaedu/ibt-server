@@ -23,14 +23,14 @@ export const getCampaignPhoneNumber = async (
   // Check if contact has been contacted by a phone number
   if (contact.last_contacted_by) {
     // Fetch phone number by using phone_number_id in phone_numbers
-    const { data: lastContactedPhoneNumber, error: lastContactedPhoneNumberError } =
-      await supabase
-        .from('phone_numbers')
-        .select(
-          '*,whatsapp_business_accounts(*,business_manager(*))'
-        )
-        .eq('phone_number_id', contact.last_contacted_by)
-        .eq('restricted', false)
+    const {
+      data: lastContactedPhoneNumber,
+      error: lastContactedPhoneNumberError,
+    } = await supabase
+      .from('phone_numbers')
+      .select('*,whatsapp_business_accounts(*,business_manager(*))')
+      .eq('phone_number_id', contact.last_contacted_by)
+      .eq('restricted', false)
 
     if (lastContactedPhoneNumberError) {
       logError(
@@ -43,12 +43,14 @@ export const getCampaignPhoneNumber = async (
       )
       throw new Error('Error fetching last contacted phone number')
     }
-
-    return {
-      selectedPhoneNumber: lastContactedPhoneNumber[0].wa_id,
-      accessToken: lastContactedPhoneNumber[0].whatsapp_business_accounts.business_manager
-        .access_token,
-      phone_number_id: lastContactedPhoneNumber[0].phone_number_id,
+    if (lastContactedPhoneNumber.length !== 0) {
+      return {
+        selectedPhoneNumber: lastContactedPhoneNumber[0].wa_id,
+        accessToken:
+          lastContactedPhoneNumber[0].whatsapp_business_accounts
+            .business_manager.access_token,
+        phone_number_id: lastContactedPhoneNumber[0].phone_number_id,
+      }
     }
   }
 
@@ -101,13 +103,13 @@ export const getWorkflowPhoneNumber = async (
   // Check if contact has been contacted by a phone number
   if (contact.last_contacted_by) {
     // Fetch phone number by using phone_number_id in phone_numbers
-    const { data: lastContactedPhoneNumber, error: lastContactedPhoneNumberError } =
-      await supabase
-        .from('phone_numbers')
-        .select(
-          '*,whatsapp_business_accounts(*,business_manager(*))'
-        )
-        .eq('phone_number_id', contact.last_contacted_by)
+    const {
+      data: lastContactedPhoneNumber,
+      error: lastContactedPhoneNumberError,
+    } = await supabase
+      .from('phone_numbers')
+      .select('*,whatsapp_business_accounts(*,business_manager(*))')
+      .eq('phone_number_id', contact.last_contacted_by)
 
     if (lastContactedPhoneNumberError) {
       logError(
@@ -121,11 +123,14 @@ export const getWorkflowPhoneNumber = async (
       throw new Error('Error fetching last contacted phone number')
     }
 
-    return {
-      selectedPhoneNumber: lastContactedPhoneNumber[0].wa_id,
-      accessToken: lastContactedPhoneNumber[0].whatsapp_business_accounts.business_manager
-        .access_token,
-      phone_number_id: lastContactedPhoneNumber[0].phone_number_id,
+    if (lastContactedPhoneNumber.length !== 0) {
+      return {
+        selectedPhoneNumber: lastContactedPhoneNumber[0].wa_id,
+        accessToken:
+          lastContactedPhoneNumber[0].whatsapp_business_accounts
+            .business_manager.access_token,
+        phone_number_id: lastContactedPhoneNumber[0].phone_number_id,
+      }
     }
   }
 
