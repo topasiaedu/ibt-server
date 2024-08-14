@@ -67,6 +67,31 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
     )
     console.log('Sending to contact', contact.name, 'with wa_id', contact.wa_id)
 
+    if (campaignLog.campaign_id === 265 ) {
+      // Check messages table for the message with campaign id 264, if it failed then continue else skip
+      const { data: failedMessage, error: failedMessageError } = await supabase
+        .from('messages')
+        .select('*')
+        .eq('campaign_id', 264)
+        .eq('status', 'failed')
+        .eq('contact_id', contact.contact_id)
+        
+      if (failedMessageError) {
+        logError(
+          failedMessageError as unknown as Error,
+          'Error fetching failed message'
+        )
+        console.error('Error fetching failed message:', failedMessageError)
+        throw new Error('Error fetching failed message')
+      }
+
+      if (failedMessage.length = 0) {
+        console.log('Skipping contact', contact.name, 'with wa_id', contact.wa_id)
+        await updateCampaignLogStatus(campaignLog.id, 'SKIPPED')
+        return
+      }
+    }
+
     const campaign = await withRetry(
       () => fetchCampaign(campaignLog.campaign_id),
       'processCampaignLog > fetchCampaign'
