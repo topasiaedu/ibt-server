@@ -31,13 +31,15 @@ function processQueue() {
 
 const processCampaigns = async (campaign: Campaign) => {
   try {
-    await withRetry(() =>
-      updateCampaignStatus(campaign.campaign_id, 'PROCESSING')
-    , 'processCampaigns > updateCampaignStatus')
+    await withRetry(
+      () => updateCampaignStatus(campaign.campaign_id, 'PROCESSING'),
+      'processCampaigns > updateCampaignStatus'
+    )
 
     // Fetch Campaign List
-    const campaignLists: CampaignList[] = await withRetry(() =>
-      fetchCampaignList(campaign.campaign_id), 'processCampaigns > fetchCampaignList'
+    const campaignLists: CampaignList[] = await withRetry(
+      () => fetchCampaignList(campaign.campaign_id),
+      'processCampaigns > fetchCampaignList'
     )
 
     if (!campaignLists) {
@@ -60,8 +62,9 @@ const processCampaigns = async (campaign: Campaign) => {
             return []
           }
 
-          const contactListMembers: ContactListMembers[] = await withRetry(() =>
-            fetchContactListMembers(campaignList.contact_list_id || 0), 'processCampaigns > fetchContactListMembers'
+          const contactListMembers: ContactListMembers[] = await withRetry(
+            () => fetchContactListMembers(campaignList.contact_list_id || 0),
+            'processCampaigns > fetchContactListMembers'
           )
 
           if (!contactListMembers) {
@@ -112,8 +115,9 @@ const processCampaigns = async (campaign: Campaign) => {
           }
 
           const excludedContactListMembers: ContactListMembers[] =
-            await withRetry(() =>
-              fetchContactListMembers(campaignList.contact_list_id || 0) , 'processCampaigns > fetchContactListMembers'
+            await withRetry(
+              () => fetchContactListMembers(campaignList.contact_list_id || 0),
+              'processCampaigns > fetchContactListMembers'
             )
           if (!excludedContactListMembers) {
             console.error(
@@ -147,12 +151,16 @@ const processCampaigns = async (campaign: Campaign) => {
 
     // Insert campaign logs into the database
     if (campaignLogs.length > 0) {
-      await withRetry(() => insertCampaignLogs(campaignLogs), 'processCampaigns > insertCampaignLogs')
+      await withRetry(
+        () => insertCampaignLogs(campaignLogs),
+        'processCampaigns > insertCampaignLogs'
+      )
     }
 
     // Update campaign status
-    await withRetry(() =>
-      updateCampaignStatus(campaign.campaign_id, 'COMPLETED'), 'processCampaigns > updateCampaignStatus'
+    await withRetry(
+      () => updateCampaignStatus(campaign.campaign_id, 'COMPLETED'),
+      'processCampaigns > updateCampaignStatus'
     )
   } catch (error) {
     logError(error as Error, 'Error processing campaign')
@@ -203,7 +211,13 @@ function scheduleCampaign(campaign: Campaign) {
   // Safeguard: Check if the campaign is already in the queue
   if (campaignQueue.some((c) => c.campaign_id === campaign.campaign_id)) {
     console.warn(`Campaign ${campaign.campaign_id} is already in the queue.`)
+   
     return
+  }
+
+  if (postTime < Date.now()) {
+    campaignQueue.push(campaign)
+    processQueue()
   }
 
   const job = new CronJob(new Date(postTime), () => {
