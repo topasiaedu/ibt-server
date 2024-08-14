@@ -30,6 +30,7 @@ export const getCampaignPhoneNumber = async (
           '*,whatsapp_business_accounts(*,business_manager(*))'
         )
         .eq('phone_number_id', contact.last_contacted_by)
+        .eq('restricted', false)
 
     if (lastContactedPhoneNumberError) {
       logError(
