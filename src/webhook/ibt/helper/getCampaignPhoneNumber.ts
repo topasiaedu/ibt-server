@@ -106,7 +106,7 @@ export const getWorkflowPhoneNumber = async (
         .select(
           '*,whatsapp_business_accounts(*,business_manager(*))'
         )
-        .eq('wa_id', contact.last_contacted_by)
+        .eq('phone_number_id', contact.last_contacted_by)
 
     if (lastContactedPhoneNumberError) {
       logError(
