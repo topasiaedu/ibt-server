@@ -88,18 +88,22 @@ const handleOutgoingMessage = async (value: any) => {
             'handleOutgoingMessage > fetchConversation'
           )
 
-          await withRetry(
-            () =>
-              updateConversation(conversation.id, {
-                close_at: date,
-                last_message_id: message.message_id,
-                updated_at: new Date().toISOString(),
-                ...(conversation.wa_conversation_id !== status.conversation.id
-                  ? { wa_conversation_id: status.conversation.id }
-                  : {})
-              }),
-            'handleOutgoingMessage > updateConversation'
-          );
+          if (!conversation || status.conversation.id === conversation.id) {
+            await withRetry(
+              () =>
+                updateConversation(conversation.id, {
+                  close_at: date,
+                  last_message_id: message.message_id,
+                  updated_at: new Date().toISOString(),
+                  ...(conversation.wa_conversation_id !== status.conversation.id
+                    ? { wa_conversation_id: status.conversation.id }
+                    : {})
+                }),
+              'handleOutgoingMessage > updateConversation'
+            );
+          } else {
+            console.warn(`wa_conversation_id ${status.conversation.id} already exists in another record.`);
+          }
           
         }
       }
