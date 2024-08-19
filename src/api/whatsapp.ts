@@ -36,7 +36,10 @@ const sendMessageWithTemplate = async (
   access_token: string
 ): Promise<AxiosResponse<any>> => {
   try {
-
+    console.log(
+      '`${whatsappApiURL}/${phone_number_id}/messages`',
+      `${whatsappApiURL}/${phone_number_id}/messages`
+    )
     const response = await axios.post(
       `${whatsappApiURL}/${phone_number_id}/messages`,
       payload,
@@ -48,7 +51,10 @@ const sendMessageWithTemplate = async (
       }
     )
 
-    console.log('Message sent with template:', response.data.messages[0].message_status)
+    console.log(
+      'Message sent with template:',
+      response.data.messages[0].message_status
+    )
     return response
   } catch (error) {
     logError(
@@ -58,10 +64,15 @@ const sendMessageWithTemplate = async (
         '\n'
     )
     if ((error as any).message === 'Request failed with status code 400') {
-      console.error('Error sending message with template:', JSON.stringify(payload, null, 2)
+      console.error(
+        'Error sending message with template:',
+        JSON.stringify(payload, null, 2)
       )
     } else {
-      console.error('Error sending message with template:', JSON.stringify((error as any).message) )
+      console.error(
+        'Error sending message with template:',
+        JSON.stringify((error as any).message)
+      )
     }
     return error as AxiosResponse<any>
   }
