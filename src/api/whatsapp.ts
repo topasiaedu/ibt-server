@@ -36,10 +36,6 @@ const sendMessageWithTemplate = async (
   access_token: string
 ): Promise<AxiosResponse<any>> => {
   try {
-    console.log(
-      '`${whatsappApiURL}/${phone_number_id}/messages`',
-      `${whatsappApiURL}/${phone_number_id}/messages`
-    )
     const response = await axios.post(
       `${whatsappApiURL}/${phone_number_id}/messages`,
       payload,
