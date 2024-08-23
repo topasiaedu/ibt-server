@@ -30,12 +30,16 @@ export const processTemplatePayload = async (
 
   let mediaUrl = ''
 
+  console.log("===============================")
+  console.log("Image type:", imageType)
+  console.log("Personalized image ID:", personalizedImageId)
   if (imageType === 'personalized' && personalizedImageId) {
     const personalizedImage: PersonalizedImage = await fetchPersonalizedImage(
       personalizedImageId
     )
 
-    const image = await generateImage(personalizedImage.canvas_state, contact)
+    const image = await generateImage(JSON.parse(personalizedImage.canvas_state), contact)
+    console.log('Personalized image:', image)
     mediaUrl = image
 
     processedPayload.template.components.forEach((component: any) => {
@@ -46,6 +50,8 @@ export const processTemplatePayload = async (
       })
     })
   }
+
+  console.log('Processed payload:', processedPayload)
 
   processedPayload.template.components.forEach((component: any) => {
     component.parameters.forEach((parameter: any) => {

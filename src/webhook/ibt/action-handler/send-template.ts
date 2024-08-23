@@ -52,8 +52,11 @@ export const sendTemplate = async (payload: any, workflowLogId: string) => {
   const { processedPayload, mediaUrl } = await processTemplatePayload(
     template_payload,
     contact,
-    imageType
+    imageType,
+    personalizedImageId
   )
+
+  console.log('Sending message:', processedPayload)
 
   try {
     const { data: messageResponse } = await sendMessageWithTemplate(

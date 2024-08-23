@@ -1,7 +1,18 @@
-import * as fabric from 'fabric'
-import * as fs from 'fs/promises'
-import * as path from 'path'
-import { Contact } from '../db/contacts'
+import * as fabric from 'fabric';
+import { JSDOM } from 'jsdom';
+import * as canvas from 'canvas';
+import * as fs from 'fs/promises';
+import * as path from 'path';
+import { Contact } from '../db/contacts';
+
+// Setup jsdom and node-canvas
+const { document } = new JSDOM('<!DOCTYPE html><html><body></body></html>').window;
+(global as any).document = document;
+(global as any).window = document.defaultView as unknown as Window & typeof globalThis;
+(global as any).HTMLCanvasElement = canvas.Canvas as unknown as { new(): HTMLCanvasElement; prototype: HTMLCanvasElement; };
+(global as any).HTMLImageElement = canvas.Image as unknown as { new(): HTMLImageElement; prototype: HTMLImageElement; };
+(global as any).ImageData = canvas.ImageData;
+(global as any).DOMParser = new JSDOM().window.DOMParser;
 
 // const fontPath = path.join(__dirname, 'fonts', 'arial-unicode-ms.ttf');
 
@@ -22,38 +33,53 @@ export async function generateImage(
     throw new Error('Canvas state or contact is missing')
   }
 
-  const uniqueID = Math.random().toString(36).substr(2, 9)
+  console.log('====================================')
+  console.log('Inside generateImage')
+
+  const uniqueID = Math.random().toString(36)
 
   const width = canvasState.width || 500
   const height = canvasState.height || 500
+  // Declare canvas variable outside the try block
+  let canvas: fabric.StaticCanvas
 
-  const canvas = new fabric.StaticCanvas(undefined, {
-    width,
-    height,
-    backgroundColor: 'white',
-  })
+  try {
+    console.log('Before StaticCanvas initialization')
+    canvas = new fabric.StaticCanvas(undefined, {
+      width: width,
+      height: height,
+      backgroundColor: 'white',
+    })
+    console.log('After StaticCanvas initialization')
+  } catch (err) {
+    console.error('Error during StaticCanvas initialization:', err)
+    throw err // Re-throw to handle it in calling code or further up the stack
+  }
 
-
+  console.log('====================================')
+  console.log('Inside generateImage')
   canvasState.objects = canvasState.objects.map((object: any) => {
     try {
-      if (object.type === "textbox") {
+      if (object.type === 'textbox') {
         // Replace object.text with name if %name% is found
-        const text = object.text.replace(/%name%/g, contact.name);
-        return { ...object, text }; // return a new object with the updated text
+        const text = object.text.replace(/%name%/g, contact.name)
+        return { ...object, text } // return a new object with the updated text
       }
-      return object;
+      console.log('Object:', object)
+      return object
     } catch (err) {
-      throw new Error(`Error updating text: ${(err as unknown as any).message}`);
-    }
-  });
-
-
-  canvasState.objects.forEach((obj: any) => {
-    if (obj.type === 'textbox' && containsChinese(obj.text)) {
-      obj.fontFamily = 'Arial Unicode MS'
+      console.error(`Error updating text: ${(err as unknown as any).message}`)
+      throw new Error(`Error updating text: ${(err as unknown as any).message}`)
     }
   })
 
+  // canvasState.objects.forEach((obj: any) => {
+  //   if (obj.type === 'textbox' && containsChinese(obj.text)) {
+  //     obj.fontFamily = 'Arial Unicode MS'
+  //   }
+  // })
+
+  console.log('Canvas state:', canvasState)
   return new Promise((resolve, reject) => {
     canvas.loadFromJSON(canvasState, async () => {
       try {
@@ -65,9 +91,6 @@ export async function generateImage(
             obj.set('fontFamily', 'SimSun')
           }
         })
-
-        canvas.backgroundColor = 'white'
-        canvas.renderAll()
 
         const dataUrl = canvas.toDataURL({
           format: 'png',
@@ -88,6 +111,8 @@ export async function generateImage(
 
         await fs.mkdir(directoryPath, { recursive: true })
         await fs.writeFile(filePath, buffer)
+
+        console.log('File written to', filePath)
 
         const imageUrl = `https://ibt3.whatsgenie.com/images/personalized_image/${uniqueID}.png`
         resolve(imageUrl)
