@@ -22,6 +22,7 @@ import {
 } from './webhook/ibt/processWorkflow'
 import { handlePemniVipWebhook } from './webhook/pemni/bubble-vip'
 import { handleWebhook } from './webhook/whatsapp/webhookHandler'
+import path from 'path'
 dotenv.config()
 
 const app: Express = express()
@@ -130,6 +131,10 @@ app.get('/proxy', async (req: Request, res: Response) => {
     res.status(500).send((error as any).toString())
   }
 })
+
+// Serve Image from URL eg. `https://ibt3.whatsgenie.com/images/personalized_image/${uniqueID}.png`
+app.use('/images/personalized_image', express.static(path.join(__dirname, 'public', 'images', 'personalized_image')))
+
 let server: Server
 
 const startServer = () => {

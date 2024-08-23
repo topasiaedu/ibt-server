@@ -84,7 +84,9 @@ export const generateWorkflowLog = async (action: Action, contact: Contact) => {
         templatePayload?: JSON
         timePostType?: string
         postTime?: string
-        postDate?: Date
+        postDate?: Date,
+        personalizedImageId?: string
+        imageType?: string
       }
 
       payload = {
@@ -92,6 +94,8 @@ export const generateWorkflowLog = async (action: Action, contact: Contact) => {
         template_payload: sendTemplateDetails.templatePayload,
         contact_id: contact.contact_id,
         workflow_id: action.workflow_id,
+        personalizedImageId: sendTemplateDetails.personalizedImageId,
+        imageType: sendTemplateDetails.imageType,
       }
 
       if (

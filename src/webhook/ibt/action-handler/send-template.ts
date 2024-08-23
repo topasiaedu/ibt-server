@@ -22,7 +22,7 @@ import { formatPhoneNumber } from '../helper/formatPhoneNumber'
 import { getWorkflowPhoneNumber } from '../helper/getCampaignPhoneNumber'
 
 export const sendTemplate = async (payload: any, workflowLogId: string) => {
-  const { workflow_id, contact_id, template_payload, selected_template } =
+  const { workflow_id, contact_id, template_payload, selected_template, personalizedImageId, imageType } =
     payload
 
   const contact: Contact = await withRetry(
@@ -49,9 +49,10 @@ export const sendTemplate = async (payload: any, workflowLogId: string) => {
     return
   }
 
-  const { processedPayload, mediaUrl } = processTemplatePayload(
+  const { processedPayload, mediaUrl } = await processTemplatePayload(
     template_payload,
-    contact
+    contact,
+    imageType
   )
 
   try {

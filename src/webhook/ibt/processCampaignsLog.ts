@@ -113,7 +113,7 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
       return
     }
 
-    const { processedPayload, mediaUrl } = processTemplatePayload(
+    const { processedPayload, mediaUrl } = await processTemplatePayload(
       campaign.template_payload,
       contact
     )

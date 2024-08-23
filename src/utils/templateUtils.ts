@@ -1,3 +1,9 @@
+import {
+  fetchPersonalizedImage,
+  PersonalizedImage,
+} from './../db/personalizedImage'
+import { generateImage } from './generateImage'
+
 export interface TemplateMessagePayload {
   messaging_product: string
   recipient_type: string
@@ -6,7 +12,12 @@ export interface TemplateMessagePayload {
   template: any
 }
 
-export const processTemplatePayload = (template_payload: any, contact: any) => {
+export const processTemplatePayload = async (
+  template_payload: any,
+  contact: any,
+  imageType?: string,
+  personalizedImageId?: string
+) => {
   let processedPayload: TemplateMessagePayload = JSON.parse(
     JSON.stringify({
       messaging_product: 'whatsapp',
@@ -18,6 +29,23 @@ export const processTemplatePayload = (template_payload: any, contact: any) => {
   )
 
   let mediaUrl = ''
+
+  if (imageType === 'personalized' && personalizedImageId) {
+    const personalizedImage: PersonalizedImage = await fetchPersonalizedImage(
+      personalizedImageId
+    )
+
+    const image = await generateImage(personalizedImage.canvas_state, contact)
+    mediaUrl = image
+
+    processedPayload.template.components.forEach((component: any) => {
+      component.parameters.forEach((parameter: any) => {
+        if (parameter.type === 'image') {
+          parameter.image.link = image
+        }
+      })
+    })
+  }
 
   processedPayload.template.components.forEach((component: any) => {
     component.parameters.forEach((parameter: any) => {
@@ -36,9 +64,10 @@ export const processTemplatePayload = (template_payload: any, contact: any) => {
           })
         }
       } else if (
-        parameter.type === 'image' ||
-        parameter.type === 'document' ||
-        parameter.type === 'video'
+        (parameter.type === 'image' ||
+          parameter.type === 'document' ||
+          parameter.type === 'video') &&
+        imageType === 'generic'
       ) {
         mediaUrl = parameter[parameter.type].link
       }
