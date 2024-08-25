@@ -15,8 +15,8 @@ export interface TemplateMessagePayload {
 export const processTemplatePayload = async (
   template_payload: any,
   contact: any,
-  imageType?: string,
-  personalizedImageId?: string
+  imageType?: string | undefined | null,
+  personalizedImageId?: string | undefined | null
 ) => {
   let processedPayload: TemplateMessagePayload = JSON.parse(
     JSON.stringify({
@@ -30,9 +30,6 @@ export const processTemplatePayload = async (
 
   let mediaUrl = ''
 
-  console.log("===============================")
-  console.log("Image type:", imageType)
-  console.log("Personalized image ID:", personalizedImageId)
   if (imageType === 'personalized' && personalizedImageId) {
     const personalizedImage: PersonalizedImage = await fetchPersonalizedImage(
       personalizedImageId
@@ -50,8 +47,6 @@ export const processTemplatePayload = async (
       })
     })
   }
-
-  console.log('Processed payload:', processedPayload)
 
   processedPayload.template.components.forEach((component: any) => {
     component.parameters.forEach((parameter: any) => {

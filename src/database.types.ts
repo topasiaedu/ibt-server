@@ -220,8 +220,10 @@ export type Database = {
           contact_list_id: number | null
           created_at: string | null
           failed: number | null
+          imageType: string | null
           name: string
           next_account: string | null
+          personalizedImageId: string | null
           phone_number_id: number | null
           post_time: string
           project_id: number | null
@@ -237,8 +239,10 @@ export type Database = {
           contact_list_id?: number | null
           created_at?: string | null
           failed?: number | null
+          imageType?: string | null
           name: string
           next_account?: string | null
+          personalizedImageId?: string | null
           phone_number_id?: number | null
           post_time: string
           project_id?: number | null
@@ -254,8 +258,10 @@ export type Database = {
           contact_list_id?: number | null
           created_at?: string | null
           failed?: number | null
+          imageType?: string | null
           name?: string
           next_account?: string | null
+          personalizedImageId?: string | null
           phone_number_id?: number | null
           post_time?: string
           project_id?: number | null
