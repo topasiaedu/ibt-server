@@ -112,7 +112,7 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
     await withRetry(() => insertContactListMembers([
       {
         contact_id: contact.contact_id,
-        contact_list_id: 44, // TODO: Make this updatable in web app settings
+        contact_list_id: 51, // TODO: Make this updatable in web app settings
       },
     ]), 'handlePemniVipWebhook > insertContactListMembers')
 
