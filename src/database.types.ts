@@ -310,6 +310,38 @@ export type Database = {
           },
         ]
       }
+      contact_events: {
+        Row: {
+          contact_id: number
+          created_at: string
+          description: string | null
+          id: string
+          type: string
+        }
+        Insert: {
+          contact_id: number
+          created_at?: string
+          description?: string | null
+          id?: string
+          type: string
+        }
+        Update: {
+          contact_id?: number
+          created_at?: string
+          description?: string | null
+          id?: string
+          type?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "contact_events_contact_id_fkey"
+            columns: ["contact_id"]
+            isOneToOne: false
+            referencedRelation: "contacts"
+            referencedColumns: ["contact_id"]
+          },
+        ]
+      }
       contact_list_members: {
         Row: {
           contact_id: number

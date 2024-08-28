@@ -23,6 +23,7 @@ import {
 import { handlePemniVipWebhook } from './webhook/pemni/bubble-vip'
 import { handleWebhook } from './webhook/whatsapp/webhookHandler'
 import path from 'path'
+import { handleContactEvent } from './webhook/ibt/processContactEvents'
 dotenv.config()
 
 const app: Express = express()
@@ -97,6 +98,8 @@ app.post('/webhook', (req, res) => {
   handleWebhook(req, res);
 });
 app.post('/ibt/webhook/:id', handleIBTWebhook)
+
+app.post('/ibt/contact-event', handleContactEvent)
 
 app.post('/update-tunnel-url', (req, res) => {
   tunnelURl = req.body.tunnelURl
