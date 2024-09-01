@@ -201,7 +201,7 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
                       },
                       {
                         type: 'text',
-                        text: 'https://pemnitan.com/vip-zoom',
+                        text: 'https://pemnitan.com/live',
                       },
                     ],
                   },
@@ -322,7 +322,7 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
                       },
                       {
                         type: 'text',
-                        text: 'https://pemnitan.com/vip-zoom',
+                        text: 'https://pemnitan.com/live',
                       },
                     ],
                   },
