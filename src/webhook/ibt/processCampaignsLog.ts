@@ -84,6 +84,7 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
         .single()
 
       if (message || message2) {
+        console.log(message, message2)
         console.log(
           'Message already sent to contact',
           contact.name,
