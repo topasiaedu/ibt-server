@@ -67,7 +67,7 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
     )
     console.log('Sending to contact', contact.name, 'with wa_id', contact.wa_id)
 
-    if (campaignLog.campaign_id === 305) {
+    if (campaignLog.campaign_id === 306) {
       // Check if there is a message with campaign_id 304 or 303 in the message with the same contact_id, if so, skip
       const { data: message } = await supabase
         .from('messages')
