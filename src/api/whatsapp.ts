@@ -70,6 +70,7 @@ const sendMessageWithTemplate = async (
         'Error sending message with template:',
         JSON.stringify((error as any).message)
       )
+      console.log(`${whatsappApiURL}/${phone_number_id}/messages`)
       console.log("params: ", phone_number_id, access_token)
       console.log("payload: ", JSON.stringify(payload, null, 2))
     }
