@@ -191,8 +191,12 @@ export function setupRealtimeCampaignProcessing() {
     )
     .subscribe()
 
+  const poller = setInterval(async () => {
+    await reschedulePendingCampaigns()
+  }, 1000 * 60)
   return () => {
     subscription.unsubscribe()
+    clearInterval(poller)
   }
 }
 
@@ -211,7 +215,7 @@ function scheduleCampaign(campaign: Campaign) {
   // Safeguard: Check if the campaign is already in the queue
   if (campaignQueue.some((c) => c.campaign_id === campaign.campaign_id)) {
     console.warn(`Campaign ${campaign.campaign_id} is already in the queue.`)
-   
+
     return
   }
 
@@ -247,6 +251,10 @@ export const reschedulePendingCampaigns = async () => {
   }
 
   campaigns.forEach((campaign) => {
+    // Check if the campaign is already in the queue
+    if (campaignQueue.some((c) => c.campaign_id === campaign.campaign_id)) {
+      return
+    }
     scheduleCampaign(campaign)
   })
 

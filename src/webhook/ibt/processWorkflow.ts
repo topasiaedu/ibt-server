@@ -104,8 +104,13 @@ export function setupRealtimeWorkflowLogProcessing() {
     )
     .subscribe()
 
+    const poller = setInterval(async () => {
+      await reschedulePendingWorkflowLogs()
+    }, 1000 * 60)
+
   return () => {
     subscription.unsubscribe()
+    clearInterval(poller)
   }
 }
 
@@ -138,6 +143,10 @@ export const reschedulePendingWorkflowLogs = async () => {
   }
 
   workflowLogs.forEach((workflowLog) => {
+    // Check if the log is already in the queue
+    if (workflowLogQueue.some((log) => log.id === workflowLog.id)) {
+      return
+    }
     workflowLogQueue.push(workflowLog)
   })
 

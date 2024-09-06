@@ -228,8 +228,13 @@ export function setupRealtimeCampaignLogProcessing() {
     )
     .subscribe()
 
+    const poller = setInterval(async () => {
+      await reschedulePendingCampaignLogs()
+    }, 1000 * 60)
+
   return () => {
     subscription.unsubscribe()
+    clearInterval(poller)
   }
 }
 
@@ -271,6 +276,10 @@ export const reschedulePendingCampaignLogs = async () => {
   }
 
   campaignLogs.forEach((campaignLog) => {
+    // Check if the campaign log is already in the queue
+    if (campaignLogQueue.some((c) => c.id === campaignLog.id)) {
+      return
+    }
     scheduleCampaignLog(campaignLog)
   })
 
