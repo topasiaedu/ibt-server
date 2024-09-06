@@ -5,6 +5,7 @@ import { withRetry } from '../../utils/withRetry'
 import { Contact, findOrCreateContact } from '../../db/contacts'
 import { fetchWorkflow, Workflow } from '../../db/workflow'
 import { Action, fetchActiveActions } from '../../db/action'
+import { formatPhoneNumber } from './helper/formatPhoneNumber'
 
 export const handleIBTWebhook = async (req: Request, res: Response) => {
   try {
@@ -29,12 +30,17 @@ export const handleIBTWebhook = async (req: Request, res: Response) => {
       'handleIBTWebhook > fetchActions'
     )
 
+    const formattedPhone = await withRetry(
+      async () => formatPhoneNumber(webhookData.phone),
+      'handleIBTWebhook > formatPhoneNumber'
+    )
+
     let contact: Contact = await withRetry(
       () =>
         findOrCreateContact(
-          webhookData.phone,
+          formattedPhone,
           webhookData.name,
-          workflow.project_id,  
+          workflow.project_id,
           webhookData.email
         ),
       'handleIBTWebhook > findOrCreateContact'
