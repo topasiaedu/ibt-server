@@ -271,7 +271,6 @@ export const reschedulePendingCampaignLogs = async () => {
   }
 
   if (campaignLogs.length === 0) {
-    console.error('No pending campaign logs found')
     return
   }
 

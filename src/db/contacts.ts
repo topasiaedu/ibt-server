@@ -85,10 +85,21 @@ export const findOrCreateContact = async (
 
     // Update the first contact if necessary
     const contact = data[0]
-    if (contact.name !== name || contact.email !== email) {
+    if (contact.email !== email) {
       const { error: updateError } = await supabase
         .from('contacts')
         .update({ name, email })
+        .eq('contact_id', contactId)
+
+      if (updateError)
+        throw new Error(
+          `Failed to update contact with ID ${contactId}: ${updateError.message}`
+        )
+    } else {
+      // update only name
+      const { error: updateError } = await supabase
+        .from('contacts')
+        .update({ name })
         .eq('contact_id', contactId)
 
       if (updateError)

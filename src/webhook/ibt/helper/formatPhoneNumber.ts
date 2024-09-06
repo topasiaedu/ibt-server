@@ -9,6 +9,9 @@ export const formatPhoneNumber = (phone: string): string => {
     phone = phone.substring(1);
   }
 
+  // Remove ' ' if present
+  phone = phone.replace(' ', '');
+
   // Check if the number starts with "60" (Malaysia)
   if (phone.startsWith('60')) {
     const numberAfterCountryCode = phone.substring(2);

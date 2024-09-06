@@ -35,6 +35,11 @@ export const handleIBTWebhook = async (req: Request, res: Response) => {
       'handleIBTWebhook > formatPhoneNumber'
     )
 
+    if (formattedPhone === 'Invalid') {
+      console.error('Invalid phone number:', webhookData.phone)
+      return
+    }
+
     let contact: Contact = await withRetry(
       () =>
         findOrCreateContact(
