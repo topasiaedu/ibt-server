@@ -193,7 +193,7 @@ export function setupRealtimeCampaignProcessing() {
 
   const poller = setInterval(async () => {
     await reschedulePendingCampaigns()
-  }, 1000 * 60)
+  }, 1000 * 60 * 5)
   return () => {
     subscription.unsubscribe()
     clearInterval(poller)

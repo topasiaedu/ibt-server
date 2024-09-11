@@ -230,7 +230,7 @@ export function setupRealtimeCampaignLogProcessing() {
 
     const poller = setInterval(async () => {
       await reschedulePendingCampaignLogs()
-    }, 1000 * 60)
+    }, 1000 * 60 * 5)
 
   return () => {
     subscription.unsubscribe()
