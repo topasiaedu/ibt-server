@@ -33,7 +33,6 @@ export const getCampaignPhoneNumber = async (
       .eq('phone_number_id', contact.last_contacted_by)
       .eq('restricted', false)
       .neq('quality_rating', 'LOW')
-      .eq('project_id', project_id)
 
     if (lastContactedPhoneNumberError) {
       logError(
@@ -46,7 +45,7 @@ export const getCampaignPhoneNumber = async (
       )
       throw new Error('Error fetching last contacted phone number')
     }
-    if (lastContactedPhoneNumber.length !== 0) {
+    if (lastContactedPhoneNumber.length !== 0 && lastContactedPhoneNumber[0].whatsapp_business_accounts.project_id === project_id) {
       return {
         selectedPhoneNumber: lastContactedPhoneNumber[0].wa_id,
         accessToken:
