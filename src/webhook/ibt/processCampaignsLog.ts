@@ -130,7 +130,7 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
 
     const { selectedPhoneNumber, accessToken, phone_number_id } =
       await withRetry(
-        () => getCampaignPhoneNumber(campaign.campaign_id, contact),
+        () => getCampaignPhoneNumber(campaign.campaign_id, contact, campaign.project_id || 5),
         'processCampaignLog > getCampaignPhoneNumber'
       )
 

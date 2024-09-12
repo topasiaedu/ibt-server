@@ -14,7 +14,8 @@ const getWeightForRating = (rating: string) => {
 
 export const getCampaignPhoneNumber = async (
   campaignId: number,
-  contact: Contact
+  contact: Contact,
+  project_id: number
 ): Promise<{
   selectedPhoneNumber: string
   accessToken: string
@@ -32,6 +33,7 @@ export const getCampaignPhoneNumber = async (
       .eq('phone_number_id', contact.last_contacted_by)
       .eq('restricted', false)
       .neq('quality_rating', 'LOW')
+      .eq('project_id', project_id)
 
     if (lastContactedPhoneNumberError) {
       logError(
