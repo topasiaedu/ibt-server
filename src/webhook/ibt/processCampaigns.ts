@@ -178,14 +178,6 @@ export function setupRealtimeCampaignProcessing() {
         const campaign = payload.new as Campaign
         if (campaign.status === 'PENDING') {
           scheduleCampaign(campaign)
-        } else if (campaign.status === 'PROCESSING') {
-          // Remove from queue if already in queue
-          const index = campaignQueue.findIndex(
-            (c) => c.campaign_id === campaign.campaign_id
-          )
-          if (index !== -1) {
-            campaignQueue.splice(index, 1)
-          }
         }
       }
     )
@@ -200,6 +192,9 @@ export function setupRealtimeCampaignProcessing() {
   }
 }
 
+// Store active jobs to prevent duplicate cron jobs for the same campaign
+const activeJobs: { [campaignId: string]: CronJob } = {}
+
 function scheduleCampaign(campaign: Campaign) {
   const postTime = new Date(campaign.post_time).getTime()
 
@@ -212,10 +207,14 @@ function scheduleCampaign(campaign: Campaign) {
     return
   }
 
-  // Safeguard: Check if the campaign is already in the queue
+  // Safeguard: Check if the campaign is already in the queue or job is active
   if (campaignQueue.some((c) => c.campaign_id === campaign.campaign_id)) {
     console.warn(`Campaign ${campaign.campaign_id} is already in the queue.`)
+    return
+  }
 
+  if (activeJobs[campaign.campaign_id]) {
+    console.warn(`Cron job for campaign ${campaign.campaign_id} is already scheduled.`)
     return
   }
 
@@ -225,14 +224,22 @@ function scheduleCampaign(campaign: Campaign) {
     return
   }
 
+  // Create the cron job and store it in the activeJobs map
   const job = new CronJob(new Date(postTime), () => {
     console.log('Cron job triggered for campaign:', campaign.campaign_id)
     campaignQueue.push(campaign)
     processQueue()
+    
+    // Once job is triggered, remove it from activeJobs
+    delete activeJobs[campaign.campaign_id]
   })
 
   job.start()
+
+  // Store the active job to prevent duplicates
+  activeJobs[campaign.campaign_id] = job
 }
+
 
 export const reschedulePendingCampaigns = async () => {
   const { data: campaigns, error } = await supabase
