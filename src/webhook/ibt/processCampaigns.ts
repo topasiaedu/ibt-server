@@ -195,52 +195,7 @@ export function setupRealtimeCampaignProcessing() {
 // Store active jobs to prevent duplicate cron jobs for the same campaign
 const activeJobs: { [campaignId: string]: CronJob } = {}
 
-function scheduleCampaign(campaign: Campaign) {
-  const postTime = new Date(campaign.post_time).getTime()
-
-  if (isNaN(postTime)) {
-    console.error(
-      'Invalid post time for campaign:',
-      campaign.campaign_id,
-      campaign.post_time
-    )
-    return
-  }
-
-  // Safeguard: Check if the campaign is already in the queue or job is active
-  if (campaignQueue.some((c) => c.campaign_id === campaign.campaign_id)) {
-    console.warn(`Campaign ${campaign.campaign_id} is already in the queue.`)
-    return
-  }
-
-  if (activeJobs[campaign.campaign_id]) {
-    console.warn(`Cron job for campaign ${campaign.campaign_id} is already scheduled.`)
-    return
-  }
-
-  if (postTime < Date.now()) {
-    campaignQueue.push(campaign)
-    processQueue()
-    return
-  }
-
-  // Create the cron job and store it in the activeJobs map
-  const job = new CronJob(new Date(postTime), () => {
-    console.log('Cron job triggered for campaign:', campaign.campaign_id)
-    campaignQueue.push(campaign)
-    processQueue()
-    
-    // Once job is triggered, remove it from activeJobs
-    delete activeJobs[campaign.campaign_id]
-  })
-
-  job.start()
-
-  // Store the active job to prevent duplicates
-  activeJobs[campaign.campaign_id] = job
-}
-
-
+// Ensure that reschedulePendingCampaigns does not reschedule campaigns that are already in the queue or being processed
 export const reschedulePendingCampaigns = async () => {
   const { data: campaigns, error } = await supabase
     .from('campaigns')
@@ -258,12 +213,59 @@ export const reschedulePendingCampaigns = async () => {
   }
 
   campaigns.forEach((campaign) => {
-    // Check if the campaign is already in the queue
-    if (campaignQueue.some((c) => c.campaign_id === campaign.campaign_id)) {
+    // Avoid adding campaigns that are already in the queue or are actively being processed
+    if (
+      campaignQueue.some((c) => c.campaign_id === campaign.campaign_id) || 
+      activeJobs[campaign.campaign_id]
+    ) {
       return
     }
     scheduleCampaign(campaign)
   })
 
   processQueue()
+}
+
+function scheduleCampaign(campaign: Campaign) {
+  const postTime = new Date(campaign.post_time).getTime()
+
+  if (isNaN(postTime)) {
+    console.error(
+      'Invalid post time for campaign:',
+      campaign.campaign_id,
+      campaign.post_time
+    )
+    return
+  }
+
+  // Safeguard: Check if the campaign is already in the queue or a cron job is active
+  if (
+    campaignQueue.some((c) => c.campaign_id === campaign.campaign_id) ||
+    activeJobs[campaign.campaign_id]
+  ) {
+    console.warn(`Campaign ${campaign.campaign_id} is already scheduled or in the queue.`)
+    return
+  }
+
+  if (postTime < Date.now()) {
+    // Directly add to the campaign queue if the post time has passed
+    campaignQueue.push(campaign)
+    processQueue()
+    return
+  }
+
+  // Create a cron job for future campaigns and store it in activeJobs
+  const job = new CronJob(new Date(postTime), () => {
+    console.log('Cron job triggered for campaign:', campaign.campaign_id)
+    campaignQueue.push(campaign)
+    processQueue()
+
+    // Remove the cron job from activeJobs once it triggers
+    delete activeJobs[campaign.campaign_id]
+  })
+
+  job.start()
+
+  // Store the active job to prevent duplicates
+  activeJobs[campaign.campaign_id] = job
 }
