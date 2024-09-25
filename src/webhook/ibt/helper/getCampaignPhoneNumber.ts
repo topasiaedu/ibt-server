@@ -45,6 +45,9 @@ export const getCampaignPhoneNumber = async (
       )
       throw new Error('Error fetching last contacted phone number')
     }
+
+    console.log('lastContactedPhoneNumber:', lastContactedPhoneNumber)
+    console.log("project_id:", project_id)
     if (lastContactedPhoneNumber.length !== 0 && lastContactedPhoneNumber[0].whatsapp_business_accounts.project_id === project_id) {
       return {
         selectedPhoneNumber: lastContactedPhoneNumber[0].wa_id,
