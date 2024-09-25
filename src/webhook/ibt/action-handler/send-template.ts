@@ -31,7 +31,7 @@ export const sendTemplate = async (payload: any, workflowLogId: string) => {
   )
   
   const { selectedPhoneNumber, accessToken, phone_number_id } = await withRetry(
-    () => getWorkflowPhoneNumber(workflow_id, contact),
+    () => getWorkflowPhoneNumber(workflow_id, contact, contact.project_id),
     'sendTemplate > getWorkflowPhoneNumber'
   )
 
