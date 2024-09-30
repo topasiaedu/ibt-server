@@ -89,7 +89,6 @@ export function setupRealtimeWorkflowLogProcessing() {
       (payload) => {
         const workflowLog = payload.new as WorkflowLog
         if (workflowLog.status === 'PENDING') {
-          console.log('Received pending workflow log' + workflowLog.id)
           scheduleWorkflowLog(workflowLog)
         } else if (workflowLog.status === 'PROCESSING') {
           // remove from queue

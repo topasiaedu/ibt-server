@@ -57,7 +57,7 @@ const handleOutgoingMessage = async (value: any) => {
         'handleOutgoingMessage > fetchMessageByWAMID'
       )
       if (!message) {
-        console.error('Message not found in the database')
+        // console.error('Message not found in the database')
         return
       }
 

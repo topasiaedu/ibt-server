@@ -1,11 +1,15 @@
-import supabase  from "./supabaseClient";
-import { Database } from "../database.types";
+import supabase from './supabaseClient'
+import { Database } from '../database.types'
 
 export type PhoneNumber = Database['public']['Tables']['phone_numbers']['Row']
-export type PhoneNumberInsert = Database['public']['Tables']['phone_numbers']['Insert']
-export type PhoneNumberUpdate = Database['public']['Tables']['phone_numbers']['Update']
+export type PhoneNumberInsert =
+  Database['public']['Tables']['phone_numbers']['Insert']
+export type PhoneNumberUpdate =
+  Database['public']['Tables']['phone_numbers']['Update']
 
-export const fetchPhoneNumber = async (phoneNumberId: number): Promise<PhoneNumber> => {
+export const fetchPhoneNumber = async (
+  phoneNumberId: number
+): Promise<PhoneNumber> => {
   const { data, error } = await supabase
     .from('phone_numbers')
     .select('*')
@@ -15,7 +19,9 @@ export const fetchPhoneNumber = async (phoneNumberId: number): Promise<PhoneNumb
   return data
 }
 
-export const fetchPhoneNumberByNumber = async (phoneNumber: string): Promise<PhoneNumber> => {
+export const fetchPhoneNumberByNumber = async (
+  phoneNumber: string
+): Promise<PhoneNumber> => {
   const { data, error } = await supabase
     .from('phone_numbers')
     .select('*')
@@ -25,7 +31,9 @@ export const fetchPhoneNumberByNumber = async (phoneNumber: string): Promise<Pho
   return data
 }
 
-export const fetchPhoneNumberBMAccessTokenByNumber = async (phoneNumber: string): Promise<string> => {
+export const fetchPhoneNumberBMAccessTokenByNumber = async (
+  phoneNumber: string
+): Promise<string> => {
   const { data, error } = await supabase
     .from('phone_numbers')
     .select('*, whatsapp_business_accounts(*, business_manager(*))')
@@ -35,7 +43,9 @@ export const fetchPhoneNumberBMAccessTokenByNumber = async (phoneNumber: string)
   return data.whatsapp_business_accounts.business_manager.access_token
 }
 
-export const fetchPhoneNumberByWABAId = async (wabaId: string): Promise<PhoneNumber> => {
+export const fetchPhoneNumberByWABAId = async (
+  wabaId: string
+): Promise<PhoneNumber> => {
   const { data, error } = await supabase
     .from('phone_numbers')
     .select('*')
@@ -45,12 +55,17 @@ export const fetchPhoneNumberByWABAId = async (wabaId: string): Promise<PhoneNum
   return data
 }
 
-export const fetchPhoneNumberByWAId = async (waId: string): Promise<PhoneNumber> => {
+export const fetchPhoneNumberByWAId = async (
+  waId: string
+): Promise<PhoneNumber> => {
   const { data, error } = await supabase
     .from('phone_numbers')
     .select('*')
     .eq('wa_id', waId)
     .single()
-  if (error) throw error
+  if (error) {
+    console.error('Error fetching phone number by wa_id:', waId)
+    throw error
+  }
   return data
 }

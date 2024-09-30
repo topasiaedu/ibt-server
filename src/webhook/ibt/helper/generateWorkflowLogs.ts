@@ -44,8 +44,6 @@ export const generateWorkflowLog = async (action: Action, contact: Contact) => {
           workflow_id: action.workflow_id,
           current_index: addToContactListDetails.currentIndex,
         }
-
-        console.log('Payload:', payload)
       }
       break
     case 'send-message':
@@ -151,7 +149,5 @@ export const generateWorkflowLog = async (action: Action, contact: Contact) => {
     console.log('Error creating new workflow log:', newWorkflowLogError)
     return
   }
-
-  console.log('New workflow log created:', newWorkflowLog.id)
   return newWorkflowLog
 }

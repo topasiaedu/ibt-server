@@ -33,7 +33,6 @@ export const insertTemplateMessage = async (
     workflowId,
   } = params
 
-  console.log('Inserting message:', messageResponse)
   const { data, error } = await supabase
     .from('messages')
     .insert([

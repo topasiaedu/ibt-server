@@ -35,8 +35,6 @@ export const sendTemplate = async (payload: any, workflowLogId: string) => {
     'sendTemplate > getWorkflowPhoneNumber'
   )
 
-  console.log('Converting phone number:', contact.wa_id)
-
   contact.wa_id = formatPhoneNumber(contact.wa_id)
 
   
@@ -55,8 +53,6 @@ export const sendTemplate = async (payload: any, workflowLogId: string) => {
     imageType,
     personalizedImageId
   )
-
-  console.log('Sending message:', processedPayload)
 
   try {
     const { data: messageResponse } = await sendMessageWithTemplate(
