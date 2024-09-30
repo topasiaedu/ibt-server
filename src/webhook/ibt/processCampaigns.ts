@@ -149,6 +149,17 @@ const processCampaigns = async (campaign: Campaign) => {
       (log) => !excludedContactIds.includes(log.contact_id)
     )
 
+    console.log("Campaign logs:", campaignLogs.length)
+    
+    // remove duplicates
+    campaignLogs = campaignLogs.filter(
+      (log, index, self) =>
+        index ===
+        self.findIndex(
+          (t) => t.contact_id === log.contact_id && t.campaign_id === log.campaign_id
+        )
+    )
+    
     // Insert campaign logs into the database
     if (campaignLogs.length > 0) {
       await withRetry(
