@@ -99,12 +99,12 @@ export const sendMessage = async (payload: any, workflowLogId: string) => {
           direction: 'outgoing',
           status: messageResponse.messages[0].message_status || 'failed',
           content: messagePayload.text.body,
-          phone_number_id: parseInt(selectedPhoneNumber),
+          phone_number_id: phone_number_id,
           workflow_id,
           conversation_id: conversation?.id,
           project_id: contact.project_id,
         }),
-      'processCampaignLog > insertTemplateMessage'
+      'sendMessage > insertMessage'
     )
 
     console.log('Message created successfully:', newMessage.message_id)
@@ -112,13 +112,13 @@ export const sendMessage = async (payload: any, workflowLogId: string) => {
     await withRetry(
       () =>
         updateConversationLastMessageId(conversation.id, newMessage.message_id),
-      'processCampaignLog > updateConversationLastMessageId'
+      'sendMessage > updateConversationLastMessageId'
     )
 
     await withRetry(
       () =>
         updateContactLastContactedByUsingWaID(contact.wa_id, phone_number_id),
-      'processCampaignLog > updateContactLastContactedBy'
+      'sendMessage > updateContactLastContactedBy'
     )
 
     await withRetry(
