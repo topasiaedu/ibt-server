@@ -294,6 +294,7 @@ const handleKeywordTrigger = async (value: any) => {
             )
 
             if (lowerCaseKeywords.includes(normalizedBody)) {
+              console.log('Keyword matched:', body)
               // Check if the Contact exists in the database
               const { data: contact, error: contactError } = await supabase
                 .from('contacts')
