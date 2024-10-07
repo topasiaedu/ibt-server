@@ -100,7 +100,7 @@ export const sendTemplate = async (payload: any, workflowLogId: string) => {
       () =>
         updateConversationLastMessageId(conversation.id, newMessage.message_id),
       'processCampaignLog > updateConversationLastMessageId'
-    )
+  )
 
     await withRetry(
       () =>
