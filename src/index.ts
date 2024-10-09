@@ -24,7 +24,6 @@ import { handlePemniVipWebhook } from './webhook/pemni/bubble-vip'
 import { handleWebhook } from './webhook/whatsapp/webhookHandler'
 import path from 'path'
 import { handleContactEvent } from './webhook/ibt/processContactEvents'
-import { fetchWABAPhoneNumbersFunction } from './cronJobs/fetchWABAPhoneNumbers'
 dotenv.config()
 
 const app: Express = express()
@@ -199,9 +198,6 @@ const startServer = () => {
         process.exit(1)
       }
     }
-
-    // Temp: fetch phone numbers manually
-    fetchWABAPhoneNumbersFunction()
 
     // Setup realtime processing
     const unsubscribeRealtimeCampaignProcessing =
