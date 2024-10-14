@@ -25,7 +25,7 @@ import { withRetry } from '../../utils/withRetry'
 
 const campaignLogQueue: CampaignLog[] = []
 
-let CONCURRENCY_LIMIT = 10
+let CONCURRENCY_LIMIT = 5
 const BATCH_SIZE = 1000 // Adjust as needed
 let activeProcesses = 0
 
