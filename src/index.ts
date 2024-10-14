@@ -24,6 +24,7 @@ import { handlePemniVipWebhook } from './webhook/pemni/bubble-vip'
 import { handleWebhook } from './webhook/whatsapp/webhookHandler'
 import path from 'path'
 import { handleContactEvent } from './webhook/ibt/processContactEvents'
+import { fetchWABAPhoneNumbersFunction } from './cronJobs/fetchWABAPhoneNumbers'
 dotenv.config()
 
 const app: Express = express()
@@ -219,6 +220,9 @@ const startServer = () => {
       unsubscribeRealtimeCampaignLogProcessing()
       process.exit(0)
     }
+
+    // TEMP: Do a polling to https://graph.facebook.com/v19.0/<PHONE_NUMBER_ID>?fields=quality_rating to update the quality rating of the phone numbers in the database
+    fetchWABAPhoneNumbersFunction();
 
     process.on('SIGTERM', shutdown)
     process.on('SIGINT', shutdown)
