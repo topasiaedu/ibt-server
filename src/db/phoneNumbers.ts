@@ -26,6 +26,7 @@ export const fetchPhoneNumberByNumber = async (
     .from('phone_numbers')
     .select('*')
     .eq('number', phoneNumber)
+    .neq('status', 'UNKNOWN')
     .single()
   if (error) throw error
   return data
