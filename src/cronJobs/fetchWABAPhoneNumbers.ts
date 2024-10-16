@@ -55,7 +55,11 @@ const fetchWABAPhoneNumbers = async () => {
           '(existingPhoneNumber?.wa_id === id)',
           existingPhoneNumber?.wa_id === id
         )
-        if (existingPhoneNumber?.wa_id === id && quality_rating !== "UNKNOWN" ) {
+
+        if (quality_rating === 'UNKNOWN') {
+          continue
+        }
+        if (existingPhoneNumber?.wa_id === id) {
           const { error: updateError } = await supabase
             .from('phone_numbers')
             .update({
