@@ -51,12 +51,12 @@ export const handleIBTWebhook = async (req: Request, res: Response) => {
       'handleIBTWebhook > findOrCreateContact'
     )
 
-    actions.forEach(async (action: Action) => {
+    for (const action of actions) {
       await withRetry(
         () => generateWorkflowLog(action, contact as Contact),
         'handleIBTWebhook > generateWorkflowLog'
-      )
-    })
+      );
+    }    
 
     res.status(200).send('OK')
   } catch (error) {

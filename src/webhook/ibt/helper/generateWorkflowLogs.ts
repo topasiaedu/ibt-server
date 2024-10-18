@@ -1,25 +1,28 @@
 // cronJobs/processWorkflowLogs.ts
 import supabase from '../../../db/supabaseClient'
 import { logError } from '../../../utils/errorLogger'
-import { Database } from '../../../database.types'
-import { Request, Response } from 'express'
-
-type WorkflowLog = Database['public']['Tables']['campaigns']['Row']
-type Contact = Database['public']['Tables']['contacts']['Row']
-type Workflow = Database['public']['Tables']['workflows']['Row']
-type Trigger = Database['public']['Tables']['triggers']['Row']
-type Action = Database['public']['Tables']['actions']['Row']
-type Template = Database['public']['Tables']['templates']['Row']
+import { Action } from '../../../db/action'
+import { Contact } from '../../../db/contacts'
+import { Template } from '../../../db/templates'
 
 export const generateWorkflowLog = async (action: Action, contact: Contact) => {
-  let payload = {}
-  let action_time = new Date()
+  let payload = {};
+  let action_time = new Date();
 
-  const ActionNodeTypes = [
-    'add-to-contact-list',
-    'send-message',
-    'send-template',
-  ]
+  // If type = delay, then wait the specified amount of time before continuing
+  if (action.type === 'delay') {
+    const delayDetails = action.details as { delay?: number };
+    
+    // If delay is specified, wait for the delay (assuming delay is in seconds)
+    const delay = delayDetails.delay ?? 0; // Default to 0 if no delay is provided
+    console.log(`Delaying next action by ${delay} seconds...`);
+
+    await new Promise(resolve => setTimeout(resolve, delay * 1000)); // Convert delay from seconds to milliseconds
+
+    console.log('Delay finished, continuing to the next action...');
+    return;
+  }
+
   switch (action.type) {
     case 'add-to-contact-list':
       const addToContactListDetails = action.details as {

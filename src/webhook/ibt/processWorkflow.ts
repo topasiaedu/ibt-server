@@ -103,9 +103,9 @@ export function setupRealtimeWorkflowLogProcessing() {
     )
     .subscribe()
 
-    const poller = setInterval(async () => {
-      await reschedulePendingWorkflowLogs()
-    }, 1000 * 60 * 5)
+  const poller = setInterval(async () => {
+    await reschedulePendingWorkflowLogs()
+  }, 1000 * 60 * 5)
 
   return () => {
     subscription.unsubscribe()
