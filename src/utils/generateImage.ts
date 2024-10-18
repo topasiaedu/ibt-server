@@ -42,11 +42,6 @@ export async function generateImage(
     return object
   })
 
-  console.log(
-    'Objects after mapping:',
-    JSON.stringify(canvasState.objects, null, 2)
-  )
-
   return new Promise((resolve, reject) => {
     canvas.loadFromJSON(canvasState, async () => {
       try {
