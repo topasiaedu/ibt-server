@@ -39,6 +39,7 @@ export const fetchPhoneNumberBMAccessTokenByNumber = async (
     .from('phone_numbers')
     .select('*, whatsapp_business_accounts(*, business_manager(*))')
     .eq('number', phoneNumber)
+    .neq('quality_rating', 'UNKNOWN')
     .single()
   if (error) throw error
   return data.whatsapp_business_accounts.business_manager.access_token
