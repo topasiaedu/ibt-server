@@ -7,7 +7,7 @@ import {
 import {
   fetchMessageByWAMID,
   Message,
-  updateMessage
+  updateMessage,
 } from '../../../db/messages'
 import { fetchPhoneNumberByWAId, PhoneNumber } from '../../../db/phoneNumbers'
 import supabase from '../../../db/supabaseClient'
@@ -68,7 +68,11 @@ const handleOutgoingMessage = async (value: any) => {
 
       // Update Contact Last Contacted By
       await withRetry(
-        () => updateContactLastContactedBy(message.contact_id, message.phone_number_id),
+        () =>
+          updateContactLastContactedBy(
+            message.contact_id,
+            message.phone_number_id
+          ),
         'handleOutgoingMessage > updateContactLastContactedBy'
       )
 
@@ -97,14 +101,13 @@ const handleOutgoingMessage = async (value: any) => {
                   updated_at: new Date().toISOString(),
                   ...(conversation.wa_conversation_id !== status.conversation.id
                     ? { wa_conversation_id: status.conversation.id }
-                    : {})
+                    : {}),
                 }),
               'handleOutgoingMessage > updateConversation'
-            );
+            )
           } else {
             // console.warn(`wa_conversation_id ${status.conversation.id} already exists in another record.`);
           }
-          
         }
       }
 
@@ -236,11 +239,19 @@ const handleIncomingMessage = async (value: any) => {
 
 export default handleMessages
 
+const currentlyProcessing: string[] = []
+
 const handleKeywordTrigger = async (value: any) => {
   const { metadata, contacts, messages } = value
   const { display_phone_number, phone_number_id } = metadata
   const { wa_id, profile } = contacts[0]
   const { name } = profile
+
+  if (currentlyProcessing.includes(wa_id)) {
+    return
+  }
+
+  currentlyProcessing.push(wa_id)
 
   const { data, error } = await supabase.rpc('get_triggers_with_details')
 
@@ -251,27 +262,6 @@ const handleKeywordTrigger = async (value: any) => {
         '\n' +
         'Inside handleKeywordTrigger function in messages.ts'
     )
-    return
-  }
-
-  // Check if the id already exist in the database
-  const { data: messageData, error: messageError } = await supabase
-    .from('messages')
-    .select('*')
-    .eq('wa_message_id', messages[0].id)
-
-  if (messageError) {
-    logError(
-      messageError as unknown as Error,
-      'Error fetching messages' +
-        '\n' +
-        'Inside handleKeywordTrigger function in messages.ts'
-    )
-    return
-  }
-
-  if (messageData.length > 0) {
-    // console.error('Message already exists in the database')
     return
   }
 
@@ -351,4 +341,6 @@ const handleKeywordTrigger = async (value: any) => {
       }
     }
   }
+
+  currentlyProcessing.splice(currentlyProcessing.indexOf(wa_id), 1)
 }
