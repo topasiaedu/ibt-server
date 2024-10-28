@@ -2,7 +2,6 @@ import { fabric } from 'fabric'
 import { Contact } from '../db/contacts'
 import supabase from '../db/supabaseClient'
 
-
 // Function to check if a string contains Chinese characters
 function containsChinese(text: string): boolean {
   return /[\u3400-\u9FBF]/.test(text)
@@ -25,7 +24,7 @@ export async function generateImage(
 
   try {
     // Create a new Fabric canvas with dynamic dimensions
-    canvas = new fabric.StaticCanvas(null, { width, height, backgroundColor: 'white' });
+    canvas = new fabric.StaticCanvas(null, { width, height, backgroundColor: 'white' })
   } catch (err) {
     console.error('Error during StaticCanvas initialization:', err)
     throw err
@@ -42,24 +41,26 @@ export async function generateImage(
     return object
   })
 
-  console.log(
-    'Objects after mapping:',
-    JSON.stringify(canvasState.objects, null, 2)
-  )
-
   return new Promise((resolve, reject) => {
     canvas.loadFromJSON(canvasState, async () => {
       try {
         console.log('Loaded from JSON')
 
+        // Check all text and textbox objects for Chinese characters
         canvas.forEachObject((obj: any) => {
-          if (
-            obj.type === 'text' &&
-            containsChinese((obj as fabric.IText).text || '')
-          ) {
-            obj.set('fontFamily', 'SimSun')
+          if (obj.type === 'text' || obj.type === 'textbox') {
+            const text = (obj as fabric.IText).text || ''
+        
+            if (containsChinese(text)) {
+              // Use a list of fallback fonts, Fabric.js will pick the first available one
+              obj.set('fontFamily', 'Noto Sans CJK, WenQuanYi Zen Hei, Arial') // Use the installed Chinese fonts, with Arial as final fallback
+            } else {
+              obj.set('fontFamily', 'Arial') // Default font for non-Chinese characters
+            }
           }
         })
+        
+        
 
         canvas.renderAll()
 
@@ -68,6 +69,7 @@ export async function generateImage(
           quality: 1,
           multiplier: 2,
         })
+
         const byteString = atob(canvasDataURL.split(',')[1])
         const mimeString = canvasDataURL
           .split(',')[0]
@@ -95,20 +97,6 @@ export async function generateImage(
             'Error uploading image to Supabase: ' + uploadError.message
           )
         }
-
-        // const directoryPath = path.join(
-        //   __dirname,
-        //   '..',
-        //   'public',
-        //   'images',
-        //   'personalized_image'
-        // );
-        // const filePath = path.join(directoryPath, `${uniqueID}.png`);
-
-        // await fs.mkdir(directoryPath, { recursive: true });
-        // await fs.writeFile(filePath, buffer);
-
-        // console.log('File written to', filePath);
 
         const imageUrl = `https://yvpvhbgcawvruybkmupv.supabase.co/storage/v1/object/public/media/templates/${uniqueID}.png`
         resolve(imageUrl)

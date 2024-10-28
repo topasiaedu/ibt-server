@@ -22,42 +22,42 @@ export const getCampaignPhoneNumber = async (
   phone_number_id: number
 }> => {
   // Check if contact has been contacted by a phone number
-  // if (contact.last_contacted_by) {
-  //   // Fetch phone number by using phone_number_id in phone_numbers
-  //   const {
-  //     data: lastContactedPhoneNumber,
-  //     error: lastContactedPhoneNumberError,
-  //   } = await supabase
-  //     .from('phone_numbers')
-  //     .select('*,whatsapp_business_accounts(*,business_manager(*))')
-  //     .eq('phone_number_id', contact.last_contacted_by)
-  //     .eq('restricted', false)
-  //     .neq('quality_rating', 'LOW')
+  if (contact.last_contacted_by) {
+    // Fetch phone number by using phone_number_id in phone_numbers
+    const {
+      data: lastContactedPhoneNumber,
+      error: lastContactedPhoneNumberError,
+    } = await supabase
+      .from('phone_numbers')
+      .select('*,whatsapp_business_accounts(*,business_manager(*))')
+      .eq('phone_number_id', contact.last_contacted_by)
+      .eq('restricted', false)
+      .neq('quality_rating', 'LOW')
 
-  //   if (lastContactedPhoneNumberError) {
-  //     logError(
-  //       lastContactedPhoneNumberError as unknown as Error,
-  //       'Error fetching last contacted phone number'
-  //     )
-  //     console.error(
-  //       'Error fetching last contacted phone number:',
-  //       lastContactedPhoneNumberError
-  //     )
-  //     throw new Error('Error fetching last contacted phone number')
-  //   }
+    if (lastContactedPhoneNumberError) {
+      logError(
+        lastContactedPhoneNumberError as unknown as Error,
+        'Error fetching last contacted phone number'
+      )
+      console.error(
+        'Error fetching last contacted phone number:',
+        lastContactedPhoneNumberError
+      )
+      throw new Error('Error fetching last contacted phone number')
+    }
 
-  //   console.log('lastContactedPhoneNumber:', lastContactedPhoneNumber)
-  //   console.log("project_id:", project_id)
-  //   if (lastContactedPhoneNumber.length !== 0 && lastContactedPhoneNumber[0].whatsapp_business_accounts.project_id === project_id) {
-  //     return {
-  //       selectedPhoneNumber: lastContactedPhoneNumber[0].wa_id,
-  //       accessToken:
-  //         lastContactedPhoneNumber[0].whatsapp_business_accounts
-  //           .business_manager.access_token,
-  //       phone_number_id: lastContactedPhoneNumber[0].phone_number_id,
-  //     }
-  //   }
-  // }
+    console.log('lastContactedPhoneNumber:', lastContactedPhoneNumber)
+    console.log("project_id:", project_id)
+    if (lastContactedPhoneNumber.length !== 0 && lastContactedPhoneNumber[0].whatsapp_business_accounts.project_id === project_id) {
+      return {
+        selectedPhoneNumber: lastContactedPhoneNumber[0].wa_id,
+        accessToken:
+          lastContactedPhoneNumber[0].whatsapp_business_accounts
+            .business_manager.access_token,
+        phone_number_id: lastContactedPhoneNumber[0].phone_number_id,
+      }
+    }
+  }
 
   // Fetch new phone numbers by using campaign id in campaign_phone_numbers
   const { data: newPhoneNumbers, error: newPhoneNumbersError } = await supabase
@@ -107,39 +107,39 @@ export const getWorkflowPhoneNumber = async (
   phone_number_id: number
 }> => {
   // Check if contact has been contacted by a phone number
-  // if (contact.last_contacted_by) {
-  //   // Fetch phone number by using phone_number_id in phone_numbers
-  //   const {
-  //     data: lastContactedPhoneNumber,
-  //     error: lastContactedPhoneNumberError,
-  //   } = await supabase
-  //     .from('phone_numbers')
-  //     .select('*,whatsapp_business_accounts(*,business_manager(*))')
-  //     .eq('phone_number_id', contact.last_contacted_by)
-  //     .eq('restricted', false)
+  if (contact.last_contacted_by) {
+    // Fetch phone number by using phone_number_id in phone_numbers
+    const {
+      data: lastContactedPhoneNumber,
+      error: lastContactedPhoneNumberError,
+    } = await supabase
+      .from('phone_numbers')
+      .select('*,whatsapp_business_accounts(*,business_manager(*))')
+      .eq('phone_number_id', contact.last_contacted_by)
+      .eq('restricted', false)
 
-  //   if (lastContactedPhoneNumberError) {
-  //     logError(
-  //       lastContactedPhoneNumberError as unknown as Error,
-  //       'Error fetching last contacted phone number'
-  //     )
-  //     console.error(
-  //       'Error fetching last contacted phone number:',
-  //       lastContactedPhoneNumberError
-  //     )
-  //     throw new Error('Error fetching last contacted phone number')
-  //   }
+    if (lastContactedPhoneNumberError) {
+      logError(
+        lastContactedPhoneNumberError as unknown as Error,
+        'Error fetching last contacted phone number'
+      )
+      console.error(
+        'Error fetching last contacted phone number:',
+        lastContactedPhoneNumberError
+      )
+      throw new Error('Error fetching last contacted phone number')
+    }
 
-  //   if (lastContactedPhoneNumber.length !== 0 && lastContactedPhoneNumber[0].whatsapp_business_accounts.project_id === project_id) {
-  //     return {
-  //       selectedPhoneNumber: lastContactedPhoneNumber[0].wa_id,
-  //       accessToken:
-  //         lastContactedPhoneNumber[0].whatsapp_business_accounts
-  //           .business_manager.access_token,
-  //       phone_number_id: lastContactedPhoneNumber[0].phone_number_id,
-  //     }
-  //   }
-  // }
+    if (lastContactedPhoneNumber.length !== 0 && lastContactedPhoneNumber[0].whatsapp_business_accounts.project_id === project_id) {
+      return {
+        selectedPhoneNumber: lastContactedPhoneNumber[0].wa_id,
+        accessToken:
+          lastContactedPhoneNumber[0].whatsapp_business_accounts
+            .business_manager.access_token,
+        phone_number_id: lastContactedPhoneNumber[0].phone_number_id,
+      }
+    }
+  }
 
   // Fetch new phone numbers by using workflow id in workflow_phone_numbers
   const { data: newPhoneNumbers, error: newPhoneNumbersError } = await supabase

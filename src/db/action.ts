@@ -57,6 +57,7 @@ export const fetchActiveActions = async (workflowId: string): Promise<Action[]> 
     .from('actions')
     .select('*')
     .eq('workflow_id', workflowId)
+    .order('execution_order', { ascending: true }); // or { ascending: false } for descending order
 
   if (error) throw error
   return data as Action[]
