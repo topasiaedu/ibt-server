@@ -67,38 +67,6 @@ const processCampaignLog = async (campaignLog: CampaignLog) => {
     )
     console.log('Sending to contact', contact.name, 'with wa_id', contact.wa_id)
 
-    if (campaignLog.campaign_id === 307) {
-      // Check if there is a message with campaign_id 304 or 303 in the message with the same contact_id, if so, skip
-      const { data: message } = await supabase
-        .from('messages')
-        .select('campaign_id')
-        .eq('contact_id', campaignLog.contact_id)
-        .eq('campaign_id', 304)
-        .single()
-
-      const { data: message2 } = await supabase
-        .from('messages')
-        .select('campaign_id')
-        .eq('contact_id', campaignLog.contact_id)
-        .eq('campaign_id', 303)
-        .single()
-
-      if (message || message2) {
-        console.log(message, message2)
-        console.log(
-          'Message already sent to contact',
-          contact.name,
-          'with wa_id',
-          contact.wa_id
-        )
-        await updateCampaignLogStatus(
-          campaignLog.id,
-          'COMPLETED',
-          'Message already sent'
-        )
-        return
-      }
-    }
 
     const campaign = await withRetry(
       () => fetchCampaign(campaignLog.campaign_id),
