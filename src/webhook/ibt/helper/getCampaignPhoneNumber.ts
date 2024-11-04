@@ -90,7 +90,7 @@ export const getCampaignPhoneNumber = async (
     selectedPhoneNumber,
     accessToken: newPhoneNumbers.find(
       (phone: any) => phone.phone_numbers.wa_id === selectedPhoneNumber
-    ).phone_numbers.whatsapp_business_accounts.business_manager.access_token,
+    ).phone_numbers.access_token,
     phone_number_id: newPhoneNumbers.find(
       (phone: any) => phone.phone_numbers.wa_id === selectedPhoneNumber
     ).phone_number_id,
@@ -159,7 +159,7 @@ export const getWorkflowPhoneNumber = async (
   }
 
   // Create a weighted list of phone numbers
-  const weightedPhoneNumbers = newPhoneNumbers.flatMap((phone: any) => {
+  const weightedPhoneNumbers = newPhoneNumbers.flatMap((phone: any) => {  
     const weight = getWeightForRating(phone.phone_numbers.quality_rating)
     return Array(weight).fill(phone.phone_numbers.wa_id) // Fill an array with the wa_id repeated by its weight
   })
@@ -172,7 +172,7 @@ export const getWorkflowPhoneNumber = async (
     selectedPhoneNumber,
     accessToken: newPhoneNumbers.find(
       (phone: any) => phone.phone_numbers.wa_id === selectedPhoneNumber
-    ).phone_numbers.whatsapp_business_accounts.business_manager.access_token,
+    ).phone_numbers.access_token,
     phone_number_id: newPhoneNumbers.find(
       (phone: any) => phone.phone_numbers.wa_id === selectedPhoneNumber
     ).phone_number_id,
