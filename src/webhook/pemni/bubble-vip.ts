@@ -267,7 +267,8 @@ export const handlePemniVipWebhook = async (req: Request, res: Response) => {
         )
       }
     } else {
-      const randomPassword = Math.random().toString(36).slice(-8) // Generate random password
+      // const randomPassword = Math.random().toString(36).slice(-8) // Generate random password
+      const randomPassword = 'user1234'
 
       // Create new user account if not found
       const newUser = await axios.post(
